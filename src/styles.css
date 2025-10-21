@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+    --header_padding: 10px;
+
+    --color_principal: #1B5B7E;
+    --color_secundario: #9BC0DA;
+
+}
+
+@font-face {
+font-family: "BreeSerif-regular";
+src: url("./fonts/BreeSerif-Regular.ttf") format("truetype");
+}
+
+* {
+    font-family: "BreeSerif-regular";
+
+    box-sizing: border-box;
+}
