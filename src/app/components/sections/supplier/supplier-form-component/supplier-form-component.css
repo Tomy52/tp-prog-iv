@@ -1,0 +1,20 @@
+article {
+    background-color: var(--color_secundario);
+
+    padding: 10px;
+}
+
+form {
+    /* se podria ver bien en mobile (con un poco de ajustes) */
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(1,minmax(400px,1fr));
+}
+
+.error {
+    color: red;
+}
+
+.error_border {
+    border: 2px dotted red;
+}
