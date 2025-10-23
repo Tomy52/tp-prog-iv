@@ -17,4 +17,8 @@ export class SupplierService {
   getSupplier(id:number) { // for modifying...
     return this.http.get(this.url + `/${id}`)
   }
+
+  updateSupplier(id:string, supplier:Partial<Supplier>) {
+    return this.http.put(this.url + `/${Number(id)}`,supplier)
+  }
 }
