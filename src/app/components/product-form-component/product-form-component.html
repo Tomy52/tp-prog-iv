@@ -1,1 +1,17 @@
-<p>product-form-component works!</p>
+<h2>Registrar</h2>
+
+<form [formGroup]="productForm">
+  @if(productForm.get("name")?.hasError('minlength') && productForm.get("name")?.dirty){
+    <p style="color:red">El nombre del producto debe contener como mínimo 3 caracteres</p>
+  }
+  @if(productForm.get("name")?.hasError('maxlength') && productForm.get("name")?.dirty){
+    <p style="color:red">El nombre del producto debe contener como máximo 50 caracteres</p>
+  }
+  @if(productForm.get("name")?.hasError('required') && productForm.get("name")?.dirty){
+    <p style="color:red">El nombre del producto es obligatorio</p>
+  }
+  <label for="product-name">Nombre del producto</label>
+  <input type="text" id="product-name" formControlName="name">
+
+  <button type="submit" [hidden]="!productForm.valid">Cargar</button>
+</form>
