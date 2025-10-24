@@ -21,7 +21,7 @@ export class Login {
   authForm = this.formBuilder.group({
 
     username: ['', [Validators.required]],
-    password: ['', Validators.required],
+    password: ['', [Validators.required]],
 
   })
 
@@ -35,7 +35,7 @@ export class Login {
     this.authService.login(authRequest).subscribe(
       {
         next: ()  => {
-          this.router.navigate(['/dashboard']); // aca la ruta le puse dashboard para ponerle algo
+          this.router.navigate(['/dashboard']); // ruta tentativa, despues la cambiamos por la verdadera
 
         }
       }
