@@ -16,7 +16,7 @@ export class AuthService {
     return this.http.post<AuthResponse>(this.url + "login", request).pipe(
       tap({
           next: response => {
-            localStorage.setItem('token', response.access_token);
+            localStorage.setItem('token', response.token);
           } // must define and error handler
         }
       )
