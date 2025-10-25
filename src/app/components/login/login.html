@@ -1,0 +1,16 @@
+<section>
+  <form [formGroup]="authForm">
+    <label for="name">Ingrese el nombre</label>
+    <input type="text" id="name" formControlName="username">
+    <label for="pass">Ingrese contraseña</label>
+    <input type="password" id="pass" formControlName="password">
+    <button type="submit" (click)="login()">Ingresar</button>
+
+  </form>
+
+  <div class="error">
+
+  </div>
+
+
+</section>
