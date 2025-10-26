@@ -10,6 +10,11 @@
   @if(productForm.get("name")?.hasError('required') && productForm.get("name")?.dirty){
     <p style="color:red">El nombre del producto es obligatorio</p>
   }
+  @if(showSuccessMessage()) {
+    <p class="success">¡Producto registrado exitosamente!</p>
+  } @else if (showErrorMessage()) {
+    <p class="failure">Carga fallida</p>
+  }
   <label for="product-name">Nombre del producto</label>
   <input type="text" id="product-name" formControlName="name">
 

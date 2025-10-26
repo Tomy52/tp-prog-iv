@@ -8,7 +8,7 @@ import {Product} from '../interfaces/product';
 })
 export class ProductService {
   http: HttpClient = inject(HttpClient);
-  base_url: string = "api/products"
+  base_url: string = "api/products";
 
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(`${this.base_url}`);
@@ -23,6 +23,6 @@ export class ProductService {
   }
 
   deleteProduct(product: Product): Observable<Object> {
-    return this.http.delete(`${this.base_url}/${product.idProduct}`)
+    return this.http.delete(`${this.base_url}/${product.idProduct}`);
   }
 }
