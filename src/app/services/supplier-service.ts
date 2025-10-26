@@ -7,7 +7,7 @@ import { Supplier } from '../interfaces/supplier';
 })
 export class SupplierService {
   http = inject(HttpClient)
-  url = "http://localhost:8080/suppliers"
+  url = "api/suppliers"
 
 
   addSupplier(supplier:Partial<Supplier>) { // for adding...
