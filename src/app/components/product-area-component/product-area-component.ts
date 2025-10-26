@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, signal, Signal, WritableSignal} from '@angular/core';
 import {ProductFormComponent} from '../product-form-component/product-form-component';
+import {ProductService} from '../../services/product-service';
 
 @Component({
   selector: 'app-product-area-component',
@@ -11,5 +12,4 @@ import {ProductFormComponent} from '../product-form-component/product-form-compo
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductAreaComponent {
-
 }

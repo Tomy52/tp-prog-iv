@@ -1,6 +1,6 @@
 <h2>Registrar</h2>
 
-<form [formGroup]="productForm">
+<form [formGroup]="productForm" (ngSubmit)="submit()">
   @if(productForm.get("name")?.hasError('minlength') && productForm.get("name")?.dirty){
     <p style="color:red">El nombre del producto debe contener como mínimo 3 caracteres</p>
   }

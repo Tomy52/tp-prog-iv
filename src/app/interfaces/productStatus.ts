@@ -1,4 +1,4 @@
-enum ProductStatus {
+export enum ProductStatus {
   Enabled = "ENABLED",
   Disabled = "DISABLED"
 }
