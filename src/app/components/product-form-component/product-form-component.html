@@ -1,22 +1,88 @@
-<h2>Registrar</h2>
+<h3>¿Qué te interesa hacer?</h3>
+<section id="choice-area">
+  <form [formGroup]="choiceForm">
+    <p>Quiero</p>
+    <select formControlName="choice">
+      <option>-- Elija una opción --</option>
+      <option>Agregar</option>
+      <option>Modificar</option>
+      <option>Borrar</option>
+    </select>
+    <p>... un producto</p>
+  </form>
+</section>
 
-<form [formGroup]="productForm" (ngSubmit)="submit()">
-  @if(productForm.get("name")?.hasError('minlength') && productForm.get("name")?.dirty){
-    <p style="color:red">El nombre del producto debe contener como mínimo 3 caracteres</p>
-  }
-  @if(productForm.get("name")?.hasError('maxlength') && productForm.get("name")?.dirty){
-    <p style="color:red">El nombre del producto debe contener como máximo 50 caracteres</p>
-  }
-  @if(productForm.get("name")?.hasError('required') && productForm.get("name")?.dirty){
-    <p style="color:red">El nombre del producto es obligatorio</p>
-  }
-  @if(showSuccessMessage()) {
-    <p class="success">¡Producto registrado exitosamente!</p>
-  } @else if (showErrorMessage()) {
-    <p class="failure">Carga fallida</p>
-  }
-  <label for="product-name">Nombre del producto</label>
-  <input type="text" id="product-name" formControlName="name">
+@if(choiceForm.value.choice === "Agregar") {
+  <section id="add-product-form">
+    <h2>Agregar producto</h2>
 
-  <button type="submit" [hidden]="!productForm.valid">Cargar</button>
-</form>
+    <form [formGroup]="addProductForm" (ngSubmit)="submit()">
+      @if(addProductForm.get("name")?.hasError('minlength') && addProductForm.get("name")?.dirty){
+        <p style="color:red">El nombre del producto debe contener como mínimo 3 caracteres</p>
+      }
+      @if(addProductForm.get("name")?.hasError('maxlength') && addProductForm.get("name")?.dirty){
+        <p style="color:red">El nombre del producto debe contener como máximo 50 caracteres</p>
+      }
+      @if(addProductForm.get("name")?.hasError('required') && addProductForm.get("name")?.dirty){
+        <p style="color:red">El nombre del producto es obligatorio</p>
+      }
+      @if(showSuccessMessage()) {
+        <p class="success">¡Producto registrado exitosamente!</p>
+      } @else if (showErrorMessage()) {
+        <p class="failure">Carga fallida</p>
+      }
+      <label for="product-name">Nombre del producto</label>
+      <input type="text" id="product-name" formControlName="name">
+
+      <button type="submit" [hidden]="!addProductForm.valid">Cargar</button>
+    </form>
+
+  </section>
+}
+
+@if(choiceForm.value.choice === "Modificar") {
+  <section id="update-product-form">
+    <h2>Modificar producto</h2>
+
+
+<!--    <form [formGroup]="update" (ngSubmit)="submit()">-->
+<!--      @if(addProductForm.get("name")?.hasError('minlength') && addProductForm.get("name")?.dirty){-->
+<!--        <p style="color:red">El nombre del producto debe contener como mínimo 3 caracteres</p>-->
+<!--      }-->
+<!--      @if(addProductForm.get("name")?.hasError('maxlength') && addProductForm.get("name")?.dirty){-->
+<!--        <p style="color:red">El nombre del producto debe contener como máximo 50 caracteres</p>-->
+<!--      }-->
+<!--      @if(addProductForm.get("name")?.hasError('required') && addProductForm.get("name")?.dirty){-->
+<!--        <p style="color:red">El nombre del producto es obligatorio</p>-->
+<!--      }-->
+<!--      @if(showSuccessMessage()) {-->
+<!--        <p class="success">¡Producto modificado exitosamente!</p>-->
+<!--      } @else if (showErrorMessage()) {-->
+<!--        <p class="failure">Modificación fallida</p>-->
+<!--      }-->
+<!--      <label for="product-name">Nombre del producto</label>-->
+<!--      <input type="text" id="product-name" formControlName="name">-->
+
+<!--      <button type="submit" [hidden]="!addProductForm.valid">Modificar</button>-->
+<!--    </form>-->
+
+  </section>
+}
+
+
+@if(choiceForm.value.choice === "Borrar") {
+  <section id="delete-product-form">
+    <h2>Borrar producto</h2>
+<!--    <form [formGroup]="deleteProductForm">-->
+<!--      <select name="product" id="product-select">-->
+<!--        <option value="">Elija un producto...</option>-->
+<!--        @for(product of products();track product.idProduct) {-->
+<!--          <option [value]="product">{{product.name}}</option>-->
+<!--        }-->
+<!--      </select>-->
+<!--      <button type="button">Borrar</button>-->
+<!--    </form>-->
+
+  </section>
+}
+

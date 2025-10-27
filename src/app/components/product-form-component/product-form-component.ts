@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, inject, signal, WritableSignal} from '@angular/core';
-import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
+import {FormBuilder, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {ProductService} from '../../services/product-service';
 import {Subscription} from 'rxjs';
 import {ProductStatus} from '../../interfaces/productStatus';
@@ -8,7 +8,8 @@ import {Product} from '../../interfaces/product';
 @Component({
   selector: 'app-product-form-component',
   imports: [
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   templateUrl: './product-form-component.html',
   styleUrl: './product-form-component.css',
@@ -21,7 +22,13 @@ export class ProductFormComponent {
   productService: ProductService = inject(ProductService);
   products: WritableSignal<Product[]> = signal<Product[]>([]);
 
-  productForm = this.formBuilder.group(
+  choiceForm = this.formBuilder.group(
+    {
+      choice: this.formBuilder.control('')
+    }
+  );
+
+  addProductForm = this.formBuilder.group(
     {
       name: this.formBuilder.nonNullable.control('',
         [Validators.required, Validators.minLength(3), Validators.maxLength(50)])
@@ -37,7 +44,7 @@ export class ProductFormComponent {
   }
 
   submit(): Subscription {
-    const formInfo = this.productForm.value;
+    const formInfo = this.addProductForm.value;
     const product = {
       name: formInfo.name,
       status: ProductStatus.Enabled
@@ -47,8 +54,8 @@ export class ProductFormComponent {
       {
         next: () => {
           this.showSuccessMessage.set(true);
-          this.productForm.markAsPristine();
-          this.productForm.reset();
+          this.addProductForm.markAsPristine();
+          this.addProductForm.reset();
         },
         error: () => {
           this.showErrorMessage.set(true);
