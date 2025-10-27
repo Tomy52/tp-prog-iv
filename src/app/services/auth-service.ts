@@ -37,6 +37,7 @@ isLoggedIn(){
 
 isTokenExpired(){
   let token = this.getToken();
+  let respose= false;
 
   if (token){
 
@@ -46,12 +47,13 @@ isTokenExpired(){
     let expirationTime = new Date(exp * 1000);
     let currentTime = new Date();
 
-    return expirationTime <= currentTime;
+    respose = expirationTime <= currentTime;
 
-  } else {
-    return new Error("Not logged in");
   }
-}
+
+  return respose;
+
+  }
 
 
 }

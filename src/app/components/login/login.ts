@@ -35,6 +35,7 @@ export class Login {
     this.authService.login(authRequest).subscribe(
       {
         next: ()  => {
+          console.log(this.authService.getToken());
           this.router.navigate(['/dashboard']); // ruta tentativa, despues la cambiamos por la verdadera
 
         }
