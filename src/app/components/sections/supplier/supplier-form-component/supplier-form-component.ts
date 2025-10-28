@@ -1,7 +1,7 @@
 import { Component, inject, output } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Supplier } from '../../../../interfaces/supplier';
-import { Address } from '../../../../interfaces/address';
+import { Supplier } from '../../../../interfaces/supplier/supplier';
+import { Address } from '../../../../interfaces/supplier/address';
 
 @Component({
   selector: 'app-supplier-form-component',
@@ -10,8 +10,8 @@ import { Address } from '../../../../interfaces/address';
   styleUrl: './supplier-form-component.css'
 })
 export class SupplierFormComponent {
-  form_builder = inject(FormBuilder)
-  
+  form_builder = inject(FormBuilder);
+
   data_sig = output<Partial<Supplier>>();
 
 
@@ -22,79 +22,79 @@ export class SupplierFormComponent {
     phone: ['1111111111',[Validators.required/*,Validators.pattern("/^\d{3}-\d{3}-\d{4}$/")*/]], // alguna idea de un regex que funcione en js que funcione igual que el de java????
     street: ['Calle 12',[Validators.required,Validators.minLength(3),Validators.maxLength(50)]],
     number: ['123',[Validators.required,Validators.minLength(2),Validators.maxLength(5),Validators.pattern("\\d+")]],
-    city: ['Ciudad',[Validators.required,Validators.minLength(3),Validators.maxLength(50),Validators.pattern("^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$")]]
-  })
+    city: ['Ciudad',[Validators.required,Validators.minLength(3),Validators.maxLength(50),Validators.pattern("^[a-zA-ZáéíóúÁÉÍÓÚñÑs]+$")]]
+  });
 
 
   tellToBeDone()
   {
-    let supplier = this.makeObjectFromForm();
-    this.data_sig.emit(supplier)
-    this.resetForm()
+    const supplier = this.makeObjectFromForm();
+    this.data_sig.emit(supplier);
+    this.resetForm();
   }
 
   makeObjectFromForm()
   {
-    let values = this.form.value
-    
-    let address: Partial<Address> = {
+    const values = this.form.value;
+
+    const address: Partial<Address> = {
       street: values.street!,
       number: values.number!,
       city: values.number!
-    }
+    };
 
-    let supplier: Partial<Supplier> = {
+    const supplier: Partial<Supplier> = {
       companyName: values.companyName!,
       cuit: values.cuit!,
       email: values.email!,
       phoneNumber: values.phone!,
       address: address
-    }
-    
+    };
+
     return supplier;
   }
 
   isValid()
   {
-    return this.form.valid
+    return this.form.valid;
   }
 
 
   isFieldInvalid(field_name:string) : undefined | boolean
   {
-    let field = this.form.get(field_name)
+    const field = this.form.get(field_name);
 
 
     if(field == undefined)
     {
-      console.error(this.isFieldInvalid + ` Field ${field_name} doesn't exist!!!!!!!!!!!`)
-      return
+      console.error(this.isFieldInvalid + ` Field ${field_name} doesn't exist!!!!!!!!!!!`);
+      return;
     }
 
 
-    return !field!.valid
+    return !field!.valid;
   }
 
 
   wasFieldTouched(field_name:string)
   {
-    let field = this.form.get(field_name)
+    const field = this.form.get(field_name);
 
     if(field == undefined)
     {
-      console.error(this.isFieldInvalid + ` Field ${field_name} doesn't exist!!!!!!!!!!!`)
-      return
+      console.error(this.isFieldInvalid + ` Field ${field_name} doesn't exist!!!!!!!!!!!`);
+      return;
     }
 
-    return field!.touched
+    return field!.touched;
   }
 
   resetForm() {
-    this.form.reset()
-    this.form.markAsUntouched()
+    this.form.reset();
+    this.form.markAsUntouched();
   }
 
 
 
-  
+
 }
