@@ -1,0 +1,8 @@
+<div>
+  <!--[formControlName]="form_control_name()"-->
+  <select>
+    @for (supplier of suppliers(); track supplier.id) {
+      <option [ngValue]="supplier.id"> {{supplier.companyName}} </option>
+    }
+  </select>
+</div>

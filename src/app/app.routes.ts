@@ -3,6 +3,7 @@ import { TestComponent } from './components/test/test-component/test-component';
 import { MainMenuScreen } from './components/main-menu/main-menu-screen/main-menu-screen';
 import { SupplierFormSection } from './components/sections/supplier/supplier-form-section/supplier-form-section';
 import {Login} from './components/login/login';
+import {DeleteSupplier} from './components/sections/supplier/delete-supplier/delete-supplier';
 
 export const routes: Routes = [
     {
@@ -19,6 +20,9 @@ export const routes: Routes = [
     },
     {
         path:"form-suppliers/:id",component:SupplierFormSection
+    },
+    {
+        path:"delete-supplier",component:DeleteSupplier
     }
     ,{
         path:"**",pathMatch:"full",redirectTo:"login"

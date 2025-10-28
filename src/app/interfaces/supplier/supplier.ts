@@ -1,10 +1,10 @@
-import { Address } from "./address"
+import { Address } from "./address";
 
 export interface Supplier {
-    idaddress:number
+    id:number
     companyName:string
     cuit:string
     phoneNumber:string
-    email:String
+    email:string
     address:Address | Partial<Address>
 }

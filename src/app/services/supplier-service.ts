@@ -11,14 +11,28 @@ export class SupplierService {
 
 
   addSupplier(supplier:Partial<Supplier>) { // for adding...
-    return this.http.post(this.url,supplier);
+    return this.http.post<Supplier>(this.url,supplier);
   }
 
   getSupplier(id:number) { // for modifying...
-    return this.http.get(this.url + `/${id}`);
+    return this.http.get<Supplier>(this.url + `/${id}`);
+  }
+
+  getAllSuppliersAsList()
+  {
+    return this.http.get<Supplier[]>(this.url);
+  }
+
+  getSuppliersPage() // should be expanded upon when the time comes
+  {
+    return this.http.get(`this.url/page`);
   }
 
   updateSupplier(id:string, supplier:Partial<Supplier>) {
-    return this.http.put(this.url + `/${Number(id)}`,supplier);
+    return this.http.put<Supplier>(this.url + `/${Number(id)}`,supplier);
+  }
+
+  deleteSupplier(id:number) {
+    return this.http.delete(this.url + `/${Number(id)}`);
   }
 }

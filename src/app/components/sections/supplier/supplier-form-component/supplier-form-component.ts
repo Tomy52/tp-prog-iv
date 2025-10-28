@@ -22,7 +22,7 @@ export class SupplierFormComponent {
     phone: ['1111111111',[Validators.required/*,Validators.pattern("/^\d{3}-\d{3}-\d{4}$/")*/]], // alguna idea de un regex que funcione en js que funcione igual que el de java????
     street: ['Calle 12',[Validators.required,Validators.minLength(3),Validators.maxLength(50)]],
     number: ['123',[Validators.required,Validators.minLength(2),Validators.maxLength(5),Validators.pattern("\\d+")]],
-    city: ['Ciudad',[Validators.required,Validators.minLength(3),Validators.maxLength(50),Validators.pattern("^[a-zA-ZáéíóúÁÉÍÓÚñÑs]+$")]]
+    city: ['Ciudad',[Validators.required,Validators.minLength(3),Validators.maxLength(50),Validators.pattern("^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$")]] // alguna idea de un regex que funcione en js que funcione igual que el de java????
   });
 
 
@@ -40,7 +40,7 @@ export class SupplierFormComponent {
     const address: Partial<Address> = {
       street: values.street!,
       number: values.number!,
-      city: values.number!
+      city: values.city!
     };
 
     const supplier: Partial<Supplier> = {
