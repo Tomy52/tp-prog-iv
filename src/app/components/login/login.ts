@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, signal} from '@angular/core';
 import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
 import {AuthService} from '../../services/auth-service';
 import {AuthRequest} from '../../interfaces/user/auth-request';
@@ -7,8 +7,8 @@ import {Router} from '@angular/router';
 @Component({
   selector: 'app-login',
   imports: [
-    ReactiveFormsModule
-  ],
+    ReactiveFormsModule,
+ ],
   templateUrl: './login.html',
   styleUrl: './login.css'
 })
@@ -20,10 +20,10 @@ export class Login {
 
   authForm = this.formBuilder.group({
 
-    username: ['', [Validators.required]],
-    password: ['', [Validators.required]],
+    username: this.formBuilder.nonNullable.control('', [Validators.required]),
+    password: this.formBuilder.nonNullable.control('', [Validators.required]),
 
-  })
+  });
 
   login(){
 
@@ -35,7 +35,6 @@ export class Login {
     this.authService.login(authRequest).subscribe(
       {
         next: ()  => {
-          console.log(this.authService.getToken());
           this.router.navigate(['/dashboard']); // ruta tentativa, despues la cambiamos por la verdadera
 
         }

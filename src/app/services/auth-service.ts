@@ -17,9 +17,12 @@ export class AuthService {
       tap({
           next: response => {
             localStorage.setItem('token', response.token);
+          },
+          error: (err) => {
+            alert(err.status + " - " + err.error);
           } // must define and error handler
         }
-      )
+        )
     )
   }
 
