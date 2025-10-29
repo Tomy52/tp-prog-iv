@@ -3,30 +3,22 @@ import {FormBuilder, FormsModule, ReactiveFormsModule, Validators} from '@angula
 import {ProductService} from '../../services/product-service';
 import {Subscription} from 'rxjs';
 import {ProductStatus} from '../../interfaces/productStatus';
-import {Product} from '../../interfaces/product';
 
 @Component({
-  selector: 'app-product-form-component',
+  selector: 'app-add-product-form-component',
   imports: [
     ReactiveFormsModule,
     FormsModule
   ],
-  templateUrl: './product-form-component.html',
-  styleUrl: './product-form-component.css',
+  templateUrl: './add-product-form-component.html',
+  styleUrl: './add-product-form-component.css',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ProductFormComponent {
+export class AddProductFormComponent {
   showSuccessMessage: WritableSignal<boolean> = signal<boolean>(false);
   showErrorMessage: WritableSignal<boolean> = signal<boolean>(false);
   formBuilder: FormBuilder = inject(FormBuilder);
   productService: ProductService = inject(ProductService);
-  products: WritableSignal<Product[]> = signal<Product[]>([]);
-
-  choiceForm = this.formBuilder.group(
-    {
-      choice: this.formBuilder.control('')
-    }
-  );
 
   addProductForm = this.formBuilder.group(
     {
@@ -34,14 +26,6 @@ export class ProductFormComponent {
         [Validators.required, Validators.minLength(3), Validators.maxLength(50)])
     }
   );
-
-  constructor() {
-    this.getProducts();
-  }
-
-  getProducts() {
-    this.productService.getProducts().subscribe((prodArr: Product[]) => this.products.set(prodArr));
-  }
 
   submit(): Subscription {
     const formInfo = this.addProductForm.value;

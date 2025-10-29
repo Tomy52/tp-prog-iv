@@ -1,0 +1,15 @@
+.success {
+  color: limegreen;
+}
+
+.failure {
+  color: red;
+}
+
+#choice-area > form {
+  display: flex;
+}
+
+#choice-area > form > select {
+  margin-inline: 10px;
+}

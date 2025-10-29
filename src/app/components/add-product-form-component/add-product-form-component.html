@@ -1,0 +1,26 @@
+<section id="add-product-form">
+    <h2>Agregar producto</h2>
+
+    <form [formGroup]="addProductForm" (ngSubmit)="submit()">
+      @if(addProductForm.get("name")?.hasError('minlength') && addProductForm.get("name")?.dirty){
+        <p style="color:red">El nombre del producto debe contener como mínimo 3 caracteres</p>
+      }
+      @if(addProductForm.get("name")?.hasError('maxlength') && addProductForm.get("name")?.dirty){
+        <p style="color:red">El nombre del producto debe contener como máximo 50 caracteres</p>
+      }
+      @if(addProductForm.get("name")?.hasError('required') && addProductForm.get("name")?.dirty){
+        <p style="color:red">El nombre del producto es obligatorio</p>
+      }
+      @if(showSuccessMessage()) {
+        <p class="success">¡Producto registrado exitosamente!</p>
+      } @else if (showErrorMessage()) {
+        <p class="failure">Carga fallida</p>
+      }
+      <label for="product-name">Nombre del producto</label>
+      <input type="text" id="product-name" formControlName="name">
+
+      <button type="submit" [hidden]="!addProductForm.valid">Cargar</button>
+    </form>
+
+</section>
+
