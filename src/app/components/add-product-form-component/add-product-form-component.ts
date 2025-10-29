@@ -15,8 +15,7 @@ import {ProductStatus} from '../../interfaces/productStatus';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AddProductFormComponent {
-  showSuccessMessage: WritableSignal<boolean> = signal<boolean>(false);
-  showErrorMessage: WritableSignal<boolean> = signal<boolean>(false);
+  success: WritableSignal<boolean|null> = signal<boolean|null>(null);
   formBuilder: FormBuilder = inject(FormBuilder);
   productService: ProductService = inject(ProductService);
 
@@ -37,15 +36,18 @@ export class AddProductFormComponent {
     return this.productService.addProduct(product).subscribe(
       {
         next: () => {
-          this.showSuccessMessage.set(true);
+          this.success.set(true);
           this.addProductForm.markAsPristine();
           this.addProductForm.reset();
         },
-        error: () => {
-          this.showErrorMessage.set(true);
+        error: (err) => {
+          this.success.set(false);
           alert("No se pudo completar la carga del producto");
+          console.error(`Hubo un error en la carga ${err}`);
         }
       }
     );
   }
+
+
 }

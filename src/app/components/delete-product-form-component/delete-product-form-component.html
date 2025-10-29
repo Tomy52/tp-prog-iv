@@ -1,13 +1,17 @@
 <section id="delete-product-form">
   <h2>Borrar producto</h2>
-  <!--    <form [formGroup]="deleteProductForm">-->
-  <!--      <select name="product" id="product-select">-->
-  <!--        <option value="">Elija un producto...</option>-->
-  <!--        @for(product of products();track product.idProduct) {-->
-  <!--          <option [value]="product">{{product.name}}</option>-->
-  <!--        }-->
-  <!--      </select>-->
-  <!--      <button type="button">Borrar</button>-->
-  <!--    </form>-->
-
+      <form [formGroup]="deleteProductForm" (ngSubmit)="deleteProduct()">
+        @if(success()) {
+          <p class="success">¡Producto dado de baja exitosamente!</p>
+        } @else if (success() === false) {
+          <p class="failure">Baja fallida</p>
+        }
+        <label for="product-select">Producto</label>
+        <select name="product" id="product-select" formControlName="product">
+          @for(product of products();track product.idProduct) {
+            <option [ngValue]="product">{{product.name}}</option>
+          }
+        </select>
+        <button type="submit" [hidden]="this.formIsNull()">Borrar</button>
+      </form>
 </section>
