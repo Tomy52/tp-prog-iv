@@ -2,5 +2,8 @@
 
 ### Integrantes: 
 
-Julián Alonso, Angeles Libonati, Javier Schettini, Tomás Silva. 
+- Alonso, Julián 
+- Libonati, Angeles
+- Schettini, Javier
+- Silva, Tomás
 
