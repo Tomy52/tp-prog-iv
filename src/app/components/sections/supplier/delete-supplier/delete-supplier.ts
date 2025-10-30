@@ -22,9 +22,11 @@ export class DeleteSupplier {
   submit()
   {
     console.log("uploading");
+    console.log(this.formulario.value)
+    /*
     this.supplier_service.deleteSupplier(this.id!).subscribe({
       next: () => console.log("success!"),
       error: (e) => console.error("error :( \n" + JSON.stringify(e))
-    });
+    });*/
   }
 }
