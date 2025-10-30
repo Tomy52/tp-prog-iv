@@ -1,11 +1,21 @@
 <section>
-  <h1> Eliminar proveedor (por ahora no funciona) </h1>
   <form action="" [formGroup]="formulario" (ngSubmit)="submit()">
+  <h1> Eliminar proveedor </h1>
+
+    <select formControlName="id">
+    @for (supplier of suppliers(); track supplier.id) {
+      <option [ngValue]="supplier.id">{{supplier.companyName}}</option>
+    }
+    </select>
+
+
+    <!--
     <app-supplier-dropdown-select formControlName="id"/>
+    -->
     <!-- se supone que quiero este componente para poder seleccionar el proveedor
     cuando, por ejemplo se vayan a cargar precios, o buscar por un select.
     Como hago para que funcione dentro de un form o algo asi, lo intente pero no funciona...?
     -->
-    <input type="submit" value="Subir">
+    <input type="submit" value="Eliminar" [disabled]="!isValid()">
   </form>
 </section>

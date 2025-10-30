@@ -1,4 +1,4 @@
-import {Component, forwardRef, inject, input} from '@angular/core';
+import {Component, forwardRef, inject} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR, ReactiveFormsModule} from '@angular/forms';
 import {SupplierService} from '../../../services/supplier-service';
 import {toSignal} from '@angular/core/rxjs-interop';
@@ -20,12 +20,12 @@ import { Supplier } from '../../../interfaces/supplier/supplier';
 export class SupplierDropdownSelect implements ControlValueAccessor {
   suppliers_service = inject(SupplierService);
 
-  suppliers = toSignal(this.suppliers_service.getAllSuppliersAsList());
+  //suppliers = toSignal(this.suppliers_service.getAllSuppliersAsList());
 
-  value: Supplier | null = null
+  value: Supplier | null = null;
 
-  onChange: any = () => {}
-  onTouch: any = () => {}
+  onChange: any = () => {};
+  onTouch: any = () => {};
 
   registerOnChange(fn: any): void {
     this.onChange = fn;

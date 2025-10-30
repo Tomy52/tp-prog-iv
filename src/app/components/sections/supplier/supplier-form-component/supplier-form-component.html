@@ -11,7 +11,7 @@
         @if (isFieldInvalid("cuit") && wasFieldTouched("cuit")) {
             <small class="error">No es valido</small>
         }
-        
+
         <br>
         <label for="email">Email</label>
         <input type="email" name="email" id="email" formControlName="email" [class.error_border]="isFieldInvalid('email')">

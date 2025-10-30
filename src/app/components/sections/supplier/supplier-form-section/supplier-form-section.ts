@@ -1,4 +1,4 @@
-import {Component, inject, input} from '@angular/core';
+import {Component, inject, input, OnInit} from '@angular/core';
 import { SupplierService } from '../../../../services/supplier-service';
 import { Supplier } from '../../../../interfaces/supplier/supplier';
 import { SupplierFormComponent } from "../supplier-form-component/supplier-form-component";
@@ -9,15 +9,11 @@ import { SupplierFormComponent } from "../supplier-form-component/supplier-form-
   templateUrl: './supplier-form-section.html',
   styleUrl: './supplier-form-section.css'
 })
-export class SupplierFormSection /*implements OnInit*/ {
+export class SupplierFormSection implements OnInit {
   supplier_service = inject(SupplierService);
 
   id = input<string>();
-
-  //query_params!:Params;
-
-
-  //constructor(private route: ActivatedRoute) {}
+  supplier_obj?: Supplier;
 
   finishForm(event:Partial<Supplier>)
   {
@@ -50,14 +46,16 @@ export class SupplierFormSection /*implements OnInit*/ {
     });
   }
 
-  /*ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      this.query_params = params;
-      console.log(`Params: ${this.query_params['delete']}`);
-    });
-  }
 
-  getQueryparam(name:string) {
-    return this.query_params[name];
-  }*/
+
+  ngOnInit() {
+    if(this.id())
+    {
+      const id = Number(this.id()!);
+      this.supplier_service.getSupplier(id).subscribe({
+        next: (sup) => this.supplier_obj = sup,
+        error: () => console.error("te deberia sacar de aca... (interceptor/guard?)")
+      });
+    }
+  }
 }
