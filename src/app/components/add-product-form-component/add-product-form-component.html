@@ -18,7 +18,7 @@
       <label for="product-name">Nombre del producto</label>
       <input type="text" id="product-name" formControlName="name">
 
-      <button type="submit" [hidden]="!addProductForm.valid">Cargar</button>
+      <button type="submit" [disabled]="!addProductForm.valid">Cargar</button>
     </form>
 
 </section>

@@ -8,10 +8,11 @@
         }
         <label for="product-select">Producto</label>
         <select name="product" id="product-select" formControlName="product">
+          <option [ngValue]="null">Seleccione un producto</option>
           @for(product of products();track product.idProduct) {
             <option [ngValue]="product">{{product.name}}</option>
           }
         </select>
-        <button type="submit" [hidden]="this.formIsNull()">Borrar</button>
+        <button type="submit" [disabled]="this.formIsNull()">Borrar</button>
       </form>
 </section>
