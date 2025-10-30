@@ -13,7 +13,7 @@ export class SupplierFormSection implements OnInit {
   supplier_service = inject(SupplierService);
 
   id = input<string>();
-  supplier_obj?: Supplier;
+  supplier_obj?: Supplier; // quiero esto para poder aplicarselo al form cuando modifica... estaria bueno...
 
   finishForm(event:Partial<Supplier>)
   {

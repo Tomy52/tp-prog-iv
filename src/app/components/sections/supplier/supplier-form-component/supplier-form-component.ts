@@ -1,4 +1,4 @@
-import {Component, inject, input, output} from '@angular/core';
+import {Component, inject, input, output, WritableSignal} from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Supplier } from '../../../../interfaces/supplier/supplier';
 import { Address } from '../../../../interfaces/supplier/address';
@@ -13,7 +13,6 @@ export class SupplierFormComponent {
   form_builder = inject(FormBuilder);
 
   data_sig = output<Partial<Supplier>>();
-  // modified_supplier = input<Supplier>();
 
   form = this.form_builder.group({
     companyName: ['Green Test',[Validators.required,Validators.minLength(3)]],
@@ -28,10 +27,9 @@ export class SupplierFormComponent {
 
   tellToBeDone()
   {
-    /*
     const supplier = this.makeObjectFromForm();
     this.data_sig.emit(supplier);
-    this.resetForm();*/
+    this.resetForm();
   }
 
   makeObjectFromForm()
@@ -93,6 +91,11 @@ export class SupplierFormComponent {
   resetForm() {
     this.form.reset();
     this.form.markAsUntouched();
+  }
+
+  showFieldWrong(field_name:string)
+  {
+    return this.isFieldInvalid(field_name) && this.wasFieldTouched(field_name);
   }
 
 

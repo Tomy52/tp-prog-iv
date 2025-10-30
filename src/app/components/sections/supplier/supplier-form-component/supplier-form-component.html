@@ -1,49 +1,49 @@
 <article>
     <form action="" (ngSubmit)="tellToBeDone()" [formGroup]="form">
         <label for="name">Nombre de empresa</label>
-        <input type="text" name="name" id="name" formControlName="companyName" [class.error_border]="isFieldInvalid('companyName')">
-        @if (isFieldInvalid("companyName") && wasFieldTouched("companyName")) {
+        <input type="text" name="name" id="name" formControlName="companyName" [class.error_border]="showFieldWrong('companyName')">
+        @if (showFieldWrong("companyName")) {
             <small class="error">No es valido</small>
         }
         <br>
         <label for="cuit">Cuit</label>
-        <input type="text" name="cuit" id="cuit" formControlName="cuit" [class.error_border]="isFieldInvalid('cuit')">
-        @if (isFieldInvalid("cuit") && wasFieldTouched("cuit")) {
+        <input type="text" name="cuit" id="cuit" formControlName="cuit" [class.error_border]="showFieldWrong('cuit')">
+        @if (showFieldWrong("cuit")) {
             <small class="error">No es valido</small>
         }
 
         <br>
         <label for="email">Email</label>
-        <input type="email" name="email" id="email" formControlName="email" [class.error_border]="isFieldInvalid('email')">
-        @if (isFieldInvalid("email") && wasFieldTouched("email")) {
+        <input type="email" name="email" id="email" formControlName="email" [class.error_border]="showFieldWrong('email')">
+        @if (showFieldWrong("email")) {
             <small class="error">No es valido</small>
         }
 
         <br>
         <label for="phone">Número de teléfono</label>
-        <input type="text" name="phone" id="phone" formControlName="phone" [class.error_border]="isFieldInvalid('phone')">
-        @if (isFieldInvalid("phone") && wasFieldTouched("phone")) {
+        <input type="text" name="phone" id="phone" formControlName="phone" [class.error_border]="showFieldWrong('phone')">
+        @if (showFieldWrong('phone')) {
             <small class="error">No es valido</small>
         }
 
         <br>
         <label for="street">Calle</label>
-        <input type="text" name="street" id="street" formControlName="street" [class.error_border]="isFieldInvalid('street')">
-        @if (isFieldInvalid("street") && wasFieldTouched("street")) {
+        <input type="text" name="street" id="street" formControlName="street" [class.error_border]="showFieldWrong('street')">
+        @if (showFieldWrong("street")) {
             <small class="error">No es valido</small>
         }
 
         <br>
         <label for="number">Número de edificio</label>
-        <input type="text" name="number" id="number" formControlName="number" [class.error_border]="isFieldInvalid('number')">
-        @if (isFieldInvalid("number") && wasFieldTouched("number")) {
+        <input type="text" name="number" id="number" formControlName="number" [class.error_border]="showFieldWrong('number')">
+        @if (showFieldWrong("number")) {
             <small class="error">No es valido</small>
         }
 
         <br>
         <label for="city">Ciudad</label>
-        <input type="text" name="city" id="city" formControlName="city" [class.error_border]="isFieldInvalid('city')">
-        @if (isFieldInvalid("city") && wasFieldTouched("city")) {
+        <input type="text" name="city" id="city" formControlName="city" [class.error_border]="showFieldWrong('city')">
+        @if (showFieldWrong("city")) {
             <small class="error">No es valido</small>
         }
 

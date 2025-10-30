@@ -14,7 +14,7 @@ import {Router} from '@angular/router';
 })
 export class Login {
 
-  formBuilder= inject(FormBuilder)
+  formBuilder= inject(FormBuilder);
   authService = inject(AuthService);
   router = inject(Router);
 
@@ -23,7 +23,7 @@ export class Login {
     username: ['', [Validators.required]],
     password: ['', [Validators.required]],
 
-  })
+  });
 
   login(){
 
@@ -35,7 +35,7 @@ export class Login {
     this.authService.login(authRequest).subscribe(
       {
         next: ()  => {
-          this.router.navigate(['/dashboard']); // ruta tentativa, despues la cambiamos por la verdadera
+          this.router.navigate(['/main-menu']); // ruta tentativa, despues la cambiamos por la verdadera
 
         }
       }
