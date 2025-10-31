@@ -2,10 +2,11 @@ import {Component, inject, signal, WritableSignal} from '@angular/core';
 import {FormBuilder, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {SupplierService} from '../../../../services/supplier-service';
 import {Supplier} from '../../../../interfaces/supplier/supplier';
+import { SupplierDropdownSelect } from '../../../reusable/supplier-dropdown-select/supplier-dropdown-select';
 
 @Component({
   selector: 'app-delete-supplier',
-  imports: [ReactiveFormsModule, FormsModule],
+  imports: [ReactiveFormsModule, FormsModule, SupplierDropdownSelect],
   templateUrl: './delete-supplier.html',
   styleUrl: './delete-supplier.css'
 })
@@ -20,12 +21,14 @@ export class DeleteSupplier {
   }
 
   form = this.form_builder.group({
-    id: [null, [Validators.required]]
+    id: [null as number | null, [Validators.required]]
   });
 
   submit()
   {
     const id = this.form.value.id!;
+
+    console.log(id)
 
     this.supplier_service.deleteSupplier(id).subscribe({
       next: () => {

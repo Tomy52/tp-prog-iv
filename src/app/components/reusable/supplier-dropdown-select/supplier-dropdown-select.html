@@ -1,13 +1,7 @@
 <div>
-  <select (change)="onChange($event)">
-    <option value="1">Test 1</option>
-    <option value="2">Test 2</option>
-    <option value="3">Test 3</option>
-    <option value="4">Test 4</option>
-    <!--
+  <select (change)="changeValue($event)">
       @for (supplier of suppliers(); track supplier.id) {
         <option [ngValue]="supplier.id"> {{supplier.companyName}} </option>
       }
-      -->
   </select>
 </div>

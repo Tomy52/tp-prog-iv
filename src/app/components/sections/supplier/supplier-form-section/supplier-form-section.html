@@ -1,4 +1,4 @@
 <section>
     <h2 [textContent]="id() ? 'Editar Proveedor' : 'Agregar Proveedor'">  </h2>
-    <app-supplier-form-component (data_sig)="finishForm($event)" /> <!-- [modified_supplier]="supplier_obj" -->
+    <app-supplier-form-component (data_sig)="finishForm($event)" [modified_supplier]="supplier_obj"/>
 </section>

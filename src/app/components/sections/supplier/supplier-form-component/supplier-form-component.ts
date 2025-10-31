@@ -1,4 +1,4 @@
-import {Component, inject, input, output, WritableSignal} from '@angular/core';
+import {Component, effect, inject, input, output, WritableSignal} from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Supplier } from '../../../../interfaces/supplier/supplier';
 import { Address } from '../../../../interfaces/supplier/address';
@@ -13,6 +13,7 @@ export class SupplierFormComponent {
   form_builder = inject(FormBuilder);
 
   data_sig = output<Partial<Supplier>>();
+  modified_supplier = input<Partial<Supplier>>();
 
   form = this.form_builder.group({
     companyName: ['Green Test',[Validators.required,Validators.minLength(3)]],
@@ -24,6 +25,9 @@ export class SupplierFormComponent {
     city: ['Ciudad',[Validators.required,Validators.minLength(3),Validators.maxLength(50),Validators.pattern("^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$")]] // alguna idea de un regex que funcione en js que funcione igual que el de java????
   });
 
+  constructor() {
+    effect(() => this.setValuesForForm(this.modified_supplier()))
+  }
 
   tellToBeDone()
   {
@@ -98,6 +102,24 @@ export class SupplierFormComponent {
     return this.isFieldInvalid(field_name) && this.wasFieldTouched(field_name);
   }
 
+
+  setValuesForForm(mod_sup:Partial<Supplier> | undefined)
+  {
+    if(mod_sup)
+    {
+      this.form.setValue(
+        {
+          companyName: mod_sup.companyName!,
+          cuit: mod_sup.cuit!,
+          email: mod_sup.email!,
+          phone: mod_sup.phoneNumber!,
+          street: mod_sup.address?.street!,
+          number: mod_sup.address?.number!,
+          city: mod_sup.address?.city!
+        }
+      )
+    }
+  }
 
 
 

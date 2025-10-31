@@ -13,7 +13,17 @@ export class SupplierFormSection implements OnInit {
   supplier_service = inject(SupplierService);
 
   id = input<string>();
-  supplier_obj?: Supplier; // quiero esto para poder aplicarselo al form cuando modifica... estaria bueno...
+  supplier_obj?: Partial<Supplier>/* = { para probar sin el back
+    companyName: "Test",
+    cuit: "23-11111111-2",
+    email: "test@gmail.com",
+    phoneNumber: "1111111111",
+    address: {
+      street: "Calle 12",
+      number: "123",
+      city: "Ciudad"
+    }
+  };*/
 
   finishForm(event:Partial<Supplier>)
   {

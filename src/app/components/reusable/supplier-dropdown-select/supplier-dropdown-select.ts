@@ -1,56 +1,53 @@
-import {Component, forwardRef, inject} from '@angular/core';
+import {Component, forwardRef, inject, signal} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR, ReactiveFormsModule} from '@angular/forms';
 import {SupplierService} from '../../../services/supplier-service';
 import {toSignal} from '@angular/core/rxjs-interop';
 import { Supplier } from '../../../interfaces/supplier/supplier';
+
+const select_value_accessor = {
+  provide: NG_VALUE_ACCESSOR,
+  useExisting: forwardRef(() => SupplierDropdownSelect),
+  multi: true,
+}
 
 @Component({
   selector: 'app-supplier-dropdown-select',
   imports: [ReactiveFormsModule],
   templateUrl: './supplier-dropdown-select.html',
   styleUrl: './supplier-dropdown-select.css',
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => SupplierDropdownSelect),
-      multi: true
-    }
-  ]
+  providers: [select_value_accessor]
 })
 export class SupplierDropdownSelect implements ControlValueAccessor {
   suppliers_service = inject(SupplierService);
 
-  //suppliers = toSignal(this.suppliers_service.getAllSuppliersAsList());
+  suppliers = toSignal(this.suppliers_service.getAllSuppliersAsList());
 
-  value: Supplier | null = null;
+  input = signal<number|null>(null);
+  disabled:boolean = false
 
-  onChange: any = () => {};
-  onTouch: any = () => {};
+
+  writeValue(input: number | null) {
+    this.input.set(input);
+  }
+
+  onChange: (value: number | null) => void = () => {}
+  onTouch: () => void = () => {}
 
   registerOnChange(fn: any): void {
     this.onChange = fn;
   }
+  
   registerOnTouched(fn: any): void {
     this.onTouch = fn;
   }
 
-  /*
-  handleChange(event: Event): void {
-    const target = event.target as HTMLSelectElement
-    const selectedSupp = this.suppliers()?.find(
-      p => p.id.toString() === target.value
-    );
-
-    console.log(selectedSupp)
-    this.value = selectedSupp || null
-    this.onChange(this.value)
-  }*/
+  changeValue(event:any)
+  {
+    this.onChange(Number(event.target.value))
+  }
 
 
-
-
-  id?:number;
-  writeValue(input: number) {
-    this.id = input;
+  setDisabledState?(isDisabled: boolean): void {
+    this.disabled = isDisabled
   }
 }
