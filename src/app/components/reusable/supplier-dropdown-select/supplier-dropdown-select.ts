@@ -23,27 +23,28 @@ export class SupplierDropdownSelect implements ControlValueAccessor {
   suppliers = toSignal(this.suppliers_service.getAllSuppliersAsList());
 
   input = signal<number|null>(null);
-  disabled:boolean = false
+  disabled:boolean = false;
 
 
   writeValue(input: number | null) {
     this.input.set(input);
   }
 
-  onChange: (value: number | null) => void = () => {}
-  onTouch: () => void = () => {}
+  onChange: (value: number | null) => void = () => {};
+  onTouch: () => void = () => {};
 
   registerOnChange(fn: any): void {
     this.onChange = fn;
   }
-  
+
   registerOnTouched(fn: any): void {
     this.onTouch = fn;
   }
 
   changeValue(event:any)
   {
-    this.onChange(Number(event.target.value))
+    console.log(Number(event.target.value));
+    this.onChange(Number(event.target.value));
   }
 
 

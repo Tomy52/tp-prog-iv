@@ -2,6 +2,14 @@
   <form action="" [formGroup]="form" (ngSubmit)="submit()">
   <h1> Eliminar proveedor </h1>
 
+    @if(this.form_ok() == true)
+    {
+      <p (click)="form_ok.set(null)"> Exito! </p>
+    } @else if (this.form_ok() == false)
+    {
+      <p (click)="form_ok.set(null)"> Error! </p>
+    }
+
   <!--
     <select formControlName="id">
     @for (supplier of suppliers(); track supplier.id) {
@@ -9,7 +17,7 @@
     }
     </select>
     -->
-    
+
     <app-supplier-dropdown-select formControlName="id"/>
 
     <!-- se supone que quiero este componente para poder seleccionar el proveedor

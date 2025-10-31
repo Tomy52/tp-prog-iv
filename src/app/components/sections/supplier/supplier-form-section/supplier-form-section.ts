@@ -1,4 +1,4 @@
-import {Component, inject, input, OnInit} from '@angular/core';
+import {Component, effect, inject, input, OnInit, signal, WritableSignal} from '@angular/core';
 import { SupplierService } from '../../../../services/supplier-service';
 import { Supplier } from '../../../../interfaces/supplier/supplier';
 import { SupplierFormComponent } from "../supplier-form-component/supplier-form-component";
@@ -13,7 +13,11 @@ export class SupplierFormSection implements OnInit {
   supplier_service = inject(SupplierService);
 
   id = input<string>();
-  supplier_obj?: Partial<Supplier>/* = { para probar sin el back
+
+  form_ok:WritableSignal<boolean | null> = signal(null);
+
+
+  supplier_obj?: Partial<Supplier>;/* = { para probar sin el back
     companyName: "Test",
     cuit: "23-11111111-2",
     email: "test@gmail.com",
@@ -41,8 +45,15 @@ export class SupplierFormSection implements OnInit {
 
     console.log(event);
     this.supplier_service.addSupplier(event).subscribe({
-      next: () => console.log("success!"),
-      error: (e) => console.error("error :( \n" + JSON.stringify(e))
+      next: () => {
+        console.log("success!");
+        this.form_ok.set(true);
+      },
+      error: (e) =>{
+        this.form_ok.set(false);
+
+        console.log(JSON.stringify(e));
+      }
     });
   }
 

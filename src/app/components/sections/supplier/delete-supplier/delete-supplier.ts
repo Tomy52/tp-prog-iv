@@ -16,6 +16,8 @@ export class DeleteSupplier {
 
   suppliers: WritableSignal<Supplier[]> = signal<Supplier[]>([]);
 
+  form_ok:WritableSignal<boolean | null> = signal(null);
+
   constructor() {
     this.getSuppliers();
   }
@@ -28,14 +30,18 @@ export class DeleteSupplier {
   {
     const id = this.form.value.id!;
 
-    console.log(id)
+    console.log(id);
 
     this.supplier_service.deleteSupplier(id).subscribe({
       next: () => {
-        this.getSuppliers();
+        this.getSuppliers(); // doesn't show the deleted supplier
         this.resetForm();
+        this.form_ok.set(true);
       },
-      error: (e) => console.error("error :( \n" + JSON.stringify(e))
+      error: (e) => {
+        console.error("error :( \n" + JSON.stringify(e));
+        this.form_ok.set(false);
+      }
     });
   }
 
