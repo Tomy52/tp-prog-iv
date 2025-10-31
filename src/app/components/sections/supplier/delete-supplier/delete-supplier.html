@@ -18,7 +18,7 @@
     </select>
     -->
 
-    <app-supplier-dropdown-select formControlName="id"/>
+    <app-supplier-dropdown-select [suppliers]="suppliers()" formControlName="id"/>
 
     <!-- se supone que quiero este componente para poder seleccionar el proveedor
     cuando, por ejemplo se vayan a cargar precios, o buscar por un select.

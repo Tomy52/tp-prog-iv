@@ -1,14 +1,12 @@
-import {Component, forwardRef, inject, signal} from '@angular/core';
+import {Component, forwardRef, input, signal} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR, ReactiveFormsModule} from '@angular/forms';
-import {SupplierService} from '../../../services/supplier-service';
-import {toSignal} from '@angular/core/rxjs-interop';
 import { Supplier } from '../../../interfaces/supplier/supplier';
 
 const select_value_accessor = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => SupplierDropdownSelect),
   multi: true,
-}
+};
 
 @Component({
   selector: 'app-supplier-dropdown-select',
@@ -18,16 +16,14 @@ const select_value_accessor = {
   providers: [select_value_accessor]
 })
 export class SupplierDropdownSelect implements ControlValueAccessor {
-  suppliers_service = inject(SupplierService);
+  suppliers = input.required<Supplier[]>();
 
-  suppliers = toSignal(this.suppliers_service.getAllSuppliersAsList());
-
-  input = signal<number|null>(null);
+  value = signal<number|null>(null);
   disabled:boolean = false;
 
 
   writeValue(input: number | null) {
-    this.input.set(input);
+    this.value.set(input);
   }
 
   onChange: (value: number | null) => void = () => {};
@@ -49,6 +45,6 @@ export class SupplierDropdownSelect implements ControlValueAccessor {
 
 
   setDisabledState?(isDisabled: boolean): void {
-    this.disabled = isDisabled
+    this.disabled = isDisabled;
   }
 }

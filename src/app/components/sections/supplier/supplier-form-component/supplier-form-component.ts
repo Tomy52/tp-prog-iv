@@ -26,7 +26,7 @@ export class SupplierFormComponent {
   });
 
   constructor() {
-    effect(() => this.setValuesForForm(this.modified_supplier()))
+    effect(() => this.setValuesForForm(this.modified_supplier()));
   }
 
   tellToBeDone()
