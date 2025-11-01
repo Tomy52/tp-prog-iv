@@ -1,1 +1,25 @@
 /*Pongamos reglas para asi estamos organizados*/
+header > nav{
+    /* reglas de display */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+    padding: var(--header_padding);
+
+    /* etc */
+    
+
+    /* colores y otras cosas */
+    background-color: var(--color_principal);
+    color: white;
+
+}
+
+
+footer {
+    padding: var(--header_padding);
+
+
+    background-color: var(--color_principal);
+}

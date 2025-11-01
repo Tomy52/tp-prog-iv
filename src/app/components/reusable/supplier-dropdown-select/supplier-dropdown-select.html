@@ -1,0 +1,7 @@
+<div>
+  <select (change)="changeValue($event)">
+      @for (supplier of suppliers(); track supplier.id) {
+        <option [value]="supplier.id"> {{supplier.companyName}} </option>
+      }
+  </select>
+</div>

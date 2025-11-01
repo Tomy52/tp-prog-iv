@@ -10,7 +10,7 @@ import {AuthResponse} from '../interfaces/user/auth-response';
 export class AuthService {
 
   url:string = "http://localhost:8080/auth/";
-  http = inject(HttpClient)
+  http = inject(HttpClient);
 
   login(request:AuthRequest):Observable<AuthResponse>{
     return this.http.post<AuthResponse>(this.url + "login", request).pipe(
@@ -22,8 +22,8 @@ export class AuthService {
             alert(err.status + " - " + err.error);
           } // must define and error handler
         }
-        )
-    )
+      )
+    );
   }
 
 logOut(){
@@ -44,11 +44,11 @@ isTokenExpired(){
 
   if (token){
 
-    let payload= token.split(".")[1];
-    let decodedPayload = JSON.parse( atob(payload));
-    let exp = decodedPayload.exp;
-    let expirationTime = new Date(exp * 1000);
-    let currentTime = new Date();
+    const payload= token.split(".")[1];
+    const decodedPayload = JSON.parse( atob(payload));
+    const exp = decodedPayload.exp;
+    const expirationTime = new Date(exp * 1000);
+    const currentTime = new Date();
 
     respose = expirationTime <= currentTime;
 
