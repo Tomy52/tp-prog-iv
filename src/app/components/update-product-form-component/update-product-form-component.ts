@@ -41,6 +41,8 @@ export class UpdateProductFormComponent {
     if (selectedProduct) {
       this.updateProductForm.get('name')?.enable();
       this.updateProductForm.get('status')?.enable();
+      this.updateProductForm.get('name')?.patchValue(selectedProduct.name);
+      this.updateProductForm.get('status')?.patchValue(selectedProduct.status);
     } else {
       this.updateProductForm.get('name')?.disable();
       this.updateProductForm.get('status')?.disable();
