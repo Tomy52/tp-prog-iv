@@ -1,11 +1,7 @@
-<header>
-  <nav>
-    <button>hamburger</button> <!-- no tengo ni idea como hacerlos, perdon!-->
-    <h1>Catalogo sistema</h1>
-    <button>user</button> <!-- no tengo ni idea como hacerlos, perdon!-->
-  </nav>
-</header>
+@if(showHeader) {
+  <app-header-component/>
+}
 <router-outlet/>
-<footer>
-  <p>Programación IV - 2025</p>
-</footer>
+@if(showFooter){
+  <app-footer-component/>
+}
