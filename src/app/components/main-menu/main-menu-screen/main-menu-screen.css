@@ -20,10 +20,6 @@ section {
   gap: var(--header_padding);
 }
 
-.menu_container > * {
-    width: 90%;
-}
-
 h1 {
   color: black;
   text-align: center;
