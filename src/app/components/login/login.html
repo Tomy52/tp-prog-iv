@@ -1,16 +1,11 @@
 <section>
-  <form [formGroup]="authForm">
+  <form [formGroup]="authForm" (ngSubmit)="login()">
     <label for="name">Ingrese el nombre</label>
     <input type="text" id="name" formControlName="username">
     <label for="pass">Ingrese contraseña</label>
     <input type="password" id="pass" formControlName="password">
-    <button type="submit" (click)="login()">Ingresar</button>
+    <button [disabled]="!authForm.valid" type="submit">Ingresar</button>
 
   </form>
-
-  <div class="error">
-
-  </div>
-
 
 </section>
