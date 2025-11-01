@@ -1,0 +1,25 @@
+:host {
+  display: flex;
+  align-self: center;
+  justify-self: center;
+  flex-direction: column;
+  text-align: center;
+  width: 33dvw;
+}
+
+.success {
+  color: limegreen;
+}
+
+.failure {
+  color: red;
+}
+
+#choice-area > form {
+  display: flex;
+  justify-content: center;
+}
+
+#choice-area > form > select {
+  margin-inline: 10px;
+}

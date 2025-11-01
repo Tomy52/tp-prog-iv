@@ -17,6 +17,9 @@ export class AuthService {
       tap({
           next: response => {
             localStorage.setItem('token', response.token);
+          },
+          error: (err) => {
+            alert(err.status + " - " + err.error);
           } // must define and error handler
         }
       )
@@ -36,7 +39,8 @@ isLoggedIn(){
 }
 
 isTokenExpired(){
-  const token = this.getToken();
+  let token = this.getToken();
+  let respose= false;
 
   if (token){
 
@@ -46,12 +50,13 @@ isTokenExpired(){
     const expirationTime = new Date(exp * 1000);
     const currentTime = new Date();
 
-    return expirationTime <= currentTime;
+    respose = expirationTime <= currentTime;
 
-  } else {
-    return new Error("Not logged in");
   }
-}
+
+  return respose;
+
+  }
 
 
 }

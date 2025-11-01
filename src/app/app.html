@@ -10,3 +10,13 @@
 <footer>
   <p>test</p>
 </footer>
+
+<!-- viene de main -->
+@if(showHeader) {
+  <app-header-component/>
+}
+<router-outlet/>
+@if(showFooter){
+  <app-footer-component/>
+}
+<!-- viene de main -->

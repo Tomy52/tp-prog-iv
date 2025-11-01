@@ -1,0 +1,25 @@
+<h1>Productos</h1>
+<h3>¿Qué te interesa hacer?</h3>
+<section id="choice-area">
+  <form [formGroup]="choiceForm">
+    <p>Quiero</p>
+    <select formControlName="choice">
+      <option>Agregar</option>
+      <option>Modificar</option>
+      <option>Borrar</option>
+    </select>
+    <p>... un producto</p>
+  </form>
+</section>
+
+@switch (choiceForm.value.choice) {
+  @case ("Agregar") {
+    <app-add-product-form-component/>
+  }
+  @case ("Modificar") {
+    <app-update-product-form-component/>
+  }
+  @case ("Borrar") {
+    <app-delete-product-form-component/>
+  }
+}

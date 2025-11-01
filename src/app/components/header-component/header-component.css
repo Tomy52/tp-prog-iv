@@ -1,22 +1,15 @@
-article {
+nav {
   /* reglas de display */
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
+
   padding: var(--header_padding);
 
   /* etc */
-  text-align: center;
 
 
   /* colores y otras cosas */
   background-color: var(--color_principal);
   color: white;
-
-
-  border-radius: 10px;
-  border: 2px solid black;
-}
-
-article:hover {
-  background-color: var(--color_secundario);
 }

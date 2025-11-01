@@ -1,0 +1,38 @@
+<section id="update-product-form">
+  <h2>Modificar producto</h2>
+  <form [formGroup]="updateProductForm" (ngSubmit)="submit()">
+    @if(success()) {
+      <p class="success">¡Producto modificado exitosamente!</p>
+    } @else if (success() === false) {
+      <p class="failure">Modificación fallida</p>
+    }
+
+    <label for="product-select">Producto</label>
+    <select name="product" id="product-select" formControlName="product" (change)="onProductSelect()">
+      <option [ngValue]="null">Seleccione un producto</option>
+      @for(product of products();track product.idProduct) {
+        <option [ngValue]="product">{{product.name}}</option>
+      }
+    </select>
+
+    @if(updateProductForm.get("name")?.hasError('minlength') && updateProductForm.get("name")?.dirty){
+      <p style="color:red">El nombre del producto debe contener como mínimo 3 caracteres</p>
+    }
+    @if(updateProductForm.get("name")?.hasError('maxlength') && updateProductForm.get("name")?.dirty){
+      <p style="color:red">El nombre del producto debe contener como máximo 50 caracteres</p>
+    }
+    @if(updateProductForm.get("name")?.hasError('required') && updateProductForm.get("name")?.dirty){
+      <p style="color:red">El nombre del producto es obligatorio</p>
+    }
+    <label for="product-name">Nombre del producto (modificado)</label>
+    <input type="text" id="product-name" formControlName="name">
+
+    <label for="product-status">Estado</label>
+    <select name="status" id="product-status" formControlName="status">
+      <option [ngValue]="productStatusEnum.Enabled">Habilitado</option>
+      <option [ngValue]="productStatusEnum.Disabled">Deshabilitado</option>
+    </select>
+
+    <button type="submit" [disabled]="formIsNull() || !updateProductForm.valid">Guardar cambios</button>
+  </form>
+</section>
