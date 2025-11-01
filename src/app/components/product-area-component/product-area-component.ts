@@ -21,7 +21,7 @@ export class ProductAreaComponent {
 
   choiceForm = this.formBuilder.group(
     {
-      choice: this.formBuilder.control('')
+      choice: this.formBuilder.control('Agregar')
     }
   );
 }
