@@ -1,1 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
+
+button{
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.invalid{
+  border-color: red;
+}
+
+.ng-invalid:not(form) {
+  border: 2px solid #a94442;
+}
+
+.ng-pristine:not(form){
+  border: 1px solid darkblue;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled{
+  cursor: not-allowed;
+}
