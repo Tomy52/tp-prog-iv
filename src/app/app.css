@@ -1,25 +1,24 @@
 /*Pongamos reglas para asi estamos organizados*/
-header > nav{
-    /* reglas de display */
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    
-    padding: var(--header_padding);
+header > nav {
+  /* reglas de display */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 
-    /* etc */
-    
+  padding: var(--header_padding);
 
-    /* colores y otras cosas */
-    background-color: var(--color_principal);
-    color: white;
+  /* etc */
 
+
+  /* colores y otras cosas */
+  background-color: var(--color_principal);
+  color: white;
 }
 
 
 footer {
-    padding: var(--header_padding);
-
-
-    background-color: var(--color_principal);
+  padding: var(--header_padding);
+  color: white;
+  text-align: center;
+  background-color: var(--color_principal);
 }

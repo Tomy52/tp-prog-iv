@@ -1,12 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
 :root {
   --header_padding: 10px;
 
   --color_principal: #1B5B7E;
-  --color_secundario: #9BC0DA;
+  --color_secundario: #1f7ab4;
   font-family: "BreeSerif-regular", serif;
 
   box-sizing: border-box;
+}
+
+body {
+  margin: 0;
 }
 
 @font-face {

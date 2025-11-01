@@ -17,11 +17,12 @@ export const routes: Routes = [
   },
   {
     path:"main-menu",
-    component:MainMenuScreen
+    component:MainMenuScreen,
+    canActivate: [AuthGuard]
   },
   {
     path:"test",
-    component:TestComponent
+    component:TestComponent,
   },
   {
     path:"**",

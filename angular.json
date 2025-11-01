@@ -12,9 +12,11 @@
         },
         "@schematics/angular:guard": {
           "skipTests": true
-        },"@schematics/angular:interceptor": {
+        },
+        "@schematics/angular:interceptor": {
           "skipTests": true
-        }, "@schematics/angular:service": {
+        },
+        "@schematics/angular:service": {
           "skipTests": true
         }
       },
@@ -66,6 +68,9 @@
         },
         "serve": {
           "builder": "@angular/build:dev-server",
+          "options": {
+            "proxyConfig": "src/proxy.conf.json"
+          },
           "configurations": {
             "production": {
               "buildTarget": "tp-prog-iv:build:production"

@@ -1,22 +1,22 @@
 article {
-    /* reglas de display */
-    display: flex;
-    justify-content: center;
-    padding: var(--header_padding);
+  /* reglas de display */
+  display: flex;
+  justify-content: center;
+  padding: var(--header_padding);
 
-    /* etc */
-    text-align: center;
-    
-
-    /* colores y otras cosas */
-    background-color: var(--color_principal);
-    color: white;
+  /* etc */
+  text-align: center;
 
 
-    border-radius: 10px;
-    border: 2px solid black;
+  /* colores y otras cosas */
+  background-color: var(--color_principal);
+  color: white;
+
+
+  border-radius: 10px;
+  border: 2px solid black;
 }
 
 article:hover {
-    background-color: var(--color_secundario);
+  background-color: var(--color_secundario);
 }
