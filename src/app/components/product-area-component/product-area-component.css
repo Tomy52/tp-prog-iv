@@ -1,3 +1,12 @@
+:host {
+  display: flex;
+  align-self: center;
+  justify-self: center;
+  flex-direction: column;
+  text-align: center;
+  width: 33dvw;
+}
+
 .success {
   color: limegreen;
 }
@@ -8,6 +17,7 @@
 
 #choice-area > form {
   display: flex;
+  justify-content: center;
 }
 
 #choice-area > form > select {
