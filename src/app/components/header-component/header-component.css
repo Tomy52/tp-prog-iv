@@ -1,15 +1,19 @@
 nav {
-  /* reglas de display */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
+  align-items: center;
   padding: var(--header_padding);
-
-  /* etc */
-
-
-  /* colores y otras cosas */
   background-color: var(--color_principal);
   color: white;
+  height: 50px;
+}
+
+button.nav-bar-button {
+  height: 40px;
+  width: 60px;
+  border: none;
+  border-radius: 10px;
+  font-family: "BreeSerif-regular", serif;
+  color: var(--color_principal);
 }

@@ -1,7 +1,14 @@
+div{
+  background-color: var(--color_principal);
+  height: 30px;
+
+}
+
 p {
-  padding-inline: var(--header_padding);
-  padding-block: calc(var(--header_padding) * 2);
+  /*padding-inline: var(--header_padding);*/
+  /*padding-block: calc(var(--header_padding) * 2);*/
   color: white;
   text-align: center;
-  background-color: var(--color_principal);
 }
+
+
