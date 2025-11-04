@@ -1,5 +1,10 @@
 <nav>
-  <button class="nav-bar-button" title="Ver barra de navegación">Menú</button> <!-- no tengo ni idea como hacerlos, perdon!-->
+  <button class="nav-bar-button" title="Ver barra de navegación" (click)="openSidebar()">Menú</button>
   <h1 routerLink="main-menu" title="Regresar al menú principal">Catalogo sistema</h1>
-  <button class="nav-bar-button" title="Ver panel de usuario">user</button> <!-- no tengo ni idea como hacerlos, perdon!-->
+  <button class="nav-bar-button" title="Ver panel de usuario">user</button>
 </nav>
+
+@if(isSidenavOpen()){
+  <app-sidebar-component id="sidebar" (clickOutside)="closeSidebar()"></app-sidebar-component>
+  <div class="overlay"></div>
+}

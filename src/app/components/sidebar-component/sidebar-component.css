@@ -1,0 +1,43 @@
+
+aside {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+
+  width: 25%;
+  background-color: whitesmoke;
+  z-index: 1010;
+
+  border-radius: 0 0 10px 0;
+
+}
+
+p.subtitles{
+  font-size: 1.5rem;
+  color: var(--color_principal);
+}
+
+ul{
+  list-style: none;
+  font-size: 1.2rem;
+  color: var(--color_principal);
+}
+
+ul li a {
+  text-decoration: none;
+}
+
+ul li a:visited {
+  color: var(--color_principal);
+}
+
+p.subtitles a {
+  text-decoration: none;
+}
+
+p.subtitles a:visited {
+  color: var(--color_principal);
+}

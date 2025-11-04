@@ -1,5 +1,5 @@
 :host {
-  top: 0px;
+  top: 0;
   position: sticky;
 }
 
@@ -40,4 +40,14 @@ button.nav-bar-button {
 button.nav-bar-button:hover {
   background-color: #c9ecff;
   scale: 110%;
+}
+
+.overlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
 }
