@@ -34,12 +34,11 @@ export class DeleteSupplier {
 
     this.supplier_service.deleteSupplier(id).subscribe({
       next: () => {
-        this.getSuppliers(); // doesn't show the deleted supplier
+        this.getSuppliers();
         this.resetForm();
         this.form_ok.set(true);
       },
       error: (e) => {
-        console.error("error :( \n" + e.error);
         this.form_ok.set(false);
       }
     });
@@ -52,7 +51,9 @@ export class DeleteSupplier {
           this.suppliers.set(arr);
         },
         error: (err) => {
+          console.log(err)
           alert(`${err.error}`);
+          this.suppliers.set([])
         }
       }
     );
