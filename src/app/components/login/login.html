@@ -1,8 +1,13 @@
+<h1>PreciOSOS</h1>
+
 <section>
+
+  <img src="images/login/usuario.png" alt="Imagen de usuario">
+
   <form [formGroup]="authForm" (ngSubmit)="login()">
-    <label for="name">Ingrese el nombre</label>
+    <label for="name">Username</label>
     <input type="text" id="name" formControlName="username">
-    <label for="pass">Ingrese contraseña</label>
+    <label for="pass">Password</label>
     <input type="password" id="pass" formControlName="password">
     <button [disabled]="!authForm.valid" type="submit">Ingresar</button>
 
