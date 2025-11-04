@@ -43,7 +43,7 @@ export class AddProductFormComponent {
         error: (err) => {
           this.success.set(false);
           alert("No se pudo completar la carga del producto");
-          console.error(`Hubo un error en la carga ${err}`);
+          console.error(`Hubo un error en la carga: ${err.error}`);
         }
       }
     );

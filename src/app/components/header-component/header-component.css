@@ -1,15 +1,43 @@
+:host {
+  top: 0px;
+  position: sticky;
+}
+
+h1 {
+  cursor: pointer;
+  transition:
+    scale .3s ease-in-out;
+}
+
+h1:hover {
+  scale: 101%;
+}
+
 nav {
-  /* reglas de display */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
-  padding: var(--header_padding);
-
-  /* etc */
-
-
-  /* colores y otras cosas */
+  align-items: center;
+  padding-inline: var(--header_padding);
+  padding-block: calc(var(--header_padding) / 2);
   background-color: var(--color_principal);
   color: white;
+  height: 50px;
+}
+
+button.nav-bar-button {
+  height: 40px;
+  width: 60px;
+  border: none;
+  border-radius: 10px;
+  font-family: "BreeSerif-regular", serif;
+  color: var(--color_principal);
+  transition:
+    background-color .2s ease-in-out,
+    scale .15s ease-in-out;
+}
+
+button.nav-bar-button:hover {
+  background-color: #c9ecff;
+  scale: 110%;
 }

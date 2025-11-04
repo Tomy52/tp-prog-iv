@@ -7,5 +7,5 @@ export const AuthGuard: CanActivateFn = (route, state) => {
   const router: Router = inject(Router);
   const loginUrl: UrlTree = router.parseUrl("login");
 
-  return authService.isLoggedIn() ? true : new RedirectCommand(loginUrl);
+  return authService.isLoggedIn() && !authService.isTokenExpired() ? true : new RedirectCommand(loginUrl);
 };

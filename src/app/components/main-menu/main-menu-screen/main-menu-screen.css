@@ -2,8 +2,10 @@ section {
   /* reglas de display */
   display: flex;
   flex-direction: column;
-
+  height: 80dvh;
   padding: var(--header_padding);
+  align-items: center;
+  justify-content: center;
 
 
   /* colores y otras cosas */
@@ -17,7 +19,11 @@ section {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   padding: var(--header_padding);
-  gap: var(--header_padding);
+  gap: 2rem;
+  width: 60%;
+  /*align-items: center;*/
+  /*justify-content: center;*/
+
 }
 
 h1 {

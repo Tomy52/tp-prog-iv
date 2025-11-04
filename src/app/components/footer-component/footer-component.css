@@ -1,7 +1,17 @@
-p {
+div{
+  background-color: var(--color_principal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding-inline: var(--header_padding);
-  padding-block: calc(var(--header_padding) * 2);
+  padding-block: calc(var(--header_padding) / 2);
+  height: 30px;
+}
+
+p {
   color: white;
   text-align: center;
-  background-color: var(--color_principal);
+  margin: 0;
 }
+
+
