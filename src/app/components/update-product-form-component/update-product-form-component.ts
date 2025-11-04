@@ -76,7 +76,7 @@ export class UpdateProductFormComponent {
       error: (err) => {
         this.success.set(false);
         alert("No se pudo completar la modificación del producto");
-        console.error(`Hubo un error en la modificación ${err}`);
+        console.error(`Hubo un error en la modificación: ${err.error}`);
       }
     });
   }

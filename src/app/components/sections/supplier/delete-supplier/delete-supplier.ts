@@ -39,7 +39,7 @@ export class DeleteSupplier {
         this.form_ok.set(true);
       },
       error: (e) => {
-        console.error("error :( \n" + JSON.stringify(e));
+        console.error("error :( \n" + e.error);
         this.form_ok.set(false);
       }
     });
@@ -47,7 +47,14 @@ export class DeleteSupplier {
 
   getSuppliers(): void {
     this.supplier_service.getAllSuppliersAsList().subscribe(
-      (arr) => this.suppliers.set(arr)
+      {
+        next: (arr) => {
+          this.suppliers.set(arr);
+        },
+        error: (err) => {
+          alert(`${err.error}`);
+        }
+      }
     );
   }
 

@@ -24,7 +24,15 @@ export class DeleteProductFormComponent {
   }
 
   getProducts(): void {
-    this.productService.getProducts().subscribe((prodArr: Product[]) => this.products.set(prodArr));
+    this.productService.getProducts().subscribe(
+      {
+        next: (prodArr: Product[]) => this.products.set(prodArr),
+        error: (err) => {
+          this.products.set([]);
+          alert(`${err.error}`);
+        }
+      }
+    );
   }
 
   deleteProductForm = this.formBuilder.group(
@@ -55,7 +63,7 @@ export class DeleteProductFormComponent {
         error: (err) => {
           this.success.set(false);
           alert("No se pudo completar la baja del producto");
-          console.error(`Hubo un error en el borrado ${err}`);
+          console.error(`Hubo un error en el borrado: ${err.error}`);
         }
       }
     );
