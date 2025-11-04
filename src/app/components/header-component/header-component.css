@@ -1,3 +1,8 @@
+:host {
+  top: 0px;
+  position: sticky;
+}
+
 nav {
   display: flex;
   flex-direction: row;

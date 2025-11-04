@@ -1,9 +1,12 @@
-
-@if(showHeader) {
-  <app-header-component/>
-}
-<router-outlet/>
-@if(showFooter){
-  <app-footer-component/>
-}
+<div class="app-container">
+  @if(showHeader) {
+    <app-header-component/>
+  }
+  <main>
+    <router-outlet/>
+  </main>
+  @if(showFooter){
+    <app-footer-component/>
+  }
+</div>
 
