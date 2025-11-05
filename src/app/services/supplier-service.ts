@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Supplier } from '../interfaces/supplier/supplier';
+import {Observable} from 'rxjs';
+import {SuppliersPageResponse} from '../interfaces/other/suppliers-page-response';
 
 @Injectable({
   providedIn: 'root'
@@ -23,9 +25,9 @@ export class SupplierService {
     return this.http.get<Supplier[]>(this.url);
   }
 
-  getSuppliersPage() // should be expanded upon when the time comes
+  getSuppliersPage(page:string, size:string)// should be expanded upon when the time comes
   {
-    return this.http.get(`this.url/page`);
+    return this.http.get<SuppliersPageResponse>(`this.url/page?page=${Number(page)}&size=${Number(size)}`);
   }
 
   updateSupplier(id:string, supplier:Partial<Supplier>) {

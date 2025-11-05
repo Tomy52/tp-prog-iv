@@ -6,6 +6,7 @@ import { TestComponent } from './components/test/test-component/test-component';
 import { AuthGuard } from './services/auth-guard';
 import { SupplierFormSection } from './components/sections/supplier/supplier-form-section/supplier-form-section';
 import { DeleteSupplier } from './components/sections/supplier/delete-supplier/delete-supplier';
+import {SuppliersPage} from './components/sections/supplier/suppliers-page/suppliers-page';
 
 
 export const routes: Routes = [
@@ -14,7 +15,8 @@ export const routes: Routes = [
     component: Login,
     data: {
       showHeader: false,
-      showFooter: false}
+      showFooter: false
+    }
   },
   {
     path: "products",
@@ -33,11 +35,15 @@ export const routes: Routes = [
   {
     path:"form-suppliers/:id",
     component:SupplierFormSection
-  },  
+  },
   {
     path:"delete-supplier",
     component:DeleteSupplier
-  }, 
+  },
+  {
+    path:"suppliers",
+    component:SuppliersPage
+  },
   {
     path:"test",
     component:TestComponent,
