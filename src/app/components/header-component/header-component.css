@@ -20,7 +20,7 @@ nav {
   align-items: center;
   padding-inline: var(--header_padding);
   padding-block: calc(var(--header_padding) / 2);
-  background-color: var(--color_principal);
+  background-color: var(--main-color);
   color: white;
   height: 50px;
 }
@@ -31,7 +31,7 @@ button.nav-bar-button {
   border: none;
   border-radius: 10px;
   font-family: "BreeSerif-regular", serif;
-  color: var(--color_principal);
+  color: var(--main-color);
   transition:
     background-color .2s ease-in-out,
     scale .15s ease-in-out;
