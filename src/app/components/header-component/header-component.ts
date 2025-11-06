@@ -26,7 +26,7 @@ import {filter} from 'rxjs';
 })
 export class HeaderComponent {
 
-  router = inject(Router)
+  router = inject(Router);
   isSidenavOpen = signal<boolean>(false);
 
 
@@ -35,10 +35,10 @@ export class HeaderComponent {
       filter( (event): event is NavigationEnd => event instanceof NavigationEnd)
     ).subscribe( () => {
       if(this.isSidenavOpen()){
-        this.closeSidebar()
+        this.closeSidebar();
       }
-    })
-  })
+    });
+  });
 
 
   openSidebar(): void {

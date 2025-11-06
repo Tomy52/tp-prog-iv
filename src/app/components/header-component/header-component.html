@@ -5,6 +5,10 @@
 </nav>
 
 @if(isSidenavOpen()){
-  <app-sidebar-component id="sidebar" (clickOutside)="closeSidebar()"></app-sidebar-component>
+  <div class="menuDiv"
+    animate.enter="enter-animation"
+    animate.leave="leave-animation">
+    <app-sidebar-component id="sidebar" (clickOutside)="closeSidebar()"/>
+  </div>
   <div class="overlay"></div>
 }
