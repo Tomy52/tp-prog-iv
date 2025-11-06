@@ -8,6 +8,6 @@ import {Supplier} from '../../../../interfaces/supplier/supplier';
   styleUrl: './supplier-table-list.css'
 })
 export class SupplierTableList {
-  suppliers = input.required<Supplier>();
+  suppliers = input.required<Supplier[]>();
 
 }

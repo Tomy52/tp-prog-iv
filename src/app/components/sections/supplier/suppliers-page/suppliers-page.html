@@ -1,8 +1,8 @@
-<!--
-@for (sup of productList$ ; track sup.id)
-{
-  <p> {{sup.companyName}} </p>
-}
-<app-supplier-table-list [suppliers]="suppliers_list"/> -->
+
+<!--@for (sup of suppliersList() ; track sup.id)-->
+<!--{-->
+<!--  <p> {{sup.companyName}} </p>-->
+<!--}-->
+<app-supplier-table-list [suppliers]="suppliersList()"/>
 
 <app-page-buttons (back_signal)="goPreviewsPage()" (next_signal)="goNextPage()"></app-page-buttons>

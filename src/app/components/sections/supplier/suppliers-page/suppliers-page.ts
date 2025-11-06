@@ -1,9 +1,12 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, signal} from '@angular/core';
 import {SupplierService} from '../../../../services/supplier-service';
 import {SupplierTableList} from '../supplier-table-list/supplier-table-list';
 import {Observable} from 'rxjs';
 import {Supplier} from '../../../../interfaces/supplier/supplier';
 import {PageButtons} from '../../../reusable/page-buttons/page-buttons';
+import {PageInfo} from '../../../../interfaces/other/page-info';
+import {SuppliersPageResponse} from '../../../../interfaces/other/suppliers-page-response';
+import {toSignal} from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-suppliers-page',
@@ -17,21 +20,28 @@ import {PageButtons} from '../../../reusable/page-buttons/page-buttons';
 export class SuppliersPage {
   supplier_service = inject(SupplierService);
 
-  page:number = 0;
+  page:number = 1;
 
   // estaria bueno tener este objeto para asi ya tenemos consolidado la logica para tener los datos de como es la pagina.
-  //page_info : WritableSignal<PageInfo>;
-  productList$! : Observable<Supplier[]>;
+
+  page_info = signal<Partial<PageInfo>>({});
+
+  suppliersList = signal<Supplier[]>([])
 
   constructor() {
-    //this.getSuppliers();
+    this.getSuppliers();
   }
 
   getSuppliers()
   {
-    this.supplier_service.getSuppliersPage("0","5").subscribe({
-      next: (test) => console.log(JSON.stringify(test))
-    });
+    this.supplier_service.getSuppliersPage().subscribe(
+      (response) => {
+
+        this.suppliersList.set(response.content)
+
+        // aca se podria sacar los otros elementos necesarios
+
+        })
   }
 
   goNextPage() // se podria desactivar el boton del formulario en caso de que sea la ultima pagina
