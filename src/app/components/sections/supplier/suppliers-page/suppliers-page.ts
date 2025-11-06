@@ -22,13 +22,14 @@ export class SuppliersPage {
   supplier_service = inject(SupplierService);
 
   page:number = 0;
+  page_size:number = 3;
 
   button_state_obj = { // default state
     back_active: false,
     forward_active: true,
   };
 
-  search_method = this.supplier_service.getSuppliersPage(this.page,5); // intento humilde al patron strategy
+  search_method = this.supplier_service.getSuppliersPage(this.page,this.page_size); // intento humilde al patron strategy
 
 
   // estaria bueno tener este objeto para asi ya tenemos consolidado la logica para tener los datos de como es la pagina.
@@ -54,13 +55,13 @@ export class SuppliersPage {
   goNextPage() // se podria desactivar el boton del formulario en caso de que sea la ultima pagina
   {
     this.page = this.page + 1;
-    this.updateSearchMethod(this.supplier_service.getSuppliersPage(this.page,5)); // intento humilde al patron strategy
+    this.updateSearchMethod(this.supplier_service.getSuppliersPage(this.page,this.page_size)); // intento humilde al patron strategy
   }
 
   goPreviewsPage()// se podria desactivar el boton del formulario en caso de que sea la primer pagina
   {
     this.page = this.page - 1;
-    this.updateSearchMethod(this.supplier_service.getSuppliersPage(this.page,5)); // intento humilde al patron strategy
+    this.updateSearchMethod(this.supplier_service.getSuppliersPage(this.page,this.page_size)); // intento humilde al patron strategy
   }
 
   resetPageCount()
@@ -83,16 +84,16 @@ export class SuppliersPage {
   {
     if(query != '')
     {
-      this.updateSearchMethod(this.supplier_service.getSuppliersByName(this.page,5,query));
+      this.updateSearchMethod(this.supplier_service.getSuppliersByName(this.page,this.page_size,query));
     } else {
-      this.updateSearchMethod(this.supplier_service.getSuppliersPage(this.page,5));
+      this.updateSearchMethod(this.supplier_service.getSuppliersPage(this.page,this.page_size));
     }
   }
 
   updateSearchMethod(searchMethod:Observable<SuppliersPageResponse>) // intento humilde al patron strategy
   {
-    this.search_method = searchMethod;
     this.resetPageCount();
+    this.search_method = searchMethod;
     this.getSuppliers();
   }
 
