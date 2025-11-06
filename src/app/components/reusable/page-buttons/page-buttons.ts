@@ -11,6 +11,9 @@ export class PageButtons {
   next_button_text = input<string>('Siguiente');
   back_button_text = input<string>('Atras');
 
+  back_active = input.required<boolean>();
+  forward_active = input.required<boolean>();
+
   next_signal = output<void>();
   back_signal = output<void>();
 

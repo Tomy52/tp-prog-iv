@@ -25,9 +25,14 @@ export class SupplierService {
     return this.http.get<Supplier[]>(this.url);
   }
 
-  getSuppliersPage()// should be expanded upon when the time comes
+  getSuppliersPage(page:number, size:number)// should be expanded upon when the time comes
   {
-    return this.http.get<SuppliersPageResponse>(`${this.url}/page`);
+    return this.http.get<SuppliersPageResponse>(`${this.url}/page?page=${page}&size=${size}`);
+  }
+
+  getSuppliersByName(page:number, size:number, name:string)
+  {
+    return this.http.get<SuppliersPageResponse>(`${this.url}/name/${name}?page=${page}&size=${size}`);
   }
 
   updateSupplier(id:string, supplier:Partial<Supplier>) {

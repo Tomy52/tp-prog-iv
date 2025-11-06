@@ -1,0 +1,17 @@
+<article>
+  <div>
+    <h3>{{supplier_info().companyName}} -- {{supplier_info().cuit}}</h3>
+  </div>
+
+  <div>
+    <h4>Contactos</h4>
+    <p>Numero de telefono: {{supplier_info().phoneNumber}}</p>
+    <p>Email: {{supplier_info().email}}</p>
+  </div>
+
+  <div>
+    <h4>Direccion</h4>
+    <p>{{supplier_info().address.city + ',' + supplier_info().address.street + ',' + supplier_info().address.number}}</p>
+  </div>
+
+</article>

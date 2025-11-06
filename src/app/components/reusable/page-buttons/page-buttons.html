@@ -1,4 +1,4 @@
 <article>
-  <button (click)="sendBackSignal()">{{back_button_text()}}</button>
-  <button (click)="sendNextSignal()">{{next_button_text()}}</button>
+  <button (click)="sendBackSignal()" [disabled]="!back_active()" >{{back_button_text()}}</button>
+  <button (click)="sendNextSignal()" [disabled]="!forward_active()">{{next_button_text()}}</button>
 </article>

@@ -1,18 +1,19 @@
 import {Component, inject, signal} from '@angular/core';
 import {SupplierService} from '../../../../services/supplier-service';
-import {SupplierTableList} from '../supplier-table-list/supplier-table-list';
-import {Observable} from 'rxjs';
 import {Supplier} from '../../../../interfaces/supplier/supplier';
 import {PageButtons} from '../../../reusable/page-buttons/page-buttons';
 import {PageInfo} from '../../../../interfaces/other/page-info';
+import {SupplierList} from '../../../reusable/supplier-list/supplier-list';
+import {SearchBar} from '../../../reusable/search-bar/search-bar';
 import {SuppliersPageResponse} from '../../../../interfaces/other/suppliers-page-response';
-import {toSignal} from '@angular/core/rxjs-interop';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-suppliers-page',
   imports: [
-    SupplierTableList,
-    PageButtons
+    PageButtons,
+    SupplierList,
+    SearchBar
   ],
   templateUrl: './suppliers-page.html',
   styleUrl: './suppliers-page.css'
@@ -20,13 +21,21 @@ import {toSignal} from '@angular/core/rxjs-interop';
 export class SuppliersPage {
   supplier_service = inject(SupplierService);
 
-  page:number = 1;
+  page:number = 0;
+
+  button_state_obj = { // default state
+    back_active: false,
+    forward_active: true,
+  };
+
+  search_method = this.supplier_service.getSuppliersPage(this.page,5); // intento humilde al patron strategy
+
 
   // estaria bueno tener este objeto para asi ya tenemos consolidado la logica para tener los datos de como es la pagina.
-
   page_info = signal<Partial<PageInfo>>({});
 
-  suppliersList = signal<Supplier[]>([])
+  suppliersList = signal<Supplier[]>([]);
+  button_state = signal(this.button_state_obj);
 
   constructor() {
     this.getSuppliers();
@@ -34,27 +43,57 @@ export class SuppliersPage {
 
   getSuppliers()
   {
-    this.supplier_service.getSuppliersPage().subscribe(
-      (response) => {
-
-        this.suppliersList.set(response.content)
-
-        // aca se podria sacar los otros elementos necesarios
-
-        })
+    this.search_method.subscribe((response) => { // intento humilde al patron strategy
+      console.log(response);
+      this.suppliersList.set(response.content);
+      this.updateButtonState(response.first,response.last);
+      // aca se podria sacar los otros elementos necesarios
+    });
   }
 
   goNextPage() // se podria desactivar el boton del formulario en caso de que sea la ultima pagina
   {
     this.page = this.page + 1;
-    this.getSuppliers();
+    this.updateSearchMethod(this.supplier_service.getSuppliersPage(this.page,5)); // intento humilde al patron strategy
   }
 
   goPreviewsPage()// se podria desactivar el boton del formulario en caso de que sea la primer pagina
   {
-    this.page = this.page + 1;
-    this.getSuppliers();
+    this.page = this.page - 1;
+    this.updateSearchMethod(this.supplier_service.getSuppliersPage(this.page,5)); // intento humilde al patron strategy
   }
 
+  resetPageCount()
+  {
+    this.page = 0;
+  }
+
+  updateButtonState(first:boolean, last:boolean)
+  {
+    this.button_state_obj.back_active = !first;
+    this.button_state_obj.forward_active = !last;
+
+    this.button_state.set(this.button_state_obj);
+
+    console.log(this.button_state_obj);
+  }
+
+
+  searchByName(query:string)
+  {
+    if(query != '')
+    {
+      this.updateSearchMethod(this.supplier_service.getSuppliersByName(this.page,5,query));
+    } else {
+      this.updateSearchMethod(this.supplier_service.getSuppliersPage(this.page,5));
+    }
+  }
+
+  updateSearchMethod(searchMethod:Observable<SuppliersPageResponse>) // intento humilde al patron strategy
+  {
+    this.search_method = searchMethod;
+    this.resetPageCount();
+    this.getSuppliers();
+  }
 
 }
