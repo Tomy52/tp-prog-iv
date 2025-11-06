@@ -1,7 +1,9 @@
-<app-search-bar (query_sig)="searchByName($event)"></app-search-bar>
-<app-supplier-list [suppliers]="suppliersList()"/>
-<app-page-buttons (back_signal)="goPreviewsPage()"
-                  (next_signal)="goNextPage()"
-                  [back_active]="button_state_obj.back_active"
-                  [forward_active]="button_state_obj.forward_active">
-</app-page-buttons>
+<section>
+  <app-search-bar (query_sig)="searchByName($event)"></app-search-bar>
+  <app-supplier-list [suppliers]="suppliersList()"/>
+  <app-page-buttons (back_signal)="goPreviewsPage()"
+                    (next_signal)="goNextPage()"
+                    [back_active]="button_state_obj.back_active"
+                    [forward_active]="button_state_obj.forward_active">
+  </app-page-buttons>
+</section>

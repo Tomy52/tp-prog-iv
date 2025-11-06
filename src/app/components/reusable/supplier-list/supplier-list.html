@@ -1,4 +1,6 @@
-@for (sup of suppliers(); track sup.id)
-{
-  <app-supplier-list-card [supplier_info]="sup"></app-supplier-list-card>
-}
+<section>
+  @for (sup of suppliers(); track sup.id)
+  {
+    <app-supplier-list-card [supplier_info]="sup"></app-supplier-list-card>
+  }
+</section>

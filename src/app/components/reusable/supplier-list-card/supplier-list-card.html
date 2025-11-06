@@ -14,4 +14,10 @@
     <p>{{supplier_info().address.city + ',' + supplier_info().address.street + ',' + supplier_info().address.number}}</p>
   </div>
 
+  <!-- Como hago para que se muestre solo para los managers/admins -->
+  <div>
+    <button (click)="update_sup()">Modificar</button>
+    <button (click)="delete_sup()">Eliminar</button>
+  </div>
+
 </article>
