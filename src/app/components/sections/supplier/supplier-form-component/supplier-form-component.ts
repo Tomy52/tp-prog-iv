@@ -22,7 +22,11 @@ export class SupplierFormComponent {
     phone: ['1111111111',[Validators.required,Validators.pattern("^[0-9]{9,10}$")]],
     street: ['Calle 12',[Validators.required,Validators.minLength(3),Validators.maxLength(50)]],
     number: ['123',[Validators.required,Validators.minLength(2),Validators.maxLength(5),Validators.pattern("\\d+")]],
+<<<<<<< HEAD
     city: ['Ciudad',[Validators.required,Validators.minLength(3),Validators.maxLength(50),Validators.pattern("^[a-zA-Z\\s]*$")]]
+=======
+    city: ['Ciudad',[Validators.required,Validators.minLength(3),Validators.maxLength(50),Validators.pattern("^[a-zA-ZáéíóúÁÉÍÓÚñÑ \s]+$")]]
+>>>>>>> 0b9db0a ((changes) improve supplier info readability and allow spaces in city name)
   });
 
   constructor() {

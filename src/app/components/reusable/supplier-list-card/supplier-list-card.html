@@ -5,13 +5,14 @@
 
   <div class="contacts">
     <h4>Contactos</h4>
-    <p>Numero de telefono: {{supplier_info().phoneNumber}}</p>
+    <p>Número de teléfono: {{supplier_info().phoneNumber}}</p>
     <p>Email: {{supplier_info().email}}</p>
   </div>
 
   <div class="">
-    <h4>Direccion</h4>
-    <p>{{supplier_info().address.city + ',' + supplier_info().address.street + ',' + supplier_info().address.number}}</p>
+    <h4>Dirección</h4>
+    <p>Calle: {{supplier_info().address.street + ' ' + supplier_info().address.number}}</p>
+    <p>Ciudad: {{supplier_info().address.city}}</p>
   </div>
 
   <!-- Como hago para que se muestre solo para los managers/admins -->
