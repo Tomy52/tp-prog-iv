@@ -14,6 +14,10 @@ export class ProductService {
     return this.http.get<Product[]>(`${this.base_url}`);
   }
 
+  getProductById(id: number): Observable<Product> {
+    return this.http.get<Product>(`${this.base_url}/${id}`);
+  }
+
   addProduct(product: Partial<Product>): Observable<Product> {
     return this.http.post<Product>(`${this.base_url}`,product);
   }

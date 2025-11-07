@@ -1,0 +1,8 @@
+<div>
+  <select (change)="changeValue($event)">
+    <option [value]="">Seleccione un producto</option>
+      @for (product of products(); track product.idProduct) {
+        <option [value]="product.idProduct"> {{product.name}} </option>
+      }
+  </select>
+</div>
