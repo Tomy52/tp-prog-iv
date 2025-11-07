@@ -40,7 +40,7 @@ isLoggedIn(){
 
 isTokenExpired(){
   let token = this.getToken();
-  let respose= false;
+  let respose = false;
 
   if (token){
 
