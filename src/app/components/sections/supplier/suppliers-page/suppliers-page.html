@@ -1,11 +1,15 @@
 <section>
-  <app-search-bar (query_sig)="searchByName($event)"></app-search-bar>
-  <app-supplier-list [suppliers]="suppliersList()"/>
-  <app-page-buttons (back_signal)="goPreviewsPage()"
-                    (next_signal)="goNextPage()"
-                    [back_active]="button_state_obj.back_active"
-                    [forward_active]="button_state_obj.forward_active"
-                    [current_page]="page_data.current_page"
-                    [max_page]="page_data.max_page">
-  </app-page-buttons>
+  @if (page_data() != null && !error_msg) {
+    <app-search-bar (query_sig)="searchByName($event)"></app-search-bar>
+    <app-supplier-list [suppliers]="page_data()!.content"/>
+    <app-page-buttons (back_signal)="goPreviewsPage()"
+                      (next_signal)="goNextPage()"
+                      [back_active]="page_data()!.first"
+                      [forward_active]="page_data()!.last"
+                      [current_page]="page_data()!.number"
+                      [max_page]="page_data()!.totalPages">
+    </app-page-buttons>
+  } @else {
+    <h1> {{error_msg}}</h1>
+  }
 </section>

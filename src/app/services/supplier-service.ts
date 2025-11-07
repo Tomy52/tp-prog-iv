@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Supplier } from '../interfaces/supplier/supplier';
-import {map, Observable, of, tap} from 'rxjs';
+import {catchError, map, Observable, of, tap} from 'rxjs';
 import {SuppliersPageResponse} from '../interfaces/other/suppliers-page-response';
 
 @Injectable({
@@ -24,32 +24,32 @@ export class SupplierService {
   {
     return this.http.get<Supplier[]>(this.url);
   }
-  
+
   getFilteredAndMakeFilteredPage(page:number, size:number, name:string) : Observable<SuppliersPageResponse>
   {
-    let offset = page*size;
+    const offset = page*size;
 
     return this.http.get<Supplier[]>(this.url).pipe(
-      map((sups) => sups.filter((sup) => sup.companyName.includes(name))),
+      map((sups) => sups.filter((sup) => sup.companyName.toLowerCase().includes(name.toLowerCase()))),
       map((sups) => {
-        let element_count = sups.length;
-        let total_pages = Math.ceil(element_count / size);
-        let number = page;
-        let content = sups.slice(offset,offset+size)
-        let first = page == 0 ? true : false;
-        let last = (total_pages -1) == page ? true : false;
+        const element_count = sups.length;
+        const total_pages = Math.ceil(element_count / size);
+        const number = page;
+        const content = sups.slice(offset,offset+size);
+        const first = page == 0;
+        const last = (total_pages - 1) == page;
 
-        let page_info: SuppliersPageResponse = {
+        const page_info: SuppliersPageResponse = {
           content:content,
-          number:number,
+          number:number + 1,
           totalElements:element_count,
           totalPages:total_pages,
           first:first,
-          last:last  
-        }
+          last:last
+        };
         return page_info;
       })
-    )
+    );
   }
 
   getSuppliersPage(page:number, size:number) // works badly when trying to search by name, keep as backup
