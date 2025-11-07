@@ -1,13 +1,15 @@
 import {ChangeDetectionStrategy, Component, inject, signal, WritableSignal} from '@angular/core';
 import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
-import {ProductService} from '../../services/product-service';
-import {Product} from '../../interfaces/product';
+import {ProductService} from '../../../../services/product-service';
+import {Product} from '../../../../interfaces/product';
 import {Subscription} from 'rxjs';
+import {ProductDropdownSelect} from '../../../reusable/product-dropdown-select/product-dropdown-select';
 
 @Component({
   selector: 'app-delete-product-form-component',
   imports: [
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ProductDropdownSelect
   ],
   templateUrl: './delete-product-form-component.html',
   styleUrl: './delete-product-form-component.css',
@@ -37,15 +39,14 @@ export class DeleteProductFormComponent {
 
   deleteProductForm = this.formBuilder.group(
     {
-      // necesario para que tome el formato del producto y así poder sacar el valor del atributo idProduct
-      product: this.formBuilder.control<Product | null>(null)
+      product: this.formBuilder.control<number | null>(null)
     }
   );
 
 
   deleteProduct(): Subscription | void {
     const formInfo = this.deleteProductForm.value;
-    const idProduct = formInfo.product?.idProduct;
+    const idProduct = formInfo.product;
 
     // para que no se queje
     if (!idProduct) {
@@ -69,7 +70,8 @@ export class DeleteProductFormComponent {
     );
   }
 
-  formIsNull(): boolean {
-    return this.deleteProductForm.value.product === null;
+  formIsInvalid(): boolean {
+    const product = this.deleteProductForm.value.product!;
+    return product === null || isNaN(product);
   }
 }

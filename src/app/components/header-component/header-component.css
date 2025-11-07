@@ -1,5 +1,5 @@
 :host {
-  top: 0px;
+  top: 0;
   position: sticky;
 }
 
@@ -20,7 +20,7 @@ nav {
   align-items: center;
   padding-inline: var(--header_padding);
   padding-block: calc(var(--header_padding) / 2);
-  background-color: var(--color_principal);
+  background-color: var(--main-color);
   color: white;
   height: 50px;
 }
@@ -31,7 +31,7 @@ button.nav-bar-button {
   border: none;
   border-radius: 10px;
   font-family: "BreeSerif-regular", serif;
-  color: var(--color_principal);
+  color: var(--main-color);
   transition:
     background-color .2s ease-in-out,
     scale .15s ease-in-out;
@@ -40,4 +40,63 @@ button.nav-bar-button {
 button.nav-bar-button:hover {
   background-color: #c9ecff;
   scale: 110%;
+}
+
+.overlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+}
+
+/*
+ esto deberia ser algo provisorio, porque animate.leave esta roto en este momento
+ en teoria deberia alcanzar con ponerlo como directiva en el componente del sidebar
+ pero por ahora no hace nada, solo funciona animate.enter
+*/
+
+/* lo que esta abajo deberia estar en el css del sidebar una vez que lo arreglen */
+
+:host > .menuDiv {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    height: 100dvh;
+    width: var(--sidebar-width);
+    background-color: var(--main-color);
+    z-index: 1010;
+}
+
+.enter-animation {
+  animation: slide-fade-enter .3s;
+}
+
+@keyframes slide-fade-enter {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.leave-animation {
+  animation: slide-fade-leave .3s;
+}
+
+@keyframes slide-fade-leave {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
 }

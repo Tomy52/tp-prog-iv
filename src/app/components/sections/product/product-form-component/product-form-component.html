@@ -1,0 +1,33 @@
+<section id="add-product-form">
+    <form [formGroup]="productForm" (ngSubmit)="submit()">
+      @if(productForm.get("name")?.hasError('minlength') && productForm.get("name")?.dirty){
+        <p style="color:red">El nombre del producto debe contener como mínimo 3 caracteres</p>
+      }
+      @if(productForm.get("name")?.hasError('maxlength') && productForm.get("name")?.dirty){
+        <p style="color:red">El nombre del producto debe contener como máximo 50 caracteres</p>
+      }
+      @if(productForm.get("name")?.hasError('required') && productForm.get("name")?.dirty){
+        <p style="color:red">El nombre del producto es obligatorio</p>
+      }
+      @if(success() && !modifiedProduct()) {
+        <p class="success">¡Producto registrado exitosamente!</p>
+      } @else if (success() && modifiedProduct()) {
+        <p class="success">¡Producto modificado exitosamente!</p>
+      } @else if (success() === false) {
+        <p class="failure">Error</p>
+      }
+      <label for="product-name">Nombre del producto</label>
+      <input type="text" id="product-name" formControlName="name" placeholder="Harina">
+
+      @if(modifiedProduct()) {
+        <label for="product-status">Estado</label>
+        <select name="status" id="product-status" formControlName="status">
+          <option [ngValue]="productStatusEnum.Enabled">Habilitado</option>
+          <option [ngValue]="productStatusEnum.Disabled">Deshabilitado</option>
+        </select>
+      }
+
+      <button type="submit" [disabled]="!productForm.valid">Cargar</button>
+    </form>
+</section>
+
