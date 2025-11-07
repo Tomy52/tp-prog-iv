@@ -4,6 +4,8 @@
   <app-page-buttons (back_signal)="goPreviewsPage()"
                     (next_signal)="goNextPage()"
                     [back_active]="button_state_obj.back_active"
-                    [forward_active]="button_state_obj.forward_active">
+                    [forward_active]="button_state_obj.forward_active"
+                    [current_page]="page_data.current_page"
+                    [max_page]="page_data.max_page">
   </app-page-buttons>
 </section>

@@ -17,6 +17,9 @@ export class PageButtons {
   next_signal = output<void>();
   back_signal = output<void>();
 
+  
+  current_page = input.required<number>();
+  max_page = input.required<number>();
 
   sendNextSignal()
   {

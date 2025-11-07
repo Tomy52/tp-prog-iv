@@ -2,10 +2,11 @@ import {Component, inject, input} from '@angular/core';
 import {Supplier} from '../../../interfaces/supplier/supplier';
 import {SupplierService} from '../../../services/supplier-service';
 import {Router} from '@angular/router';
+import { AllowViewUser } from '../../../directives/allow-view-user';
 
 @Component({
   selector: 'app-supplier-list-card',
-  imports: [],
+  imports: [AllowViewUser],
   templateUrl: './supplier-list-card.html',
   styleUrl: './supplier-list-card.css'
 })

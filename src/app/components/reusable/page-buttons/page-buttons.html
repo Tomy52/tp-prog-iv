@@ -1,4 +1,5 @@
 <article class="page-buttons">
   <button (click)="sendBackSignal()" [disabled]="!back_active()" >{{back_button_text()}}</button>
   <button (click)="sendNextSignal()" [disabled]="!forward_active()">{{next_button_text()}}</button>
+  <p>Pagina: {{'Pagina: ' + current_page() + ' de ' + max_page()}}</p>
 </article>

@@ -1,4 +1,4 @@
-import {Component, inject, signal} from '@angular/core';
+import {Component, inject, signal, WritableSignal} from '@angular/core';
 import {SupplierService} from '../../../../services/supplier-service';
 import {Supplier} from '../../../../interfaces/supplier/supplier';
 import {PageButtons} from '../../../reusable/page-buttons/page-buttons';
@@ -21,25 +21,29 @@ import {Observable} from 'rxjs';
 export class SuppliersPage {
   supplier_service = inject(SupplierService);
 
-  page:number = 0;
-  page_size:number = 3;
+  page = signal<number>(0);
+  page_size:number = 2;
 
   button_state_obj = { // default state
     back_active: false,
     forward_active: true,
   };
+  
+  
+  page_data = {
+    current_page:0,
+    max_page:0
+  }
 
-  search_method = this.supplier_service.getSuppliersPage(this.page,this.page_size); // intento humilde al patron strategy
+  search_method = this.supplier_service.getSuppliersPage(this.page(),this.page_size); // intento humilde al patron strategy
 
-
-  // estaria bueno tener este objeto para asi ya tenemos consolidado la logica para tener los datos de como es la pagina.
-  page_info = signal<Partial<PageInfo>>({});
 
   suppliersList = signal<Supplier[]>([]);
   button_state = signal(this.button_state_obj);
 
   constructor() {
-    this.getSuppliers();
+    this.supplier_service.getFilteredAndMakeFilteredPage(this.page(),this.page_size,'test');
+    //this.getSuppliers();
   }
 
   getSuppliers()
@@ -48,25 +52,29 @@ export class SuppliersPage {
       console.log(response);
       this.suppliersList.set(response.content);
       this.updateButtonState(response.first,response.last);
+      this.page_data.current_page = response.number + 1;
+      this.page_data.max_page = response.totalPages;
       // aca se podria sacar los otros elementos necesarios
     });
   }
 
   goNextPage() // se podria desactivar el boton del formulario en caso de que sea la ultima pagina
   {
-    this.page = this.page + 1;
-    this.updateSearchMethod(this.supplier_service.getSuppliersPage(this.page,this.page_size)); // intento humilde al patron strategy
+    this.page.update((number) => number + 1);
+    console.log(this.page())
+    this.updateSearchMethod(this.supplier_service.getSuppliersPage(this.page(),this.page_size));
+    //this.updateSearchMethod(this.search_method); // intento humilde al patron strategy
   }
 
   goPreviewsPage()// se podria desactivar el boton del formulario en caso de que sea la primer pagina
   {
-    this.page = this.page - 1;
-    this.updateSearchMethod(this.supplier_service.getSuppliersPage(this.page,this.page_size)); // intento humilde al patron strategy
+    this.page.update((number) => number - 1);
+    this.updateSearchMethod(this.supplier_service.getSuppliersPage(this.page(),this.page_size)); // intento humilde al patron strategy
   }
 
   resetPageCount()
   {
-    this.page = 0;
+    this.page.set(0);
   }
 
   updateButtonState(first:boolean, last:boolean)
@@ -84,15 +92,16 @@ export class SuppliersPage {
   {
     if(query != '')
     {
-      this.updateSearchMethod(this.supplier_service.getSuppliersByName(this.page,this.page_size,query));
+      this.resetPageCount();
+      this.updateSearchMethod(this.supplier_service.getSuppliersByName(this.page(),this.page_size,query));
     } else {
-      this.updateSearchMethod(this.supplier_service.getSuppliersPage(this.page,this.page_size));
+      this.resetPageCount();
+      this.updateSearchMethod(this.supplier_service.getSuppliersPage(this.page(),this.page_size));
     }
   }
 
   updateSearchMethod(searchMethod:Observable<SuppliersPageResponse>) // intento humilde al patron strategy
   {
-    this.resetPageCount();
     this.search_method = searchMethod;
     this.getSuppliers();
   }

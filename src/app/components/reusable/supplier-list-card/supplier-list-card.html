@@ -16,7 +16,7 @@
   </div>
 
   <!-- Como hago para que se muestre solo para los managers/admins -->
-  <div>
+  <div *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']">
     <button (click)="update_sup()">Modificar</button>
     <button (click)="delete_sup()">Eliminar</button>
   </div>

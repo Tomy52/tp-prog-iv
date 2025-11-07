@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Supplier } from '../interfaces/supplier/supplier';
-import {Observable} from 'rxjs';
+import {Observable, tap} from 'rxjs';
 import {SuppliersPageResponse} from '../interfaces/other/suppliers-page-response';
 
 @Injectable({
@@ -24,13 +24,23 @@ export class SupplierService {
   {
     return this.http.get<Supplier[]>(this.url);
   }
+  
+  getFilteredAndMakeFilteredPage(page:number, size:number, name:string)
+  {
+    console.log("im working")
 
-  getSuppliersPage(page:number, size:number)// should be expanded upon when the time comes
+    /*this.http.get<Supplier[]>(this.url).pipe(
+      tap((result) => resu),
+      tap(() => console.log(result_count))
+    )*/
+  }
+
+  getSuppliersPage(page:number, size:number) // works badly when trying to search by name, keep as backup
   {
     return this.http.get<SuppliersPageResponse>(`${this.url}/page?page=${page}&size=${size}`);
   }
 
-  getSuppliersByName(page:number, size:number, name:string)
+  getSuppliersByName(page:number, size:number, name:string) // works badly when trying to search by name, keep as backup
   {
     return this.http.get<SuppliersPageResponse>(`${this.url}/name/${name}?page=${page}&size=${size}`);
   }
