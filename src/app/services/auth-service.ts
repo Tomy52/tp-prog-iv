@@ -26,37 +26,56 @@ export class AuthService {
     );
   }
 
-logOut(){
-  localStorage.removeItem('token');
-}
-
-getToken():string | null {
-  return localStorage.getItem('token');
-}
-
-isLoggedIn(){
-  return this.getToken() !== null;
-}
-
-isTokenExpired(){
-  let token = this.getToken();
-  let respose = false;
-
-  if (token){
-
-    const payload= token.split(".")[1];
-    const decodedPayload = JSON.parse( atob(payload));
-    const exp = decodedPayload.exp;
-    const expirationTime = new Date(exp * 1000);
-    const currentTime = new Date();
-
-    respose = expirationTime <= currentTime;
-
+  logOut(): void {
+    localStorage.removeItem('token');
   }
 
-  return respose;
-
+  getToken(): string | null {
+    return localStorage.getItem('token');
   }
 
+  isLoggedIn(): boolean {
+    return this.getToken() !== null;
+  }
+
+
+  private _decodeToken() {
+    const token = this.getToken();
+    let decodedPayload;
+
+    if (token) {
+      const payload = token.split(".")[1];
+      decodedPayload = JSON.parse(atob(payload));
+    }
+
+    return decodedPayload;
+  }
+
+
+  isTokenExpired(): boolean {
+    const tokenData = this._decodeToken();
+    let respose = false;
+
+    if (tokenData) {
+      const exp = tokenData.exp;
+      const expirationTime = new Date(exp * 1000);
+      const currentTime = new Date();
+
+      respose = expirationTime <= currentTime;
+    }
+
+    return respose;
+  }
+
+  getRole(): string {
+    const tokenData = this._decodeToken();
+    let role = "";
+
+    if (tokenData) {
+      role = tokenData.roles[0].authority;
+    }
+
+    return role;
+  }
 
 }

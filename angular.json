@@ -7,18 +7,17 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "skipTests": true
+          "skipTests": true,
+          "changeDetection": "OnPush"
         },
         "@schematics/angular:guard": {
           "skipTests": true
         },
         "@schematics/angular:interceptor": {
           "skipTests": true
-        }, 
-        
+        },
         "@schematics/angular:service": {
-          "skipTests": true,
-          "changeDetection": "OnPush"
+          "skipTests": true
         }
       },
       "root": "",
