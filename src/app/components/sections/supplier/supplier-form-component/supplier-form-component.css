@@ -1,5 +1,5 @@
 article {
-    background-color: var(--color_secundario);
+    background-color: var(--secondary-color);
 
     padding: 10px;
 }
