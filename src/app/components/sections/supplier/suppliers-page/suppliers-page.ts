@@ -7,6 +7,7 @@ import {SupplierList} from '../../../reusable/supplier-list/supplier-list';
 import {SearchBar} from '../../../reusable/search-bar/search-bar';
 import {SuppliersPageResponse} from '../../../../interfaces/other/suppliers-page-response';
 import {Observable} from 'rxjs';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-suppliers-page',
@@ -21,7 +22,7 @@ import {Observable} from 'rxjs';
 export class SuppliersPage {
   supplier_service = inject(SupplierService);
 
-  page = signal<number>(0);
+  page = signal<number>(1);
   page_size:number = 2;
 
   button_state_obj = { // default state
@@ -42,7 +43,9 @@ export class SuppliersPage {
   button_state = signal(this.button_state_obj);
 
   constructor() {
-    this.supplier_service.getFilteredAndMakeFilteredPage(this.page(),this.page_size,'test');
+    this.supplier_service.getFilteredAndMakeFilteredPage(this.page(),this.page_size,'').subscribe({
+      next: (x) => console.log(x)
+    })
     //this.getSuppliers();
   }
 
