@@ -10,7 +10,6 @@ import {CreateProductSupplier} from '../../../../interfaces/product-supplier/cre
 import {ProductSupplierService} from '../../../../services/product-supplier-service';
 import {ResponseProductSupplier} from '../../../../interfaces/product-supplier/response-product-supplier';
 import {UpdateProductSupplier} from '../../../../interfaces/product-supplier/update-product-supplier';
-import {NgClass} from '@angular/common';
 
 @Component({
   selector: 'app-product-supplier-form-component',
