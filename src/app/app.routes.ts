@@ -8,6 +8,9 @@ import {ProductFormSection} from './components/sections/product/product-form-sec
 import {
   DeleteProductFormComponent
 } from './components/sections/product/delete-product-form-component/delete-product-form-component';
+import {
+  ProductSupplierSection
+} from './components/sections/product-supplier/product-supplier-section/product-supplier-section';
 
 
 export const routes: Routes = [
@@ -49,6 +52,14 @@ export const routes: Routes = [
   {
     path:"delete-supplier",
     component:DeleteSupplier
+  },
+  {
+    path:"create-product-supplier",
+    component: ProductSupplierSection
+  },
+  {
+    path:"create-product-supplier/:id",
+    component: ProductSupplierSection
   },
   {
     path:"**",

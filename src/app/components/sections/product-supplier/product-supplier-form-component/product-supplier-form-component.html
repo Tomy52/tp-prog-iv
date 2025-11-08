@@ -1,0 +1,29 @@
+  <form [formGroup]="productSupplierForm" (ngSubmit)="submit()">
+
+    @if(isEditing()){
+
+      <label>Proveedor:</label>
+      <p> {{ productSupplierToModify()?.supplierName }}</p>
+      <label>Producto:</label>
+      <p> {{ productSupplierToModify()?.productName }}</p>
+
+
+    } @else {
+
+      <label> Seleccione un Producto</label>
+      <app-product-dropdown-select [products]="productsList()" formControlName="product"></app-product-dropdown-select>
+      <label> Seleccione un Proveedor</label>
+      <app-supplier-dropdown-select [suppliers]="supplierList()" formControlName="supplier"></app-supplier-dropdown-select>
+
+    }
+
+    <label for="cost">Ingrese el costo</label>
+    <input type="number" id="cost" formControlName="cost">
+    <label for="profitMargin">Ingrese el Porcentaje de Ganancia</label>
+    <input type="number" id="profitMargin" formControlName="profitMargin" placeholder="ej: 50">
+
+
+    <button [disabled]="isFormInvalid()" type="submit">{{isEditing()? 'Editar' : 'Crear' }}</button>
+
+
+  </form>
