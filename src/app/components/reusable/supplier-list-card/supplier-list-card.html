@@ -1,21 +1,20 @@
 <article>
   <div class="title">
-    <h3>{{supplier_info().companyName}} -- {{supplier_info().cuit}}</h3>
+    <h2>{{supplier_info().companyName}} -- {{supplier_info().cuit}}</h2>
   </div>
 
   <div class="contacts">
-    <h4>Contactos</h4>
+    <h3>Contactos</h3>
     <p>Número de teléfono: {{supplier_info().phoneNumber}}</p>
     <p>Email: {{supplier_info().email}}</p>
   </div>
 
-  <div class="">
-    <h4>Dirección</h4>
+  <div class="address">
+    <h3>Dirección</h3>
     <p>Calle: {{supplier_info().address.street + ' ' + supplier_info().address.number}}</p>
     <p>Ciudad: {{supplier_info().address.city}}</p>
   </div>
 
-  <!-- Como hago para que se muestre solo para los managers/admins -->
   <div *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']">
     <button (click)="update_sup()">Modificar</button>
     <button (click)="delete_sup()">Eliminar</button>

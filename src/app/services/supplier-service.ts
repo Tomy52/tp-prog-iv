@@ -27,7 +27,7 @@ export class SupplierService {
 
   getFilteredAndMakeFilteredPage(page:number, size:number, name:string) : Observable<SuppliersPageResponse>
   {
-    const offset = page*size;
+    const offset:number = page*size;
 
     return this.http.get<Supplier[]>(this.url).pipe(
       map((sups) => sups.filter((sup) => sup.companyName.toLowerCase().includes(name.toLowerCase()))),

@@ -23,7 +23,9 @@ export class SuppliersPage {
   supplier_service = inject(SupplierService);
 
   page = signal<number>(0);
-  page_size:number = 2;
+
+  page_size:number;
+  page_size_ops:number[] = [2,5,10];
 
   page_data: WritableSignal<SuppliersPageResponse | null >;
   error_msg:string = '';
@@ -31,11 +33,12 @@ export class SuppliersPage {
   search_term:string = '';
 
   constructor() {
+    this.page_size = this.page_size_ops[0];
     this.page_data = signal(null);
     this.getSuppliers('');
   }
 
-  getSuppliers(query:string)
+  getSuppliers(query:string = this.search_term)
   {
     this.supplier_service.getFilteredAndMakeFilteredPage(this.page(),this.page_size,query).subscribe({
       next: (x) => {
@@ -83,6 +86,13 @@ export class SuppliersPage {
     this.resetPageCount();
     this.search_term = query;
     this.getSuppliers(query);
+  }
+
+  changePageSize(size:number)
+  {
+    this.page_size = size;
+    this.resetPageCount();
+    this.getSuppliers();
   }
 
 }

@@ -1,4 +1,5 @@
 <section>
+  <h1>Lista de proveedores</h1>
   @if (page_data() != null && !error_msg) {
     <app-search-bar (query_sig)="searchByName($event)"></app-search-bar>
     <app-supplier-list [suppliers]="page_data()!.content"/>
@@ -7,7 +8,10 @@
                       [back_active]="page_data()!.first"
                       [forward_active]="page_data()!.last"
                       [current_page]="page_data()!.number"
-                      [max_page]="page_data()!.totalPages">
+                      [max_page]="page_data()!.totalPages"
+
+                      (size_changed)="changePageSize($event)"
+                      [page_size_ops]="page_size_ops">
     </app-page-buttons>
   } @else {
     <h1> {{error_msg}}</h1>
