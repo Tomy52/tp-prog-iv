@@ -10,6 +10,7 @@ import {ProductFormSection} from './components/sections/product/product-form-sec
 import {
   DeleteProductFormComponent
 } from './components/sections/product/delete-product-form-component/delete-product-form-component';
+import {ProductsPage} from './components/sections/product/products-page/products-page';
 
 
 export const routes: Routes = [
@@ -36,6 +37,10 @@ export const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path:"products",
+    component:ProductsPage
+  },
+  {
     path: "delete-product",
     component: DeleteProductFormComponent,
     canActivate: [AuthGuard]
@@ -55,10 +60,6 @@ export const routes: Routes = [
   {
     path:"suppliers",
     component:SuppliersPage
-  },
-  {
-    path:"test",
-    component:TestComponent,
   },
   {
     path:"**",
