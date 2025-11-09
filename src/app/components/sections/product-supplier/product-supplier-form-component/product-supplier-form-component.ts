@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, computed, effect, inject, input, signal} from '@angular/core';
+import {ChangeDetectionStrategy, Component, effect, inject, input, signal} from '@angular/core';
 import {ProductDropdownSelect} from '../../../reusable/product-dropdown-select/product-dropdown-select';
 import {ProductService} from '../../../../services/product-service';
 import {SupplierService} from '../../../../services/supplier-service';
@@ -29,7 +29,6 @@ export class ProductSupplierFormComponent {
   productSupplierService = inject(ProductSupplierService);
   formBuilder = inject(FormBuilder)
 
-
   supplierList = signal<Supplier[]>([]);
   productsList = signal<Product[]>([]);
 
@@ -51,6 +50,8 @@ export class ProductSupplierFormComponent {
 
     effect(() => {
       if (this.productSupplierToModify()){
+        this.productSupplierForm.get("supplier")?.patchValue(this.productSupplierToModify()?.idSupplier!)
+        this.productSupplierForm.get("product")?.patchValue(this.productSupplierToModify()?.idProduct!)
         this.productSupplierForm.get("cost")?.patchValue(this.productSupplierToModify()?.cost!)
         this.productSupplierForm.get("profitMargin")?.patchValue(this.productSupplierToModify()?.profitMargin!)
 
