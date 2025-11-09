@@ -1,4 +1,20 @@
 <div class="app-container">
+
+  <app-modal-alert id="success">
+    <h2>Operación exitosa!</h2>
+    <button (click)="modal_service.close();">Close</button>
+  </app-modal-alert>
+
+  <app-modal-alert id="error">
+    <h2>Error!</h2>
+    <button (click)="modal_service.close();">Close</button>
+  </app-modal-alert>
+
+  <app-modal-alert id="error-redirect" [outside_clickable]="false">
+    <h2> Error! </h2>
+    <button (click)="modal_service.redirect(['suppliers'])">Volver</button>
+  </app-modal-alert>
+
   @if(showHeader) {
     <app-header-component/>
   }

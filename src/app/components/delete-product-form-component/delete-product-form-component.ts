@@ -1,5 +1,5 @@
-import {ChangeDetectionStrategy, Component, inject, signal, WritableSignal} from '@angular/core';
-import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
+import {Component, inject, signal, WritableSignal} from '@angular/core';
+import {FormBuilder, ReactiveFormsModule} from '@angular/forms';
 import {ProductService} from '../../services/product-service';
 import {Product} from '../../interfaces/product';
 import {Subscription} from 'rxjs';
@@ -10,8 +10,7 @@ import {Subscription} from 'rxjs';
     ReactiveFormsModule
   ],
   templateUrl: './delete-product-form-component.html',
-  styleUrl: './delete-product-form-component.css',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrl: './delete-product-form-component.css'
 })
 export class DeleteProductFormComponent {
   formBuilder: FormBuilder = inject(FormBuilder);

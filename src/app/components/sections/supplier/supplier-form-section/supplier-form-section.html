@@ -1,12 +1,4 @@
 <section>
     <h2 [textContent]="id() ? 'Editar Proveedor' : 'Agregar Proveedor'">  </h2>
-    @if(this.form_ok() == true)
-    {
-      <p (click)="form_ok.set(null)"> Exito! </p>
-    } @else if (this.form_ok() == false)
-    {
-      <p (click)="form_ok.set(null)"> Error! </p>
-    }
-
     <app-supplier-form-component (data_sig)="finishForm($event)" [modified_supplier]="supplier_obj"/>
 </section>

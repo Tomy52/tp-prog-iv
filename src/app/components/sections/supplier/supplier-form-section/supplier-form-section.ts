@@ -1,7 +1,8 @@
-import {Component, effect, inject, input, OnInit, signal, WritableSignal} from '@angular/core';
+import {Component, inject, input, OnInit, signal, WritableSignal} from '@angular/core';
 import { SupplierService } from '../../../../services/supplier-service';
 import { Supplier } from '../../../../interfaces/supplier/supplier';
 import { SupplierFormComponent } from "../supplier-form-component/supplier-form-component";
+import {ModalService} from '../../../../services/modal-service';
 
 @Component({
   selector: 'app-supplier-form-section',
@@ -11,6 +12,7 @@ import { SupplierFormComponent } from "../supplier-form-component/supplier-form-
 })
 export class SupplierFormSection implements OnInit {
   supplier_service = inject(SupplierService);
+  modal_service = inject(ModalService);
 
   id = input<string>();
 
@@ -47,11 +49,12 @@ export class SupplierFormSection implements OnInit {
     this.supplier_service.addSupplier(event).subscribe({
       next: () => {
         console.log("success!");
+        this.modal_service.open('success');
         this.form_ok.set(true);
       },
       error: (e) =>{
         this.form_ok.set(false);
-
+        this.modal_service.open('success');
         console.log(JSON.stringify(e));
       }
     });
@@ -62,7 +65,7 @@ export class SupplierFormSection implements OnInit {
     console.log("editing");
 
     this.supplier_service.updateSupplier(this.id()!,event).subscribe({
-      next: () => console.log("success!"),
+      next: () => console.log('success'),
       error: (e) => console.error("Error :( \n" + e)
     });
   }
@@ -75,7 +78,7 @@ export class SupplierFormSection implements OnInit {
       const id = Number(this.id()!);
       this.supplier_service.getSupplier(id).subscribe({
         next: (sup) => this.supplier_obj = sup,
-        error: () => console.error("te deberia sacar de aca... (interceptor/guard?)")
+        error: () => this.modal_service.open('error-redirect')
       });
     }
   }

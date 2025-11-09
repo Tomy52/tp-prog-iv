@@ -7,8 +7,7 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "skipTests": true,
-          "changeDetection": "OnPush"
+          "skipTests": true
         },
         "@schematics/angular:guard": {
           "skipTests": true
