@@ -2,17 +2,21 @@
   <h1>Lista de productos</h1>
   @if (pageData() != null && !errMsg) {
     <app-search-bar (query_sig)="searchByName($event)"></app-search-bar>
-    <app-product-list [products]="pageData()!.content"/>
-    <app-page-buttons (back_signal)="goBack()"
-                      (next_signal)="goForward()"
-                      [back_active]="pageData()!.first"
-                      [forward_active]="pageData()!.last"
-                      [current_page]="pageData()!.number"
-                      [max_page]="pageData()!.totalPages"
+    @if(pageData()!.content.length === 0) {
+      <h1>No se encontraron resultados</h1>
+    } @else {
+      <app-product-list [products]="pageData()!.content"/>
+      <app-page-buttons (back_signal)="goBack()"
+                        (next_signal)="goForward()"
+                        [back_active]="pageData()!.first"
+                        [forward_active]="pageData()!.last"
+                        [current_page]="pageData()!.number"
+                        [max_page]="pageData()!.totalPages"
 
-                      (size_changed)="changePageSize($event)"
-                      [page_size_ops]="pageSizeOptions">
-    </app-page-buttons>
+                        (size_changed)="changePageSize($event)"
+                        [page_size_ops]="pageSizeOptions">
+      </app-page-buttons>
+    }
   } @else {
     <h1> {{ errMsg }}</h1>
   }
