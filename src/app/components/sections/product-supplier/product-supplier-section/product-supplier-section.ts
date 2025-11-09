@@ -20,7 +20,7 @@ export class ProductSupplierSection implements OnInit {
 
   id = input<string>();
 
-  productSupplierResponse = signal<Partial<ResponseProductSupplier>>({});
+  productSupplierResponse = signal<Partial<ResponseProductSupplier> | undefined>(undefined);
   isEditing = computed<boolean>(
     () => { return this.id() != undefined; })
 

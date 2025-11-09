@@ -38,8 +38,8 @@ export class ProductSupplierFormComponent {
   productSupplierForm = this.formBuilder.group({
     product: this.formBuilder.control<number | null>(null),
     supplier: this.formBuilder.control<number | null>(null),
-    cost: this.formBuilder.nonNullable.control<number>(0, [Validators.required, Validators.min(0)]),
-    profitMargin: this.formBuilder.nonNullable.control<number>(0, [Validators.required, Validators.min(0)]),
+    cost: this.formBuilder.nonNullable.control<number>(0, [Validators.required, Validators.min(0.1)]),
+    profitMargin: this.formBuilder.nonNullable.control<number>(0, [Validators.required, Validators.min(0.1)]),
     price: this.formBuilder.control<number>(0)
   })
 
@@ -80,7 +80,7 @@ export class ProductSupplierFormComponent {
   }
 
   submit(){
-    if(this.productSupplierToModify() == undefined){
+    if(this.productSupplierToModify() === undefined){
       this.createProductSupplier();
     } else {
       this.updateProductSupplier();
