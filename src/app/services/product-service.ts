@@ -2,7 +2,7 @@ import {inject, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {map, Observable} from 'rxjs';
 import {Product} from '../interfaces/product';
-import {ProductsPageResponse} from '../interfaces/other/products-page-response';
+import {PageResponse} from '../interfaces/other/page-response';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +19,7 @@ export class ProductService {
     return this.http.get<Product>(`${this.baseUrl}/${id}`);
   }
 
-  getFilteredAndMakeFilteredPage(page:number, size:number, name:string) : Observable<ProductsPageResponse>
+  getFilteredAndMakeFilteredPage(page:number, size:number, name:string) : Observable<PageResponse<Product>>
   {
     const offset:number = page*size;
 
@@ -33,7 +33,7 @@ export class ProductService {
         const first = page == 0;
         const last = (total_pages - 1) == page;
 
-        const page_info: ProductsPageResponse = {
+        const page_info: PageResponse<Product> = {
           content:content,
           number:number + 1,
           totalElements:element_count,

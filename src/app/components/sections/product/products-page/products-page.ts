@@ -2,8 +2,9 @@ import {ChangeDetectionStrategy, Component, inject, signal, WritableSignal} from
 import {PageButtons} from '../../../reusable/page-buttons/page-buttons';
 import {SearchBar} from '../../../reusable/search-bar/search-bar';
 import {ProductService} from '../../../../services/product-service';
-import {ProductsPageResponse} from '../../../../interfaces/other/products-page-response';
 import {ProductList} from '../../../reusable/product-list/product-list';
+import {PageResponse} from '../../../../interfaces/other/page-response';
+import {Product} from '../../../../interfaces/product';
 
 @Component({
   selector: 'app-products-page',
@@ -24,7 +25,7 @@ export class ProductsPage {
   pageSize:number;
   pageSizeOptions:number[] = [2,5,10];
 
-  pageData: WritableSignal<ProductsPageResponse | null >;
+  pageData: WritableSignal<PageResponse<Product> | null >;
   errMsg:string = '';
 
   searchTerm:string = '';

@@ -5,9 +5,9 @@ import {PageButtons} from '../../../reusable/page-buttons/page-buttons';
 import {PageInfo} from '../../../../interfaces/other/page-info';
 import {SupplierList} from '../../../reusable/supplier-list/supplier-list';
 import {SearchBar} from '../../../reusable/search-bar/search-bar';
-import {SuppliersPageResponse} from '../../../../interfaces/other/suppliers-page-response';
 import {Observable, of} from 'rxjs';
 import { toSignal } from '@angular/core/rxjs-interop';
+import {PageResponse} from '../../../../interfaces/other/page-response';
 
 @Component({
   selector: 'app-suppliers-page',
@@ -27,7 +27,7 @@ export class SuppliersPage {
   page_size:number;
   page_size_ops:number[] = [2,5,10];
 
-  page_data: WritableSignal<SuppliersPageResponse | null >;
+  page_data: WritableSignal<PageResponse<Supplier> | null >;
   error_msg:string = '';
 
   search_term:string = '';

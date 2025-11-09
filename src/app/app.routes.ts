@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 import { Login } from './components/login/login';
 import { MainMenuScreen } from './components/main-menu/main-menu-screen/main-menu-screen';
-import { TestComponent } from './components/test/test-component/test-component';
 import { AuthGuard } from './services/auth-guard';
 import { SupplierFormSection } from './components/sections/supplier/supplier-form-section/supplier-form-section';
 import { DeleteSupplier } from './components/sections/supplier/delete-supplier/delete-supplier';
