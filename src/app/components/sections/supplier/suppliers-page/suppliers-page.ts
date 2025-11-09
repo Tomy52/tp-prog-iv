@@ -33,7 +33,7 @@ export class SuppliersPage {
   search_term:string = '';
 
   constructor() {
-    this.page_size = this.page_size_ops[0];
+    this.page_size = Number(localStorage.getItem('pageSize')) || this.page_size_ops[0];
     this.page_data = signal(null);
     this.getSuppliers('');
   }
@@ -91,6 +91,7 @@ export class SuppliersPage {
   changePageSize(size:number)
   {
     this.page_size = size;
+    localStorage.setItem('pageSize',size.toString());
     this.resetPageCount();
     this.getSuppliers();
   }

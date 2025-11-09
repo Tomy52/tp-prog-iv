@@ -31,7 +31,7 @@ export class ProductsPage {
   searchTerm:string = '';
 
   constructor() {
-    this.pageSize = this.pageSizeOptions[0];
+    this.pageSize = Number(localStorage.getItem('pageSize')) || this.pageSizeOptions[0];
     this.pageData = signal(null);
     this.getProducts('');
   }
@@ -80,6 +80,7 @@ export class ProductsPage {
 
   changePageSize(size: number) {
     this.pageSize = size;
+    localStorage.setItem('pageSize',size.toString());
     this.resetPageCount();
     this.getProducts();
   }
