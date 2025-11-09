@@ -26,7 +26,7 @@ export class DeleteProductFormComponent {
   }
 
   getProducts(): void {
-    this.productService.getProducts().subscribe(
+    this.productService.getActiveProducts().subscribe(
       {
         next: (prodArr: Product[]) => this.products.set(prodArr),
         error: (err) => {
