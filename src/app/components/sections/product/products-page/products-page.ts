@@ -39,12 +39,10 @@ export class ProductsPage {
   getProducts(query: string = this.searchTerm) {
     this.productService.getFilteredAndMakeFilteredPage(this.page(), this.pageSize, query).subscribe({
       next: (x) => {
-        console.log(x);
         this.pageData.set(x);
       },
       error: (e) => {
         this.pageData.set(e.error);
-        console.log(e);
         this.errMsg = `Error: ${e.status}, ${e.statusText}`;
       }
     });
