@@ -6,12 +6,12 @@
   <div class="info">
     <h3>Información</h3>
     <p>Id: {{ productInfo().idProduct }}</p>
-    <p>Estado: {{ productInfo().status }}</p>
+    <p>Estado: {{ productInfo().status === ProductStatus.Enabled ? "Activo" : "Inactivo" }}</p>
   </div>
 
   <div *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']">
     <button (click)="updateProduct()">Modificar</button>
-    <button (click)="deleteProduct()">Eliminar</button>
+    <button (click)="deleteProduct()">Dar de baja</button>
   </div>
 
 </article>

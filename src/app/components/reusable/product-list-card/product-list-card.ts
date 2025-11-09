@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import { AllowViewUser } from '../../../directives/allow-view-user';
 import {Product} from '../../../interfaces/product';
 import {ProductService} from '../../../services/product-service';
+import {ProductStatus} from '../../../interfaces/productStatus';
 
 @Component({
   selector: 'app-product-list-card',
@@ -27,4 +28,5 @@ export class ProductListCard {
     this.router.navigate(['/form-products', this.productInfo().idProduct]);
   }
 
+  protected readonly ProductStatus = ProductStatus;
 }
