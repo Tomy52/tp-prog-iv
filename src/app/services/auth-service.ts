@@ -78,4 +78,15 @@ export class AuthService {
     return role;
   }
 
+  getUsername(): string {
+    const tokenData = this._decodeToken();
+    let name = "";
+
+    if (tokenData) {
+      name = tokenData.sub;
+    }
+
+    return name;
+  }
+
 }

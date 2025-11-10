@@ -42,6 +42,12 @@ button.nav-bar-button:hover {
   scale: 110%;
 }
 
+.user-button {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .overlay{
   position: fixed;
   top: 0;

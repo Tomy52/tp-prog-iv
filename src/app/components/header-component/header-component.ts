@@ -3,7 +3,7 @@ import {
   Component,
   effect,
   ElementRef,
-  inject,
+  inject, OnInit,
   signal,
   ViewChild,
   viewChild
@@ -12,6 +12,7 @@ import {NavigationEnd, Router, RouterLink} from '@angular/router';
 import {SidebarComponent} from '../sidebar-component/sidebar-component';
 import {ClickOutside} from '../../directives/click-outside';
 import {filter} from 'rxjs';
+import {AuthService} from '../../services/auth-service';
 
 @Component({
   selector: 'app-header-component',
@@ -24,10 +25,12 @@ import {filter} from 'rxjs';
   styleUrl: './header-component.css',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
 
   router = inject(Router);
   isSidenavOpen = signal<boolean>(false);
+  authService = inject(AuthService);
+  username = signal<string>("");
 
 
   routerEffect = effect( () => {
@@ -39,6 +42,14 @@ export class HeaderComponent {
       }
     });
   });
+
+  ngOnInit() {
+    this.getUsername();
+  }
+
+  getUsername() {
+    this.username.set(this.authService.getUsername());
+  }
 
 
   openSidebar(): void {
