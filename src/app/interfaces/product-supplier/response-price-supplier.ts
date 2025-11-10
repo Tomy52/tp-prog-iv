@@ -1,4 +1,4 @@
-export interface ResponsePrice {
+export interface ResponsePriceSupplier {
       "idProductSupplier": number,
       "idProduct": number,
       "name": string,

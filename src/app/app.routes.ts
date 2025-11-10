@@ -13,7 +13,10 @@ import {
 } from './components/sections/product-supplier/product-supplier-form-section/product-supplier-form-section';
 import {
   PriceBySupplierListComponent
-} from './components/sections/product-supplier/product-supplier-list-component/price-by-supplier-list-component';
+} from './components/sections/product-supplier/price-list-by-supplier-component/price-by-supplier-list-component';
+import {
+  PriceListByProductComponent
+} from './components/sections/product-supplier/price-list-by-product-component/price-list-by-product-component';
 
 
 export const routes: Routes = [
@@ -67,6 +70,10 @@ export const routes: Routes = [
   {
     path:"price-by-supplier",
     component: PriceBySupplierListComponent
+  },
+  {
+    path:"price-by-product",
+    component: PriceListByProductComponent
   },
 
 

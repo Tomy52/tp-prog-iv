@@ -24,7 +24,7 @@
         <tbody>
         @if (priceList()?.length! > 0 ){
             @for (productPrice of priceList(); track $index) {
-                   <tr app-product-supplier-row-component
+                   <tr app-price-by-supplier-row-component
                        [productPrice]="productPrice"
                        [productSupplierId]="productPrice.idProductSupplier"
                        (rowDeleted)="handleRowDeletion($event)"></tr>

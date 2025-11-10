@@ -4,12 +4,12 @@ import {Supplier} from '../../../../interfaces/supplier/supplier';
 import {SupplierService} from '../../../../services/supplier-service';
 import {FormBuilder, ReactiveFormsModule} from '@angular/forms';
 import {ProductSupplierService} from '../../../../services/product-supplier-service';
-import {SupplierProductList} from '../../../../interfaces/product-supplier/supplier-product-list';
-import {ProductSupplierRowComponent} from '../product-supplier-row-component/product-supplier-row-component';
+import {PriceBySupplierList} from '../../../../interfaces/product-supplier/price-by-supplier-list';
+import {ProductSupplierRowComponent} from '../price-by-supplier-row-component/product-supplier-row-component';
 import {ActivatedRoute} from "@angular/router";
 
 @Component({
-  selector: 'app-product-supplier-list-component',
+  selector: 'app-price-list-by-supplier-component',
   imports: [
     SupplierDropdownSelect,
     ReactiveFormsModule,
@@ -27,7 +27,7 @@ export class PriceBySupplierListComponent {
 
 
   supplierList = signal<Supplier[]>([]);
-  supplierProductList = signal<Partial<SupplierProductList>>({})
+  supplierProductList = signal<Partial<PriceBySupplierList>>({})
 
 
   priceList = computed(

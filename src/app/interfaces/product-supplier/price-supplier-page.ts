@@ -1,9 +1,9 @@
-import {ResponsePrice} from './response-price';
+import {ResponsePriceSupplier} from './response-price-supplier';
 import {PageInfo} from './page-info';
 
-export interface PricePage {
+export interface PriceSupplierPage {
 
-    "content": ResponsePrice[],
+    "content": ResponsePriceSupplier[],
     "pageable": PageInfo,
     "last": boolean,
     "totalElements": number,

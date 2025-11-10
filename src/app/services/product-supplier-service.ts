@@ -4,7 +4,8 @@ import {CreateProductSupplier} from '../interfaces/product-supplier/create-produ
 import {Observable} from 'rxjs';
 import {ResponseProductSupplier} from '../interfaces/product-supplier/response-product-supplier';
 import {UpdateProductSupplier} from '../interfaces/product-supplier/update-product-supplier';
-import {SupplierProductList} from '../interfaces/product-supplier/supplier-product-list';
+import {PriceBySupplierList} from '../interfaces/product-supplier/price-by-supplier-list';
+import {PriceByProductList} from '../interfaces/product-supplier/price-by-product-list';
 
 @Injectable({
   providedIn: 'root'
@@ -31,7 +32,11 @@ export class ProductSupplierService {
   }
 
   getAllProductBySupplier(id:number){
-    return this.http.get<SupplierProductList>(`${this.url}/filter/${id}`);
+    return this.http.get<PriceBySupplierList>(`${this.url}/filter/${id}`);
+  }
+
+  getPricesByProduct(id:number){
+    return this.http.get<PriceByProductList>(`${this.url}/filter-product/${id}`);
   }
 
 }
