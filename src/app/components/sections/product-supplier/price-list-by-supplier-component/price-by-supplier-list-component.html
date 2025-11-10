@@ -1,0 +1,42 @@
+<section>
+
+    <form [formGroup]="supplierForm" (ngSubmit)="getPricesBySupplier()">
+      <app-supplier-dropdown-select [suppliers]="supplierList()" formControlName="supplier"></app-supplier-dropdown-select>
+      <button type="submit">Buscar</button>
+    </form>
+
+@if (priceList() !== undefined){
+
+  <h3>Lista de Precios de {{ supplierProductList().companyName}}</h3>
+
+  @if (priceList()?.length === 0){
+
+    <p>El Proveedor no tiene productos sociados</p>
+
+  } @else {
+
+    <table>
+      <thead>
+      <tr>
+        <th> Nombre </th>
+        <th> Costo </th>
+        <th> Margen de Ganancia </th>
+        <th> Precio </th>
+        <th></th>
+        <th></th>
+
+      </tr>
+      </thead>
+        <tbody>
+            @for (productPrice of priceList(); track $index) {
+                   <tr app-price-by-supplier-row-component
+                       [productPrice]="productPrice"
+                       [productSupplierId]="productPrice.idProductSupplier"
+                       (rowDeleted)="handleRowDeletion($event)"></tr>
+               }
+      </tbody>
+  </table>
+  }
+
+}
+  </section>

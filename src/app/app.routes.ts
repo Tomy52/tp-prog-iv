@@ -9,6 +9,15 @@ import {ProductFormSection} from './components/sections/product/product-form-sec
 import {
   DeleteProductFormComponent
 } from './components/sections/product/delete-product-form-component/delete-product-form-component';
+import {
+  ProductSupplierFormSection
+} from './components/sections/product-supplier/product-supplier-form-section/product-supplier-form-section';
+import {
+  PriceBySupplierListComponent
+} from './components/sections/product-supplier/price-list-by-supplier-component/price-by-supplier-list-component';
+import {
+  PriceListByProductComponent
+} from './components/sections/product-supplier/price-list-by-product-component/price-list-by-product-component';
 import {ProductsPage} from './components/sections/product/products-page/products-page';
 
 
@@ -55,6 +64,22 @@ export const routes: Routes = [
   {
     path:"delete-supplier",
     component:DeleteSupplier
+  },
+  {
+    path:"product-supplier",
+    component: ProductSupplierFormSection
+  },
+  {
+    path:"product-supplier/:id",
+    component: ProductSupplierFormSection
+  },
+  {
+    path:"price-by-supplier",
+    component: PriceBySupplierListComponent
+  },
+  {
+    path:"price-by-product",
+    component: PriceListByProductComponent
   },
   {
     path:"suppliers",
