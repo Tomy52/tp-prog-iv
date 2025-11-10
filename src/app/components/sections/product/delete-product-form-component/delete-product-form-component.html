@@ -7,12 +7,7 @@
           <p class="failure">Baja fallida</p>
         }
         <label for="product-select">Producto</label>
-        <select name="product" id="product-select" formControlName="product">
-          <option [ngValue]="null">Seleccione un producto</option>
-          @for(product of products();track product.idProduct) {
-            <option [ngValue]="product">{{product.name}}</option>
-          }
-        </select>
-        <button type="submit" [disabled]="this.formIsNull()">Borrar</button>
+        <app-product-dropdown-select [products]="products()" formControlName="product"/>
+        <button type="submit" [disabled]="this.formIsInvalid()">Borrar</button>
       </form>
 </section>

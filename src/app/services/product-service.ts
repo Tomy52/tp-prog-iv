@@ -1,7 +1,8 @@
 import {inject, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {map, Observable} from 'rxjs';
 import {Product} from '../interfaces/product';
+import {ProductStatus} from '../interfaces/productStatus';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,16 @@ export class ProductService {
 
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(`${this.base_url}`);
+  }
+
+  getEnabledProducts() {
+    return this.getProducts().pipe(
+      map((products) => products.filter((product) => product.status === ProductStatus.Enabled)
+      ));
+  }
+
+  getProductById(id: number): Observable<Product> {
+    return this.http.get<Product>(`${this.base_url}/${id}`);
   }
 
   addProduct(product: Partial<Product>): Observable<Product> {

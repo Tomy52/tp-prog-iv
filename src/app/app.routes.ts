@@ -1,12 +1,12 @@
 import { Routes } from '@angular/router';
-import { ProductAreaComponent } from './components/product-area-component/product-area-component';
 import { Login } from './components/login/login';
 import { MainMenuScreen } from './components/main-menu/main-menu-screen/main-menu-screen';
-import { TestComponent } from './components/test/test-component/test-component';
 import { AuthGuard } from './services/auth-guard';
 import { SupplierFormSection } from './components/sections/supplier/supplier-form-section/supplier-form-section';
 import { DeleteSupplier } from './components/sections/supplier/delete-supplier/delete-supplier';
 import {SuppliersPage} from './components/sections/supplier/suppliers-page/suppliers-page';
+import {ProductFormSection} from './components/sections/product/product-form-section/product-form-section';
+import {DeleteProductFormComponent} from './components/sections/product/delete-product-form-component/delete-product-form-component';
 
 
 export const routes: Routes = [
@@ -19,13 +19,23 @@ export const routes: Routes = [
     }
   },
   {
-    path: "products",
-    component: ProductAreaComponent,
+    path:"main-menu",
+    component:MainMenuScreen,
     canActivate: [AuthGuard]
   },
   {
-    path:"main-menu",
-    component:MainMenuScreen,
+    path: "form-products",
+    component: ProductFormSection,
+    canActivate: [AuthGuard]
+  },
+  {
+    path:"form-products/:id",
+    component: ProductFormSection,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "delete-product",
+    component: DeleteProductFormComponent,
     canActivate: [AuthGuard]
   },
   {
