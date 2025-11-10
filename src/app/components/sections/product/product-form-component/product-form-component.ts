@@ -38,10 +38,14 @@ export class ProductFormComponent {
   }
 
   submit() {
-    if (this.modifiedProduct() == undefined) {
-      this.addProduct();
-    } else {
-      this.updateProduct();
+    const ok = confirm(`¿Está seguro de que desea continuar?`);
+
+    if (ok) {
+      if (this.modifiedProduct() == undefined) {
+        this.addProduct();
+      } else {
+        this.updateProduct();
+      }
     }
 
   }
