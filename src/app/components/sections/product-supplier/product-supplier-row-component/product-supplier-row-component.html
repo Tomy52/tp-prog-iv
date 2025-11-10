@@ -1,0 +1,10 @@
+    <td>{{productPrice()?.name}} </td>
+    <td>{{ productPrice()?.cost }}</td>
+    <td>{{ productPrice()?.profitMargin }}</td>
+    <td>{{ productPrice()?.price }}</td>
+    <td><button routerLink="/product-supplier/{{productSupplierId()}}">Editar</button></td>
+    <td><button class="delete-button" (click)="deleteProductSupplier()" >Borrar</button></td>
+
+
+
+

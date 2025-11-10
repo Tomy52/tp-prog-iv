@@ -9,8 +9,11 @@ import {
   DeleteProductFormComponent
 } from './components/sections/product/delete-product-form-component/delete-product-form-component';
 import {
-  ProductSupplierSection
-} from './components/sections/product-supplier/product-supplier-section/product-supplier-section';
+  ProductSupplierFormSection
+} from './components/sections/product-supplier/product-supplier-form-section/product-supplier-form-section';
+import {
+  PriceBySupplierListComponent
+} from './components/sections/product-supplier/product-supplier-list-component/price-by-supplier-list-component';
 
 
 export const routes: Routes = [
@@ -54,13 +57,19 @@ export const routes: Routes = [
     component:DeleteSupplier
   },
   {
-    path:"create-product-supplier",
-    component: ProductSupplierSection
+    path:"product-supplier",
+    component: ProductSupplierFormSection
   },
   {
-    path:"create-product-supplier/:id",
-    component: ProductSupplierSection
+    path:"product-supplier/:id",
+    component: ProductSupplierFormSection
   },
+  {
+    path:"price-by-supplier",
+    component: PriceBySupplierListComponent
+  },
+
+
   {
     path:"**",
     pathMatch:"prefix",

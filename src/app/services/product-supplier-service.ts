@@ -4,6 +4,7 @@ import {CreateProductSupplier} from '../interfaces/product-supplier/create-produ
 import {Observable} from 'rxjs';
 import {ResponseProductSupplier} from '../interfaces/product-supplier/response-product-supplier';
 import {UpdateProductSupplier} from '../interfaces/product-supplier/update-product-supplier';
+import {SupplierProductList} from '../interfaces/product-supplier/supplier-product-list';
 
 @Injectable({
   providedIn: 'root'
@@ -21,13 +22,16 @@ export class ProductSupplierService {
     return this.http.get<ResponseProductSupplier>(`${this.url}/${id}`);
   }
 
-  updateProductSupplier(id: string, productSupplier: UpdateProductSupplier){
+  updateProductSupplier(id: number, productSupplier: UpdateProductSupplier){
     return this.http.patch<ResponseProductSupplier>(`${this.url}/${id}`, productSupplier);
   }
 
-  deleteProductSupplier(id: string){
-    return this.http.delete<ResponseProductSupplier>(`${this.url}/${id}`);
+  deleteProductSupplier(id: number){
+    return this.http.delete(`${this.url}/${id}`);
   }
 
+  getAllProductBySupplier(id:number){
+    return this.http.get<SupplierProductList>(`${this.url}/filter/${id}`);
+  }
 
 }

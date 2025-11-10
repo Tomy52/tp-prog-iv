@@ -1,0 +1,13 @@
+td{
+  text-align: center;
+}
+
+button{
+  border: none;
+  border-radius: 5px;
+  box-shadow: #02111b 1px 1px 1px;
+}
+
+button.delete-button:hover{
+  background-color: red;
+}

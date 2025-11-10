@@ -97,6 +97,8 @@ export class ProductSupplierFormComponent {
       profitMargin: this.productSupplierForm.get("profitMargin")?.value!,
     }
 
+    console.log(productSupplierData);
+
     this.productSupplierService.createProductSupplier(productSupplierData).subscribe(
       {
         next: () => {this.productSupplierForm.reset()},
@@ -110,12 +112,14 @@ export class ProductSupplierFormComponent {
 
   updateProductSupplier(){
     const productSupplierData: UpdateProductSupplier  = {
+
       cost: this.productSupplierForm.get("cost")?.value!,
       profitMargin: this.productSupplierForm.get("profitMargin")?.value!,
     }
 
-    this.productSupplierService.updateProductSupplier(
-      this.productSupplierToModify()?.idProductSupplier!, productSupplierData).subscribe(
+    const idProductSupplier = Number(this.productSupplierToModify()?.idProductSupplier!)
+
+    this.productSupplierService.updateProductSupplier(idProductSupplier, productSupplierData).subscribe(
       {
         next: () => {this.productSupplierForm.reset()},
         error: (err) => {
