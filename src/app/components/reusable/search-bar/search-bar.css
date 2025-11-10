@@ -1,0 +1,24 @@
+form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  padding: 10px;
+  gap: 10px;
+
+  width: 100%;
+}
+
+input {
+  border-radius: 5px;
+}
+
+form > input[type=text] {
+  width: 40%;
+}
+
+form > input[type=submit] {
+  width: 15%;
+  text-align: center;
+}

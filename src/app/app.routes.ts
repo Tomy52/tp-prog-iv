@@ -4,6 +4,7 @@ import { MainMenuScreen } from './components/main-menu/main-menu-screen/main-men
 import { AuthGuard } from './services/auth-guard';
 import { SupplierFormSection } from './components/sections/supplier/supplier-form-section/supplier-form-section';
 import { DeleteSupplier } from './components/sections/supplier/delete-supplier/delete-supplier';
+import {SuppliersPage} from './components/sections/supplier/suppliers-page/suppliers-page';
 import {ProductFormSection} from './components/sections/product/product-form-section/product-form-section';
 import {
   DeleteProductFormComponent
@@ -17,6 +18,7 @@ import {
 import {
   PriceListByProductComponent
 } from './components/sections/product-supplier/price-list-by-product-component/price-list-by-product-component';
+import {ProductsPage} from './components/sections/product/products-page/products-page';
 
 
 export const routes: Routes = [
@@ -41,6 +43,10 @@ export const routes: Routes = [
     path:"form-products/:id",
     component: ProductFormSection,
     canActivate: [AuthGuard]
+  },
+  {
+    path:"products",
+    component:ProductsPage
   },
   {
     path: "delete-product",
@@ -75,8 +81,10 @@ export const routes: Routes = [
     path:"price-by-product",
     component: PriceListByProductComponent
   },
-
-
+  {
+    path:"suppliers",
+    component:SuppliersPage
+  },
   {
     path:"**",
     pathMatch:"prefix",
