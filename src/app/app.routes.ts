@@ -19,6 +19,7 @@ import {
   PriceListByProductComponent
 } from './components/sections/product-supplier/price-list-by-product-component/price-list-by-product-component';
 import {ProductsPage} from './components/sections/product/products-page/products-page';
+import {privilegedUserGuard} from './services/privileged-user-guard';
 
 
 export const routes: Routes = [
@@ -37,12 +38,12 @@ export const routes: Routes = [
   {
     path: "form-products",
     component: ProductFormSection,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard,privilegedUserGuard]
   },
   {
     path:"form-products/:id",
     component: ProductFormSection,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard,privilegedUserGuard]
   },
   {
     path:"products",
@@ -52,37 +53,37 @@ export const routes: Routes = [
   {
     path: "delete-product",
     component: DeleteProductFormComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard,privilegedUserGuard]
   },
   {
     path:"form-suppliers",
     component:SupplierFormSection,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard,privilegedUserGuard]
   },
   {
     path:"form-suppliers/:id",
     component:SupplierFormSection,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard,privilegedUserGuard]
   },
   {
     path:"delete-supplier",
     component:DeleteSupplier,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard,privilegedUserGuard]
   },
   {
     path:"product-supplier",
     component: ProductSupplierFormSection,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard, privilegedUserGuard]
   },
   {
     path:"product-supplier/:id",
     component: ProductSupplierFormSection,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard, privilegedUserGuard]
   },
   {
     path:"price-by-supplier",
     component: PriceBySupplierListComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard, privilegedUserGuard]
   },
   {
     path:"price-by-product",
