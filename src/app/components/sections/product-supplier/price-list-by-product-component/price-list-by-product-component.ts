@@ -40,7 +40,7 @@ export class PriceListByProductComponent {
   }
 
   getProducts(){
-    this.productService.getProducts().subscribe(products => {
+    this.productService.getActiveProducts().subscribe(products => {
       this.productList.set(products);
     })
   }
