@@ -26,7 +26,7 @@ export class DeleteProductFormComponent {
   }
 
   getProducts(): void {
-    this.productService.getProducts().subscribe(
+    this.productService.getEnabledProducts().subscribe(
       {
         next: (prodArr: Product[]) => this.products.set(prodArr),
         error: (err) => {
@@ -53,21 +53,25 @@ export class DeleteProductFormComponent {
       return;
     }
 
-   return this.productService.deleteProduct(idProduct).subscribe(
-      {
-        next: () => {
-          this.success.set(true);
-          this.deleteProductForm.markAsPristine();
-          this.deleteProductForm.reset();
-          this.getProducts();
-        },
-        error: (err) => {
-          this.success.set(false);
-          alert("No se pudo completar la baja del producto");
-          console.error(`Hubo un error en el borrado: ${err.error}`);
+    const ok = confirm(`¿Está seguro de eliminar el producto?`);
+
+    if (ok) {
+      return this.productService.deleteProduct(idProduct).subscribe(
+        {
+          next: () => {
+            this.success.set(true);
+            this.deleteProductForm.markAsPristine();
+            this.deleteProductForm.reset();
+            this.getProducts();
+          },
+          error: (err) => {
+            this.success.set(false);
+            alert("No se pudo completar la baja del producto");
+            console.error(`Hubo un error en el borrado: ${err.error}`);
+          }
         }
-      }
-    );
+      );
+    }
   }
 
   formIsInvalid(): boolean {

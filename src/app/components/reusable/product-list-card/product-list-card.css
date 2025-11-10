@@ -1,0 +1,15 @@
+article {
+  border: 1px solid black;
+
+  padding: 10px;
+  background-color: var(--bg-color);
+  border-radius: 5px;
+}
+
+.disabled {
+  background-color: var(--disabled-card-color);
+}
+
+article > div {
+}
+

@@ -4,10 +4,22 @@ import { MainMenuScreen } from './components/main-menu/main-menu-screen/main-men
 import { AuthGuard } from './services/auth-guard';
 import { SupplierFormSection } from './components/sections/supplier/supplier-form-section/supplier-form-section';
 import { DeleteSupplier } from './components/sections/supplier/delete-supplier/delete-supplier';
+import {SuppliersPage} from './components/sections/supplier/suppliers-page/suppliers-page';
 import {ProductFormSection} from './components/sections/product/product-form-section/product-form-section';
 import {
   DeleteProductFormComponent
 } from './components/sections/product/delete-product-form-component/delete-product-form-component';
+import {
+  ProductSupplierFormSection
+} from './components/sections/product-supplier/product-supplier-form-section/product-supplier-form-section';
+import {
+  PriceBySupplierListComponent
+} from './components/sections/product-supplier/price-list-by-supplier-component/price-by-supplier-list-component';
+import {
+  PriceListByProductComponent
+} from './components/sections/product-supplier/price-list-by-product-component/price-list-by-product-component';
+import {ProductsPage} from './components/sections/product/products-page/products-page';
+import {privilegedUserGuard} from './services/privileged-user-guard';
 
 
 export const routes: Routes = [
@@ -26,29 +38,62 @@ export const routes: Routes = [
   {
     path: "form-products",
     component: ProductFormSection,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard,privilegedUserGuard]
   },
   {
     path:"form-products/:id",
     component: ProductFormSection,
+    canActivate: [AuthGuard,privilegedUserGuard]
+  },
+  {
+    path:"products",
+    component:ProductsPage,
     canActivate: [AuthGuard]
   },
   {
     path: "delete-product",
     component: DeleteProductFormComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard,privilegedUserGuard]
   },
   {
     path:"form-suppliers",
-    component:SupplierFormSection
+    component:SupplierFormSection,
+    canActivate: [AuthGuard,privilegedUserGuard]
   },
   {
     path:"form-suppliers/:id",
-    component:SupplierFormSection
+    component:SupplierFormSection,
+    canActivate: [AuthGuard,privilegedUserGuard]
   },
   {
     path:"delete-supplier",
-    component:DeleteSupplier
+    component:DeleteSupplier,
+    canActivate: [AuthGuard,privilegedUserGuard]
+  },
+  {
+    path:"product-supplier",
+    component: ProductSupplierFormSection,
+    canActivate: [AuthGuard, privilegedUserGuard]
+  },
+  {
+    path:"product-supplier/:id",
+    component: ProductSupplierFormSection,
+    canActivate: [AuthGuard, privilegedUserGuard]
+  },
+  {
+    path:"price-by-supplier",
+    component: PriceBySupplierListComponent,
+    canActivate: [AuthGuard, privilegedUserGuard]
+  },
+  {
+    path:"price-by-product",
+    component: PriceListByProductComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path:"suppliers",
+    component:SuppliersPage,
+    canActivate: [AuthGuard]
   },
   {
     path:"**",

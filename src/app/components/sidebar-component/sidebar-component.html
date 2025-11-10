@@ -5,24 +5,25 @@
       <p class="subtitles">Proveedores</p>
 
       <ul>
-        <li><a>Listar</a></li>
-        <li><a routerLink="/form-suppliers">Crear</a></li>
-        <li><a routerLink="delete-supplier">Eliminar</a></li>
+        <li><a routerLink="suppliers">Listar</a></li>
+        <li><a routerLink="form-suppliers" *appAllowViewUser="['ROLE_MANAGER','ROLE_ADMIN']">Crear</a></li>
+        <li><a routerLink="delete-supplier" *appAllowViewUser="['ROLE_MANAGER','ROLE_ADMIN']">Eliminar</a></li>
       </ul>
 
       <p class="subtitles">Productos</p>
 
       <ul>
-        <li><a>Listar</a></li>
-        <li><a routerLink="/products">Crear</a></li>
-        <li><a>Eliminar</a></li>
+        <li><a routerLink="products">Listar</a></li>
+        <li><a routerLink="form-products" *appAllowViewUser="['ROLE_MANAGER','ROLE_ADMIN']">Crear</a></li>
+        <li><a routerLink="delete-product" *appAllowViewUser="['ROLE_MANAGER','ROLE_ADMIN']">Eliminar</a></li>
       </ul>
 
       <p class="subtitles">Precios</p>
       
       <ul>
-        <li><a>Por Proveedor</a></li>
-        <li><a>Por Producto</a></li>
+        <li><a routerLink="/product-supplier" *appAllowViewUser="['ROLE_MANAGER','ROLE_ADMIN']">Crear Relación</a></li>
+        <li><a routerLink="/price-by-supplier">Por Proveedor</a></li>
+        <li><a routerLink="/price-by-product">Por Producto</a></li>
       </ul>
 
       <p class="subtitles"><a routerLink="/login" (click)="logOut()">Salir</a></p>

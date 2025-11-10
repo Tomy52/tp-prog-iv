@@ -1,4 +1,4 @@
-import {Component, forwardRef, input, signal} from '@angular/core';
+import {ChangeDetectionStrategy, Component, forwardRef, input, signal} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR, ReactiveFormsModule} from '@angular/forms';
 import {Product} from '../../../interfaces/product';
 
@@ -13,7 +13,8 @@ const select_value_accessor = {
   imports: [ReactiveFormsModule],
   templateUrl: './product-dropdown-select.html',
   styleUrl: './product-dropdown-select.css',
-  providers: [select_value_accessor]
+  providers: [select_value_accessor],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductDropdownSelect implements ControlValueAccessor {
   products = input.required<Product[]>();

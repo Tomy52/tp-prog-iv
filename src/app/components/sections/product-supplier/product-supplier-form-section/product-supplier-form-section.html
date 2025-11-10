@@ -1,0 +1,10 @@
+<section>
+
+  <h2>{{isEditing() ? 'Editar Relación' : 'Crear Relación'}}</h2>
+
+  <app-product-supplier-form-component [productSupplierToModify]="productSupplierResponse()"
+                                       [isEditing]="isEditing()"/>
+
+
+</section>
+

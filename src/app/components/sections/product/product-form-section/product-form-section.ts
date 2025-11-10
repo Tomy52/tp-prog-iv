@@ -1,4 +1,4 @@
-import {Component, inject, input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, input, OnInit} from '@angular/core';
 import {ProductService} from '../../../../services/product-service';
 import {Product} from '../../../../interfaces/product';
 import {ProductFormComponent} from '../product-form-component/product-form-component';
@@ -9,7 +9,8 @@ import {ProductFormComponent} from '../product-form-component/product-form-compo
     ProductFormComponent
   ],
   templateUrl: './product-form-section.html',
-  styleUrl: './product-form-section.css'
+  styleUrl: './product-form-section.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductFormSection implements OnInit {
   productService = inject(ProductService);
