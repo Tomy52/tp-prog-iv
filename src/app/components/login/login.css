@@ -24,7 +24,7 @@ section{
   height: 300px;   
   margin: 0 auto;   
   
-  background: var(--color_principal);
+  background: var(--main-color);
   border-radius: 25px;
   
 }
@@ -68,14 +68,16 @@ input{
 }
 
 button{
-  background-color: var(--color_secundario);
+  background-color: var(--secondary-color);
   border-radius: 10px;
-  border-style: ridge;
-  border-color: var(--color_secundario);
+  border-color: var(--text-color);
   border-width: 2px;
-  color: white;
+  color: var(--text-color);
 
-  margin-top: 5%;
+  margin-top: 10%;
+  
+  width: 100px;
+  font-size: medium;
 
 }
 

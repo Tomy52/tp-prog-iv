@@ -1,5 +1,7 @@
 <section id="add-product-form">
+
     <form [formGroup]="productForm" (ngSubmit)="submit()">
+
       @if(productForm.get("name")?.hasError('minlength') && productForm.get("name")?.dirty){
         <p style="color:red">El nombre del producto debe contener como mínimo 3 caracteres</p>
       }
@@ -16,6 +18,7 @@
       } @else if (success() === false) {
         <p class="failure">Error</p>
       }
+
       <label for="product-name">Nombre del producto</label>
       <input type="text" id="product-name" formControlName="name" placeholder="Harina">
 
@@ -28,6 +31,7 @@
       }
 
       <button type="submit" [disabled]="!productForm.valid">Cargar</button>
+      
     </form>
 </section>
 

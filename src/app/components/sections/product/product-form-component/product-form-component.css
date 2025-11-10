@@ -1,4 +1,52 @@
+#add-product-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+  
+  width: 400px;      
+  height: 300px;   
+  margin: 0 auto;   
+  
+  background: var(--main-color);
+  border-radius: 25px;
+  
+}
+
 form {
   display: flex;
   flex-direction: column;
+}
+
+label{
+  padding: 8px;
+  text-align: center;
+  
+  color: white;
+
+}
+
+input{
+  padding: 10px;
+
+  border-radius: 10px;
+  border-style: ridge;
+  border-color: white;
+  border-width: 2px;
+
+}
+
+button{
+  background-color: var(--secondary-color);
+  border-radius: 10px;
+  border-color: var(--text-color);
+  border-width: 2px;
+  color: white;
+
+  margin-top: 9%;
+  width: 50%;
+  
+  align-self: center;
+
 }

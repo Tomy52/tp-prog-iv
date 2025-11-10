@@ -1,5 +1,6 @@
 <section>
   <form action="" [formGroup]="form" (ngSubmit)="submit()">
+
   <h1> Eliminar proveedor </h1>
 
     @if(this.form_ok() == true)
@@ -25,5 +26,6 @@
     Como hago para que funcione dentro de un form o algo asi, lo intente pero no funciona...?
     -->
     <input type="submit" value="Eliminar" [disabled]="!isValid()">
+    
   </form>
 </section>
