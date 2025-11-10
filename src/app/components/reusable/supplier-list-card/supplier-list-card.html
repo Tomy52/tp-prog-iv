@@ -1,0 +1,23 @@
+<article>
+  <div class="title">
+    <h2>{{supplier_info().companyName}} -- {{supplier_info().cuit}}</h2>
+  </div>
+
+  <div class="contacts">
+    <h3>Contactos</h3>
+    <p>Número de teléfono: {{supplier_info().phoneNumber}}</p>
+    <p>Email: {{supplier_info().email}}</p>
+  </div>
+
+  <div class="address">
+    <h3>Dirección</h3>
+    <p>Calle: {{supplier_info().address.street + ' ' + supplier_info().address.number}}</p>
+    <p>Ciudad: {{supplier_info().address.city}}</p>
+  </div>
+
+  <div *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']">
+    <button (click)="update_sup()">Modificar</button>
+    <button (click)="delete_sup()">Eliminar</button>
+  </div>
+
+</article>

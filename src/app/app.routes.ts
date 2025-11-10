@@ -4,10 +4,9 @@ import { MainMenuScreen } from './components/main-menu/main-menu-screen/main-men
 import { AuthGuard } from './services/auth-guard';
 import { SupplierFormSection } from './components/sections/supplier/supplier-form-section/supplier-form-section';
 import { DeleteSupplier } from './components/sections/supplier/delete-supplier/delete-supplier';
+import {SuppliersPage} from './components/sections/supplier/suppliers-page/suppliers-page';
 import {ProductFormSection} from './components/sections/product/product-form-section/product-form-section';
-import {
-  DeleteProductFormComponent
-} from './components/sections/product/delete-product-form-component/delete-product-form-component';
+import {DeleteProductFormComponent} from './components/sections/product/delete-product-form-component/delete-product-form-component';
 
 
 export const routes: Routes = [
@@ -16,7 +15,8 @@ export const routes: Routes = [
     component: Login,
     data: {
       showHeader: false,
-      showFooter: false}
+      showFooter: false
+    }
   },
   {
     path:"main-menu",
@@ -49,6 +49,14 @@ export const routes: Routes = [
   {
     path:"delete-supplier",
     component:DeleteSupplier
+  },
+  {
+    path:"suppliers",
+    component:SuppliersPage
+  },
+  {
+    path:"test",
+    component:TestComponent,
   },
   {
     path:"**",
