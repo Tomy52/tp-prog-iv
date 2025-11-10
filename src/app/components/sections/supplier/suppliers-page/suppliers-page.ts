@@ -5,9 +5,9 @@ import {PageButtons} from '../../../reusable/page-buttons/page-buttons';
 import {PageInfo} from '../../../../interfaces/other/page-info';
 import {SupplierList} from '../../../reusable/supplier-list/supplier-list';
 import {SearchBar} from '../../../reusable/search-bar/search-bar';
-import {SuppliersPageResponse} from '../../../../interfaces/other/suppliers-page-response';
 import {Observable, of} from 'rxjs';
 import { toSignal } from '@angular/core/rxjs-interop';
+import {PageResponse} from '../../../../interfaces/other/page-response';
 
 @Component({
   selector: 'app-suppliers-page',
@@ -27,13 +27,13 @@ export class SuppliersPage {
   page_size:number;
   page_size_ops:number[] = [2,5,10];
 
-  page_data: WritableSignal<SuppliersPageResponse | null >;
+  page_data: WritableSignal<PageResponse<Supplier> | null >;
   error_msg:string = '';
 
   search_term:string = '';
 
   constructor() {
-    this.page_size = this.page_size_ops[0];
+    this.page_size = Number(localStorage.getItem('pageSize')) || this.page_size_ops[0];
     this.page_data = signal(null);
     this.getSuppliers('');
   }
@@ -91,6 +91,7 @@ export class SuppliersPage {
   changePageSize(size:number)
   {
     this.page_size = size;
+    localStorage.setItem('pageSize',size.toString());
     this.resetPageCount();
     this.getSuppliers();
   }

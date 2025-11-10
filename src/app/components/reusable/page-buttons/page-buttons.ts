@@ -31,8 +31,7 @@ export class PageButtons implements OnInit {
   size_changed = output<number>();
 
   ngOnInit(): void {
-    this.selected_page_size = this.page_size_ops()[0].toString();
-    console.log(this.selected_page_size);
+    this.selected_page_size = localStorage.getItem('pageSize') || this.page_size_ops()[0].toString();
   }
 
   sendNextSignal()

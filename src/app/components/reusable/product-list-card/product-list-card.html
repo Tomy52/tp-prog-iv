@@ -1,0 +1,17 @@
+<article>
+  <div class="title">
+    <h2>{{ productInfo().name }}</h2>
+  </div>
+
+  <div class="info">
+    <h3>Información</h3>
+    <p>Id: {{ productInfo().idProduct }}</p>
+    <p>Estado: {{ productInfo().status === ProductStatus.Enabled ? "Activo" : "Inactivo" }}</p>
+  </div>
+
+  <div *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']">
+    <button (click)="updateProduct()">Modificar</button>
+    <button (click)="deleteProduct()">Dar de baja</button>
+  </div>
+
+</article>
