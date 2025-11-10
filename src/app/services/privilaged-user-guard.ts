@@ -10,5 +10,5 @@ export const privilagedUserGuard: CanActivateFn = (route, state) => {
 
 
   // this is really bad, but it's the only way we can tell.
-  return role_string === 'ROLE_EMPLOYEE' ? true : new RedirectCommand(router.parseUrl('main-menu'));
+  return role_string === 'ROLE_EMPLOYEE' ? new RedirectCommand(router.parseUrl('main-menu')) : true;
 };
