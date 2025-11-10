@@ -18,10 +18,15 @@ export class SupplierListCard {
 
   delete_sup()
   {
-    this.supplier_service.deleteSupplier(this.supplier_info().id).subscribe({
-      next: () => window.location.reload(),
-      error: () => console.error('Error borrando')
-    });
+    const ok = confirm(`¿Realmente quiere eliminar ${this.supplier_info().companyName}?`);
+
+    if(ok)
+    {
+      this.supplier_service.deleteSupplier(this.supplier_info().id).subscribe({
+        next: () => window.location.reload(),
+        error: () => console.error('Error borrando')
+      });
+    }
   }
 
   update_sup()

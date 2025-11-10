@@ -4,6 +4,7 @@ import {map, Observable} from 'rxjs';
 import {Product} from '../interfaces/product';
 import {ProductStatus} from '../interfaces/productStatus';
 import {PageResponse} from '../interfaces/other/page-response';
+import {ProductStatus} from '../interfaces/productStatus';
 
 @Injectable({
   providedIn: 'root'
@@ -55,6 +56,16 @@ export class ProductService {
         return page_info;
       })
     );
+  }
+
+  getEnabledProducts() {
+    return this.getProducts().pipe(
+      map((products) => products.filter((product) => product.status === ProductStatus.Enabled)
+      ));
+  }
+
+  getProductById(id: number): Observable<Product> {
+    return this.http.get<Product>(`${this.base_url}/${id}`);
   }
 
   addProduct(product: Partial<Product>): Observable<Product> {
