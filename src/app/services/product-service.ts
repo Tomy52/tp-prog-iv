@@ -57,10 +57,6 @@ export class ProductService {
       ));
   }
 
-  getProductById(id: number): Observable<Product> {
-    return this.http.get<Product>(`${this.base_url}/${id}`);
-  }
-
   addProduct(product: Partial<Product>): Observable<Product> {
     return this.http.post<Product>(`${this.baseUrl}`,product);
   }

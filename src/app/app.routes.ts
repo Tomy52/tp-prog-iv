@@ -46,7 +46,8 @@ export const routes: Routes = [
   },
   {
     path:"products",
-    component:ProductsPage
+    component:ProductsPage,
+    canActivate: [AuthGuard]
   },
   {
     path: "delete-product",
@@ -55,35 +56,43 @@ export const routes: Routes = [
   },
   {
     path:"form-suppliers",
-    component:SupplierFormSection
+    component:SupplierFormSection,
+    canActivate: [AuthGuard]
   },
   {
     path:"form-suppliers/:id",
-    component:SupplierFormSection
+    component:SupplierFormSection,
+    canActivate: [AuthGuard]
   },
   {
     path:"delete-supplier",
-    component:DeleteSupplier
+    component:DeleteSupplier,
+    canActivate: [AuthGuard]
   },
   {
     path:"product-supplier",
-    component: ProductSupplierFormSection
+    component: ProductSupplierFormSection,
+    canActivate: [AuthGuard]
   },
   {
     path:"product-supplier/:id",
-    component: ProductSupplierFormSection
+    component: ProductSupplierFormSection,
+    canActivate: [AuthGuard]
   },
   {
     path:"price-by-supplier",
-    component: PriceBySupplierListComponent
+    component: PriceBySupplierListComponent,
+    canActivate: [AuthGuard]
   },
   {
     path:"price-by-product",
-    component: PriceListByProductComponent
+    component: PriceListByProductComponent,
+    canActivate: [AuthGuard]
   },
   {
     path:"suppliers",
-    component:SuppliersPage
+    component:SuppliersPage,
+    canActivate: [AuthGuard]
   },
   {
     path:"**",
