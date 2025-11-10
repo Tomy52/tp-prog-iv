@@ -9,6 +9,15 @@ import {ProductFormSection} from './components/sections/product/product-form-sec
 import {
   DeleteProductFormComponent
 } from './components/sections/product/delete-product-form-component/delete-product-form-component';
+import {
+  ProductSupplierFormSection
+} from './components/sections/product-supplier/product-supplier-form-section/product-supplier-form-section';
+import {
+  PriceBySupplierListComponent
+} from './components/sections/product-supplier/price-list-by-supplier-component/price-by-supplier-list-component';
+import {
+  PriceListByProductComponent
+} from './components/sections/product-supplier/price-list-by-product-component/price-list-by-product-component';
 import {ProductsPage} from './components/sections/product/products-page/products-page';
 
 
@@ -37,7 +46,8 @@ export const routes: Routes = [
   },
   {
     path:"products",
-    component:ProductsPage
+    component:ProductsPage,
+    canActivate: [AuthGuard]
   },
   {
     path: "delete-product",
@@ -46,19 +56,43 @@ export const routes: Routes = [
   },
   {
     path:"form-suppliers",
-    component:SupplierFormSection
+    component:SupplierFormSection,
+    canActivate: [AuthGuard]
   },
   {
     path:"form-suppliers/:id",
-    component:SupplierFormSection
+    component:SupplierFormSection,
+    canActivate: [AuthGuard]
   },
   {
     path:"delete-supplier",
-    component:DeleteSupplier
+    component:DeleteSupplier,
+    canActivate: [AuthGuard]
+  },
+  {
+    path:"product-supplier",
+    component: ProductSupplierFormSection,
+    canActivate: [AuthGuard]
+  },
+  {
+    path:"product-supplier/:id",
+    component: ProductSupplierFormSection,
+    canActivate: [AuthGuard]
+  },
+  {
+    path:"price-by-supplier",
+    component: PriceBySupplierListComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path:"price-by-product",
+    component: PriceListByProductComponent,
+    canActivate: [AuthGuard]
   },
   {
     path:"suppliers",
-    component:SuppliersPage
+    component:SuppliersPage,
+    canActivate: [AuthGuard]
   },
   {
     path:"**",

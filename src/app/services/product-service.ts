@@ -16,10 +16,6 @@ export class ProductService {
     return this.http.get<Product[]>(`${this.baseUrl}`);
   }
 
-  getActiveProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(`${this.baseUrl}/active-list`);
-  }
-
   getEnabledProducts() {
     return this.getProducts().pipe(
       map((products) => products.filter((product) => product.status === ProductStatus.Enabled)
