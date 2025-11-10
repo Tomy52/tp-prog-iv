@@ -2,7 +2,7 @@ import {CanActivateFn, RedirectCommand, Router} from '@angular/router';
 import {AuthService} from './auth-service';
 import {inject} from '@angular/core';
 
-export const privilagedUserGuard: CanActivateFn = (route, state) => {
+export const privilegedUserGuard: CanActivateFn = (route, state) => {
   const auth_service = inject(AuthService);
   const router = inject(Router);
 
