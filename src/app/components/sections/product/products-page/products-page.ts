@@ -5,13 +5,16 @@ import {ProductService} from '../../../../services/product-service';
 import {ProductList} from '../../../reusable/product-list/product-list';
 import {PageResponse} from '../../../../interfaces/other/page-response';
 import {Product} from '../../../../interfaces/product';
+import {AuthService} from '../../../../services/auth-service';
+import {AllowViewUser} from '../../../../directives/allow-view-user';
 
 @Component({
   selector: 'app-products-page',
   imports: [
     PageButtons,
     SearchBar,
-    ProductList
+    ProductList,
+    AllowViewUser
   ],
   templateUrl: './products-page.html',
   styleUrl: './products-page.css',
@@ -19,6 +22,7 @@ import {Product} from '../../../../interfaces/product';
 })
 export class ProductsPage {
   productService = inject(ProductService);
+  authService = inject(AuthService);
 
   page = signal<number>(0);
 
@@ -29,15 +33,16 @@ export class ProductsPage {
   errMsg:string = '';
 
   searchTerm:string = '';
+  displayDisabledProducts = signal<boolean>(false);
 
   constructor() {
     this.pageSize = Number(localStorage.getItem('pageSize')) || this.pageSizeOptions[0];
     this.pageData = signal(null);
-    this.getProducts('');
+    this.getProducts('', this.displayDisabledProducts());
   }
 
-  getProducts(query: string = this.searchTerm) {
-    this.productService.getFilteredAndMakeFilteredPage(this.page(), this.pageSize, query).subscribe({
+  getProducts(query: string = this.searchTerm, showAll: boolean) {
+    this.productService.getFilteredAndMakeFilteredPage(this.page(), this.pageSize, query, showAll).subscribe({
       next: (x) => {
         this.pageData.set(x);
       },
@@ -58,14 +63,20 @@ export class ProductsPage {
     });*/
   }
 
+  toggleDisabledProductsVisibility() {
+    this.displayDisabledProducts.set(!this.displayDisabledProducts());
+    this.resetPageCount();
+    this.getProducts(this.searchTerm, this.displayDisabledProducts());
+  }
+
   goForward() {
     this.page.update((number) => number + 1);
-    this.getProducts(this.searchTerm);
+    this.getProducts(this.searchTerm, this.displayDisabledProducts());
   }
 
   goBack() {
     this.page.update((number) => number - 1);
-    this.getProducts(this.searchTerm);
+    this.getProducts(this.searchTerm, this.displayDisabledProducts());
   }
 
   resetPageCount() {
@@ -75,14 +86,14 @@ export class ProductsPage {
   searchByName(query: string) {
     this.resetPageCount();
     this.searchTerm = query;
-    this.getProducts(query);
+    this.getProducts(query,this.displayDisabledProducts());
   }
 
   changePageSize(size: number) {
     this.pageSize = size;
     localStorage.setItem('pageSize',size.toString());
     this.resetPageCount();
-    this.getProducts();
+    this.getProducts('',this.displayDisabledProducts());
   }
 
 }
