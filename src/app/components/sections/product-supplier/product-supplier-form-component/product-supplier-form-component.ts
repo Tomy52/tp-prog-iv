@@ -101,9 +101,12 @@ export class ProductSupplierFormComponent {
 
     this.productSupplierService.createProductSupplier(productSupplierData).subscribe(
       {
-        next: () => {this.productSupplierForm.reset()},
+        next: () => {
+          this.productSupplierForm.reset();
+        },
         error: (err) => {
           alert(`${err.error}`);
+          this.productSupplierForm.reset();
         }
       }
     );
@@ -121,7 +124,9 @@ export class ProductSupplierFormComponent {
 
     this.productSupplierService.updateProductSupplier(idProductSupplier, productSupplierData).subscribe(
       {
-        next: () => {this.productSupplierForm.reset()},
+        next: () => {
+          this.productSupplierForm.reset()
+        },
         error: (err) => {
           alert(`${err.error}`);
         }
