@@ -22,7 +22,6 @@ import {AllowViewUser} from '../../../../directives/allow-view-user';
 })
 export class ProductsPage {
   productService = inject(ProductService);
-  authService = inject(AuthService);
 
   page = signal<number>(0);
 
@@ -35,6 +34,8 @@ export class ProductsPage {
   searchTerm:string = '';
   displayDisabledProducts = signal<boolean>(false);
 
+  searching:boolean = false;
+
   constructor() {
     this.pageSize = Number(localStorage.getItem('pageSize')) || this.pageSizeOptions[0];
     this.pageData = signal(null);
@@ -42,6 +43,7 @@ export class ProductsPage {
   }
 
   getProducts(query: string = this.searchTerm, showAll: boolean) {
+    this.searching = true;
     this.productService.getFilteredAndMakeFilteredPage(this.page(), this.pageSize, query, showAll).subscribe({
       next: (x) => {
         this.pageData.set(x);
@@ -49,18 +51,9 @@ export class ProductsPage {
       error: (e) => {
         this.pageData.set(e.error);
         this.errMsg = `Error: ${e.status}, ${e.statusText}`;
-      }
+      },
+      complete: () => this.searching = false
     });
-
-    /*
-    this.search_method.subscribe((response) => { // intento humilde al patron strategy
-      console.log(response);
-      this.productList.set(response.content);
-      this.updateButtonState(response.first,response.last);
-      this.page_data.current_page = response.number + 1;
-      this.page_data.max_page = response.totalPages;
-      // aca se podria sacar los otros elementos necesarios
-    });*/
   }
 
   toggleDisabledProductsVisibility() {
