@@ -13,7 +13,8 @@ const select_value_accessor = {
   imports: [ReactiveFormsModule, FormsModule],
   templateUrl: './product-dropdown-select.html',
   styleUrl: './product-dropdown-select.css',
-  providers: [select_value_accessor]
+  providers: [select_value_accessor],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductDropdownSelect implements ControlValueAccessor {
   products = input.required<Product[]>();

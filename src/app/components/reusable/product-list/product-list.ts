@@ -1,4 +1,4 @@
-import {Component, input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, input} from '@angular/core';
 import {Product} from '../../../interfaces/product';
 import {ProductListCard} from '../product-list-card/product-list-card';
 
@@ -8,7 +8,8 @@ import {ProductListCard} from '../product-list-card/product-list-card';
     ProductListCard
   ],
   templateUrl: './product-list.html',
-  styleUrl: './product-list.css'
+  styleUrl: './product-list.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductList {
   products = input.required<Product[]>();

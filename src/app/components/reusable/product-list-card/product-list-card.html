@@ -1,4 +1,4 @@
-<article>
+<article [ngClass]="isDisabled() ? 'disabled' : ''">
   <div class="title">
     <h2>{{ productInfo().name }}</h2>
   </div>
@@ -11,7 +11,7 @@
 
   <div *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']">
     <button (click)="updateProduct()">Modificar</button>
-    <button (click)="deleteProduct()">Dar de baja</button>
+    <button [disabled]="isDisabled()" (click)="deleteProduct()">Dar de baja</button>
   </div>
 
 </article>
