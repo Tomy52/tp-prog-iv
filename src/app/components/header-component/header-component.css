@@ -28,13 +28,26 @@ nav {
 button.nav-bar-button {
   height: 40px;
   width: 60px;
+
   border: none;
   border-radius: 10px;
+
   font-family: "BreeSerif-regular", serif;
   color: var(--main-color);
   transition:
-    background-color .2s ease-in-out,
-    scale .15s ease-in-out;
+  background-color .2s ease-in-out,
+  scale .15s ease-in-out;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+}
+
+.img-button-menu{
+    width: 33px;
+    height: 30px;
+  
 }
 
 button.nav-bar-button:hover {
