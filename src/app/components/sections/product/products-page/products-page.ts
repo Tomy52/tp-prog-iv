@@ -65,6 +65,7 @@ export class ProductsPage {
 
   toggleDisabledProductsVisibility() {
     this.displayDisabledProducts.set(!this.displayDisabledProducts());
+    this.resetPageCount();
     this.getProducts(this.searchTerm, this.displayDisabledProducts());
   }
 

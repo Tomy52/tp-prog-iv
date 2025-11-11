@@ -32,6 +32,7 @@ export class ProductService {
 
     return products.pipe(
       map((products) => products.filter((prod) => prod.name.toLowerCase().includes(name.toLowerCase()))),
+      map((products) => products.sort((a,b) => b.status.localeCompare(a.status))),
       map((products) => {
         const element_count = products.length;
         const total_pages = Math.ceil(element_count / size);
