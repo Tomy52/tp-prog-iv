@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, computed, inject, input, signal} fro
 import {SupplierDropdownSelect} from '../../../reusable/supplier-dropdown-select/supplier-dropdown-select';
 import {Supplier} from '../../../../interfaces/supplier/supplier';
 import {SupplierService} from '../../../../services/supplier-service';
-import {FormBuilder, ReactiveFormsModule} from '@angular/forms';
+import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
 import {ProductSupplierService} from '../../../../services/product-supplier-service';
 import {PriceBySupplierList} from '../../../../interfaces/product-supplier/price-by-supplier-list';
 import {ProductSupplierRowComponent} from '../price-by-supplier-row-component/product-supplier-row-component';
@@ -33,10 +33,9 @@ export class PriceBySupplierListComponent {
   priceList = computed(
       ()=> this.supplierProductList().productsList?.content)
 
-
   supplierForm = this.formBuilder.group({
-    supplier: this.formBuilder.control<number | null>(null)
-  })
+    supplier: [null as number | null, [Validators.required]]
+  });
 
   constructor() {
     this.getSuppliers();

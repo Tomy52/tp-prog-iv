@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, computed, inject, signal} from '@ang
 import {ProductDropdownSelect} from '../../../reusable/product-dropdown-select/product-dropdown-select';
 import {ProductService} from '../../../../services/product-service';
 import {ProductSupplierService} from '../../../../services/product-supplier-service';
-import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormBuilder, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {Product} from '../../../../interfaces/product';
 import {PriceByProductList} from '../../../../interfaces/product-supplier/price-by-product-list';
 import {PriceByProductRowComponent} from '../price-by-product-row-component/price-by-product-row-component';
@@ -32,7 +32,7 @@ export class PriceListByProductComponent {
     ()=> this.priceByProductList().prices?.content)
 
   productForm = this.formBuilder.group({
-    product: this.formBuilder.control<number|null>(null),
+    product: [null as number | null, [Validators.required]]
   })
 
   constructor() {

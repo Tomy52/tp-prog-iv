@@ -1,6 +1,6 @@
 <div>
   <select [ngModel]="value()" (change)="changeValue($event)">
-    <option [value]="null">Seleccione un proveedor</option>
+    <option [value]="null" disabled selected>Seleccione un proveedor</option>
       @for (supplier of suppliers(); track supplier.id) {
         <option [value]="supplier.id"> {{supplier.companyName}} </option>
       }

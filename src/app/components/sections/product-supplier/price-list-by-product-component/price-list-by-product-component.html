@@ -5,7 +5,7 @@
     <app-product-dropdown-select [products]="productList()"
                                  formControlName="product" />
 
-    <button type="submit" [disabled]="productList().length === 0">Buscar</button>
+    <button type="submit" [disabled]="productList().length === 0 || !this.productForm.valid">Buscar</button>
 
   </form>
 

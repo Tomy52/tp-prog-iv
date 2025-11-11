@@ -2,7 +2,7 @@
 
     <form [formGroup]="supplierForm" (ngSubmit)="getPricesBySupplier()">
       <app-supplier-dropdown-select [suppliers]="supplierList()" formControlName="supplier"></app-supplier-dropdown-select>
-      <button [disabled]="supplierList().length === 0" type="submit">Buscar</button>
+      <button [disabled]="supplierList().length === 0 || !this.supplierForm.valid" type="submit">Buscar</button>
     </form>
 
 @if (priceList() !== undefined){
