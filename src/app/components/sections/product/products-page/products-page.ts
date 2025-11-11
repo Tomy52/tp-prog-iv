@@ -6,13 +6,15 @@ import {ProductList} from '../../../reusable/product-list/product-list';
 import {PageResponse} from '../../../../interfaces/other/page-response';
 import {Product} from '../../../../interfaces/product';
 import {AuthService} from '../../../../services/auth-service';
+import {AllowViewUser} from '../../../../directives/allow-view-user';
 
 @Component({
   selector: 'app-products-page',
   imports: [
     PageButtons,
     SearchBar,
-    ProductList
+    ProductList,
+    AllowViewUser
   ],
   templateUrl: './products-page.html',
   styleUrl: './products-page.css',

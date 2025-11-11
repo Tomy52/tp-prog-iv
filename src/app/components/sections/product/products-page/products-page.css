@@ -13,13 +13,13 @@ section {
   background-color: var(--main-color);
 }
 
-.filter-area {
+.toggle-area {
   display: flex;
   flex-direction: row;
   justify-content: center;
   margin-bottom: 10px;
 }
 
-.filter-area label {
+.toggle-area label {
   color: var(--text-color)
 }

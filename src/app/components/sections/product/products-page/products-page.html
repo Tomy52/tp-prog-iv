@@ -3,7 +3,7 @@
   @if (pageData() != null && !errMsg) {
     <h2>Buscar por nombre</h2>
     <app-search-bar (query_sig)="searchByName($event)"></app-search-bar>
-    <div class="filter-area">
+    <div class="toggle-area" *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']">
       <label for="toggle-disabled-products">Mostrar productos desactivados</label>
       <input id="toggle-disabled-products" type="checkbox" (click)="toggleDisabledProductsVisibility()">
     </div>
