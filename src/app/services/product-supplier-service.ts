@@ -31,12 +31,12 @@ export class ProductSupplierService {
     return this.http.delete(`${this.url}/${id}`);
   }
 
-  getAllProductBySupplier(id:number){
-    return this.http.get<PriceBySupplierList>(`${this.url}/filter/${id}`);
+  getAllProductBySupplier(id:number, page:number, size:number){
+    return this.http.get<PriceBySupplierList>(`${this.url}/filter/${id}?page=${page}&size=${size}`);
   }
 
-  getPricesByProduct(id:number){
-    return this.http.get<PriceByProductList>(`${this.url}/filter-product/${id}`);
+  getPricesByProduct(id:number, page:number, size:number){
+    return this.http.get<PriceByProductList>(`${this.url}/filter-product/${id}?page=${page}&size=${size}`);
   }
 
 }
