@@ -13,7 +13,7 @@ import {PriceByProductRowComponent} from '../price-by-product-row-component/pric
     ProductDropdownSelect,
     PriceByProductRowComponent,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
   ],
   templateUrl: './price-list-by-product-component.html',
   styleUrl: './price-list-by-product-component.css',
@@ -40,8 +40,12 @@ export class PriceListByProductComponent {
   }
 
   getProducts(){
-    this.productService.getActiveProducts().subscribe(products => {
+    this.productService.getActiveProducts().subscribe({
+      next: products =>  {
       this.productList.set(products);
+      }, error: error => {
+        alert(error.error);
+      }
     })
   }
 

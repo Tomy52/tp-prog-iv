@@ -43,8 +43,12 @@ export class PriceBySupplierListComponent {
   }
 
   getSuppliers() {
-    this.supplierService.getAllSuppliersAsList().subscribe(suppliers => {
-      this.supplierList.set(suppliers);
+    this.supplierService.getAllSuppliersAsList().subscribe({
+      next: suppliers => {
+        this.supplierList.set(suppliers);
+    }, error: error => {
+        alert(error.error);
+      }
 
     })
   }
