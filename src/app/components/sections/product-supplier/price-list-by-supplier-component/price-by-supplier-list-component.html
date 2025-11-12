@@ -1,8 +1,8 @@
 <section>
 
-    <form [formGroup]="supplierForm" (ngSubmit)="getPricesBySupplier()">
+    <form [formGroup]="supplierForm" (ngSubmit)="search()">
       <app-supplier-dropdown-select [suppliers]="supplierList()" formControlName="supplier"></app-supplier-dropdown-select>
-      <button type="submit">Buscar</button>
+      <button [disabled]="supplierList().length === 0 || !this.supplierForm.valid || searching" type="submit">Buscar</button>
     </form>
 
 @if (priceList() !== undefined){
@@ -14,16 +14,16 @@
     <p>El Proveedor no tiene productos sociados</p>
 
   } @else {
-
     <table>
       <thead>
       <tr>
         <th> Nombre </th>
-        <th> Costo </th>
-        <th> Margen de Ganancia </th>
+        <th *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']"> Costo </th>
+        <th *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']"> Margen de Ganancia </th>
         <th> Precio </th>
-        <th></th>
-        <th></th>
+        <th *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']"> Precio en USD</th>
+        <th *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']"></th>
+        <th *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']"></th>
 
       </tr>
       </thead>
@@ -36,6 +36,16 @@
                }
       </tbody>
   </table>
+      <app-page-buttons (back_signal)="goPreviewsPage()"
+                        (next_signal)="goNextPage()"
+                        [back_active]="supplierProductList().productsList!.first || searching"
+                        [forward_active]="supplierProductList().productsList!.last || searching"
+                        [current_page]="supplierProductList().productsList!.number + 1"
+                        [max_page]="supplierProductList().productsList!.totalPages"
+
+                        (size_changed)="changePageSize($event)"
+                        [page_size_ops]="pageSizeOptions">
+      </app-page-buttons>
   }
 
 }

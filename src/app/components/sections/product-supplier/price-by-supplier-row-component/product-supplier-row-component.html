@@ -1,9 +1,10 @@
     <td>{{productPrice().name}} </td>
-    <td>{{ productPrice().cost }}</td>
-    <td>{{ productPrice().profitMargin }}</td>
+    <td *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']">{{ productPrice().cost }}</td>
+    <td *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']">{{ productPrice().profitMargin }}</td>
     <td>{{ productPrice().price }}</td>
-    <td><button routerLink="/product-supplier/{{productSupplierId()}}">Editar</button></td>
-    <td><button class="delete-button" (click)="deleteProductSupplier()" >Borrar</button></td>
+    <td *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']">{{ productPrice().dollarPrice }}</td>
+    <td *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']"><button routerLink="/product-supplier/{{productSupplierId()}}">Editar</button></td>
+    <td *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']"><button class="delete-button" (click)="deleteProductSupplier()" >Borrar</button></td>
 
 
 

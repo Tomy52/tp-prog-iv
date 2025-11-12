@@ -1,5 +1,5 @@
-import {ChangeDetectionStrategy, Component, forwardRef, input, signal} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR, ReactiveFormsModule} from '@angular/forms';
+import {Component, forwardRef, input, signal} from '@angular/core';
+import {ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule} from '@angular/forms';
 import {Product} from '../../../interfaces/product';
 
 const select_value_accessor = {
@@ -10,7 +10,7 @@ const select_value_accessor = {
 
 @Component({
   selector: 'app-product-dropdown-select',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, FormsModule],
   templateUrl: './product-dropdown-select.html',
   styleUrl: './product-dropdown-select.css',
   providers: [select_value_accessor],
@@ -40,6 +40,7 @@ export class ProductDropdownSelect implements ControlValueAccessor {
 
   changeValue(event:any)
   {
+    this.value.set(Number(event.target.value));
     this.onChange(Number(event.target.value));
   }
 
