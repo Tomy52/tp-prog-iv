@@ -58,6 +58,14 @@ button.nav-bar-button:hover {
   z-index: 1000;
 }
 
+.right-items {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-items: center;
+  gap: 10px;
+}
+
 /*
  esto deberia ser algo provisorio, porque animate.leave esta roto en este momento
  en teoria deberia alcanzar con ponerlo como directiva en el componente del sidebar

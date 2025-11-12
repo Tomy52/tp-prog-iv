@@ -13,13 +13,17 @@ import {SidebarComponent} from '../sidebar-component/sidebar-component';
 import {ClickOutside} from '../../directives/click-outside';
 import {filter} from 'rxjs';
 import {AuthService} from '../../services/auth-service';
+import {DollarText} from '../reusable/dollar-text/dollar-text';
+import {AllowViewUser} from '../../directives/allow-view-user';
 
 @Component({
   selector: 'app-header-component',
   imports: [
     RouterLink,
     SidebarComponent,
-    ClickOutside
+    ClickOutside,
+    DollarText,
+    AllowViewUser
   ],
   templateUrl: './header-component.html',
   styleUrl: './header-component.css',

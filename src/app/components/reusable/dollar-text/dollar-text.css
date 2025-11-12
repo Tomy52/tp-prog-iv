@@ -1,0 +1,16 @@
+div {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+span {
+  z-index: 1110;
+  position: absolute;
+  top: 70%;
+  right: 25%;
+  background-color: black;
+  color:white;
+  padding:3px;
+  border-radius: 10px;
+}

@@ -1,7 +1,12 @@
 <nav>
   <button class="nav-bar-button" title="Ver barra de navegación" (click)="openSidebar()">Menú</button>
   <h1 routerLink="main-menu" title="Regresar al menú principal">Catalogo sistema</h1>
-  <button class="nav-bar-button user-button" title="Ver panel de usuario">{{username()}}</button>
+  <div class="right-items">
+    @defer {
+      <app-dollar-text *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']"/>
+    }
+    <button class="nav-bar-button user-button" title="Ver panel de usuario">{{username()}}</button>
+  </div>
 </nav>
 
 @if(isSidenavOpen()){
