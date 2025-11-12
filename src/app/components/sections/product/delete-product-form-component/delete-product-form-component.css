@@ -1,4 +1,59 @@
+section{
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+  
+  width: 400px;      
+  height: 300px;   
+  margin: 0 auto;   
+  margin-top: 10%;
+  
+  background: var(--main-color);
+  border-radius: 25px;
+  
+}
+
+h2{
+  color: var(--text-color);
+}
+
 form {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  gap: 10px;
+}
+
+label{
+  color: var(--text-color);
+}
+
+button{
+  background-color: var(--secondary-color);
+  border-radius: 10px;
+  border-color: var(--text-color);
+  border-width: 2px;
+  color: var(--text-color);
+
+  margin-top: 10%;
+  
+  width: 100px;
+  font-size: medium;
+  font-family: "BreeSerif-regular", serif;
+
+  cursor: pointer;
+
+}
+
+.desplegable-producto{
+  
+  background-color: var(--main-color);
+  border-radius: 10px;
+  border-color: var(--secondary-color);
+
 }

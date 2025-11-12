@@ -41,7 +41,7 @@ input, select {
   cursor: pointer;
 }
 
-app-supplier-dropdown-select{
+.desplegable-proveedor{
 
   background-color: var(--main-color);
   border-radius: 10px;

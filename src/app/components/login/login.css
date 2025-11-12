@@ -53,7 +53,7 @@ form{
 label{
   padding: 8px;
 
-  color: white;
+  color: var(--text-color);
 }
 
 input{
