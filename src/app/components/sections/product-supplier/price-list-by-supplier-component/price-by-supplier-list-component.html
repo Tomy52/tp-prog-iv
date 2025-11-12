@@ -1,9 +1,11 @@
 <section>
-
+  <article>
+  <h2> Precios según proveedores </h2>
     <form [formGroup]="supplierForm" (ngSubmit)="getPricesBySupplier()">
       <app-supplier-dropdown-select [suppliers]="supplierList()" formControlName="supplier"></app-supplier-dropdown-select>
       <button type="submit">Buscar</button>
     </form>
+  </article>
 
 @if (priceList() !== undefined){
 
