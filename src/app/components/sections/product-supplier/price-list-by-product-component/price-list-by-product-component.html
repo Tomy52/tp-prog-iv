@@ -1,4 +1,6 @@
 <section>
+  <article>
+    <h2> Precios según productos </h2>
   <form [formGroup]="productForm"
         (ngSubmit)="getPricesByProductList()">
 
@@ -8,6 +10,7 @@
     <button type="submit" [disabled]="productList().length === 0 || !this.productForm.valid || searching">Buscar</button>
 
   </form>
+  </article>
 
   @if (priceList() !== undefined){
 

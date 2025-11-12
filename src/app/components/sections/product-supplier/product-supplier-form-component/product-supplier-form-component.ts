@@ -54,7 +54,6 @@ export class ProductSupplierFormComponent {
         this.productSupplierForm.get("product")?.patchValue(this.productSupplierToModify()?.idProduct!)
         this.productSupplierForm.get("cost")?.patchValue(this.productSupplierToModify()?.cost!)
         this.productSupplierForm.get("profitMargin")?.patchValue(this.productSupplierToModify()?.profitMargin!)
-
       }
     });
   }
