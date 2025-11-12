@@ -59,7 +59,7 @@ export class ProductSupplierFormComponent {
   }
 
   getProducts() {
-    this.productService.getActiveProducts().subscribe({
+    this.productService.getEnabledProducts().subscribe({
       next: (products) =>  { this.productsList.set(products) },
       error: (err) => {
         this.productsList.set([]);

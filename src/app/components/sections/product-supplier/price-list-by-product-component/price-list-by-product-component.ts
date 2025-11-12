@@ -52,7 +52,7 @@ export class PriceListByProductComponent {
 
   getProducts(){
     this.searching = true
-    this.productService.getActiveProducts().subscribe({
+    this.productService.getEnabledProducts().subscribe({
       next: products =>  {
       this.productList.set(products);
       }, error: error => {

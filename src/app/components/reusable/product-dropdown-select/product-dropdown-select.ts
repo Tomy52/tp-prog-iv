@@ -1,4 +1,4 @@
-import {Component, forwardRef, input, signal} from '@angular/core';
+import {ChangeDetectionStrategy, Component, forwardRef, input, signal} from '@angular/core';
 import {ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule} from '@angular/forms';
 import {Product} from '../../../interfaces/product';
 
