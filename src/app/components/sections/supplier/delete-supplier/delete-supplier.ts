@@ -30,18 +30,21 @@ export class DeleteSupplier {
   {
     const id = this.form.value.id!;
 
-    console.log(id);
+    const ok = confirm("Realmente quiere hacer esto?");
 
-    this.supplier_service.deleteSupplier(id).subscribe({
-      next: () => {
-        this.getSuppliers();
-        this.resetForm();
-        this.form_ok.set(true);
-      },
-      error: (e) => {
-        this.form_ok.set(false);
-      }
-    });
+    if(ok)
+    {
+      this.supplier_service.deleteSupplier(id).subscribe({
+        next: () => {
+          this.getSuppliers();
+          this.resetForm();
+          this.form_ok.set(true);
+        },
+        error: (e) => {
+          this.form_ok.set(false);
+        }
+      });
+    }
   }
 
   getSuppliers(): void {
