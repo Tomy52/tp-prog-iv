@@ -15,19 +15,10 @@ export class SupplierFormSection implements OnInit {
   id = input<string>();
 
   form_ok:WritableSignal<boolean | null> = signal(null);
+  error = signal<string>('');
 
 
-  supplier_obj?: Partial<Supplier>;/* = { para probar sin el back
-    companyName: "Test",
-    cuit: "23-11111111-2",
-    email: "test@gmail.com",
-    phoneNumber: "1111111111",
-    address: {
-      street: "Calle 12",
-      number: "123",
-      city: "Ciudad"
-    }
-  };*/
+  supplier_obj?: Partial<Supplier>;
 
   finishForm(event:Partial<Supplier>)
   {
@@ -51,7 +42,7 @@ export class SupplierFormSection implements OnInit {
       },
       error: (e) =>{
         this.form_ok.set(false);
-
+        this.error.set(e.error);
         console.log(JSON.stringify(e));
       }
     });

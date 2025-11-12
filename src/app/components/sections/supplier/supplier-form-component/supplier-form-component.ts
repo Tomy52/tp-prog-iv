@@ -19,7 +19,7 @@ export class SupplierFormComponent {
     companyName: ['',[Validators.required,Validators.minLength(3)]],
     cuit: ['',[Validators.required,Validators.pattern("^(20|23|27|30|33)([0-9]{9}|-[0-9]{8}-[0-9]{1})$")]],
     email: ['',[Validators.required,Validators.email]],
-    phone: ['',[Validators.required,Validators.pattern("^[0-9]{9,10}$")]],
+    phone: ['',[Validators.required,Validators.pattern("^[0-9]{10}$")]],
     street: ['',[Validators.required,Validators.minLength(3),Validators.maxLength(50)]],
     number: ['',[Validators.required,Validators.minLength(2),Validators.maxLength(5),Validators.pattern("\\d+")]],
     city: ['',[Validators.required,Validators.minLength(3),Validators.maxLength(50),Validators.pattern("^[a-zA-ZáéíóúÁÉÍÓÚñÑ \s]+$")]]
