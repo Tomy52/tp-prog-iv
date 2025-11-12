@@ -1,12 +1,9 @@
-import {Component, inject, signal, WritableSignal} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, signal, WritableSignal} from '@angular/core';
 import {SupplierService} from '../../../../services/supplier-service';
 import {Supplier} from '../../../../interfaces/supplier/supplier';
 import {PageButtons} from '../../../reusable/page-buttons/page-buttons';
-import {PageInfo} from '../../../../interfaces/other/page-info';
 import {SupplierList} from '../../../reusable/supplier-list/supplier-list';
 import {SearchBar} from '../../../reusable/search-bar/search-bar';
-import {Observable, of} from 'rxjs';
-import { toSignal } from '@angular/core/rxjs-interop';
 import {PageResponse} from '../../../../interfaces/other/page-response';
 
 @Component({
@@ -17,7 +14,8 @@ import {PageResponse} from '../../../../interfaces/other/page-response';
     SearchBar
   ],
   templateUrl: './suppliers-page.html',
-  styleUrl: './suppliers-page.css'
+  styleUrl: './suppliers-page.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SuppliersPage {
   supplier_service = inject(SupplierService);
@@ -32,6 +30,8 @@ export class SuppliersPage {
 
   search_term:string = '';
 
+  searching:boolean = false;
+
   constructor() {
     this.page_size = Number(localStorage.getItem('pageSize')) || this.page_size_ops[0];
     this.page_data = signal(null);
@@ -40,6 +40,7 @@ export class SuppliersPage {
 
   getSuppliers(query:string = this.search_term)
   {
+    this.searching = true; // lock up the buttons so the user doesn't click twice
     this.supplier_service.getFilteredAndMakeFilteredPage(this.page(),this.page_size,query).subscribe({
       next: (x) => {
         console.log(x);
@@ -49,25 +50,15 @@ export class SuppliersPage {
         this.page_data.set(e.error);
         console.log(e);
         this.error_msg = `Error: ${e.status}, ${e.statusText}`;
-      }
+      },
+      complete: () => this.searching = false
     });
-
-    /*
-    this.search_method.subscribe((response) => { // intento humilde al patron strategy
-      console.log(response);
-      this.suppliersList.set(response.content);
-      this.updateButtonState(response.first,response.last);
-      this.page_data.current_page = response.number + 1;
-      this.page_data.max_page = response.totalPages;
-      // aca se podria sacar los otros elementos necesarios
-    });*/
   }
 
   goNextPage() // se podria desactivar el boton del formulario en caso de que sea la ultima pagina
   {
     this.page.update((number) => number + 1);
     this.getSuppliers(this.search_term);
-    //this.updateSearchMethod(this.search_method); // intento humilde al patron strategy
   }
 
   goPreviewsPage()// se podria desactivar el boton del formulario en caso de que sea la primer pagina
