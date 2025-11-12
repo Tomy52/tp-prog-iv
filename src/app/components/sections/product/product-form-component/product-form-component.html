@@ -24,7 +24,7 @@
 
       @if(modifiedProduct()) {
         <label for="product-status">Estado</label>
-        <select name="status" id="product-status" formControlName="status">
+        <select class="desplegable-estado" name="status" id="product-status" formControlName="status">
           <option [ngValue]="productStatusEnum.Enabled">Habilitado</option>
           <option [ngValue]="productStatusEnum.Disabled">Deshabilitado</option>
         </select>
