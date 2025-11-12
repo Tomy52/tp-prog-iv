@@ -6,6 +6,19 @@ article {
   border-radius: 5px;
 }
 
-article > div {
+button{
+  background-color: var(--secondary-color);
+  border-radius: 10px;
+  border-color: var(--text-color);
+  border-width: 2px;
+  color: var(--text-color);
+
+  margin-top: 10%;
+  margin-left: 3%;
+
+  width: 100px;
+  font-size: medium;
+  font-family: "BreeSerif-regular", serif;
+
 }
 
