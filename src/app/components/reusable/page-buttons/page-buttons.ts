@@ -1,4 +1,4 @@
-import {Component, input, OnInit, output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, input, OnInit, output} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 
 @Component({
@@ -7,7 +7,8 @@ import {FormsModule} from '@angular/forms';
     FormsModule
   ],
   templateUrl: './page-buttons.html',
-  styleUrl: './page-buttons.css'
+  styleUrl: './page-buttons.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class PageButtons implements OnInit {

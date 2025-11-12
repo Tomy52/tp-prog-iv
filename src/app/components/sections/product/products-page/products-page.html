@@ -2,7 +2,7 @@
   <h1>Lista de productos</h1>
   @if (pageData() != null && !errMsg) {
     <h2>Buscar por nombre</h2>
-    <app-search-bar (query_sig)="searchByName($event)"></app-search-bar>
+    <app-search-bar (query_sig)="searchByName($event)" [disabled]="searching"></app-search-bar>
     <div class="toggle-area" *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']">
       <label for="toggle-disabled-products">Mostrar productos desactivados</label>
       <input id="toggle-disabled-products" type="checkbox" (click)="toggleDisabledProductsVisibility()">
@@ -13,8 +13,8 @@
       <app-product-list [products]="pageData()!.content"/>
       <app-page-buttons (back_signal)="goBack()"
                         (next_signal)="goForward()"
-                        [back_active]="pageData()!.first"
-                        [forward_active]="pageData()!.last"
+                        [back_active]="pageData()!.first || searching"
+                        [forward_active]="pageData()!.last || searching"
                         [current_page]="pageData()!.number"
                         [max_page]="pageData()!.totalPages"
 

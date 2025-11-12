@@ -1,4 +1,4 @@
-import {Component, input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, input} from '@angular/core';
 import {Supplier} from '../../../interfaces/supplier/supplier';
 import {SupplierListCard} from '../supplier-list-card/supplier-list-card';
 
@@ -8,7 +8,8 @@ import {SupplierListCard} from '../supplier-list-card/supplier-list-card';
     SupplierListCard
   ],
   templateUrl: './supplier-list.html',
-  styleUrl: './supplier-list.css'
+  styleUrl: './supplier-list.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SupplierList {
   suppliers = input.required<Supplier[]>();

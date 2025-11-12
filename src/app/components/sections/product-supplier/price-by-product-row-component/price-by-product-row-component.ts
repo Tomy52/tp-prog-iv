@@ -2,11 +2,13 @@ import {ChangeDetectionStrategy, Component, inject, input, output} from '@angula
 import {RouterLink} from '@angular/router';
 import {ResponsePriceProduct} from '../../../../interfaces/product-supplier/response-price-product';
 import {ProductSupplierService} from '../../../../services/product-supplier-service';
+import {AllowViewUser} from '../../../../directives/allow-view-user';
 
 @Component({
   selector: 'tr[app-price-by-product-row-component]',
   imports: [
-    RouterLink
+    RouterLink,
+    AllowViewUser
   ],
   templateUrl: './price-by-product-row-component.html',
   styleUrl: './price-by-product-row-component.css',

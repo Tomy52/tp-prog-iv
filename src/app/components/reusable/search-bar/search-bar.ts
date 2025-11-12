@@ -1,4 +1,4 @@
-import {Component, inject, output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, input, output} from '@angular/core';
 import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @Component({
@@ -8,10 +8,12 @@ import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
     FormsModule
   ],
   templateUrl: './search-bar.html',
-  styleUrl: './search-bar.css'
+  styleUrl: './search-bar.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SearchBar {
   form_builder = inject(FormBuilder);
+  disabled = input.required<boolean>();
 
   query_sig = output<string>();
 
