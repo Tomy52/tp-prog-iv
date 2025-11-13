@@ -9,12 +9,12 @@
       @if(productForm.get("name")?.hasError('required') && productForm.get("name")?.dirty){
         <p style="color:red">El nombre del producto es obligatorio</p>
       }
-      @if(success() && !modifiedProduct()) {
-        <p class="success">¡Producto registrado exitosamente!</p>
-      } @else if (success() && modifiedProduct()) {
-        <p class="success">¡Producto modificado exitosamente!</p>
-      } @else if (success() === false) {
-        <p class="failure">Error</p>
+      @if(success() && !modifiedProduct() && err()) {
+        <p class="success" (click)="err.set(null)">{{ err() }}</p>
+      } @else if (success() && modifiedProduct() && err()) {
+        <p class="success" (click)="err.set(null)">{{ err() }}</p>
+      } @else if (success() === false && err()) {
+        <p class="failure" (click)="err.set(null)">{{err()}}</p>
       }
       <label for="product-name">Nombre del producto</label>
       <input type="text" id="product-name" formControlName="name" placeholder="Harina">

@@ -16,6 +16,8 @@ import {Product} from '../../../../interfaces/product';
 })
 export class ProductFormComponent {
   success: WritableSignal<boolean|null> = signal<boolean|null>(null);
+  err = signal<string|null>(null);
+
   formBuilder: FormBuilder = inject(FormBuilder);
   productService: ProductService = inject(ProductService);
 
@@ -57,19 +59,20 @@ export class ProductFormComponent {
       status: ProductStatus.Enabled
     };
 
-    return this.productService.addProduct(product).subscribe(
-        {
-          next: () => {
-            this.success.set(true);
-            this.productForm.markAsPristine();
-            this.productForm.reset();
+    this.productService.addProduct(product).subscribe(
+      {
+        next: () => {
+          this.success.set(true);
+          this.productForm.markAsPristine();
+          this.productForm.reset();
+          this.err.set('¡Producto registrado exitosamente!');
           },
-          error: (err) => {
-            this.success.set(false);
-            alert("No se pudo completar la carga del producto");
-            console.error(`Hubo un error en la carga: ${err.error}`);
-          }
+        error: (err) => {
+          this.success.set(false);
+          alert("No se pudo completar la carga del producto");
+          this.err.set(`${err.error}`);
         }
+      }
     );
   }
 
@@ -85,14 +88,15 @@ export class ProductFormComponent {
 
     console.log(updatedProduct.status);
 
-    return this.productService.modifyProduct(updatedProduct).subscribe({
+    this.productService.modifyProduct(updatedProduct).subscribe({
       next: () => {
         this.success.set(true);
+        this.err.set('¡Producto modificado exitosamente!');
       },
       error: (err) => {
         this.success.set(false);
         alert("No se pudo completar la modificación del producto");
-        console.error(`Hubo un error en la modificación: ${err.error}`);
+        this.err.set(`${err.error}`);
       }
     });
   }
