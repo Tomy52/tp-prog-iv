@@ -16,7 +16,7 @@ export class ProductService {
     return this.http.get<Product[]>(`${this.baseUrl}`);
   }
 
-  getEnabledProducts() {
+  getEnabledProducts(): Observable<Product[]> {
     return this.getProducts().pipe(
       map((products) => products.filter((product) => product.status === ProductStatus.Enabled)
       ));
@@ -26,12 +26,13 @@ export class ProductService {
     return this.http.get<Product>(`${this.baseUrl}/${id}`);
   }
 
-  getFilteredAndMakeFilteredPage(page:number, size:number, name:string) : Observable<PageResponse<Product>>
-  {
+  getFilteredAndMakeFilteredPage(page:number, size:number, name:string, showAll: boolean) : Observable<PageResponse<Product>> {
     const offset:number = page*size;
+    const products = showAll ? this.getProducts() : this.getEnabledProducts();
 
-    return this.http.get<Product[]>(this.baseUrl).pipe(
+    return products.pipe(
       map((products) => products.filter((prod) => prod.name.toLowerCase().includes(name.toLowerCase()))),
+      map((products) => products.sort((a,b) => b.status.localeCompare(a.status))),
       map((products) => {
         const element_count = products.length;
         const total_pages = Math.ceil(element_count / size);

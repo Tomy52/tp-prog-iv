@@ -54,13 +54,12 @@ export class ProductSupplierFormComponent {
         this.productSupplierForm.get("product")?.patchValue(this.productSupplierToModify()?.idProduct!)
         this.productSupplierForm.get("cost")?.patchValue(this.productSupplierToModify()?.cost!)
         this.productSupplierForm.get("profitMargin")?.patchValue(this.productSupplierToModify()?.profitMargin!)
-
       }
     });
   }
 
   getProducts() {
-    this.productService.getProducts().subscribe({
+    this.productService.getEnabledProducts().subscribe({
       next: (products) =>  { this.productsList.set(products) },
       error: (err) => {
         this.productsList.set([]);
@@ -101,9 +100,12 @@ export class ProductSupplierFormComponent {
 
     this.productSupplierService.createProductSupplier(productSupplierData).subscribe(
       {
-        next: () => {this.productSupplierForm.reset()},
+        next: () => {
+          this.productSupplierForm.reset();
+        },
         error: (err) => {
           alert(`${err.error}`);
+          this.productSupplierForm.reset();
         }
       }
     );
@@ -121,7 +123,9 @@ export class ProductSupplierFormComponent {
 
     this.productSupplierService.updateProductSupplier(idProductSupplier, productSupplierData).subscribe(
       {
-        next: () => {this.productSupplierForm.reset()},
+        next: () => {
+          this.productSupplierForm.reset()
+        },
         error: (err) => {
           alert(`${err.error}`);
         }

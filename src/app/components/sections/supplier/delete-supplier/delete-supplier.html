@@ -11,20 +11,8 @@
       <p (click)="form_ok.set(null)"> Error! </p>
     }
 
-  <!--
-    <select formControlName="id">
-    @for (supplier of suppliers(); track supplier.id) {
-      <option [ngValue]="supplier.id">{{supplier.companyName}}</option>
-    }
-    </select>
-    -->
+    <app-supplier-dropdown-select [suppliers]="suppliers()" formControlName="id"/>
 
-    <app-supplier-dropdown-select class="desplegable-proveedor" [suppliers]="suppliers()" formControlName="id"/>
-
-    <!-- se supone que quiero este componente para poder seleccionar el proveedor
-    cuando, por ejemplo se vayan a cargar precios, o buscar por un select.
-    Como hago para que funcione dentro de un form o algo asi, lo intente pero no funciona...?
-    -->
     <input type="submit" value="Eliminar" [disabled]="!isValid()">
     
   </form>

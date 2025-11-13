@@ -1,13 +1,16 @@
 <section>
+  <article>
+    <h2> Precios según productos </h2>
   <form [formGroup]="productForm"
         (ngSubmit)="getPricesByProductList()">
 
     <app-product-dropdown-select [products]="productList()"
                                  formControlName="product" />
 
-    <button type="submit">Buscar</button>
+    <button type="submit" [disabled]="productList().length === 0 || !this.productForm.valid || searching">Buscar</button>
 
   </form>
+  </article>
 
   @if (priceList() !== undefined){
 
@@ -23,11 +26,12 @@
           <thead>
           <tr>
             <th> Proveedor</th>
-            <th> Costo </th>
-            <th> Margen de Ganancia </th>
+            <th *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']"> Costo </th>
+            <th *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']"> Margen de Ganancia </th>
             <th> Precio </th>
-            <th></th>
-            <th></th>
+            <th *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']"> Precio en USD </th>
+            <th *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']"></th>
+            <th *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']"></th>
 
           </tr>
           </thead>
@@ -39,9 +43,19 @@
                     [productSupplierId]="productPrice.idProductSupplier"
                     (rowDeleted)="handleRowDeletion($event)"></tr>
               }
-
           </tbody>
         </table>
+
+        <app-page-buttons (back_signal)="goPreviewsPage()"
+                          (next_signal)="goNextPage()"
+                          [back_active]="priceByProductList().prices!.first || searching"
+                          [forward_active]="priceByProductList().prices!.last || searching"
+                          [current_page]="priceByProductList().prices!.number + 1"
+                          [max_page]="priceByProductList().prices!.totalPages"
+
+                          (size_changed)="changePageSize($event)"
+                          [page_size_ops]="pageSizeOptions">
+        </app-page-buttons>
     }
   }
 

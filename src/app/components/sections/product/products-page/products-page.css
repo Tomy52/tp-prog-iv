@@ -1,6 +1,7 @@
-h1 {
+h1,h2 {
   color: white;
   text-align: center;
+  margin: 10px;
 }
 
 section {
@@ -10,4 +11,15 @@ section {
   border-radius: 10px;
 
   background-color: var(--main-color);
+}
+
+.toggle-area {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.toggle-area label {
+  color: var(--text-color)
 }

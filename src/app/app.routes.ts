@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { Login } from './components/login/login';
 import { MainMenuScreen } from './components/main-menu/main-menu-screen/main-menu-screen';
-import { AuthGuard } from './services/auth-guard';
+import { AuthGuard } from './guards/auth-guard';
 import { SupplierFormSection } from './components/sections/supplier/supplier-form-section/supplier-form-section';
 import { DeleteSupplier } from './components/sections/supplier/delete-supplier/delete-supplier';
 import {SuppliersPage} from './components/sections/supplier/suppliers-page/suppliers-page';
@@ -19,7 +19,10 @@ import {
   PriceListByProductComponent
 } from './components/sections/product-supplier/price-list-by-product-component/price-list-by-product-component';
 import {ProductsPage} from './components/sections/product/products-page/products-page';
-import {privilegedUserGuard} from './services/privileged-user-guard';
+import {privilegedUserGuard} from './guards/privileged-user-guard';
+import {supplierExistsGuard} from './guards/supplier-exists-guard';
+import {priceExistsGuard} from './guards/price-exists-guard';
+import {productExistsGuard} from './guards/product-exists-guard';
 
 
 export const routes: Routes = [
@@ -43,7 +46,7 @@ export const routes: Routes = [
   {
     path:"form-products/:id",
     component: ProductFormSection,
-    canActivate: [AuthGuard,privilegedUserGuard]
+    canActivate: [AuthGuard,privilegedUserGuard, productExistsGuard]
   },
   {
     path:"products",
@@ -63,7 +66,7 @@ export const routes: Routes = [
   {
     path:"form-suppliers/:id",
     component:SupplierFormSection,
-    canActivate: [AuthGuard,privilegedUserGuard]
+    canActivate: [AuthGuard,privilegedUserGuard,supplierExistsGuard]
   },
   {
     path:"delete-supplier",
@@ -78,7 +81,7 @@ export const routes: Routes = [
   {
     path:"product-supplier/:id",
     component: ProductSupplierFormSection,
-    canActivate: [AuthGuard, privilegedUserGuard]
+    canActivate: [AuthGuard, privilegedUserGuard, priceExistsGuard]
   },
   {
     path:"price-by-supplier",

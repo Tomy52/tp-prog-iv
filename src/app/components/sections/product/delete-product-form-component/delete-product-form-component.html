@@ -9,11 +9,7 @@
         } @else if (success() === false) {
           <p class="failure">Baja fallida</p>
         }
-
-        <label for="product-select">Producto</label>
-
-        <app-product-dropdown-select class="desplegable-producto" [products]="products()" formControlName="product"/>
-        
+        <app-product-dropdown-select [products]="products()" formControlName="product"/>
         <button type="submit" [disabled]="this.formIsInvalid()">Borrar</button>
       </form>
 </section>

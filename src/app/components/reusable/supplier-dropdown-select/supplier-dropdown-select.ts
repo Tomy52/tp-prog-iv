@@ -1,5 +1,5 @@
 import {Component, forwardRef, input, signal} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR, ReactiveFormsModule} from '@angular/forms';
+import {ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule} from '@angular/forms';
 import { Supplier } from '../../../interfaces/supplier/supplier';
 
 const select_value_accessor = {
@@ -10,7 +10,7 @@ const select_value_accessor = {
 
 @Component({
   selector: 'app-supplier-dropdown-select',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, FormsModule],
   templateUrl: './supplier-dropdown-select.html',
   styleUrl: './supplier-dropdown-select.css',
   providers: [select_value_accessor]
@@ -40,6 +40,7 @@ export class SupplierDropdownSelect implements ControlValueAccessor {
   changeValue(event:any)
   {
     console.log(Number(event.target.value));
+    this.value.set(Number(event.target.value));
     this.onChange(Number(event.target.value));
   }
 
