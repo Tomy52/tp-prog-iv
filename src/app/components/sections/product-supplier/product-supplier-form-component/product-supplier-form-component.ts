@@ -35,6 +35,9 @@ export class ProductSupplierFormComponent {
   productSupplierToModify = input<Partial<ResponseProductSupplier>>();
   isEditing = input.required<boolean>();
 
+  err = signal<string|null>(null);
+  success = signal<boolean|null>(null);
+
   productSupplierForm = this.formBuilder.group({
     product: this.formBuilder.control<number | null>(null),
     supplier: this.formBuilder.control<number | null>(null),
@@ -102,9 +105,12 @@ export class ProductSupplierFormComponent {
       {
         next: () => {
           this.productSupplierForm.reset();
+          this.success.set(true);
+          this.err.set("Precio cargado!");
         },
-        error: (err) => {
-          alert(`${err.error}`);
+        error: (e) => {
+          this.err.set(e.error);
+          this.success.set(false);
           this.productSupplierForm.reset();
         }
       }
@@ -124,10 +130,13 @@ export class ProductSupplierFormComponent {
     this.productSupplierService.updateProductSupplier(idProductSupplier, productSupplierData).subscribe(
       {
         next: () => {
-          this.productSupplierForm.reset()
+          this.productSupplierForm.reset();
+          this.success.set(true);
+          this.err.set('Precio modificado!');
         },
-        error: (err) => {
-          alert(`${err.error}`);
+        error: (e) => {
+          this.err.set(e.error);
+          this.success.set(false);
         }
       }
 

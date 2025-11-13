@@ -1,5 +1,13 @@
   <form [formGroup]="productSupplierForm" (ngSubmit)="submit()">
 
+    @if (success() == true)
+    {
+      <p class="success" (click)="success.set(null)"> {{err()}} </p>
+    } @else if (success() == false)
+    {
+      <p class="failure" (click)="success.set(null)"> {{err()}}</p>
+    }
+
     @if(isEditing()){
 
       <label>Proveedor:</label>

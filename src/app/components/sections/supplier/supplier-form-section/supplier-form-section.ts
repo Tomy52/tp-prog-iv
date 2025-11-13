@@ -32,20 +32,20 @@ export class SupplierFormSection implements OnInit {
 
   upload(event:Partial<Supplier>)
   {
-    console.log("uploading");
+    const ok = confirm("¿Está seguro de que desea continuar?");
 
-    console.log(event);
-    this.supplier_service.addSupplier(event).subscribe({
-      next: () => {
-        console.log("success!");
-        this.form_ok.set(true);
-      },
-      error: (e) =>{
-        this.form_ok.set(false);
-        this.error.set(e.error);
-        console.log(JSON.stringify(e));
-      }
-    });
+    if (ok)
+    {
+      this.supplier_service.addSupplier(event).subscribe({
+        next: () => {
+          this.form_ok.set(true);
+        },
+        error: (e) =>{
+          this.form_ok.set(false);
+          this.error.set(e.error);
+        }
+      });
+    }
   }
 
   update(event:Partial<Supplier>)
@@ -53,8 +53,11 @@ export class SupplierFormSection implements OnInit {
     console.log("editing");
 
     this.supplier_service.updateSupplier(this.id()!,event).subscribe({
-      next: () => console.log("success!"),
-      error: (e) => console.error("Error :( \n" + e)
+      next: () => this.form_ok.set(true),
+      error: (e) => {
+        this.form_ok.set(false);
+        this.error.set(e.error);
+      }
     });
   }
 

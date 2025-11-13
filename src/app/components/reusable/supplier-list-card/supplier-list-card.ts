@@ -18,7 +18,7 @@ export class SupplierListCard {
 
   delete_sup()
   {
-    const ok = confirm(`¿Realmente quiere eliminar ${this.supplier_info().companyName}?`);
+    const ok = confirm(`¿Realmente quiere eliminar ${this.supplier_info().companyName}?\n\nTip: Esto eliminara todos los precios relacionados`);
 
     if(ok)
     {
