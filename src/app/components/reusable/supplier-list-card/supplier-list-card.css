@@ -3,8 +3,8 @@ article {
   flex-direction: column;
   justify-content: space-between; /* distribuye contenido y manda botones abajo */
 
-  height: 100%;                   
-  
+  height: 100%;
+
   border: 1px solid black;
 
   padding: 2px;
@@ -19,10 +19,7 @@ button{
   border-width: 2px;
   color: var(--text-color);
 
-  margin-top: 10%;
-  margin-left: 3%;
-
-  width: 100px;
+  width: 40%;
   font-size: medium;
   font-family: "BreeSerif-regular", serif;
 
@@ -34,9 +31,17 @@ button.eliminar-supplier:hover{
 
 .boton-admin{
   display: flex;
-  justify-content: center; 
-  gap: 10px;               
-  margin-top: auto;        
-  padding-bottom: 10px;   
+  justify-content: center;
+  gap: 10px;
+  padding-bottom: 10px;
+}
+
+h2, h3, p {
+  text-align: center;
+}
+
+
+div {
+  background-color: var(--bg-color);
 }
 
