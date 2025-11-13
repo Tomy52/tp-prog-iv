@@ -20,7 +20,13 @@ form{
 
 table {
   border-collapse: collapse;
- 
+  background-color: #d9e9f0;
+  border-radius: 5px; 
+}
+
+th, td {
+  padding: 10px 20px; 
+  text-align: center;
 }
 
 tr {
@@ -29,6 +35,16 @@ tr {
 
 tr:last-child {
   border-bottom: none;
+}
+
+
+th {
+  background-color: #c6dbe5; 
+  font-weight: bold;
+}
+
+tr:nth-child(even) {
+  background-color: #eaf2f6; 
 }
 
 button{

@@ -13,12 +13,18 @@
 form {
   display: flex;
   flex-direction: column;
+
+  align-items: center;
+}
+
+p{
+  text-align: center;
 }
 
 label{
-  padding: 8px;
+  padding: 7px;
   text-align: center;
-  
+
   color: white;
 }
 
@@ -30,6 +36,12 @@ input{
   border-color: white;
   border-width: 2px;
 
+}
+
+label, input, select {
+  display: inline-block;
+  width: 250px; /* mismo ancho para ambos */
+  align-items: center;
 }
 
 .desplegable-estado{

@@ -23,12 +23,26 @@ table {
  
 }
 
+th, td {
+  padding: 10px 20px; 
+  text-align: center;
+}
+
 tr {
   border-bottom: 1px solid var(--tertiary-color);
 }
 
 tr:last-child {
   border-bottom: none;
+}
+
+th {
+  background-color: #c6dbe5; /* leve contraste para encabezados */
+  font-weight: bold;
+}
+
+tr:nth-child(even) {
+  background-color: #eaf2f6; /* alterna color en filas */
 }
 
 button{

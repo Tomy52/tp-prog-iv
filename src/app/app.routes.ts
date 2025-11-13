@@ -86,7 +86,7 @@ export const routes: Routes = [
   {
     path:"price-by-supplier",
     component: PriceBySupplierListComponent,
-    canActivate: [AuthGuard, privilegedUserGuard]
+    canActivate: [AuthGuard]
   },
   {
     path:"price-by-product",

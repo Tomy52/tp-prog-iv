@@ -1,7 +1,13 @@
 article {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* distribuye contenido y manda botones abajo */
+
+  height: 100%;                   
+  
   border: 1px solid black;
 
-  padding: 10px;
+  padding: 2px;
   background-color: var(--bg-color);
   border-radius: 5px;
 }
@@ -20,5 +26,17 @@ button{
   font-size: medium;
   font-family: "BreeSerif-regular", serif;
 
+}
+
+button.eliminar-supplier:hover{
+  background-color: red;
+}
+
+.boton-admin{
+  display: flex;
+  justify-content: center; 
+  gap: 10px;               
+  margin-top: auto;        
+  padding-bottom: 10px;   
 }
 

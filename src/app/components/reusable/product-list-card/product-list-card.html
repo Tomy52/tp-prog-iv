@@ -9,10 +9,10 @@
     <p>Estado: {{ productInfo().status === ProductStatus.Enabled ? "Activo" : "Inactivo" }}</p>
   </div>
 
-  <div *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']">
+  <div class="boton-admin" *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']">
     
     <button (click)="updateProduct()">Modificar</button>
-    <button [disabled]="isDisabled()" (click)="deleteProduct()">Dar de baja</button>
+    <button class="baja-producto" [disabled]="isDisabled()" (click)="deleteProduct()">Dar de baja</button>
   </div>
 
 </article>

@@ -19,7 +19,7 @@ button {
   align-self: center;
   
   text-align: center;
-  width: 20%;
+  width: max-content;
 
   background-color: var(--secondary-color);
   border-radius: 10px;
