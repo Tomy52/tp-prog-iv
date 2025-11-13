@@ -18,8 +18,16 @@ section {
   flex-direction: row;
   justify-content: center;
   margin-bottom: 10px;
+
 }
 
 .toggle-area label {
-  color: var(--text-color)
+  color: var(--text-color);
+  font-size: large;
 }
+
+#toggle-disabled-products{
+  width: 30px;
+  height: 20px;
+}
+

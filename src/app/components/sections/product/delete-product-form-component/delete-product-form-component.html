@@ -1,6 +1,9 @@
 <section id="delete-product-form">
+
   <h2>Borrar producto</h2>
+
       <form [formGroup]="deleteProductForm" (ngSubmit)="deleteProduct()">
+
         @if(success()) {
           <p class="success">¡Producto dado de baja exitosamente!</p>
         } @else if (success() === false) {

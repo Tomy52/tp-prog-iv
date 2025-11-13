@@ -1,20 +1,63 @@
 article {
-    background-color: var(--secondary-color);
+  width: 500px;      
+  min-height: 750px; 
+  padding: 20px;
+  box-sizing: border-box; /*el padding no suma anchos*/
 
-    padding: 10px;
+  background-color: var(--main-color);
+  border-radius: 25px;
+  margin: 0 auto; 
+  margin-bottom: 10px;
 }
 
 form {
-    /* se podria ver bien en mobile (con un poco de ajustes) */
-    display: grid;
-    justify-content: center;
-    grid-template-columns: repeat(1,minmax(400px,1fr));
+  display: grid;
+  justify-items: center; 
+  width: 100%; 
+  grid-template-columns: 1fr;
+  gap: 1px; /* espacio entre los elementos */
+}
+
+label {
+  padding: 8px;
+  text-align: center;
+  color: white;
+}
+
+input {
+  width: 80%; 
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px ridge white;
+  box-sizing: border-box;
+  justify-self: center;
 }
 
 .error {
-    color: red;
+  color: red;
+  font-size: 0.9rem;
+  justify-self: start; /*mensaje pegado al input*/
+  margin-left: 10%;
 }
 
 .error_border {
-    border: 2px dotted red;
+  border: 2px dotted red;
+}
+
+input[type="submit"] {
+  width: 50%;
+  margin-top: 10px;
+
+  border-radius: 10px;
+  border-style: ridge;
+  border-width: 2px;
+  border-color: var(--text-color);
+
+  background-color: var(--secondary-color);
+
+  color: white;
+
+  padding: 10px;
+  cursor: pointer;
+  justify-self: center;
 }

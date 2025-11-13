@@ -15,9 +15,10 @@
     <p>Ciudad: {{supplier_info().address.city}}</p>
   </div>
 
-  <div *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']">
+  <div class="boton-admin" *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']">
+    
     <button (click)="update_sup()">Modificar</button>
-    <button (click)="delete_sup()">Eliminar</button>
+    <button class="eliminar-supplier" (click)="delete_sup()">Eliminar</button>
   </div>
 
 </article>

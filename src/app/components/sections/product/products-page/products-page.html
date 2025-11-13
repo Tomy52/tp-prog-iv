@@ -3,10 +3,14 @@
   @if (pageData() != null && !errMsg) {
     <h2>Buscar por nombre</h2>
     <app-search-bar (query_sig)="searchByName($event)" [disabled]="searching"></app-search-bar>
+
     <div class="toggle-area" *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']">
+
       <label for="toggle-disabled-products">Mostrar productos desactivados</label>
       <input id="toggle-disabled-products" type="checkbox" (click)="toggleDisabledProductsVisibility()">
+      
     </div>
+
     @if(pageData()!.content.length === 0) {
       <h1>No se encontraron resultados</h1>
     } @else {

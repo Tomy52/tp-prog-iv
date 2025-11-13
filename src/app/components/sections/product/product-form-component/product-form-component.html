@@ -1,5 +1,7 @@
 <section id="add-product-form">
+
     <form [formGroup]="productForm" (ngSubmit)="submit()">
+
       @if(productForm.get("name")?.hasError('minlength') && productForm.get("name")?.dirty){
         <p style="color:red">El nombre del producto debe contener como mínimo 3 caracteres</p>
       }
@@ -16,18 +18,20 @@
       } @else if (success() === false && err()) {
         <p class="failure" (click)="err.set(null)">{{err()}}</p>
       }
+
       <label for="product-name">Nombre del producto</label>
       <input type="text" id="product-name" formControlName="name" placeholder="Harina">
 
       @if(modifiedProduct()) {
         <label for="product-status">Estado</label>
-        <select name="status" id="product-status" formControlName="status">
+        <select class="desplegable-estado" name="status" id="product-status" formControlName="status">
           <option [ngValue]="productStatusEnum.Enabled">Habilitado</option>
           <option [ngValue]="productStatusEnum.Disabled">Deshabilitado</option>
         </select>
       }
 
       <button type="submit" [disabled]="!productForm.valid">Cargar</button>
+      
     </form>
 </section>
 

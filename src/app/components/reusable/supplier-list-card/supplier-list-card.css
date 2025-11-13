@@ -1,11 +1,42 @@
 article {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* distribuye contenido y manda botones abajo */
+
+  height: 100%;                   
+  
   border: 1px solid black;
 
-  padding: 10px;
+  padding: 2px;
   background-color: var(--bg-color);
   border-radius: 5px;
 }
 
-article > div {
+button{
+  background-color: var(--secondary-color);
+  border-radius: 10px;
+  border-color: var(--text-color);
+  border-width: 2px;
+  color: var(--text-color);
+
+  margin-top: 10%;
+  margin-left: 3%;
+
+  width: 100px;
+  font-size: medium;
+  font-family: "BreeSerif-regular", serif;
+
+}
+
+button.eliminar-supplier:hover{
+  background-color: red;
+}
+
+.boton-admin{
+  display: flex;
+  justify-content: center; 
+  gap: 10px;               
+  margin-top: auto;        
+  padding-bottom: 10px;   
 }
 

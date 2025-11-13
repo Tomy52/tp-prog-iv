@@ -4,7 +4,7 @@
     <p>{{'Pagina ' + current_page() + ' de ' + max_page()}}</p>
     <div>
       <label for="size">Resultados por pagina: </label>
-      <select (change)="changeSize()" [(ngModel)]="selected_page_size" name="size">
+      <select class="select-page" (change)="changeSize()" [(ngModel)]="selected_page_size" name="size">
       @for (number of page_size_ops(); track $index)
       {
         <option selected="selected" [value]="number">{{number}}</option>

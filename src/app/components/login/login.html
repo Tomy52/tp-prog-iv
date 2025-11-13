@@ -1,8 +1,16 @@
+<div class="contenedorImg">
+
+  <img src="images/login/preciOSO-removebg-preview.png" alt="Imagen de usuario">
+  
+</div>
 <section>
+
+  <h1>Inicio Sesión</h1>
+
   <form [formGroup]="authForm" (ngSubmit)="login()">
-    <label for="name">Ingrese el nombre</label>
+    <label for="name">Usuario</label>
     <input type="text" id="name" formControlName="username">
-    <label for="pass">Ingrese contraseña</label>
+    <label for="pass">Contraseña</label>
     <input type="password" id="pass" formControlName="password">
     <button [disabled]="!authForm.valid" type="submit">Ingresar</button>
 

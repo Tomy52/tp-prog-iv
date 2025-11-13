@@ -1,11 +1,22 @@
 td{
   text-align: center;
+  padding: 8px;
 }
 
 button{
   border: none;
-  border-radius: 5px;
   box-shadow: #02111b 1px 1px 1px;
+  
+  background-color: var(--secondary-color);
+  border-radius: 5px;
+  border-color: var(--text-color);
+  border-width: 2px;
+  color: var(--text-color);
+  
+  width: min-content;
+  font-size: small;
+  font-family: "BreeSerif-regular", serif;
+
 }
 
 button.delete-button:hover{
