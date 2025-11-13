@@ -20,10 +20,15 @@ export class ProductListCard {
 
 
   deleteProduct() {
-    this.productService.deleteProduct(this.productInfo().idProduct).subscribe({
-      next: () => window.location.reload(),
-      error: () => console.error('Error borrando el producto')
-    });
+    const ok = confirm(`¿Realmente quiere dar de baja ${this.productInfo().name}?\n\nTip: Esto eliminara todos los precios relacionados`);
+
+    if(ok)
+    {
+      this.productService.deleteProduct(this.productInfo().idProduct).subscribe({
+        next: () => window.location.reload(),
+        error: () => console.error('Error borrando el producto')
+      });
+    }
   }
 
   updateProduct() {
