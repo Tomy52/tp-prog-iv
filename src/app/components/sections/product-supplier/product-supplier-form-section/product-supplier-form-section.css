@@ -4,11 +4,12 @@ section {
   align-items: center;
   justify-content: center;
 
-  width: 400px;      
-  height: 400px;   
-  margin: 0 auto;   
+  min-width: 60%;
+  max-width: 80%;
+  margin: 0 auto;
   margin-top: 10px;
-  
+  padding: 10px;
+
   background: var(--main-color);
   border-radius: 25px;
 }

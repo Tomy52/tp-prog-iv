@@ -8,5 +8,5 @@
       <p (click)="form_ok.set(null)" class="failure"> {{error()}} </p>
     }
 
-    <app-supplier-form-component (data_sig)="finishForm($event)" [modified_supplier]="supplier_obj"/>
+    <app-supplier-form-component class="form" (data_sig)="finishForm($event)" [modified_supplier]="supplier_obj"/>
 </section>

@@ -30,6 +30,16 @@ button {
   font-family: "BreeSerif-regular", serif;
 }
 
+button:hover {
+  background-color: var(--tertiary-color);
+}
+
+button:disabled {
+  background-color: var(--disabled-button-color);
+  color: black;
+}
+
+
 p {
   text-align: center;
 }

@@ -25,15 +25,19 @@ button{
 
 }
 
+button:hover {
+  background-color: var(--tertiary-color);
+}
+
 button.eliminar-supplier:hover{
   background-color: red;
 }
 
 .boton-admin{
   display: flex;
-  justify-content: center;
-  gap: 10px;
-  padding-bottom: 10px;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
 }
 
 h2, h3, p {
@@ -43,5 +47,8 @@ h2, h3, p {
 
 div {
   background-color: var(--bg-color);
+  margin: 5px;
+  padding: 2px;
+  border-radius: 10px;
 }
 

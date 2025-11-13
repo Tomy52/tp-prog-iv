@@ -4,17 +4,16 @@ section{
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  
-  
-  width: 400px;      
-  height: 300px;   
-  margin: 0 auto;   
-  margin-top: 10%;
-  
+
+  min-width: 60%;
+  max-width: 80%;
+  padding: 10px;
+  margin: 0 auto;
+
   background: var(--main-color);
   border-radius: 25px;
-  
 }
+
 form {
   display: flex;
   flex-direction: column;
@@ -25,9 +24,27 @@ form {
 }
 
 h1{
-  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-wrap: auto;
+  text-align: center;
+  padding-bottom: 1%;
 
+  color: var(--text-color);
 }
+
+input[type="submit"]:hover {
+  background-color: var(--tertiary-color);
+}
+
+input[type="submit"]:disabled {
+  background-color: var(--disabled-button-color);
+  color: black;
+}
+
+
 
 input, select {
   width: 30%;
@@ -46,7 +63,7 @@ input, select {
   background-color: var(--main-color);
   border-radius: 10px;
   border-color: var(--secondary-color);
-  
 }
+
 
 

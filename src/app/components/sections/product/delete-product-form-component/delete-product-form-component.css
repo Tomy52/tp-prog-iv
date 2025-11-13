@@ -1,19 +1,17 @@
 section{
-
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  
-  
-  width: 400px;      
-  height: 300px;   
-  margin: 0 auto;   
-  margin-top: 10%;
-  
+
+  min-width: 60%;
+  max-width: 80%;
+  padding: 10px;
+  margin: 0 auto;
+
   background: var(--main-color);
   border-radius: 25px;
-  
+
 }
 
 h2{
@@ -41,7 +39,7 @@ button{
   color: var(--text-color);
 
   margin-top: 10%;
-  
+
   width: 100px;
   font-size: medium;
   font-family: "BreeSerif-regular", serif;
@@ -50,8 +48,17 @@ button{
 
 }
 
+button:hover {
+  background-color: var(--tertiary-color);
+}
+
+button:disabled {
+  background-color: var(--disabled-button-color);
+  color: black;
+}
+
 .desplegable-producto{
-  
+
   background-color: var(--main-color);
   border-radius: 10px;
   border-color: var(--secondary-color);

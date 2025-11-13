@@ -1,8 +1,16 @@
 section {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  min-width: 60%;
+  max-width: 80%;
+}
+
+section > h2 {
+  text-align: center;
 }
 

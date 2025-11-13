@@ -53,9 +53,6 @@ button {
   border: 2px solid #a94442;
 }
 
-.ng-pristine:not(form) {
-  border: 1px solid darkblue;
-}
 
 button {
   cursor: pointer;
@@ -64,6 +61,8 @@ button {
 button:disabled {
   cursor: not-allowed;
 }
+
+
 
 .app-container {
   display: flex;
