@@ -39,7 +39,8 @@ input{
 
 label, input, select {
   display: inline-block;
-  width: 100%; /* mismo ancho para ambos */
+  /*width: 100%; !* mismo ancho para ambos *!*/
+  max-width: 100%; /* mismo ancho para ambos */
   align-items: center;
 }
 
