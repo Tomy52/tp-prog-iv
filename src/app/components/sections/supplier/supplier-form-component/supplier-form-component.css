@@ -59,14 +59,3 @@ input[type="submit"] {
   cursor: pointer;
   justify-self: center;
 }
-
-input[type="submit"]:hover {
-  background-color: var(--tertiary-color);
-  transition: 0.1s ease-in-out;
-}
-
-input[type="submit"]:disabled {
-  background-color: var(--disabled-button-color);
-  color: var(--disabled-button-text-color);
-  cursor: not-allowed;
-}

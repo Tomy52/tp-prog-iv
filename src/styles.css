@@ -49,12 +49,25 @@ button {
   padding: 10px;
 }
 
-.invalid {
-  border-color: red;
+input[type="submit"] {
+  font-family: "BreeSerif-regular", serif;
+  padding: 10px;
+  cursor: pointer;
 }
 
-.ng-invalid:not(form) {
-  border: 2px solid #a94442;
+input[type="submit"]:hover {
+  background-color: var(--tertiary-color);
+  transition: 0.1s ease-in-out;
+}
+
+input[type="submit"]:disabled {
+  background-color: var(--disabled-button-color);
+  color: var(--disabled-button-text-color);
+  cursor: not-allowed;
+}
+
+.invalid {
+  border-color: red;
 }
 
 .app-container {
