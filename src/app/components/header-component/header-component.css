@@ -23,7 +23,7 @@ nav {
   padding-block: calc(var(--header_padding) / 2);
   background-color: var(--main-color);
   color: white;
-  height: 50px;
+  /*height: 50px;*/
 }
 
 button.nav-bar-button {

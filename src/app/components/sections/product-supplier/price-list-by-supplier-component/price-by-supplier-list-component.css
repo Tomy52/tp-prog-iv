@@ -37,12 +37,12 @@ tr:last-child {
 }
 
 th {
-  background-color: #c6dbe5; /* leve contraste para encabezados */
+  background-color: #c6dbe5;
   font-weight: bold;
 }
 
 tr:nth-child(even) {
-  background-color: #eaf2f6; /* alterna color en filas */
+  background-color: #eaf2f6;
 }
 
 button{
@@ -55,4 +55,9 @@ button{
   width: 80px;
   font-size: medium;
   font-family: "BreeSerif-regular", serif;
+}
+
+
+button:hover{
+  background-color: var(--tertiary-color);
 }

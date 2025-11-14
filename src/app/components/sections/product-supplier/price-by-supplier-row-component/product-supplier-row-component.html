@@ -3,7 +3,7 @@
     <td *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']">{{ productPrice().profitMargin }}</td>
     <td>{{ productPrice().price }}</td>
     <td *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']">{{ productPrice().dollarPrice }}</td>
-    <td *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']"><button routerLink="/product-supplier/{{productSupplierId()}}">Editar</button></td>
+    <td *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']"><button class="edit-button" routerLink="/product-supplier/{{productSupplierId()}}">Editar</button></td>
     <td *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']"><button class="delete-button" (click)="deleteProductSupplier()" >Borrar</button></td>
 
 
