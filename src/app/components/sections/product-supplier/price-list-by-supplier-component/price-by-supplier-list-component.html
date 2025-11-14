@@ -16,28 +16,30 @@
     <p>El Proveedor no tiene productos sociados</p>
 
   } @else {
-    <table>
-      <thead>
-      <tr>
-        <th> Nombre </th>
-        <th *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']"> Costo </th>
-        <th *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']"> Margen de Ganancia </th>
-        <th> Precio </th>
-        <th *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']"> Precio en USD</th>
-        <th *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']"></th>
-        <th *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']"></th>
+    <div id="table-wrapper">
+      <table>
+        <thead>
+        <tr>
+          <th> Nombre </th>
+          <th *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']"> Costo </th>
+          <th *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']"> Margen de Ganancia </th>
+          <th> Precio </th>
+          <th *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']"> Precio en USD</th>
+          <th *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']"></th>
+          <th *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']"></th>
 
-      </tr>
-      </thead>
+        </tr>
+        </thead>
         <tbody>
-            @for (productPrice of priceList(); track $index) {
-                   <tr app-price-by-supplier-row-component
-                       [productPrice]="productPrice"
-                       [productSupplierId]="productPrice.idProductSupplier"
-                       (rowDeleted)="handleRowDeletion($event)"></tr>
-               }
-      </tbody>
-  </table>
+          @for (productPrice of priceList(); track $index) {
+            <tr app-price-by-supplier-row-component
+                [productPrice]="productPrice"
+                [productSupplierId]="productPrice.idProductSupplier"
+                (rowDeleted)="handleRowDeletion($event)"></tr>
+          }
+        </tbody>
+      </table>
+    </div>
       <app-page-buttons (back_signal)="goPreviewsPage()"
                         (next_signal)="goNextPage()"
                         [back_active]="supplierProductList().productsList!.first || searching"
