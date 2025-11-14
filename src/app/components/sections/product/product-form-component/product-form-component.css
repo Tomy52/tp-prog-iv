@@ -75,3 +75,10 @@ button:disabled {
   background-color: var(--disabled-button-color);
   color: var(--disabled-button-text-color)
 }
+
+.error-msg {
+  color: var(--error-color);
+  white-space: wrap;
+  text-align: center;
+}
+

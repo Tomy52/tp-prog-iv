@@ -30,15 +30,16 @@ input {
 }
 
 .error {
-  color: red;
+  color: var(--error-color);
   font-size: 0.9rem;
   justify-self: start; /*mensaje pegado al input*/
   margin-left: 10%;
   text-align: center;
+
 }
 
 .error_border {
-  border: 2px dotted red;
+  border: 2px solid red;
 }
 
 input[type="submit"] {
