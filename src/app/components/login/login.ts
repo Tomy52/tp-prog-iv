@@ -25,8 +25,11 @@ export class Login implements OnInit {
 
   });
 
-  // no se si da para un guard
   ngOnInit(): void {
+    if (this.authService.isTokenExpired()) {
+      this.authService.logOut();
+    }
+
     if (this.authService.isLoggedIn()) {
       this.router.navigate(['/main-menu']);
     }

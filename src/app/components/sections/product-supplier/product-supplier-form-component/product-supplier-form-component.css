@@ -4,15 +4,13 @@ form{
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  
+
   width: 100%;
   height: 100%;
-
 }
 
 input[type="number"] {
   -moz-appearance: textfield;
-  
   margin-bottom: 5px;
   border-radius: 7px;
   font-size: medium;
@@ -22,7 +20,12 @@ label{
   color: var(--text-color);
   margin-bottom: 5px;
   margin-top: 5px;
+  justify-content: center;
+  text-align: center;
+}
 
+p {
+  color: var(--text-color);
 }
 
 button{
@@ -31,11 +34,21 @@ button{
   border-color: var(--text-color);
   border-width: 2px;
   color: var(--text-color);
-  
+
   margin-top: 10%;
-  
+
   width: 100px;
   font-size: medium;
-  
+
   font-family: "BreeSerif-regular", serif;
+}
+
+button:hover {
+  background-color: var(--tertiary-color);
+  transition: 0.1s ease-in-out;
+}
+
+button:disabled {
+  background-color: var(--disabled-button-color);
+  color: black;
 }

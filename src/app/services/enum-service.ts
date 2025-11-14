@@ -10,7 +10,7 @@ export class EnumService {
 
   /* Realmente no le encontré la vuelta de cómo manejar el enum al momento de enviar
   el objeto al back, no hubo chance. Lo dejo para que lo usen y prueben.
-   */
+  */
 
   // getProductStatusEnums(): Observable<ProductStatus[]> {
   //   return this.http.get<ProductStatus[]>(`${this.base_url}/state`);

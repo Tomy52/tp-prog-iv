@@ -3,9 +3,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  
-  margin: 0 auto;   
-  
+
+  margin: 0 auto;
+
   background: var(--main-color);
   border-radius: 25px;
 }
@@ -13,7 +13,6 @@
 form {
   display: flex;
   flex-direction: column;
-
   align-items: center;
 }
 
@@ -40,7 +39,8 @@ input{
 
 label, input, select {
   display: inline-block;
-  width: 250px; /* mismo ancho para ambos */
+  /*width: 100%; !* mismo ancho para ambos *!*/
+  max-width: 100%; /* mismo ancho para ambos */
   align-items: center;
 }
 
@@ -48,7 +48,7 @@ label, input, select {
   height: 30px;
   border-radius: 10px;
   border-color: var(--secondary-color);
-  
+
 }
 
 button{
@@ -60,10 +60,26 @@ button{
 
   margin-top: 9%;
   width: 50%;
-  
+
   align-self: center;
 
   font-size: medium;
   font-family: "BreeSerif-regular", serif;
-
 }
+
+button:hover {
+  background-color: var(--tertiary-color);
+  transition: 0.1s ease-in-out;
+}
+
+button:disabled {
+  background-color: var(--disabled-button-color);
+  color: var(--disabled-button-text-color)
+}
+
+.error-msg {
+  color: var(--error-color);
+  white-space: wrap;
+  text-align: center;
+}
+

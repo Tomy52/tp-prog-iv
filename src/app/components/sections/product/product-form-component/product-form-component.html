@@ -2,14 +2,17 @@
 
     <form [formGroup]="productForm" (ngSubmit)="submit()">
 
+      <label for="product-name">Nombre del producto</label>
+      <input type="text" id="product-name" formControlName="name" placeholder="Harina">
+
       @if(productForm.get("name")?.hasError('minlength') && productForm.get("name")?.dirty){
-        <p style="color:red">El nombre del producto debe contener como mínimo 3 caracteres</p>
+        <small class="error-msg">El nombre del producto debe contener como mínimo 3 caracteres</small>
       }
       @if(productForm.get("name")?.hasError('maxlength') && productForm.get("name")?.dirty){
-        <p style="color:red">El nombre del producto debe contener como máximo 50 caracteres</p>
+        <small class="error-msg">El nombre del producto debe contener como máximo 50 caracteres</small>
       }
       @if(productForm.get("name")?.hasError('required') && productForm.get("name")?.dirty){
-        <p style="color:red">El nombre del producto es obligatorio</p>
+        <small class="error-msg">El nombre del producto es obligatorio</small>
       }
       @if(success() && !modifiedProduct() && err()) {
         <p class="success" (click)="err.set(null)">{{ err() }}</p>
@@ -18,9 +21,6 @@
       } @else if (success() === false && err()) {
         <p class="failure" (click)="err.set(null)">{{err()}}</p>
       }
-
-      <label for="product-name">Nombre del producto</label>
-      <input type="text" id="product-name" formControlName="name" placeholder="Harina">
 
       @if(modifiedProduct()) {
         <label for="product-status">Estado</label>
@@ -31,7 +31,7 @@
       }
 
       <button type="submit" [disabled]="!productForm.valid">Cargar</button>
-      
+
     </form>
 </section>
 

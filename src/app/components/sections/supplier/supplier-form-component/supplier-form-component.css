@@ -1,19 +1,15 @@
 article {
-  width: 500px;      
-  min-height: 750px; 
   padding: 20px;
-  box-sizing: border-box; /*el padding no suma anchos*/
+  margin: 20px;
 
   background-color: var(--main-color);
   border-radius: 25px;
-  margin: 0 auto; 
-  margin-bottom: 10px;
 }
 
 form {
   display: grid;
-  justify-items: center; 
-  width: 100%; 
+  justify-items: center;
+  width: 100%;
   grid-template-columns: 1fr;
   gap: 1px; /* espacio entre los elementos */
 }
@@ -25,7 +21,7 @@ label {
 }
 
 input {
-  width: 80%; 
+  width: 80%;
   padding: 10px;
   border-radius: 10px;
   border: 2px ridge white;
@@ -34,17 +30,20 @@ input {
 }
 
 .error {
-  color: red;
+  color: var(--error-color);
   font-size: 0.9rem;
   justify-self: start; /*mensaje pegado al input*/
   margin-left: 10%;
+  text-align: center;
+
 }
 
 .error_border {
-  border: 2px dotted red;
+  border: 2px solid red;
 }
 
 input[type="submit"] {
+  font-family: "BreeSerif-regular", serif;
   width: 50%;
   margin-top: 10px;
 

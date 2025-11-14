@@ -1,15 +1,17 @@
-select{
-    width: 200px;
-    height: 30px;
+select {
+  height: 30px;
 
-    border-radius: 10px;
-    border-color: var(--tertiary-colo);
 
-    font-family: "BreeSerif-regular", serif;
+  border-radius: 10px;
+  border-style: ridge;
+  border-color: white;
+  border-width: 2px;
 
-    text-align: center;
-    padding-bottom: 5px;
 
-    cursor: pointer;
-    
+  font-family: "BreeSerif-regular", serif;
+
+  text-align: center;
+  cursor: pointer;
+
+  text-overflow: ellipsis;
 }

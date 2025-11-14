@@ -28,6 +28,7 @@ export class ProductService {
 
   getFilteredAndMakeFilteredPage(page:number, size:number, name:string, showAll: boolean) : Observable<PageResponse<Product>> {
     const offset:number = page*size;
+    console.log(showAll);
     const products = showAll ? this.getProducts() : this.getEnabledProducts();
 
     return products.pipe(
