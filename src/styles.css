@@ -37,7 +37,7 @@ body {
 }
 
 .failure {
-  color: red;
+  color: var(--error-color);
 }
 
 button:disabled {
