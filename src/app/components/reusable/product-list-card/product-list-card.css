@@ -30,6 +30,11 @@ button{
   font-family: "BreeSerif-regular", serif;
 }
 
+button:disabled {
+  background-color: var(--disabled-button-color);
+  color: var(--disabled-button-text-color);
+}
+
 
 button:hover {
   background-color: var(--tertiary-color);
