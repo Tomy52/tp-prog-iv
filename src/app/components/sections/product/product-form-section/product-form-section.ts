@@ -9,8 +9,7 @@ import {ProductFormComponent} from '../product-form-component/product-form-compo
     ProductFormComponent
   ],
   templateUrl: './product-form-section.html',
-  styleUrl: './product-form-section.css',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrl: './product-form-section.css'
 })
 export class ProductFormSection implements OnInit {
   productService = inject(ProductService);

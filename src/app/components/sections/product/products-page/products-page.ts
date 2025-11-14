@@ -46,6 +46,7 @@ export class ProductsPage {
     this.searching = true;
     this.productService.getFilteredAndMakeFilteredPage(this.page(), this.pageSize, query, showAll).subscribe({
       next: (x) => {
+        console.log(x);
         this.pageData.set(x);
       },
       error: (e) => {
