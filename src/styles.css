@@ -10,7 +10,12 @@
   --unfocused-text-color: #d2d2d2;
   --bg-color: rgba(234, 245, 255, 0.78);
 
+  --disabled-button-color: #9baebb;
+  --disabled-button-text-color: #6a7d8c;
+
   --disabled-card-color: rosybrown;
+
+  --error-color: #FF80AB;
 
   font-family: "BreeSerif-regular", serif;
 
@@ -32,35 +37,39 @@ body {
 }
 
 .failure {
-  color: red;
+  color: var(--error-color);
 }
 
 button:disabled {
   cursor: not-allowed;
-}
-
-button {
-  padding: 10px;
-}
-
-.invalid {
-  border-color: red;
-}
-
-.ng-invalid:not(form) {
-  border: 2px solid #a94442;
-}
-
-.ng-pristine:not(form) {
-  border: 1px solid darkblue;
+  background-color: var(--disabled-button-color);
+  color: var(--disabled-button-text-color);
 }
 
 button {
   cursor: pointer;
+  padding: 10px;
 }
 
-button:disabled {
+input[type="submit"] {
+  font-family: "BreeSerif-regular", serif;
+  padding: 10px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: var(--tertiary-color);
+  transition: 0.1s ease-in-out;
+}
+
+input[type="submit"]:disabled {
+  background-color: var(--disabled-button-color);
+  color: var(--disabled-button-text-color);
   cursor: not-allowed;
+}
+
+.invalid {
+  border-color: red;
 }
 
 .app-container {
@@ -71,4 +80,9 @@ button:disabled {
 
 main {
   flex: 1;
+}
+
+#table-wrapper {
+  max-width: 80%;
+  overflow-x: auto;
 }

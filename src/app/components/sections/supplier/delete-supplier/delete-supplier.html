@@ -1,7 +1,7 @@
 <section>
   <form action="" [formGroup]="form" (ngSubmit)="submit()">
 
-  <h1> Eliminar proveedor </h1>
+  <h2> Eliminar proveedor </h2>
 
     @if(this.form_ok() == true)
     {
@@ -14,6 +14,6 @@
     <app-supplier-dropdown-select [suppliers]="suppliers()" formControlName="id"/>
 
     <input type="submit" value="Eliminar" [disabled]="!isValid()">
-    
+
   </form>
 </section>

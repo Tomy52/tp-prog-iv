@@ -10,8 +10,6 @@ section {
 
   /* colores y otras cosas */
   color: white;
-
-  
 }
 
 
@@ -19,11 +17,11 @@ section {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   padding: var(--header_padding);
-  gap: 2rem;
+  grid-gap: 2rem;
   width: 60%;
-  /*align-items: center;*/
-  /*justify-content: center;*/
 
+  align-items: center;
+  justify-content: center;
 }
 
 h1 {

@@ -7,7 +7,7 @@
 img{
   max-width: 100%;
   height: auto;
-  
+
   width: 12%;
   padding-top: 3%;
   padding-bottom: 3%;
@@ -18,15 +18,16 @@ section{
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  
-  
-  width: 400px;      
-  height: 300px;   
-  margin: 0 auto;   
-  
+
+
+  width: 60%;
+  height: 50%;
+  margin: 0 auto;
+  padding: 20px;
+
   background: var(--main-color);
   border-radius: 25px;
-  
+
 }
 
 h1{
@@ -34,12 +35,11 @@ h1{
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  
-  margin: 0 auto;
-  margin-top: 3%;
+  text-wrap: auto;
+  text-align: center;
   padding-bottom: 1%;
 
-  color: white;
+  color: var(--text-color);
 }
 
 form{
@@ -47,7 +47,6 @@ form{
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
 }
 
 label{
@@ -75,10 +74,14 @@ button{
   color: var(--text-color);
 
   margin-top: 10%;
-  
+
   width: 100px;
   font-size: medium;
   font-family: "BreeSerif-regular", serif;
 
 }
 
+button:disabled {
+  background-color: var(--disabled-button-color);
+  color: black;
+}
