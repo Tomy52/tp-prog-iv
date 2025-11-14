@@ -10,7 +10,8 @@
   --unfocused-text-color: #d2d2d2;
   --bg-color: rgba(234, 245, 255, 0.78);
 
-  --disabled-button-color: #bfdff4;
+  --disabled-button-color: #9baebb;
+  --disabled-button-text-color: #6a7d8c;
 
   --disabled-card-color: rosybrown;
 
@@ -39,9 +40,12 @@ body {
 
 button:disabled {
   cursor: not-allowed;
+  background-color: var(--disabled-button-color);
+  color: var(--disabled-button-text-color);
 }
 
 button {
+  cursor: pointer;
   padding: 10px;
 }
 
@@ -52,17 +56,6 @@ button {
 .ng-invalid:not(form) {
   border: 2px solid #a94442;
 }
-
-
-button {
-  cursor: pointer;
-}
-
-button:disabled {
-  cursor: not-allowed;
-}
-
-
 
 .app-container {
   display: flex;

@@ -64,5 +64,14 @@ button{
 
   font-size: medium;
   font-family: "BreeSerif-regular", serif;
+}
 
+button:hover {
+  background-color: var(--tertiary-color);
+  transition: 0.1s ease-in-out;
+}
+
+button:disabled {
+  background-color: var(--disabled-button-color);
+  color: var(--disabled-button-text-color)
 }
