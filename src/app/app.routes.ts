@@ -23,6 +23,7 @@ import {privilegedUserGuard} from './guards/privileged-user-guard';
 import {supplierExistsGuard} from './guards/supplier-exists-guard';
 import {priceExistsGuard} from './guards/price-exists-guard';
 import {productExistsGuard} from './guards/product-exists-guard';
+import { CsvFormSection } from './components/sections/csv-section/csv-form-section/csv-form-section';
 
 
 export const routes: Routes = [
@@ -92,6 +93,11 @@ export const routes: Routes = [
     path:"price-by-product",
     component: PriceListByProductComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path:"csv-load",
+    component: CsvFormSection,
+    canActivate: [AuthGuard, privilegedUserGuard]
   },
   {
     path:"suppliers",
