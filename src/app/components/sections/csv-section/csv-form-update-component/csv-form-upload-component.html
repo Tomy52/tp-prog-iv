@@ -4,7 +4,7 @@
         <app-supplier-dropdown-select [suppliers]="suppliers()" formControlName="id" id="proveedor" name="proveedor"></app-supplier-dropdown-select>
     
         <label for="file">Archivo</label>
-        <input type="file" name="file" id="file" formControlName="file" accept=".csv"> 
+        <input type="file" name="file" id="file" formControlName="file" (change)="onFileSelected($event)"> 
         
         <button type="submit" [disabled]="!isFormValid()">Cargar</button>
     </form>

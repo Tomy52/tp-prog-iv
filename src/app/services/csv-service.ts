@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { CsvUpdate } from '../interfaces/csv-update/csv-update';
+import { CsvUpload } from '../interfaces/csv-update/csv-upload';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ export class CsvService {
   url = "api/productSupplier"
 
 
-  updatePricesOfProductsByCsv(update:CsvUpdate) {
+  updatePricesOfProductsByCsv(update:CsvUpload) {
     return this.http.post<String>(`${this.url}/upload`, update)
   }
 }

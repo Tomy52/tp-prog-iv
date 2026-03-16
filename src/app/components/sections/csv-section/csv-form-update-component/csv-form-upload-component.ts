@@ -3,7 +3,7 @@ import { SupplierDropdownSelect } from "../../../reusable/supplier-dropdown-sele
 import { Supplier } from '../../../../interfaces/supplier/supplier';
 import { SupplierService } from '../../../../services/supplier-service';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
-import { CsvUpdate } from '../../../../interfaces/csv-update/csv-update';
+import { CsvUpload } from '../../../../interfaces/csv-update/csv-upload';
 
 @Component({
   selector: 'app-csv-form-upload-component',
@@ -17,7 +17,7 @@ export class CsvFormUploadComponent {
   supplier_service = inject(SupplierService);
   
   form_builder = inject(FormBuilder);
-  data_sig = output<CsvUpdate>();
+  data_sig = output<CsvUpload>();
 
 
   form = this.form_builder.group({
@@ -44,10 +44,25 @@ export class CsvFormUploadComponent {
       }
     );
   }
+  
+  selectedFile: File | null = null;
+
+  onFileSelected(event:any) {
+    this.selectedFile = <File>event.target.files[0] 
+  }
 
   completeForm()
   {
-    console.log(this.form.value)
+    const upload_values = this.form.value
+
+    console.log(upload_values)
+  
+    const values : CsvUpload = {
+      id: upload_values.id!,
+      file: this.selectedFile!
+    }
+
+    console.log(values)
   }
 
   
