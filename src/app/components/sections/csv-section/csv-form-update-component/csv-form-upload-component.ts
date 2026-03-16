@@ -4,6 +4,7 @@ import { Supplier } from '../../../../interfaces/supplier/supplier';
 import { SupplierService } from '../../../../services/supplier-service';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CsvUpload } from '../../../../interfaces/csv-update/csv-upload';
+import { CsvService } from '../../../../services/csv-service';
 
 @Component({
   selector: 'app-csv-form-upload-component',
@@ -16,6 +17,8 @@ export class CsvFormUploadComponent {
   suppliers: WritableSignal<Supplier[]> = signal<Supplier[]>([]);
   supplier_service = inject(SupplierService);
   
+  csv_service = inject(CsvService)
+
   form_builder = inject(FormBuilder);
   data_sig = output<CsvUpload>();
 
@@ -63,6 +66,16 @@ export class CsvFormUploadComponent {
     }
 
     console.log(values)
+    this.csv_service.updatePricesOfProductsByCsv(values.id,values.file).subscribe(
+      {
+        next: (resp) => {
+          console.log(resp)
+        },
+        error: (err) => {
+          console.error(err)
+        }
+      }
+    )
   }
 
   
