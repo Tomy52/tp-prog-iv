@@ -15,10 +15,6 @@
     </form>
     </article>
 
-    <article (click)="hideFailedProducts()">
-        <h2>{{failed_message()}}</h2>
-        @for (item of failed_products(); track $index) {
-            <p>{{item.nombre}}</p>
-        }
-    </article>
+    <app-failed-products-component [failed_product_resp]="failed_products_response()"/>
+
 </section>

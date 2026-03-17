@@ -1,0 +1,18 @@
+@if(failed_product_resp())
+{
+    <article>
+        <div>
+            <h2>{{failed_product_resp()!.message}}</h2>
+            <button (click)="changeShowing()" [textContent]="showing() ? 'Esconder productos' : 'Mostrar productos'"></button>
+        </div>
+        @if (showing()) {
+            <div>
+                <ul>
+                    @for (item of failed_product_resp()!.nonAffectedProducts; track $index) {
+                        <li>{{item.nombre}}</li>
+                    }
+                </ul>
+            </div>
+        }
+    </article>
+}

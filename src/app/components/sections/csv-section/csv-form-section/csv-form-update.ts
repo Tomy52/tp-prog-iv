@@ -6,10 +6,12 @@ import { Supplier } from '../../../../interfaces/supplier/supplier';
 import { CsvService } from '../../../../services/csv-service';
 import { SupplierService } from '../../../../services/supplier-service';
 import { FailedProduct } from '../../../../interfaces/csv-update/failed-product-resp';
+import { FailedProductsResp } from '../../../../interfaces/csv-update/failed-products-resp';
+import { FailedProductsComponent } from '../../../reusable/failed-products-component/failed-products-component';
 
 @Component({
   selector: 'app-csv-form-upload',
-  imports: [SupplierDropdownSelect, ReactiveFormsModule],
+  imports: [SupplierDropdownSelect, ReactiveFormsModule,FailedProductsComponent],
   templateUrl: './csv-form-update.html',
   styleUrl: './csv-form-update.css',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -21,8 +23,7 @@ export class CsvFormUpdate {
   suppliers: WritableSignal<Supplier[]> = signal<Supplier[]>([]);
   supplier_service = inject(SupplierService);
   
-  failed_message: WritableSignal<String|null> = signal<String|null>(null);
-  failed_products: WritableSignal<FailedProduct[]> = signal<FailedProduct[]>([]);
+  failed_products_response: WritableSignal<FailedProductsResp|null> = signal<FailedProductsResp|null>(null);
 
 
   form = this.form_builder.group({
@@ -69,10 +70,7 @@ export class CsvFormUpdate {
     this.csv_service.updatePricesOfProductsByCsv(values.id,values.file).subscribe(
       {
         next: (resp) => {
-          this.failed_message.set(resp.message)
-          this.failed_products.set(resp.nonAffectedProducts)
-
-          console.log(resp)
+          this.failed_products_response.set(resp)
         },
         error: (err) => {
           console.error(err)
@@ -85,12 +83,5 @@ export class CsvFormUpdate {
   isFormValid()
   {
     return this.form.valid;
-  }
-
-
-  hideFailedProducts()
-  {
-    this.failed_message.set(null)
-    this.failed_products.set([])
   }
 }

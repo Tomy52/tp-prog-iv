@@ -5,11 +5,12 @@ import { CsvService } from '../../../../services/csv-service';
 import { SupplierService } from '../../../../services/supplier-service';
 import { SupplierDropdownSelect } from '../../../reusable/supplier-dropdown-select/supplier-dropdown-select';
 import { CsvUpload } from '../../../../interfaces/csv-update/csv-upload';
-import { FailedProduct } from '../../../../interfaces/csv-update/failed-product-resp';
+import { FailedProductsResp } from '../../../../interfaces/csv-update/failed-products-resp';
+import { FailedProductsComponent } from '../../../reusable/failed-products-component/failed-products-component';
 
 @Component({
   selector: 'app-csv-form-upload',
-  imports: [SupplierDropdownSelect, ReactiveFormsModule],
+  imports: [SupplierDropdownSelect, ReactiveFormsModule,FailedProductsComponent],
   templateUrl: './csv-form-upload.html',
   styleUrl: './csv-form-upload.css',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -22,10 +23,7 @@ export class CsvFormUpload {
   suppliers: WritableSignal<Supplier[]> = signal<Supplier[]>([]);
   
 
-  failed_message: WritableSignal<String|null> = signal<String|null>(null);
-  failed_products: WritableSignal<FailedProduct[]> = signal<FailedProduct[]>([]);
-
-
+  failed_products_response: WritableSignal<FailedProductsResp|null> = signal<FailedProductsResp|null>(null);
   form = this.form_builder.group({
     id: [null as number | null, [Validators.required]],
     file: ['',[Validators.required]],
@@ -71,8 +69,7 @@ export class CsvFormUpload {
     this.csv_service.addPricesOfProductsByCsv(values.id,values.file, values.profit_margin).subscribe(
       {
         next: (resp) => {
-          this.failed_message.set(resp.message)
-          this.failed_products.set(resp.nonAffectedProducts)
+          this.failed_products_response.set(resp)
         },
         error: (err) => {
           console.error(err)
@@ -87,11 +84,4 @@ export class CsvFormUpload {
     return this.form.valid;
   }
 
-  hideFailedProducts()
-  {
-    this.failed_message.set(null)
-    this.failed_products.set([])
-
-    console.log("help")
-  }
 }
