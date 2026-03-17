@@ -14,4 +14,11 @@
         <button type="submit" [disabled]="!isFormValid()">Cargar</button>
     </form>
     </article>
+
+    <article (click)="hideFailedProducts()">
+        <h2>{{failed_message()}}</h2>
+        @for (item of failed_products(); track $index) {
+            <p>{{item.nombre}}</p>
+        }
+    </article>
 </section>

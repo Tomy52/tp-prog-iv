@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
+import { FailedProductsResp } from '../interfaces/csv-update/failed-products-resp';
 
 
 @Injectable({
@@ -15,7 +16,7 @@ export class CsvService {
     formData.append('file', file);
     formData.append('idSupplier', supplierId.toString())
 
-    return this.http.post<String>(`${this.url}/upload`, formData)
+    return this.http.post<FailedProductsResp>(`${this.url}/upload`, formData)
   }
 
   addPricesOfProductsByCsv(supplierId: number, file:File, profit_margin:number)
@@ -25,6 +26,6 @@ export class CsvService {
     formData.append('bulkProfitMargin', profit_margin.toString())
     formData.append('idSupplier', supplierId.toString())
 
-    return this.http.post<String>(`${this.url}/uploadNonRelatedProducts`,formData)
+    return this.http.post<FailedProductsResp>(`${this.url}/uploadNonRelatedProducts`,formData)
   }
 }

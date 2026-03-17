@@ -5,6 +5,7 @@ import { CsvService } from '../../../../services/csv-service';
 import { SupplierService } from '../../../../services/supplier-service';
 import { SupplierDropdownSelect } from '../../../reusable/supplier-dropdown-select/supplier-dropdown-select';
 import { CsvUpload } from '../../../../interfaces/csv-update/csv-upload';
+import { FailedProduct } from '../../../../interfaces/csv-update/failed-product-resp';
 
 @Component({
   selector: 'app-csv-form-upload',
@@ -14,12 +15,15 @@ import { CsvUpload } from '../../../../interfaces/csv-update/csv-upload';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CsvFormUpload {
-  suppliers: WritableSignal<Supplier[]> = signal<Supplier[]>([]);
   supplier_service = inject(SupplierService);
-  
   csv_service = inject(CsvService)
-
   form_builder = inject(FormBuilder);
+  
+  suppliers: WritableSignal<Supplier[]> = signal<Supplier[]>([]);
+  
+
+  failed_message: WritableSignal<String|null> = signal<String|null>(null);
+  failed_products: WritableSignal<FailedProduct[]> = signal<FailedProduct[]>([]);
 
 
   form = this.form_builder.group({
@@ -67,7 +71,8 @@ export class CsvFormUpload {
     this.csv_service.addPricesOfProductsByCsv(values.id,values.file, values.profit_margin).subscribe(
       {
         next: (resp) => {
-          console.log(resp)
+          this.failed_message.set(resp.message)
+          this.failed_products.set(resp.nonAffectedProducts)
         },
         error: (err) => {
           console.error(err)
@@ -80,5 +85,13 @@ export class CsvFormUpload {
   isFormValid()
   {
     return this.form.valid;
+  }
+
+  hideFailedProducts()
+  {
+    this.failed_message.set(null)
+    this.failed_products.set([])
+
+    console.log("help")
   }
 }
