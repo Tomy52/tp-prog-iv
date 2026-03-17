@@ -1,4 +1,6 @@
-<article>
+<section>
+    <h2>Modificar Lista de Precios</h2>
+    <article>
     <form action="" (ngSubmit)="completeForm()" [formGroup]="form">
         <label for="proveedor">Proveedor:</label>
         <app-supplier-dropdown-select [suppliers]="suppliers()" formControlName="id" id="proveedor" name="proveedor"></app-supplier-dropdown-select>
@@ -8,4 +10,5 @@
         
         <button type="submit" [disabled]="!isFormValid()">Cargar</button>
     </form>
-</article>
+    </article>
+</section>

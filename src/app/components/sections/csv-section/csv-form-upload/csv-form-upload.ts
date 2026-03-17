@@ -1,31 +1,31 @@
-import { ChangeDetectionStrategy, Component, inject, output, signal, WritableSignal } from '@angular/core';
-import { SupplierDropdownSelect } from "../../../reusable/supplier-dropdown-select/supplier-dropdown-select";
+import { ChangeDetectionStrategy, Component, inject, signal, WritableSignal } from '@angular/core';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Supplier } from '../../../../interfaces/supplier/supplier';
-import { SupplierService } from '../../../../services/supplier-service';
-import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
-import { CsvUpload } from '../../../../interfaces/csv-update/csv-upload';
 import { CsvService } from '../../../../services/csv-service';
+import { SupplierService } from '../../../../services/supplier-service';
+import { SupplierDropdownSelect } from '../../../reusable/supplier-dropdown-select/supplier-dropdown-select';
+import { CsvUpload } from '../../../../interfaces/csv-update/csv-upload';
 
 @Component({
-  selector: 'app-csv-form-upload-component',
+  selector: 'app-csv-form-upload',
   imports: [SupplierDropdownSelect, ReactiveFormsModule],
-  templateUrl: './csv-form-upload-component.html',
-  styleUrl: './csv-form-upload-component.css',
+  templateUrl: './csv-form-upload.html',
+  styleUrl: './csv-form-upload.css',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CsvFormUploadComponent {
+export class CsvFormUpload {
   suppliers: WritableSignal<Supplier[]> = signal<Supplier[]>([]);
   supplier_service = inject(SupplierService);
   
   csv_service = inject(CsvService)
 
   form_builder = inject(FormBuilder);
-  data_sig = output<CsvUpload>();
 
 
   form = this.form_builder.group({
     id: [null as number | null, [Validators.required]],
-    file: ['',[Validators.required]]
+    file: ['',[Validators.required]],
+    profit_margin: [0, [Validators.required]]
   })
 
   constructor() {
@@ -57,16 +57,14 @@ export class CsvFormUploadComponent {
   completeForm()
   {
     const upload_values = this.form.value
-
-    console.log(upload_values)
   
     const values : CsvUpload = {
       id: upload_values.id!,
-      file: this.selectedFile!
+      file: this.selectedFile!,
+      profit_margin: upload_values.profit_margin!
     }
 
-    console.log(values)
-    this.csv_service.updatePricesOfProductsByCsv(values.id,values.file).subscribe(
+    this.csv_service.addPricesOfProductsByCsv(values.id,values.file, values.profit_margin).subscribe(
       {
         next: (resp) => {
           console.log(resp)
@@ -83,5 +81,4 @@ export class CsvFormUploadComponent {
   {
     return this.form.valid;
   }
-
 }
