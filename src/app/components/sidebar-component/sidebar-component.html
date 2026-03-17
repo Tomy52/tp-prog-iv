@@ -24,6 +24,8 @@
         <li><a routerLink="/product-supplier" *appAllowViewUser="['ROLE_MANAGER','ROLE_ADMIN']">Crear Relación</a></li>
         <li><a routerLink="/price-by-supplier">Por Proveedor</a></li>
         <li><a routerLink="/price-by-product">Por Producto</a></li>
+        <li><a routerLink="/csv-update-prices">Actualizar con archivo</a></li>
+        <li><a routerLink="/csv-upload-prices" *appAllowViewUser="['ROLE_MANAGER','ROLE_ADMIN']">Cargar con archivo </a></li>
       </ul>
 
       <p class="subtitles"><a routerLink="/login" (click)="logOut()">Salir</a></p>
