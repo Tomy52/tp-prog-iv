@@ -57,13 +57,13 @@ export class CsvFormUpload {
   completeForm()
   {
     const upload_values = this.form.value
-  
+    this.form.reset()
+
     const values : CsvUpload = {
       id: upload_values.id!,
       file: this.selectedFile!,
       profit_margin: upload_values.profit_margin!
     }
-
     this.csv_service.addPricesOfProductsByCsv(values.id,values.file, values.profit_margin).subscribe(
       {
         next: (resp) => {

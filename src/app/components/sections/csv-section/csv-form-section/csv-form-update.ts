@@ -56,7 +56,8 @@ export class CsvFormUpdate {
   completeForm()
   {
     const upload_values = this.form.value
-  
+    this.form.reset()
+    
     const values : CsvUpdate = {
       id: upload_values.id!,
       file: this.selectedFile!
