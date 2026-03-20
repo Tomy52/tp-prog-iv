@@ -9,7 +9,7 @@ import {UserData} from '../interfaces/user/user-data';
 export class RegistrationService {
   router = inject(Router);
   http = inject(HttpClient);
-  base_url = "http://localhost:8080/users";
+  base_url = "http://localhost:8080/users/register";
 
   sendData(data: Partial<UserData>) {
     return this.http.post<UserData>(this.base_url,data);
