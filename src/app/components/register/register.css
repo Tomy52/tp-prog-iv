@@ -1,0 +1,16 @@
+.registration-form-buttons {
+  display: flex;
+  flex-direction: row;
+}
+
+.registration-form-buttons button {
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.error-msg {
+  color: var(--error-color);
+  white-space: wrap;
+  text-align: center;
+}

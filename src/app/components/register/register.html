@@ -2,7 +2,73 @@
   <img src="images/login/preciOSO-removebg-preview.png" alt="Imagen de usuario">
 </div>
 <section>
-  <h1>Registrarse</h1>
+  <h1>Nuevo usuario</h1>
 
-  <p>En construcción</p>
+  <form [formGroup]="userRegForm" (ngSubmit)="register()">
+    @if(userRegForm.get("firstname")?.hasError('minlength') && userRegForm.get("firstname")?.dirty){
+      <small class="error-msg">El nombre debe contener como mínimo 3 caracteres</small>
+    }
+    @if(userRegForm.get("firstname")?.hasError('maxlength') && userRegForm.get("firstname")?.dirty){
+      <small class="error-msg">El nombre debe contener como máximo 50 caracteres</small>
+    }
+    @if(userRegForm.get("firstname")?.hasError('required') && userRegForm.get("firstname")?.dirty){
+      <small class="error-msg">El nombre es obligatorio</small>
+    }
+    <label for="first">Nombre</label>
+    <input type="text" id="first" formControlName="firstname">
+
+    @if(userRegForm.get("lastname")?.hasError('minlength') && userRegForm.get("lastname")?.dirty){
+      <small class="error-msg">El apellido debe contener como mínimo 3 caracteres</small>
+    }
+    @if(userRegForm.get("lastname")?.hasError('maxlength') && userRegForm.get("lastname")?.dirty){
+      <small class="error-msg">El apellido debe contener como máximo 50 caracteres</small>
+    }
+    @if(userRegForm.get("lastname")?.hasError('required') && userRegForm.get("lastname")?.dirty){
+      <small class="error-msg">El apellido es obligatorio</small>
+    }
+    <label for="last">Apellido</label>
+    <input type="text" id="last" formControlName="lastname">
+
+    @if(userRegForm.get("dni")?.hasError('minlength') && userRegForm.get("dni")?.dirty){
+      <small class="error-msg">El DNI debe contener como mínimo 7 números</small>
+    }
+    @if(userRegForm.get("dni")?.hasError('maxlength') && userRegForm.get("dni")?.dirty){
+      <small class="error-msg">El DNI debe contener como máximo 8 números</small>
+    }
+    @if(userRegForm.get("dni")?.hasError('required') && userRegForm.get("dni")?.dirty){
+      <small class="error-msg">El DNI es obligatorio</small>
+    }
+    <label for="dni-number">Número de documento (DNI)</label>
+    <input type="number" id="dni-number" formControlName="dni">
+
+    @if(userRegForm.get("username")?.hasError('minlength') && userRegForm.get("username")?.dirty){
+      <small class="error-msg">El nombre de usuario debe contener como mínimo 3 caracteres</small>
+    }
+    @if(userRegForm.get("username")?.hasError('maxlength') && userRegForm.get("username")?.dirty){
+      <small class="error-msg">El nombre de usuario debe contener como máximo 16 caracteres</small>
+    }
+    @if(userRegForm.get("username")?.hasError('required') && userRegForm.get("username")?.dirty){
+      <small class="error-msg">El nombre de usuario es obligatorio</small>
+    }
+    <label for="user">Nombre de usuario</label>
+    <input type="text" id="user" formControlName="username">
+
+    @if(userRegForm.get("password")?.hasError('minlength') && userRegForm.get("password")?.dirty){
+      <small class="error-msg">La contraseña debe contener como mínimo 8 caracteres</small>
+    }
+    @if(userRegForm.get("password")?.hasError('maxlength') && userRegForm.get("password")?.dirty){
+      <small class="error-msg">La contraseña puede contener como máximo 64 caracteres</small>
+    }
+    @if(userRegForm.get("password")?.hasError('required') && userRegForm.get("password")?.dirty){
+      <small class="error-msg">La contaseña es obligatoria</small>
+    }
+    <label for="pass">Contraseña</label>
+    <input type="password" id="pass" formControlName="password">
+
+    <div class="registration-form-buttons">
+      <button [disabled]="!userRegForm.valid" type="submit">Registrarse</button>
+      <button class="return-btn" routerLink="/login" type="button">Volver</button>
+    </div>
+
+  </form>
 </section>
