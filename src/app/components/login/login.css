@@ -37,7 +37,6 @@ h1{
   justify-content: center;
   text-wrap: auto;
   text-align: center;
-  padding-bottom: 1%;
 
   color: var(--text-color);
 }
@@ -84,4 +83,15 @@ button{
 button:disabled {
   background-color: var(--disabled-button-color);
   color: black;
+}
+
+.register-cta {
+  display: flex;
+  padding-top: 10px;
+  color: var(--unfocused-text-color);
+  text-decoration: none;
+}
+
+.register-cta:hover {
+  color: var(--text-color);
 }

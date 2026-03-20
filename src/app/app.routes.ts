@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { Login } from './components/login/login';
+import {Register} from './components/register/register';
 import { MainMenuScreen } from './components/main-menu/main-menu-screen/main-menu-screen';
 import { AuthGuard } from './guards/auth-guard';
 import { SupplierFormSection } from './components/sections/supplier/supplier-form-section/supplier-form-section';
@@ -32,6 +33,14 @@ export const routes: Routes = [
     data: {
       showHeader: false,
       showFooter: false}
+  },
+  {
+    path: "register",
+    component: Register,
+    data: {
+      showHeader: false,
+      showFooter: false
+    }
   },
   {
     path:"main-menu",
