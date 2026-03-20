@@ -15,7 +15,7 @@
       <small class="error-msg">El nombre es obligatorio</small>
     }
     <label for="first">Nombre</label>
-    <input type="text" id="first" formControlName="firstname">
+    <input type="text" id="first" formControlName="firstname" placeholder="Juan">
 
     @if(userRegForm.get("lastname")?.hasError('minlength') && userRegForm.get("lastname")?.dirty){
       <small class="error-msg">El apellido debe contener como mínimo 3 caracteres</small>
@@ -27,7 +27,7 @@
       <small class="error-msg">El apellido es obligatorio</small>
     }
     <label for="last">Apellido</label>
-    <input type="text" id="last" formControlName="lastname">
+    <input type="text" id="last" formControlName="lastname" placeholder="Pérez">
 
     @if(userRegForm.get("dni")?.hasError('minlength') && userRegForm.get("dni")?.dirty){
       <small class="error-msg">El DNI debe contener como mínimo 7 números</small>
@@ -39,7 +39,7 @@
       <small class="error-msg">El DNI es obligatorio</small>
     }
     <label for="dni-number">Número de documento (DNI)</label>
-    <input type="number" id="dni-number" formControlName="dni">
+    <input type="number" min="1000000" max="99999999" id="dni-number" formControlName="dni" placeholder="1234567">
 
     @if(userRegForm.get("username")?.hasError('minlength') && userRegForm.get("username")?.dirty){
       <small class="error-msg">El nombre de usuario debe contener como mínimo 3 caracteres</small>
@@ -51,7 +51,7 @@
       <small class="error-msg">El nombre de usuario es obligatorio</small>
     }
     <label for="user">Nombre de usuario</label>
-    <input type="text" id="user" formControlName="username">
+    <input type="text" id="user" formControlName="username" placeholder="fulanito">
 
     @if(userRegForm.get("password")?.hasError('minlength') && userRegForm.get("password")?.dirty){
       <small class="error-msg">La contraseña debe contener como mínimo 8 caracteres</small>
