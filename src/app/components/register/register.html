@@ -5,6 +5,9 @@
   <h1>Nuevo usuario</h1>
 
   <form [formGroup]="userRegForm" (ngSubmit)="register()">
+    @if(userRegForm.get("firstname")?.hasError('pattern') && userRegForm.get("firstname")?.dirty){
+      <small class="error-msg">El nombre debe contener letras y las iniciales deben estar en mayúscula</small>
+    }
     @if(userRegForm.get("firstname")?.hasError('minlength') && userRegForm.get("firstname")?.dirty){
       <small class="error-msg">El nombre debe contener como mínimo 3 caracteres</small>
     }
@@ -17,6 +20,9 @@
     <label for="first">Nombre</label>
     <input type="text" id="first" formControlName="firstname" placeholder="Juan">
 
+    @if(userRegForm.get("lastname")?.hasError('pattern') && userRegForm.get("lastname")?.dirty){
+      <small class="error-msg">El apellido debe contener letras y las iniciales deben estar en mayúscula</small>
+    }
     @if(userRegForm.get("lastname")?.hasError('minlength') && userRegForm.get("lastname")?.dirty){
       <small class="error-msg">El apellido debe contener como mínimo 3 caracteres</small>
     }
@@ -41,6 +47,9 @@
     <label for="dni-number">Número de documento (DNI)</label>
     <input type="number" min="1000000" max="99999999" id="dni-number" formControlName="dni" placeholder="1234567">
 
+    @if(userRegForm.get("username")?.hasError('pattern') && userRegForm.get("username")?.dirty){
+      <small class="error-msg">El nombre de usuario solo puede tener letras, números, y guiones bajos</small>
+    }
     @if(userRegForm.get("username")?.hasError('minlength') && userRegForm.get("username")?.dirty){
       <small class="error-msg">El nombre de usuario debe contener como mínimo 3 caracteres</small>
     }
@@ -64,6 +73,12 @@
     }
     <label for="pass">Contraseña</label>
     <input type="password" id="pass" formControlName="password">
+
+    @if(success() && err()) {
+      <p class="success" (click)="err.set(null)">{{ err() }}</p>
+    } @else if (success() === false && err()) {
+      <p class="failure" (click)="err.set(null)">{{ err() }}</p>
+    }
 
     <div class="registration-form-buttons">
       <button [disabled]="!userRegForm.valid" type="submit">Registrarse</button>
