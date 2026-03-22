@@ -1,17 +1,17 @@
 import { ChangeDetectionStrategy, Component, inject, output, signal, WritableSignal } from '@angular/core';
-import { SupplierDropdownSelect } from '../../../reusable/supplier-dropdown-select/supplier-dropdown-select';
+import { SupplierDropdownSelect } from '../../reusable/supplier-dropdown-select/supplier-dropdown-select';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { CsvUpdate } from '../../../../interfaces/csv-update/csv-update';
-import { Supplier } from '../../../../interfaces/supplier/supplier';
-import { CsvService } from '../../../../services/csv-service';
-import { SupplierService } from '../../../../services/supplier-service';
-import { FailedProduct } from '../../../../interfaces/csv-update/failed-product-resp';
-import { FailedProductsResp } from '../../../../interfaces/csv-update/failed-products-resp';
-import { FailedProductsComponent } from '../../../reusable/failed-products-component/failed-products-component';
+import { CsvUpdate } from '../../../interfaces/csv-update/csv-update';
+import { Supplier } from '../../../interfaces/supplier/supplier';
+import { CsvService } from '../../../services/csv-service';
+import { SupplierService } from '../../../services/supplier-service';
+import { FailedProductsResp } from '../../../interfaces/csv-update/failed-products-resp';
+import { FailedProductsComponent } from '../../reusable/failed-products-component/failed-products-component';
+import { SwitchWithText } from "../../reusable/switch-with-text/switch-with-text";
 
 @Component({
   selector: 'app-csv-form-upload',
-  imports: [SupplierDropdownSelect, ReactiveFormsModule,FailedProductsComponent],
+  imports: [SupplierDropdownSelect, ReactiveFormsModule, FailedProductsComponent, SwitchWithText],
   templateUrl: './csv-form-update.html',
   styleUrl: './csv-form-update.css',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -28,7 +28,8 @@ export class CsvFormUpdate {
 
   form = this.form_builder.group({
     id: [null as number | null, [Validators.required]],
-    file: ['',[Validators.required]]
+    file: ['',[Validators.required]],
+    csv_mode: [false as boolean,[]]
   })
 
   constructor() {
@@ -64,10 +65,19 @@ export class CsvFormUpdate {
     
     const values : CsvUpdate = {
       id: upload_values.id!,
-      file: this.selectedFile!
+      file: this.selectedFile!,
+      mode: upload_values.csv_mode ? 'add' : 'modify' 
     }
 
-    this.csv_service.updatePricesOfProductsByCsv(values.id,values.file).subscribe(
+    console.log(values)
+    /*
+      ESTO **NO VA FUNCIONAR CORRECTAMENTE** 
+      HASTA QUE EL BACKEND TENGA SOLUCIONADO EL ISSUE #17
+      (https://github.com/JuliTecnica/Prog-TP-PreciOSO/issues/17),
+      MERGEANDO EL PR https://github.com/JuliTecnica/Prog-TP-PreciOSO/pull/14 Y LOS CAMBIOS DE LA RESPUESTA A JSON EN csv-response-jsonify DEL BACK
+    */
+    
+    this.csv_service.changeProductsUsingCsv(values).subscribe(
       {
         next: (resp) => {
           this.failed_products_response.set(resp)

@@ -1,0 +1,15 @@
+<!--
+Source - https://stackoverflow.com/a/39846603
+Posted by Goombah, modified by community. See post 'Timeline' for change history
+Retrieved 2026-03-22, License - CC BY-SA 4.0
+-->
+
+<label class="switch">
+ <input type="checkbox" id="togBtn" (change)="changeValue($event)">
+ <div class="slider round">
+  <!--ADDED HTML -->
+  <span class="on">{{on_text()}}</span>
+  <span class="off">{{off_text()}}</span>
+  <!--END-->
+ </div>
+</label>

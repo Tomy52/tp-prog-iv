@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { FailedProductsResp } from '../interfaces/csv-update/failed-products-resp';
+import { CsvUpdate } from '../interfaces/csv-update/csv-update';
 
 
 @Injectable({
@@ -11,10 +12,11 @@ export class CsvService {
   url = "api/productSupplier"
 
 
-  updatePricesOfProductsByCsv(supplierId: number,file:File) {
+  changeProductsUsingCsv(CsvUpdateReq : CsvUpdate) {
     const formData: FormData = new FormData();
-    formData.append('file', file);
-    formData.append('idSupplier', supplierId.toString())
+    formData.append('file', CsvUpdateReq.file);
+    formData.append('idSupplier', CsvUpdateReq.id.toString())
+    formData.append('mode', CsvUpdateReq.mode)
 
     return this.http.post<FailedProductsResp>(`${this.url}/upload`, formData)
   }
