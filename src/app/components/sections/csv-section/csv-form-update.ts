@@ -45,7 +45,7 @@ export class CsvFormUpdate {
         },
         error: (err) => {
           console.log(err)
-          alert(`${err.error}`);
+          alert(`${err.detail}`);
           this.suppliers.set([])
         }
       }
@@ -70,12 +70,6 @@ export class CsvFormUpdate {
     }
 
     console.log(values)
-    /*
-      ESTO **NO VA FUNCIONAR CORRECTAMENTE** 
-      HASTA QUE EL BACKEND TENGA SOLUCIONADO EL ISSUE #17
-      (https://github.com/JuliTecnica/Prog-TP-PreciOSO/issues/17),
-      MERGEANDO EL PR https://github.com/JuliTecnica/Prog-TP-PreciOSO/pull/14 Y LOS CAMBIOS DE LA RESPUESTA A JSON EN csv-response-jsonify DEL BACK
-    */
     
     this.csv_service.changeProductsUsingCsv(values).subscribe(
       {
@@ -83,7 +77,7 @@ export class CsvFormUpdate {
           this.failed_products_response.set(resp)
         },
         error: (err) => {
-          console.error(err)
+          console.error(err.detail)
         }
       }
     )
