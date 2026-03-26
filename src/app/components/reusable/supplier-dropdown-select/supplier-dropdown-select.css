@@ -6,10 +6,12 @@ select {
 
   cursor: pointer;
 
+  background-color: #efdcd0;
+  
   border-style: ridge;
   border-color: white;
-  border-width: 2px;
-  border-radius: 10px;
+  border-width: 1px;
+  border-radius: 4px;
 
   text-overflow: ellipsis;
 }

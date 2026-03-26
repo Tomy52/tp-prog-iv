@@ -2,16 +2,22 @@
     <h2>Carga de precios en CSV</h2>
     <article>
     <form action="" (ngSubmit)="completeForm()" [formGroup]="form">
-        <label for="proveedor">Proveedor:</label>
-        <app-supplier-dropdown-select [suppliers]="suppliers()" formControlName="id" id="proveedor" name="proveedor"></app-supplier-dropdown-select>
+        <div>
+            <label for="proveedor">Proveedor:</label>
+            <app-supplier-dropdown-select [suppliers]="suppliers()" formControlName="id" id="proveedor" name="proveedor"></app-supplier-dropdown-select>
+        </div>
 
-        <label for="file">Archivo</label>
-        <input type="file" name="file" id="file" formControlName="file" (change)="onFileSelected($event)" accept=".csv"> 
+        <div>
+            <label for="file">Archivo</label>
+            <input type="file" name="file" id="file" formControlName="file" (change)="onFileSelected($event)" accept=".csv"> 
+        </div>
         
-        <label for="mode">Acción</label>
-        <app-switch-with-text [on_text]="'Cargar'" [off_text]="'Modificar'" formControlName="csv_mode"></app-switch-with-text>
+        <div>
+            <label for="mode">Acción</label>
+            <app-switch-with-text [on_text]="'Cargar'" [off_text]="'Modificar'" formControlName="csv_mode"></app-switch-with-text>
+        </div>
 
-        <button type="submit" [disabled]="!isFormValid()">Cargar</button>
+        <button type="submit" [disabled]="!isFormValid()" class="upload">Cargar</button>
     </form>
     </article>
 
