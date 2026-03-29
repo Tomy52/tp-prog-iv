@@ -20,7 +20,8 @@ section{
   justify-content: center;
 
 
-  width: 60%;
+  width: 100%;
+  max-width: 300px;
   height: 50%;
   margin: 0 auto;
   padding: 20px;
@@ -37,7 +38,6 @@ h1{
   justify-content: center;
   text-wrap: auto;
   text-align: center;
-  padding-bottom: 1%;
 
   color: var(--text-color);
 }
@@ -81,7 +81,23 @@ button{
 
 }
 
+button:hover {
+  background-color: var(--tertiary-color);
+  transition: 0.1s ease-in-out;
+}
+
 button:disabled {
   background-color: var(--disabled-button-color);
-  color: black;
+  color: var(--disabled-button-text-color)
+}
+
+.register-cta {
+  display: flex;
+  padding-top: 10px;
+  color: var(--unfocused-text-color);
+  text-decoration: none;
+}
+
+.register-cta:hover {
+  color: var(--text-color);
 }
