@@ -6,26 +6,26 @@
 
   <form [formGroup]="userRegForm" (ngSubmit)="register()">
     <label for="first">Nombre</label>
-    <input type="text" id="first" formControlName="firstname" placeholder="Juan">
+    <input type="text" id="first" formControlName="firstname" [appFieldErrorBorder]="userRegForm.get('firstname')" placeholder="Juan">
     <small class="error-msg" [appFieldError]="userRegForm.get('firstname')"></small>
 
     <label for="last">Apellido</label>
-    <input type="text" id="last" formControlName="lastname" placeholder="Pérez">
+    <input type="text" id="last" formControlName="lastname" [appFieldErrorBorder]="userRegForm.get('lastname')" placeholder="Pérez">
     <small class="error-msg" [appFieldError]="userRegForm.get('lastname')"></small>
 
 
     <label for="dni-number">Número de documento (DNI)</label>
-    <input type="number" min="1000000" max="99999999" id="dni-number" formControlName="dni" placeholder="1234567">
+    <input type="number" min="1000000" max="99999999" id="dni-number" formControlName="dni" [appFieldErrorBorder]="userRegForm.get('dni')" placeholder="1234567">
     <small class="error-msg" [appFieldError]="userRegForm.get('dni')"></small>
 
 
     <label for="user">Nombre de usuario</label>
-    <input type="text" id="user" formControlName="username" placeholder="fulanito">
+    <input type="text" id="user" formControlName="username" [appFieldErrorBorder]="userRegForm.get('username')" placeholder="fulanito">
     <small class="error-msg" [appFieldError]="userRegForm.get('username')"></small>
 
 
     <label for="pass">Contraseña</label>
-    <input type="password" id="pass" formControlName="password">
+    <input type="password" id="pass" formControlName="password" [appFieldErrorBorder]="userRegForm.get('password')">
     <small class="error-msg" [appFieldError]="userRegForm.get('password')"></small>
 
     @if(success() && err()) {

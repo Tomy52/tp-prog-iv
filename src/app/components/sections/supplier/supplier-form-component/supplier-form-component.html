@@ -4,36 +4,36 @@
 
     <label for="name">Nombre de empresa</label>
     <input type="text" name="name" id="name" formControlName="companyName"
-           [class.error-border]="showFieldWrong('companyName')" placeholder="Green Test">
+           [appFieldErrorBorder]="form.get('companyName')" placeholder="Green Test">
     <small class="error-msg" [appFieldError]="form.get('companyName')"></small>
 
     <label for="cuit">Cuit</label>
-    <input type="text" name="cuit" id="cuit" formControlName="cuit" [class.error-border]="showFieldWrong('cuit')"
+    <input type="text" name="cuit" id="cuit" formControlName="cuit" [appFieldErrorBorder]="form.get('cuit')"
            placeholder="23-11121111-9">
     <small class="error-msg" [appFieldError]="form.get('cuit')"></small>
 
     <label for="email">Email</label>
-    <input type="email" name="email" id="email" formControlName="email" [class.error-border]="showFieldWrong('email')"
+    <input type="email" name="email" id="email" formControlName="email" [appFieldErrorBorder]="form.get('email')"
            placeholder="test1@email.com">
     <small class="error-msg" [appFieldError]="form.get('email')"></small>
 
     <label for="phone">Número de teléfono</label>
-    <input type="text" name="phone" id="phone" formControlName="phone" [class.error-border]="showFieldWrong('phone')"
+    <input type="text" name="phone" id="phone" formControlName="phone" [appFieldErrorBorder]="form.get('phone')"
            placeholder="1111111111">
     <small class="error-msg" [appFieldError]="form.get('phone')"></small>
 
     <label for="street">Calle</label>
     <input type="text" name="street" id="street" formControlName="street"
-           [class.error-border]="showFieldWrong('street')" placeholder="Calle 12">
+           [appFieldErrorBorder]="form.get('street')" placeholder="Calle 12">
     <small class="error-msg" [appFieldError]="form.get('street')"></small>
 
     <label for="number">Número de edificio</label>
     <input type="text" name="number" id="number" formControlName="number"
-           [class.error-border]="showFieldWrong('number')" placeholder="123">
+           [appFieldErrorBorder]="form.get('number')" placeholder="123">
     <small class="error-msg" [appFieldError]="form.get('number')"></small>
 
     <label for="city">Ciudad</label>
-    <input type="text" name="city" id="city" formControlName="city" [class.error-border]="showFieldWrong('city')"
+    <input type="text" name="city" id="city" formControlName="city" [appFieldErrorBorder]="form.get('city')"
            placeholder="Ciudad test">
     <small class="error-msg" [appFieldError]="form.get('city')"></small>
 

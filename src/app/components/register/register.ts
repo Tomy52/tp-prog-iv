@@ -5,6 +5,7 @@ import {Router, RouterLink} from '@angular/router';
 import {RegistrationService} from '../../services/registration-service';
 import {ProductStatus} from '../../interfaces/productStatus';
 import {FieldError} from '../../directives/field-error';
+import {FieldErrorBorder} from '../../directives/field-error-border';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +13,8 @@ import {FieldError} from '../../directives/field-error';
     FormsModule,
     ReactiveFormsModule,
     RouterLink,
-    FieldError
+    FieldError,
+    FieldErrorBorder
   ],
   templateUrl: './register.html',
   styleUrls: ['../login/login.css','./register.css'],

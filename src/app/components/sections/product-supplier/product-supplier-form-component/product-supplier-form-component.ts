@@ -11,6 +11,7 @@ import {ProductSupplierService} from '../../../../services/product-supplier-serv
 import {ResponseProductSupplier} from '../../../../interfaces/product-supplier/response-product-supplier';
 import {UpdateProductSupplier} from '../../../../interfaces/product-supplier/update-product-supplier';
 import {FieldError} from '../../../../directives/field-error';
+import {FieldErrorBorder} from '../../../../directives/field-error-border';
 
 @Component({
   selector: 'app-product-supplier-form-component',
@@ -18,7 +19,8 @@ import {FieldError} from '../../../../directives/field-error';
     ProductDropdownSelect,
     SupplierDropdownSelect,
     ReactiveFormsModule,
-    FieldError
+    FieldError,
+    FieldErrorBorder
   ],
   templateUrl: './product-supplier-form-component.html',
   styleUrl: './product-supplier-form-component.css',

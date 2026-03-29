@@ -3,7 +3,7 @@
     <form [formGroup]="productForm" (ngSubmit)="submit()">
 
       <label for="product-name">Nombre del producto</label>
-      <input type="text" id="product-name" formControlName="name" placeholder="Harina">
+      <input type="text" id="product-name" formControlName="name" [appFieldErrorBorder]="productForm.get('name')" placeholder="Harina">
       <small class="error-msg" [appFieldError]="productForm.get('name')"></small>
       @if(success() && !modifiedProduct() && err()) {
         <p class="success" (click)="err.set(null)">{{ err() }}</p>
