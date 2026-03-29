@@ -56,6 +56,8 @@ export class FieldError implements OnChanges {
       required: 'Este campo es obligatorio',
       minlength: `Debe contener como mínimo ${errors['minlength']?.requiredLength ?? ''} caracteres`,
       maxlength: `Debe contener como máximo ${errors['maxlength']?.requiredLength ?? ''} caracteres`,
+      min: `El valor debe ser como mínimo ${errors['min']?.min ?? ''}`,
+      max: `El valor debe ser como máximo ${errors['max']?.max ?? ''}`,
       pattern: 'El formato ingresado no es válido',
       email: 'El correo ingresado no es válido'
     };

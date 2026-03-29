@@ -27,8 +27,11 @@
 
     <label for="cost">Ingrese el costo</label>
     <input type="number" id="cost" formControlName="cost">
+    <small class="error" [appFieldError]="productSupplierForm.get('cost')"></small>
+
     <label for="profitMargin">Ingrese el Porcentaje de Ganancia</label>
     <input type="number" id="profitMargin" formControlName="profitMargin" placeholder="ej: 50">
+    <small class="error" [appFieldError]="productSupplierForm.get('profitMargin')"></small>
 
 
     <button [disabled]="isFormInvalid()" type="submit">{{isEditing()? 'Editar' : 'Crear' }}</button>

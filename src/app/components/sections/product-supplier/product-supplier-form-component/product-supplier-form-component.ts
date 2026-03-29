@@ -10,13 +10,15 @@ import {CreateProductSupplier} from '../../../../interfaces/product-supplier/cre
 import {ProductSupplierService} from '../../../../services/product-supplier-service';
 import {ResponseProductSupplier} from '../../../../interfaces/product-supplier/response-product-supplier';
 import {UpdateProductSupplier} from '../../../../interfaces/product-supplier/update-product-supplier';
+import {FieldError} from '../../../../directives/field-error';
 
 @Component({
   selector: 'app-product-supplier-form-component',
   imports: [
     ProductDropdownSelect,
     SupplierDropdownSelect,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FieldError
   ],
   templateUrl: './product-supplier-form-component.html',
   styleUrl: './product-supplier-form-component.css',
@@ -27,7 +29,7 @@ export class ProductSupplierFormComponent {
   productService = inject(ProductService);
   supplierService = inject(SupplierService);
   productSupplierService = inject(ProductSupplierService);
-  formBuilder = inject(FormBuilder)
+  formBuilder = inject(FormBuilder);
 
   supplierList = signal<Supplier[]>([]);
   productsList = signal<Product[]>([]);
@@ -44,7 +46,7 @@ export class ProductSupplierFormComponent {
     cost: this.formBuilder.nonNullable.control<number>(0, [Validators.required, Validators.min(0.1)]),
     profitMargin: this.formBuilder.nonNullable.control<number>(0, [Validators.required, Validators.min(0.1)]),
     price: this.formBuilder.control<number>(0)
-  })
+  });
 
   constructor() {
 
@@ -68,7 +70,7 @@ export class ProductSupplierFormComponent {
         this.productsList.set([]);
         alert(`${err.error}`);
       }
-    })
+    });
   }
 
   getSuppliers() {
@@ -78,7 +80,7 @@ export class ProductSupplierFormComponent {
         this.supplierList.set([]);
         alert(`${err.error}`);
       }
-    })
+    });
   }
 
   submit(){
@@ -97,7 +99,7 @@ export class ProductSupplierFormComponent {
       idSupplier: this.productSupplierForm.get('supplier')?.value!,
       cost: this.productSupplierForm.get("cost")?.value!,
       profitMargin: this.productSupplierForm.get("profitMargin")?.value!,
-    }
+    };
 
     console.log(productSupplierData);
 
@@ -123,7 +125,7 @@ export class ProductSupplierFormComponent {
 
       cost: this.productSupplierForm.get("cost")?.value!,
       profitMargin: this.productSupplierForm.get("profitMargin")?.value!,
-    }
+    };
 
     const idProductSupplier = Number(this.productSupplierToModify()?.idProductSupplier!)
 
@@ -140,7 +142,7 @@ export class ProductSupplierFormComponent {
         }
       }
 
-    )
+    );
 
   }
 
