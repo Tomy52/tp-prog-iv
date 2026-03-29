@@ -70,7 +70,7 @@ export class ProductSupplierFormComponent {
       next: (products) =>  { this.productsList.set(products) },
       error: (err) => {
         this.productsList.set([]);
-        alert(`${err.error}`);
+        alert(`${err.detail}`);
       }
     });
   }
@@ -80,7 +80,7 @@ export class ProductSupplierFormComponent {
       next: (suppliers) =>  { this.supplierList.set(suppliers) },
       error: (err) => {
         this.supplierList.set([]);
-        alert(`${err.error}`);
+        alert(`${err.detail}`);
       }
     });
   }
@@ -113,7 +113,7 @@ export class ProductSupplierFormComponent {
           this.err.set("Precio cargado!");
         },
         error: (e) => {
-          this.err.set(e.error);
+          this.err.set(e.detail);
           this.success.set(false);
           this.productSupplierForm.reset();
         }
@@ -139,7 +139,7 @@ export class ProductSupplierFormComponent {
           this.err.set('Precio modificado!');
         },
         error: (e) => {
-          this.err.set(e.error);
+          this.err.set(e.detail);
           this.success.set(false);
         }
       }

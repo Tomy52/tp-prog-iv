@@ -33,7 +33,7 @@ export class ProductSupplierFormSection implements OnInit {
         {
           next: (response) => this.productSupplierResponse.set(response),
           error: (err) => {
-            alert(`Algo anda mal -> ${err.error}`);
+            alert(`Algo anda mal -> ${err.detail}`);
           }
         }
       );

@@ -24,7 +24,7 @@ export class SupplierListCard {
     {
       this.supplier_service.deleteSupplier(this.supplier_info().id).subscribe({
         next: () => window.location.reload(),
-        error: () => console.error('Error borrando')
+        error: (e) => console.error(`Error borrando ${e.detail}`)
       });
     }
   }

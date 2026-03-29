@@ -55,7 +55,7 @@ export class DeleteSupplier {
         },
         error: (err) => {
           console.log(err)
-          alert(`${err.error}`);
+          alert(`${err.detail}`);
           this.suppliers.set([])
         }
       }

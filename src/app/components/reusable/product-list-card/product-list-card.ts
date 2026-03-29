@@ -26,7 +26,7 @@ export class ProductListCard {
     {
       this.productService.deleteProduct(this.productInfo().idProduct).subscribe({
         next: () => window.location.reload(),
-        error: () => console.error('Error borrando el producto')
+        error: (e) => console.error(`Error borrando el producto ${e.detail}`)
       });
     }
   }

@@ -55,7 +55,7 @@ export class PriceBySupplierListComponent {
       next: suppliers => {
         this.supplierList.set(suppliers);
     }, error: error => {
-        alert(error.error);
+        alert(error.detail);
       }
     })
   }
@@ -75,8 +75,8 @@ export class PriceBySupplierListComponent {
         this.supplierProductList.set(data);
         console.log(this.supplierProductList());
       },
-      error: () => {
-        console.error("error");
+      error: (e) => {
+        console.error(e.detail);
       },
       complete: () => {
         this.searching = false;

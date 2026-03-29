@@ -56,7 +56,7 @@ export class PriceListByProductComponent {
       next: products =>  {
       this.productList.set(products);
       }, error: error => {
-        alert(error.error);
+        alert(error.detail);
       },
       complete: () => this.searching = false
     })

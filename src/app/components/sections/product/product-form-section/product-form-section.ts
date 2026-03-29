@@ -23,7 +23,7 @@ export class ProductFormSection implements OnInit {
       const id = Number(this.id()!);
       this.productService.getProductById(id).subscribe({
         next: (prod) => this.productObject = prod,
-        error: () => console.error("El id no es válido")
+        error: (e) => console.error(e.detail)
       });
     }
   }

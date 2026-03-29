@@ -49,7 +49,7 @@ export class SuppliersPage {
       error: (e) => {
         this.page_data.set(e.error);
         console.log(e);
-        this.error_msg = `Error: ${e.status}, ${e.statusText}`;
+        this.error_msg = `Error: ${e.status}, ${e.detail}`;
       },
       complete: () => this.searching = false
     });

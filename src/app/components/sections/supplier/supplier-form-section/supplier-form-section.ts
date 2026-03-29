@@ -42,7 +42,7 @@ export class SupplierFormSection implements OnInit {
         },
         error: (e) =>{
           this.form_ok.set(false);
-          this.error.set(e.error);
+          this.error.set(e.detail);
         }
       });
     }
@@ -56,7 +56,7 @@ export class SupplierFormSection implements OnInit {
       next: () => this.form_ok.set(true),
       error: (e) => {
         this.form_ok.set(false);
-        this.error.set(e.error);
+        this.error.set(e.detail);
       }
     });
   }

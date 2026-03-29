@@ -51,7 +51,7 @@ export class ProductsPage {
       },
       error: (e) => {
         this.pageData.set(e.error);
-        this.errMsg = `Error: ${e.status}, ${e.statusText}`;
+        this.errMsg = `Error: ${e.detail}, ${e.status}`;
       },
       complete: () => this.searching = false
     });

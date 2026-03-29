@@ -74,7 +74,7 @@ export class ProductFormComponent {
         error: (err) => {
           this.success.set(false);
           alert("No se pudo completar la carga del producto");
-          this.err.set(`${err.error}`);
+          this.err.set(`${err.detail}`);
         }
       }
     );
@@ -100,7 +100,7 @@ export class ProductFormComponent {
       error: (err) => {
         this.success.set(false);
         alert("No se pudo completar la modificación del producto");
-        this.err.set(`${err.error}`);
+        this.err.set(`${err.detail}`);
       }
     });
   }
