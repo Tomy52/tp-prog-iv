@@ -4,13 +4,15 @@ import {AuthService} from '../../services/auth-service';
 import {Router, RouterLink} from '@angular/router';
 import {RegistrationService} from '../../services/registration-service';
 import {ProductStatus} from '../../interfaces/productStatus';
+import {FieldError} from '../../directives/field-error';
 
 @Component({
   selector: 'app-register',
   imports: [
     FormsModule,
     ReactiveFormsModule,
-    RouterLink
+    RouterLink,
+    FieldError
   ],
   templateUrl: './register.html',
   styleUrls: ['../login/login.css','./register.css'],

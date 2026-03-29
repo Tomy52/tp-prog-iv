@@ -4,16 +4,7 @@
 
       <label for="product-name">Nombre del producto</label>
       <input type="text" id="product-name" formControlName="name" placeholder="Harina">
-
-      @if(productForm.get("name")?.hasError('minlength') && productForm.get("name")?.dirty){
-        <small class="error-msg">El nombre del producto debe contener como mínimo 3 caracteres</small>
-      }
-      @if(productForm.get("name")?.hasError('maxlength') && productForm.get("name")?.dirty){
-        <small class="error-msg">El nombre del producto debe contener como máximo 50 caracteres</small>
-      }
-      @if(productForm.get("name")?.hasError('required') && productForm.get("name")?.dirty){
-        <small class="error-msg">El nombre del producto es obligatorio</small>
-      }
+      <small class="error-msg" [appFieldError]="productForm.get('name')"></small>
       @if(success() && !modifiedProduct() && err()) {
         <p class="success" (click)="err.set(null)">{{ err() }}</p>
       } @else if (success() && modifiedProduct() && err()) {

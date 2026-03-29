@@ -2,10 +2,11 @@ import {Component, effect, inject, input, output, WritableSignal} from '@angular
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Supplier } from '../../../../interfaces/supplier/supplier';
 import { Address } from '../../../../interfaces/supplier/address';
+import {FieldError} from '../../../../directives/field-error';
 
 @Component({
   selector: 'app-supplier-form-component',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, FieldError],
   templateUrl: './supplier-form-component.html',
   styleUrl: './supplier-form-component.css'
 })
