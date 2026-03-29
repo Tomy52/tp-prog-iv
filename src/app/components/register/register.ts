@@ -30,7 +30,7 @@ export class Register implements OnInit {
 
   userRegForm = this.formBuilder.group({
 
-    dni: this.formBuilder.nonNullable.control('', [Validators.required, Validators.minLength(7),Validators.maxLength(8)]),
+    dni: this.formBuilder.nonNullable.control('', [Validators.required, Validators.pattern(/^\d{7,8}$/)]),
     firstname: this.formBuilder.nonNullable.control('', [Validators.required, Validators.minLength(3), Validators.maxLength(50), Validators.pattern('^[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+( [A-ZÁÉÍÓÚÑ][a-záéíóúñ]+)*$')]),
     lastname: this.formBuilder.nonNullable.control('', [Validators.required, Validators.minLength(3), Validators.maxLength(50), Validators.pattern('^[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+( [A-ZÁÉÍÓÚÑ][a-záéíóúñ]+)*$')]),
     username: this.formBuilder.nonNullable.control('', [Validators.required,  Validators.minLength(3), Validators.maxLength(16), Validators.pattern('^[a-zA-Z0-9_]+$')]),

@@ -15,7 +15,8 @@
 
 
     <label for="dni-number">Número de documento (DNI)</label>
-    <input type="number" min="1000000" max="99999999" id="dni-number" formControlName="dni" [appFieldErrorBorder]="userRegForm.get('dni')" placeholder="1234567">
+    <input type="text" id="dni-number" formControlName="dni"
+           inputmode="numeric" maxlength="8" [appFieldErrorBorder]="userRegForm.get('dni')" placeholder="1234567"/>
     <small class="error-msg" [appFieldError]="userRegForm.get('dni')"></small>
 
 

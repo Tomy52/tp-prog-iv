@@ -8,7 +8,7 @@
     <small class="error-msg" [appFieldError]="form.get('companyName')"></small>
 
     <label for="cuit">Cuit</label>
-    <input type="text" name="cuit" id="cuit" formControlName="cuit" [appFieldErrorBorder]="form.get('cuit')"
+    <input type="text" name="cuit" id="cuit" formControlName="cuit" maxlength="13" [appFieldErrorBorder]="form.get('cuit')"
            placeholder="23-11121111-9">
     <small class="error-msg" [appFieldError]="form.get('cuit')"></small>
 
@@ -18,7 +18,7 @@
     <small class="error-msg" [appFieldError]="form.get('email')"></small>
 
     <label for="phone">Número de teléfono</label>
-    <input type="text" name="phone" id="phone" formControlName="phone" [appFieldErrorBorder]="form.get('phone')"
+    <input type="text" name="phone" id="phone" formControlName="phone" maxlength="18" [appFieldErrorBorder]="form.get('phone')"
            placeholder="1111111111">
     <small class="error-msg" [appFieldError]="form.get('phone')"></small>
 
