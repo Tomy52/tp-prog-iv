@@ -18,9 +18,3 @@ input {
   display: flex;
   justify-content: center;
 }
-
-.error-msg {
-  color: var(--error-color);
-  white-space: wrap;
-  text-align: center;
-}
