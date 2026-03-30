@@ -49,7 +49,11 @@ export class SuppliersPage {
       error: (e) => {
         this.page_data.set(e.error);
         console.log(e);
+<<<<<<< Updated upstream
         this.error_msg = `Error: ${e.status}, ${e.detail}`;
+=======
+        this.error_msg = `Error: ${e.status}, ${e.error.detail}`;
+>>>>>>> Stashed changes
       },
       complete: () => this.searching = false
     });

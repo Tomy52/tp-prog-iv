@@ -23,7 +23,13 @@ export class ProductFormSection implements OnInit {
       const id = Number(this.id()!);
       this.productService.getProductById(id).subscribe({
         next: (prod) => this.productObject = prod,
+<<<<<<< Updated upstream
         error: (e) => console.error(e.detail)
+=======
+        error: (e) => {
+          console.error(e.error.detail)
+        }
+>>>>>>> Stashed changes
       });
     }
   }

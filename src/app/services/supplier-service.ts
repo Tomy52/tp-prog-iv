@@ -3,6 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { Supplier } from '../interfaces/supplier/supplier';
 import {catchError, map, Observable, of, tap} from 'rxjs';
 import {PageResponse} from '../interfaces/other/page-response';
+import { ErrorResponse } from '../interfaces/error/errorResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class SupplierService {
   url = "api/suppliers";
 
 
-  addSupplier(supplier:Partial<Supplier>) { // for adding...
+  addSupplier(supplier:Partial<Supplier>) : Observable<Partial<Supplier>|ErrorResponse> { // for adding...
     return this.http.post<Supplier>(this.url,supplier);
   }
 
@@ -54,15 +55,15 @@ export class SupplierService {
 
   getSuppliersPage(page:number, size:number) // works badly when trying to search by name, keep as backup
   {
-    return this.http.get<PageResponse<Supplier>>(`${this.url}/page?page=${page}&size=${size}`);
+    return this.http.get<PageResponse<Supplier> | ErrorResponse>(`${this.url}/page?page=${page}&size=${size}`);
   }
 
   getSuppliersByName(page:number, size:number, name:string) // works badly when trying to search by name, keep as backup
   {
-    return this.http.get<PageResponse<Supplier>>(`${this.url}/name/${name}?page=${page}&size=${size}`);
+    return this.http.get<PageResponse<Supplier> | ErrorResponse>(`${this.url}/name/${name}?page=${page}&size=${size}`);
   }
 
-  updateSupplier(id:string, supplier:Partial<Supplier>) {
+  updateSupplier(id:string, supplier:Partial<Supplier>) : Observable<ErrorResponse|Supplier> {
     return this.http.put<Supplier>(this.url + `/${Number(id)}`,supplier);
   }
 

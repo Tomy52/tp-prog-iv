@@ -42,7 +42,11 @@ export class SupplierFormSection implements OnInit {
         },
         error: (e) =>{
           this.form_ok.set(false);
+<<<<<<< Updated upstream
           this.error.set(e.detail);
+=======
+          this.error.set(e.error.detail);
+>>>>>>> Stashed changes
         }
       });
     }
@@ -56,7 +60,11 @@ export class SupplierFormSection implements OnInit {
       next: () => this.form_ok.set(true),
       error: (e) => {
         this.form_ok.set(false);
+<<<<<<< Updated upstream
         this.error.set(e.detail);
+=======
+        this.error.set(e.error.detail);
+>>>>>>> Stashed changes
       }
     });
   }

@@ -26,7 +26,11 @@ export class ProductListCard {
     {
       this.productService.deleteProduct(this.productInfo().idProduct).subscribe({
         next: () => window.location.reload(),
+<<<<<<< Updated upstream
         error: (e) => console.error(`Error borrando el producto ${e.detail}`)
+=======
+        error: (e) => console.error(`Error borrando el producto ${e.error.detail}`)
+>>>>>>> Stashed changes
       });
     }
   }

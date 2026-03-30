@@ -51,7 +51,11 @@ export class ProductsPage {
       },
       error: (e) => {
         this.pageData.set(e.error);
+<<<<<<< Updated upstream
         this.errMsg = `Error: ${e.detail}, ${e.status}`;
+=======
+        this.errMsg = `Error: ${e.error.detail}, ${e.status}`;
+>>>>>>> Stashed changes
       },
       complete: () => this.searching = false
     });

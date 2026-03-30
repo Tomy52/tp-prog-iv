@@ -4,6 +4,7 @@ import {map, Observable} from 'rxjs';
 import {Product} from '../interfaces/product';
 import {PageResponse} from '../interfaces/other/page-response';
 import {ProductStatus} from '../interfaces/productStatus';
+import { ErrorResponse } from '../interfaces/error/errorResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -55,12 +56,12 @@ export class ProductService {
     );
   }
 
-  addProduct(product: Partial<Product>): Observable<Product> {
-    return this.http.post<Product>(`${this.baseUrl}`,product);
+  addProduct(product: Partial<Product>): Observable<Product|ErrorResponse> {
+    return this.http.post<Product|ErrorResponse>(`${this.baseUrl}`,product);
   }
 
-  modifyProduct(modifiedProduct: Partial<Product>): Observable<Product> {
-    return this.http.put<Product>(`${this.baseUrl}/${modifiedProduct.idProduct}`,modifiedProduct);
+  modifyProduct(modifiedProduct: Partial<Product>): Observable<Product|ErrorResponse> {
+    return this.http.put<Product|ErrorResponse>(`${this.baseUrl}/${modifiedProduct.idProduct}`,modifiedProduct);
   }
 
   deleteProduct(idProduct: number): Observable<Object> {

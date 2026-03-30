@@ -55,7 +55,11 @@ export class PriceBySupplierListComponent {
       next: suppliers => {
         this.supplierList.set(suppliers);
     }, error: error => {
+<<<<<<< Updated upstream
         alert(error.detail);
+=======
+        alert(error.error.detail);
+>>>>>>> Stashed changes
       }
     })
   }
@@ -76,7 +80,11 @@ export class PriceBySupplierListComponent {
         console.log(this.supplierProductList());
       },
       error: (e) => {
+<<<<<<< Updated upstream
         console.error(e.detail);
+=======
+        console.error(e.error);
+>>>>>>> Stashed changes
       },
       complete: () => {
         this.searching = false;

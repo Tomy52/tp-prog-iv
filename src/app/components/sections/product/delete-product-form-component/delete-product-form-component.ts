@@ -31,7 +31,11 @@ export class DeleteProductFormComponent {
         next: (prodArr: Product[]) => this.products.set(prodArr),
         error: (err) => {
           this.products.set([]);
+<<<<<<< Updated upstream
           alert(`${err.detail}`);
+=======
+          alert(`${err.error.detail}`);
+>>>>>>> Stashed changes
         }
       }
     );
@@ -67,7 +71,11 @@ export class DeleteProductFormComponent {
           error: (err) => {
             this.success.set(false);
             alert("No se pudo completar la baja del producto");
+<<<<<<< Updated upstream
             console.error(`Hubo un error en el borrado: ${err.detail}`);
+=======
+            console.error(`Hubo un error en el borrado: ${err.error.detail}`);
+>>>>>>> Stashed changes
           }
         }
       );

@@ -74,7 +74,11 @@ export class ProductFormComponent {
         error: (err) => {
           this.success.set(false);
           alert("No se pudo completar la carga del producto");
+<<<<<<< Updated upstream
           this.err.set(`${err.detail}`);
+=======
+          this.err.set(`${err.error.detail}`);
+>>>>>>> Stashed changes
         }
       }
     );
@@ -100,7 +104,11 @@ export class ProductFormComponent {
       error: (err) => {
         this.success.set(false);
         alert("No se pudo completar la modificación del producto");
+<<<<<<< Updated upstream
         this.err.set(`${err.detail}`);
+=======
+        this.err.set(`${err.error.detail}`);
+>>>>>>> Stashed changes
       }
     });
   }
