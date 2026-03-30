@@ -56,11 +56,7 @@ export class PriceListByProductComponent {
       next: products =>  {
       this.productList.set(products);
       }, error: error => {
-<<<<<<< Updated upstream
-        alert(error.detail);
-=======
         alert(error.error.detail);
->>>>>>> Stashed changes
       },
       complete: () => this.searching = false
     })

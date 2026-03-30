@@ -65,13 +65,8 @@ export class Register implements OnInit {
         },
         error: (err) => {
           this.success.set(false);
-<<<<<<< Updated upstream
-          alert("Registro fallido: " + `${err.detail}`);
-          this.err.set(`${err.detail}`);
-=======
           alert("Registro fallido: " + `${err.error.detail}`);
           this.err.set(`${err.error.detail}`);
->>>>>>> Stashed changes
         }
       }
     );

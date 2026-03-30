@@ -24,11 +24,7 @@ export class SupplierListCard {
     {
       this.supplier_service.deleteSupplier(this.supplier_info().id).subscribe({
         next: () => window.location.reload(),
-<<<<<<< Updated upstream
-        error: (e) => console.error(`Error borrando ${e.detail}`)
-=======
         error: (e) => console.error(`Error borrando ${e.error.detail}`)
->>>>>>> Stashed changes
       });
     }
   }

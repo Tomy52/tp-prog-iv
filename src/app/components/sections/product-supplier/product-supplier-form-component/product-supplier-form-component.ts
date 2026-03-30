@@ -70,11 +70,7 @@ export class ProductSupplierFormComponent {
       next: (products) =>  { this.productsList.set(products) },
       error: (err) => {
         this.productsList.set([]);
-<<<<<<< Updated upstream
-        alert(`${err.detail}`);
-=======
         alert(`${err.error.detail}`);
->>>>>>> Stashed changes
       }
     });
   }
@@ -84,11 +80,7 @@ export class ProductSupplierFormComponent {
       next: (suppliers) =>  { this.supplierList.set(suppliers) },
       error: (err) => {
         this.supplierList.set([]);
-<<<<<<< Updated upstream
-        alert(`${err.detail}`);
-=======
         alert(`${err.error.detail}`);
->>>>>>> Stashed changes
       }
     });
   }
@@ -121,11 +113,7 @@ export class ProductSupplierFormComponent {
           this.err.set("Precio cargado!");
         },
         error: (e) => {
-<<<<<<< Updated upstream
-          this.err.set(e.detail);
-=======
           this.err.set(e.error.detail);
->>>>>>> Stashed changes
           this.success.set(false);
           this.productSupplierForm.reset();
         }
@@ -151,11 +139,7 @@ export class ProductSupplierFormComponent {
           this.err.set('Precio modificado!');
         },
         error: (e) => {
-<<<<<<< Updated upstream
-          this.err.set(e.detail);
-=======
           this.err.set(e.error.detail);
->>>>>>> Stashed changes
           this.success.set(false);
         }
       }
