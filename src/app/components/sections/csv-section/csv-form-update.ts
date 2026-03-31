@@ -8,10 +8,11 @@ import { SupplierService } from '../../../services/supplier-service';
 import { FailedProductsResp } from '../../../interfaces/csv-update/failed-products-resp';
 import { FailedProductsComponent } from '../../reusable/failed-products-component/failed-products-component';
 import { SwitchWithText } from "../../reusable/switch-with-text/switch-with-text";
+import { Dialog } from "@angular/cdk/dialog"
 
 @Component({
   selector: 'app-csv-form-upload',
-  imports: [SupplierDropdownSelect, ReactiveFormsModule, SwitchWithText, FailedProductsComponent],
+  imports: [SupplierDropdownSelect, ReactiveFormsModule, SwitchWithText],
   templateUrl: './csv-form-update.html',
   styleUrl: './csv-form-update.css',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -19,6 +20,7 @@ import { SwitchWithText } from "../../reusable/switch-with-text/switch-with-text
 export class CsvFormUpdate {
   csv_service = inject(CsvService);
   form_builder = inject(FormBuilder);
+  dialog = inject(Dialog)
 
   suppliers: WritableSignal<Supplier[]> = signal<Supplier[]>([]);
   supplier_service = inject(SupplierService);
@@ -74,7 +76,12 @@ export class CsvFormUpdate {
     this.csv_service.changeProductsUsingCsv(values).subscribe(
       {
         next: (resp) => {
-          this.failed_products_response.set(resp)
+          // this.failed_products_response.set(resp)
+
+          const dialog_ref = this.dialog.open(FailedProductsComponent, {
+            data: {resp: resp},
+            disableClose: true
+          })
         },
         error: (err) => {
           console.error(err.detail)
