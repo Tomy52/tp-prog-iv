@@ -11,7 +11,7 @@ import { SwitchWithText } from "../../reusable/switch-with-text/switch-with-text
 
 @Component({
   selector: 'app-csv-form-upload',
-  imports: [SupplierDropdownSelect, ReactiveFormsModule, FailedProductsComponent, SwitchWithText],
+  imports: [SupplierDropdownSelect, ReactiveFormsModule, SwitchWithText, FailedProductsComponent],
   templateUrl: './csv-form-update.html',
   styleUrl: './csv-form-update.css',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -56,7 +56,7 @@ export class CsvFormUpdate {
 
   onFileSelected(event:any) {
     this.selectedFile = <File>event.target.files[0] 
-  }
+  } 
 
   completeForm()
   {
