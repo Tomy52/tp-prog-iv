@@ -1,131 +1,154 @@
 :host {
-  top: 0;
-  position: sticky;
+    display: block;
+    width: 100%;
 }
 
-h1 {
-  cursor: pointer;
-  transition:
-    scale .3s ease-in-out;
-  text-align: center;
-}
-
-h1:hover {
-  scale: 101%;
-}
-
+/* Header Fijo */
 nav {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding-inline: var(--header_padding);
-  padding-block: calc(var(--header_padding) / 2);
-  background-color: var(--main-color);
-  color: white;
-  
-  /*
-  background:
-        conic-gradient(at 25px calc(100% - 25px),#0000 270deg,#d3ad76 0) calc(25px + 18.75px) 0,
-        linear-gradient(#ac7c37 25px,#0000 0) 0 18.75px,
-        conic-gradient(at 25px calc(100% - 25px),#0000 90deg,#ac7c37 0 180deg, #d3ad76 0),
-        #bf893d;
-  background-size: calc(2*(25px + 18.75px)) calc(2*(25px + 18.75px));
-  */
-  /*height: 50px;*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%; 
+    height: clamp(60px, 8vw, 85px);
+    
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%; 
+    z-index: 1000;
+    
+    box-sizing: border-box;
+
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.2)), 
+        url('/images/header3.png'); 
+    background-size: cover;
+    background-position: center;
+    filter: saturate(1.1);
+    
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
-button.nav-bar-button {
-  height: 40px;
-  width: 60px;
-
-  border: none;
-  border-radius: 10px;
-
-  font-family: "BreeSerif-regular", serif;
-  color: var(--main-color);
-  transition:
-  background-color .2s ease-in-out,
-  scale .15s ease-in-out;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8px;
+/* Linea Plateada */
+nav::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px; 
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.2) 0%,
+        rgba(230, 230, 230, 0.9) 20%,
+        rgba(255, 255, 255, 1) 50%,
+        rgba(180, 180, 180, 0.9) 80%,
+        rgba(100, 100, 100, 0.5) 100%
+    );
+    z-index: 10;
 }
 
-.img-button-menu{
-    width: 33px;
-    height: 30px;
+nav h1 {
+    font-family: 'Cinzel', serif;
+    font-weight: 800;
+    font-size: clamp(1.3rem, 5vw, 2.3rem);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0;
+    cursor: pointer;
+    z-index: 2;
 
+    /* Efecto Plateado Cromado */
+    background: linear-gradient(to bottom, #ffffff 20%, #bdbdbd 45%, #ffffff 65%, #8a8a8a 85%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
 }
 
-button.nav-bar-button:hover {
-  background-color: #c9ecff;
-  scale: 110%;
+.nav-bar-button {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 20%;
+    width: clamp(42px, 6vw, 52px);
+    height: clamp(42px, 6vw, 52px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+.nav-bar-button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+.img-button-menu {
+    width: 24px;
+    filter: brightness(0) invert(1);
 }
 
 .user-button {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+    width: auto;
+    padding: 0 20px;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    font-family: 'Cinzel', serif;
 }
 
-.overlay{
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
-  z-index: 1000;
-}
-
-/*
- esto deberia ser algo provisorio, porque animate.leave esta roto en este momento
- en teoria deberia alcanzar con ponerlo como directiva en el componente del sidebar
- pero por ahora no hace nada, solo funciona animate.enter
-*/
-
-/* lo que esta abajo deberia estar en el css del sidebar una vez que lo arreglen */
-
-:host > .menuDiv {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
+.menuDiv {
+    position: fixed;
     top: 0;
-    height: 100dvh;
-    width: var(--sidebar-width);
-    background-color: var(--main-color);
-    z-index: 1010;
+    left: 0;
+    height: 100vh;
+    width: 300px; 
+    z-index: 2000; 
+    
+    background: linear-gradient(rgba(20, 40, 30, 0.98), rgba(10, 20, 15, 1));
+    backdrop-filter: blur(15px);
+    border-right: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 5px 0 25px rgba(0,0,0,0.8);
 }
 
+/* Fondo oscuro */
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    z-index: 1500; 
+}
+
+/* ANIMACIONES */
 .enter-animation {
-  animation: slide-fade-enter .3s;
-}
-
-@keyframes slide-fade-enter {
-  from {
-    opacity: 0;
-    transform: translateX(-100%);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+    animation: slideIn 0.3s ease-out forwards;
 }
 
 .leave-animation {
-  animation: slide-fade-leave .3s;
+    animation: slideOut 0.3s ease-in forwards;
 }
 
-@keyframes slide-fade-leave {
-  from {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  to {
-    opacity: 0;
-    transform: translateX(-100%);
-  }
+@keyframes slideIn {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+}
+
+@keyframes slideOut {
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
+}
+
+@media (max-width: 480px) {
+    nav { padding: 0 4%; }
+    .user-button { display: none; }
+    .menuDiv { width: 85%; } 
+}
+
+@media (min-width: 1200px) {
+    nav { padding: 0 8%; }
 }
