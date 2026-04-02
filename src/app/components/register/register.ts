@@ -4,13 +4,17 @@ import {AuthService} from '../../services/auth-service';
 import {Router, RouterLink} from '@angular/router';
 import {RegistrationService} from '../../services/registration-service';
 import {ProductStatus} from '../../interfaces/productStatus';
+import {FieldError} from '../../directives/field-error';
+import {FieldErrorBorder} from '../../directives/field-error-border';
 
 @Component({
   selector: 'app-register',
   imports: [
     FormsModule,
     ReactiveFormsModule,
-    RouterLink
+    RouterLink,
+    FieldError,
+    FieldErrorBorder
   ],
   templateUrl: './register.html',
   styleUrls: ['../login/login.css','./register.css'],
@@ -26,7 +30,7 @@ export class Register implements OnInit {
 
   userRegForm = this.formBuilder.group({
 
-    dni: this.formBuilder.nonNullable.control('', [Validators.required, Validators.minLength(7),Validators.maxLength(8)]),
+    dni: this.formBuilder.nonNullable.control('', [Validators.required, Validators.pattern(/^\d{7,8}$/)]),
     firstname: this.formBuilder.nonNullable.control('', [Validators.required, Validators.minLength(3), Validators.maxLength(50), Validators.pattern('^[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+( [A-ZÁÉÍÓÚÑ][a-záéíóúñ]+)*$')]),
     lastname: this.formBuilder.nonNullable.control('', [Validators.required, Validators.minLength(3), Validators.maxLength(50), Validators.pattern('^[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+( [A-ZÁÉÍÓÚÑ][a-záéíóúñ]+)*$')]),
     username: this.formBuilder.nonNullable.control('', [Validators.required,  Validators.minLength(3), Validators.maxLength(16), Validators.pattern('^[a-zA-Z0-9_]+$')]),

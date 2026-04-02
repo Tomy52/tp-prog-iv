@@ -3,12 +3,16 @@ import {FormBuilder, FormsModule, ReactiveFormsModule, Validators} from '@angula
 import {ProductService} from '../../../../services/product-service';
 import {ProductStatus} from '../../../../interfaces/productStatus';
 import {Product} from '../../../../interfaces/product';
+import {FieldError} from '../../../../directives/field-error';
+import {FieldErrorBorder} from '../../../../directives/field-error-border';
 
 @Component({
   selector: 'app-product-form-component',
   imports: [
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    FieldError,
+    FieldErrorBorder
   ],
   templateUrl: './product-form-component.html',
   styleUrl: './product-form-component.css',
