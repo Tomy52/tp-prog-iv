@@ -2,6 +2,8 @@ import {Component, effect, inject, input, OnInit, signal, WritableSignal} from '
 import { SupplierService } from '../../../../services/supplier-service';
 import { Supplier } from '../../../../interfaces/supplier/supplier';
 import { SupplierFormComponent } from "../supplier-form-component/supplier-form-component";
+import { ModalService } from '../../../../services/modal-service';
+import { ModalNotification } from '../../../reusable/modal-notification/modal-notification';
 
 @Component({
   selector: 'app-supplier-form-section',
@@ -11,11 +13,8 @@ import { SupplierFormComponent } from "../supplier-form-component/supplier-form-
 })
 export class SupplierFormSection implements OnInit {
   supplier_service = inject(SupplierService);
-
+  modal_service = inject(ModalService)
   id = input<string>();
-
-  form_ok:WritableSignal<boolean | null> = signal(null);
-  error = signal<string>('');
 
 
   supplier_obj?: Partial<Supplier>;
@@ -30,35 +29,70 @@ export class SupplierFormSection implements OnInit {
     }
   }
 
-  upload(event:Partial<Supplier>)
+  upload(supplier:Partial<Supplier>)
   {
-    const ok = confirm("¿Está seguro de que desea continuar?");
+    let ok_option = 'Si'
 
-    if (ok)
-    {
-      this.supplier_service.addSupplier(event).subscribe({
+    const modal_promise = this.modal_service.showModal(ModalNotification,{
+      title: "¿Está seguro que desea continuar?",
+      options: [ok_option,'No']
+    })
+
+    modal_promise?.subscribe((result) => {
+      if(ok_option == result)
+      {
+        this.supplier_service.addSupplier(supplier).subscribe({
         next: () => {
-          this.form_ok.set(true);
+
+          this.modal_service.showModal(ModalNotification, {
+            title: "¡Proveedor cargado!"
+          });
+
         },
         error: (e) =>{
-          this.form_ok.set(false);
-          this.error.set(e.error);
+          
+          this.modal_service.showModal(ModalNotification, {
+            title: "¡Error!"
+          })
+
         }
       });
-    }
+      }
+    })
   }
 
-  update(event:Partial<Supplier>)
+  update(supplier:Partial<Supplier>)
   {
-    console.log("editing");
+    let ok_option = 'Si'
 
-    this.supplier_service.updateSupplier(this.id()!,event).subscribe({
-      next: () => this.form_ok.set(true),
-      error: (e) => {
-        this.form_ok.set(false);
-        this.error.set(e.error);
+    const modal_promise = this.modal_service.showModal(ModalNotification,{
+      title: "¿Está seguro que desea continuar?",
+      options: [ok_option,'No']
+    })
+
+    // TODO
+    // Esto quedaria a modificar por el tema del error handler
+    modal_promise?.subscribe((result) => {
+      if(ok_option == result)
+      {
+        this.supplier_service.updateSupplier(this.id()!,supplier).subscribe({
+        next: () => {
+
+          this.modal_service.showModal(ModalNotification, {
+            title: "¡Proveedor modificado!"
+          });
+
+        },
+        error: (e) =>{
+          
+          this.modal_service.showModal(ModalNotification, {
+            title: "¡Error!"
+          })
+
+        }
+      });
       }
-    });
+    })
   }
 
 
