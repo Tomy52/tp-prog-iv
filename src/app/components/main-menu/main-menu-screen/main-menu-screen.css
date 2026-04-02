@@ -19,7 +19,6 @@ section {
   padding: var(--header_padding);
   grid-gap: 2rem;
   width: 60%;
-
   align-items: center;
   justify-content: center;
 }

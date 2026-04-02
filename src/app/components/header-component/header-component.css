@@ -23,6 +23,15 @@ nav {
   padding-block: calc(var(--header_padding) / 2);
   background-color: var(--main-color);
   color: white;
+  
+  /*
+  background:
+        conic-gradient(at 25px calc(100% - 25px),#0000 270deg,#d3ad76 0) calc(25px + 18.75px) 0,
+        linear-gradient(#ac7c37 25px,#0000 0) 0 18.75px,
+        conic-gradient(at 25px calc(100% - 25px),#0000 90deg,#ac7c37 0 180deg, #d3ad76 0),
+        #bf893d;
+  background-size: calc(2*(25px + 18.75px)) calc(2*(25px + 18.75px));
+  */
   /*height: 50px;*/
 }
 

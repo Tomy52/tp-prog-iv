@@ -1,0 +1,42 @@
+article {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: red;
+    position: relative;
+}
+
+article > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Esto es cuando se agrega mediante el dialog, si no me equivoco, si no lo haces, este estilo no se aplica */
+:host-context(cdk-dialog-container)
+{
+    display: block;
+    background-color: white;
+    padding: 10px;
+}
+
+/* Esto es recontra provisorio */
+.close-button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    border: none;
+    padding: 8px 16px; 
+    vertical-align: middle;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    background-color: inherit;
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap;
+
+    background-color: white;
+}

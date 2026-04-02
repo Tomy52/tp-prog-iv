@@ -1,0 +1,22 @@
+<article>
+
+
+    <h1>Operación exitosa!</h1>
+
+    <span class="close-button top-right" (click)="closeModal()">X</span>
+    @if (this.show_err()) {
+        <div>
+            <h2>{{failed_product_resp()?.message}}</h2>
+            <button (click)="changeShowing()" [textContent]="showing() ? 'Esconder productos' : 'Mostrar productos'"></button>
+        </div>
+        @if (showing()) {
+            <div>
+                <ul>
+                    @for (item of failed_product_resp()?.nonAffectedProducts; track $index) {
+                        <li>{{item.nombre}}</li>
+                    }
+                </ul>
+            </div>
+        }
+    }
+</article>
