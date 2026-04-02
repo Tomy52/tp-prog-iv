@@ -50,9 +50,8 @@ export class ProductFormComponent {
     })
 
     modal_promise?.subscribe((value) => {
+      
       if (ok_option == value) {
-
-
         if (this.modifiedProduct() == undefined) {
           this.addProduct();
         } else {
