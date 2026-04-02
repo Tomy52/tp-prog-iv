@@ -73,8 +73,6 @@ export class CsvFormUpdate {
       file: this.selectedFile!,
       mode: upload_values.csv_mode ? 'add' : 'modify' 
     }
-
-    console.log(values)
     
     this.csv_service.changeProductsUsingCsv(values).subscribe(
       {

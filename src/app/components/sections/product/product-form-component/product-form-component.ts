@@ -5,6 +5,8 @@ import {ProductStatus} from '../../../../interfaces/productStatus';
 import {Product} from '../../../../interfaces/product';
 import {FieldError} from '../../../../directives/field-error';
 import {FieldErrorBorder} from '../../../../directives/field-error-border';
+import { ModalService } from '../../../../services/modal-service';
+import { ModalNotification } from '../../../reusable/modal-notification/modal-notification';
 
 @Component({
   selector: 'app-product-form-component',
@@ -19,13 +21,10 @@ import {FieldErrorBorder} from '../../../../directives/field-error-border';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductFormComponent {
-  success: WritableSignal<boolean|null> = signal<boolean|null>(null);
-  err = signal<string|null>(null);
-
   formBuilder: FormBuilder = inject(FormBuilder);
   productService: ProductService = inject(ProductService);
+  modal_service: ModalService = inject(ModalService);
 
-  dataSig = output<Partial<Product>>();
   modifiedProduct = input<Partial<Product>>();
 
   productForm = this.formBuilder.group({
@@ -44,15 +43,26 @@ export class ProductFormComponent {
   }
 
   submit() {
-    const ok = confirm(`¿Está seguro de que desea continuar?`);
+    let ok_option = 'Si'
+    const modal_promise = this.modal_service.showModal(ModalNotification,{
+      title: "¿Está seguro de que desea continuar?",
+      options: [ok_option, 'No']
+    })
 
-    if (ok) {
-      if (this.modifiedProduct() == undefined) {
-        this.addProduct();
-      } else {
-        this.updateProduct();
+    modal_promise?.subscribe((value) => {
+      if (ok_option == value) {
+
+
+        if (this.modifiedProduct() == undefined) {
+          this.addProduct();
+        } else {
+          this.updateProduct();
+        }
+
+
       }
-    }
+    })
+
 
   }
 
@@ -66,15 +76,19 @@ export class ProductFormComponent {
     this.productService.addProduct(product).subscribe(
       {
         next: () => {
-          this.success.set(true);
+
+          this.modal_service.showModal(ModalNotification, {
+            title: "¡Carga exitosa!"
+          }, false)
+
           this.productForm.markAsPristine();
           this.productForm.reset();
-          this.err.set('¡Producto registrado exitosamente!');
-          },
+        },
         error: (err) => {
-          this.success.set(false);
-          alert("No se pudo completar la carga del producto");
-          this.err.set(`${err.error}`);
+
+          this.modal_service.showModal(ModalNotification, {
+            title: "No se pudo completar la carga del producto"
+          }, false)
         }
       }
     );
@@ -90,17 +104,19 @@ export class ProductFormComponent {
       status: formInfo.status
     };
 
-    console.log(updatedProduct.status);
-
     this.productService.modifyProduct(updatedProduct).subscribe({
       next: () => {
-        this.success.set(true);
-        this.err.set('¡Producto modificado exitosamente!');
+          
+        this.modal_service.showModal(ModalNotification, {
+          title: "¡Modificación exitosa!"
+        }, false)
+
       },
       error: (err) => {
-        this.success.set(false);
-        alert("No se pudo completar la modificación del producto");
-        this.err.set(`${err.error}`);
+        this.modal_service.showModal(ModalNotification, {
+          title: "No se pudo completar la modificación del producto"
+        }, false)
+
       }
     });
   }
