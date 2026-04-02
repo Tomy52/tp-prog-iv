@@ -79,15 +79,16 @@ export class SupplierFormSection implements OnInit {
         next: () => {
 
           this.modal_service.showModal(ModalNotification, {
-            title: "¡Proveedor modificado!"
-          });
+            title: "¡Proveedor modificado!",
+            description: "Proveedor modificado exitosamente."
+          }, false);
 
         },
         error: (e) =>{
           
           this.modal_service.showModal(ModalNotification, {
             title: "¡Error!"
-          })
+          }, false)
 
         }
       });

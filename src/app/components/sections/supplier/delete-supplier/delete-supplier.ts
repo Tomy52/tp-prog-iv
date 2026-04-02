@@ -3,6 +3,8 @@ import {FormBuilder, FormsModule, ReactiveFormsModule, Validators} from '@angula
 import {SupplierService} from '../../../../services/supplier-service';
 import {Supplier} from '../../../../interfaces/supplier/supplier';
 import { SupplierDropdownSelect } from '../../../reusable/supplier-dropdown-select/supplier-dropdown-select';
+import { ModalService } from '../../../../services/modal-service';
+import { ModalNotification } from '../../../reusable/modal-notification/modal-notification';
 
 @Component({
   selector: 'app-delete-supplier',
@@ -13,10 +15,9 @@ import { SupplierDropdownSelect } from '../../../reusable/supplier-dropdown-sele
 export class DeleteSupplier {
   supplier_service = inject(SupplierService);
   form_builder = inject(FormBuilder);
-
   suppliers: WritableSignal<Supplier[]> = signal<Supplier[]>([]);
+  modal_service = inject(ModalService)
 
-  form_ok:WritableSignal<boolean | null> = signal(null);
 
   constructor() {
     this.getSuppliers();
@@ -30,21 +31,37 @@ export class DeleteSupplier {
   {
     const id = this.form.value.id!;
 
-    const ok = confirm("Realmente quiere hacer esto?");
+    let ok_option = "Si"
 
-    if(ok)
-    {
-      this.supplier_service.deleteSupplier(id).subscribe({
-        next: () => {
-          this.getSuppliers();
-          this.resetForm();
-          this.form_ok.set(true);
-        },
-        error: (e) => {
-          this.form_ok.set(false);
-        }
-      });
-    }
+    const modal_promise = this.modal_service.showModal(ModalNotification, {
+      title: "¿Realmente quiere hacer esto?",
+      description: "Esta acción no se puede deshacer.",
+      options: [ok_option, "No"]
+    })
+
+
+    modal_promise?.subscribe((result) => {
+      if(result == ok_option)
+      {
+        this.supplier_service.deleteSupplier(id).subscribe({
+          next: () => {
+
+            this.modal_service.showModal(ModalNotification, {
+              title: "¡Exito!",
+              description: "Proveedor eliminado exitosamente."
+            }, false)
+
+            this.getSuppliers();
+            this.resetForm();
+          },
+          error: (e) => {
+            this.modal_service.showModal(ModalNotification, {
+              title: "¡Error!"
+            }, false)
+          }
+        });
+      }
+    })
   }
 
   getSuppliers(): void {
@@ -54,8 +71,11 @@ export class DeleteSupplier {
           this.suppliers.set(arr);
         },
         error: (err) => {
-          console.log(err)
-          alert(`${err.error}`);
+          // esto se podria implementar 
+          this.modal_service.showModal(ModalNotification, {
+            title: "No hay proveedores!"
+          })
+
           this.suppliers.set([])
         }
       }
