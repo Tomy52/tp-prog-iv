@@ -31,9 +31,6 @@ input{
   padding: 10px;
 
   border-radius: 10px;
-  border-style: ridge;
-  border-color: white;
-  border-width: 2px;
 
 }
 
@@ -75,11 +72,5 @@ button:hover {
 button:disabled {
   background-color: var(--disabled-button-color);
   color: var(--disabled-button-text-color)
-}
-
-.error-msg {
-  color: var(--error-color);
-  white-space: wrap;
-  text-align: center;
 }
 

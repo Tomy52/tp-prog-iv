@@ -51,6 +51,10 @@ button {
   padding: 10px;
 }
 
+input {
+  border: 2px ridge white;
+}
+
 input[type="submit"] {
   font-family: "BreeSerif-regular", serif;
   padding: 10px;
@@ -85,4 +89,14 @@ main {
 #table-wrapper {
   max-width: 80%;
   overflow-x: auto;
+}
+
+.error-msg {
+  color: var(--error-color);
+  white-space: wrap;
+  text-align: center;
+}
+
+.error-border {
+  border: 2px solid red;
 }
