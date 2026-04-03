@@ -8,6 +8,8 @@ import {PriceBySupplierList} from '../../../../interfaces/product-supplier/price
 import {ProductSupplierRowComponent} from '../price-by-supplier-row-component/product-supplier-row-component';
 import {PageButtons} from '../../../reusable/page-buttons/page-buttons';
 import {AllowViewUser} from '../../../../directives/allow-view-user';
+import { ModalService } from '../../../../services/modal-service';
+import { ModalNotification } from '../../../reusable/modal-notification/modal-notification';
 
 @Component({
   selector: 'app-price-list-by-supplier-component',
@@ -27,6 +29,8 @@ export class PriceBySupplierListComponent {
   supplierService = inject(SupplierService);
   productSupplierService = inject(ProductSupplierService);
   formBuilder = inject(FormBuilder);
+
+  modal_service = inject(ModalService)
 
   page = signal<number>(0);
   pageSize:number;
@@ -55,7 +59,10 @@ export class PriceBySupplierListComponent {
       next: suppliers => {
         this.supplierList.set(suppliers);
     }, error: error => {
-        alert(error.error);
+      
+        this.modal_service.showModal(ModalNotification, {
+          title: "No hay proveedores"
+        }, false)
       }
     })
   }
