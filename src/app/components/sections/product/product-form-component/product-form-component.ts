@@ -30,7 +30,9 @@ export class ProductFormComponent {
   productForm = this.formBuilder.group({
     name: this.formBuilder.nonNullable.control('',
       [Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
-    status: this.formBuilder.nonNullable.control(ProductStatus.Enabled)
+    status: this.formBuilder.nonNullable.control(ProductStatus.Enabled),
+    stock: this.formBuilder.nonNullable.control(0 as unknown, [Validators.required, Validators.min(0)]),
+    category: this.formBuilder.nonNullable.control(null as unknown, [Validators.required])
   });
 
   constructor() {
@@ -38,6 +40,8 @@ export class ProductFormComponent {
       if (this.modifiedProduct()) {
         this.productForm.get('name')?.patchValue(this.modifiedProduct()?.name ?? '');
         this.productForm.get('status')?.patchValue(this.modifiedProduct()?.status ?? ProductStatus.Enabled);
+        this.productForm.get('stock')?.patchValue(this.modifiedProduct()?.stock ?? 0)
+        this.productForm.get('category')?.patchValue(this.modifiedProduct()?.category ?? undefined)
       }
     });
   }

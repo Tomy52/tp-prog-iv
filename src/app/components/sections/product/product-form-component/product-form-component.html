@@ -14,6 +14,14 @@
         </select>
       }
 
+      <label for="stock">Stock</label>
+      <input type="number" name="stock" id="stock" formControlName="stock">
+
+
+      <label for="category">Category</label>
+      
+      <!-- <select type="select" name="category" id="category" formControlName="category"/> -->
+
       <button type="submit" [disabled]="!productForm.valid">Cargar</button>
 
     </form>
