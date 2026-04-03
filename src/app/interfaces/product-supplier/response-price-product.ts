@@ -4,8 +4,6 @@ export interface ResponsePriceProduct {
   "idSupplier": number,
   "companyName": string,
   "cost": number,
-  "profitMargin": number,
-  "price": number,
   "dollarPrice": number
 
 }
