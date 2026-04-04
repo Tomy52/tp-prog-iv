@@ -1,5 +1,5 @@
 import {ErrorHandler, inject, Injectable, NgZone, signal} from '@angular/core';
-import {ErrorResponse} from '../interfaces/error/errorResponse';
+import {ErrorResponse} from '../interfaces/error/error-response';
 import {HttpErrorResponse} from '@angular/common/http';
 
 @Injectable({

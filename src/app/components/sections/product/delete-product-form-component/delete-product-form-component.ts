@@ -82,9 +82,7 @@ export class DeleteProductFormComponent {
               this.getProducts();
             },
             error: (err) => {
-              this.modal_service.showModal(ModalNotification, {
-                title: "No se pudo completar la baja del producto"
-              }, false)
+              throw err;
             }
           }
         );

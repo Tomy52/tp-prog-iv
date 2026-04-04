@@ -73,9 +73,7 @@ export class ProductSupplierFormComponent {
       error: (err) => {
         this.productsList.set([]);
 
-        this.modal_service.showModal(ModalNotification, {
-          title: "No hay productos activos"
-        }, false)
+        throw err;
 
       }
     });
@@ -86,10 +84,7 @@ export class ProductSupplierFormComponent {
       next: (suppliers) =>  { this.supplierList.set(suppliers) },
       error: (err) => {
         this.supplierList.set([]);
-
-        this.modal_service.showModal(ModalNotification, {
-          title: "No hay proveedores"
-        }, false)
+        throw err
       }
     });
   }
@@ -123,11 +118,8 @@ export class ProductSupplierFormComponent {
         },
         error: (e) => {
 
-          this.modal_service.showModal(ModalNotification, {
-            title: "¡Error cargando relación!"
-          })
-          
           this.productSupplierForm.reset();
+          throw e;
         }
       }
     );
@@ -154,9 +146,7 @@ export class ProductSupplierFormComponent {
 
         },
         error: (e) => {
-          this.modal_service.showModal(ModalNotification, {
-            title: "¡Error cargando relación!"
-          })
+          throw e
         }
       }
 

@@ -9,7 +9,6 @@ import {PriceByProductRowComponent} from '../price-by-product-row-component/pric
 import {AllowViewUser} from '../../../../directives/allow-view-user';
 import {PageButtons} from '../../../reusable/page-buttons/page-buttons';
 import { ModalService } from '../../../../services/modal-service';
-import { ModalNotification } from '../../../reusable/modal-notification/modal-notification';
 
 @Component({
   selector: 'app-price-list-by-product-component',
@@ -61,9 +60,7 @@ export class PriceListByProductComponent {
       this.productList.set(products);
       }, error: error => {
 
-        this.modal_service.showModal(ModalNotification, {
-          title: "No hay productos activos."
-        }, false)
+        throw error
         
       },
       complete: () => this.searching = false

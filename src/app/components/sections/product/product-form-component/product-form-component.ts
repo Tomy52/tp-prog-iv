@@ -84,10 +84,7 @@ export class ProductFormComponent {
           this.productForm.reset();
         },
         error: (err) => {
-
-          this.modal_service.showModal(ModalNotification, {
-            title: "No se pudo completar la carga del producto"
-          }, false)
+          throw err
         }
       }
     );
@@ -112,10 +109,7 @@ export class ProductFormComponent {
 
       },
       error: (err) => {
-        this.modal_service.showModal(ModalNotification, {
-          title: "No se pudo completar la modificación del producto"
-        }, false)
-
+        throw err
       }
     });
   }

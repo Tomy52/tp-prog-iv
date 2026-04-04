@@ -59,10 +59,7 @@ export class PriceBySupplierListComponent {
       next: suppliers => {
         this.supplierList.set(suppliers);
     }, error: error => {
-      
-        this.modal_service.showModal(ModalNotification, {
-          title: "No hay proveedores"
-        }, false)
+        throw error;
       }
     })
   }
@@ -82,8 +79,8 @@ export class PriceBySupplierListComponent {
         this.supplierProductList.set(data);
         console.log(this.supplierProductList());
       },
-      error: () => {
-        console.error("error");
+      error: (err) => {
+        throw err;
       },
       complete: () => {
         this.searching = false;
