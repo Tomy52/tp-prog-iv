@@ -42,6 +42,7 @@ export class DeleteSupplier {
         },
         error: (e) => {
           this.form_ok.set(false);
+          throw e;
         }
       });
     }
@@ -54,9 +55,9 @@ export class DeleteSupplier {
           this.suppliers.set(arr);
         },
         error: (err) => {
-          console.log(err)
-          alert(`${err.detail}`);
+          alert(`${err.error.detail}`);
           this.suppliers.set([])
+          throw err;
         }
       }
     );

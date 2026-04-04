@@ -32,6 +32,7 @@ export class DeleteProductFormComponent {
         error: (err) => {
           this.products.set([]);
           alert(`${err.error.detail}`);
+          throw err;
         }
       }
     );

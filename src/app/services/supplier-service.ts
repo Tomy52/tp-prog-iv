@@ -8,7 +8,7 @@ import { ErrorResponse } from '../interfaces/error/errorResponse';
 @Injectable({
   providedIn: 'root'
 })
-export class SupplierService {
+export class  SupplierService {
   http = inject(HttpClient);
   url = "api/suppliers";
 

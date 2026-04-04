@@ -43,6 +43,7 @@ export class SupplierFormSection implements OnInit {
         error: (e) =>{
           this.form_ok.set(false);
           this.error.set(e.error.detail);
+          throw e;
         }
       });
     }
@@ -57,6 +58,7 @@ export class SupplierFormSection implements OnInit {
       error: (e) => {
         this.form_ok.set(false);
         this.error.set(e.error.detail);
+        throw e;
       }
     });
   }
@@ -69,7 +71,10 @@ export class SupplierFormSection implements OnInit {
       const id = Number(this.id()!);
       this.supplier_service.getSupplier(id).subscribe({
         next: (sup) => this.supplier_obj = sup,
-        error: () => console.error("te deberia sacar de aca... (interceptor/guard?)")
+        error: () => {
+          // console.error("te deberia sacar de aca... (interceptor/guard?)")
+          throw new Error("te deberia sacar de aca... (interceptor/guard?)");
+        }
       });
     }
   }

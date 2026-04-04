@@ -5,6 +5,7 @@ import {PageButtons} from '../../../reusable/page-buttons/page-buttons';
 import {SupplierList} from '../../../reusable/supplier-list/supplier-list';
 import {SearchBar} from '../../../reusable/search-bar/search-bar';
 import {PageResponse} from '../../../../interfaces/other/page-response';
+import {ErrorResponse} from '../../../../interfaces/error/errorResponse';
 
 @Component({
   selector: 'app-suppliers-page',
@@ -29,7 +30,6 @@ export class SuppliersPage {
   error_msg:string = '';
 
   search_term:string = '';
-
   searching:boolean = false;
 
   constructor() {
@@ -42,15 +42,16 @@ export class SuppliersPage {
   {
     this.searching = true; // lock up the buttons so the user doesn't click twice
     this.supplier_service.getFilteredAndMakeFilteredPage(this.page(),this.page_size,query).subscribe({
-      next: (x) => {
-        console.log(x);
-        this.page_data.set(x);
+      next: (response) => {
+        console.log(response);
+        this.page_data.set(response);
       },
       error: (e) => {
-        this.page_data.set(e.error);
-        console.log(e);
+
         this.error_msg = `Error: ${e.status}, ${e.error.detail}`;
-      },
+        throw e;
+
+        },
       complete: () => this.searching = false
     });
   }
