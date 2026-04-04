@@ -7,7 +7,7 @@ import {PageResponse} from '../interfaces/other/page-response';
 @Injectable({
   providedIn: 'root'
 })
-export class SupplierService {
+export class  SupplierService {
   http = inject(HttpClient);
   url = "api/suppliers";
 

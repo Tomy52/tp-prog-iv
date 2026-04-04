@@ -36,10 +36,7 @@ export class DeleteProductFormComponent {
         next: (prodArr: Product[]) => this.products.set(prodArr),
         error: (err) => {
           this.products.set([]);
-
-          this.modal_service.showModal(ModalNotification, {
-              title: "No hay productos activos"
-          }, false)
+          throw err;
         }
       }
     );

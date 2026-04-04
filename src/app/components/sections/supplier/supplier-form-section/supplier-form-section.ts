@@ -50,11 +50,7 @@ export class SupplierFormSection implements OnInit {
 
         },
         error: (e) =>{
-          
-          this.modal_service.showModal(ModalNotification, {
-            title: "¡Error!"
-          })
-
+          throw e;
         }
       });
       }
@@ -64,7 +60,6 @@ export class SupplierFormSection implements OnInit {
   update(supplier:Partial<Supplier>)
   {
     let ok_option = 'Si'
-
     const modal_promise = this.modal_service.showModal(ModalNotification,{
       title: "¿Está seguro que desea continuar?",
       options: [ok_option,'No']
@@ -85,11 +80,7 @@ export class SupplierFormSection implements OnInit {
 
         },
         error: (e) =>{
-          
-          this.modal_service.showModal(ModalNotification, {
-            title: "¡Error!"
-          }, false)
-
+          throw e;
         }
       });
       }
@@ -104,7 +95,10 @@ export class SupplierFormSection implements OnInit {
       const id = Number(this.id()!);
       this.supplier_service.getSupplier(id).subscribe({
         next: (sup) => this.supplier_obj = sup,
-        error: () => console.error("te deberia sacar de aca... (interceptor/guard?)")
+        error: () => {
+          // console.error("te deberia sacar de aca... (interceptor/guard?)")
+          throw new Error("te deberia sacar de aca... (interceptor/guard?)");
+        }
       });
     }
   }

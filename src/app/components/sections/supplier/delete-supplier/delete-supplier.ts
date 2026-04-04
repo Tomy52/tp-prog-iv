@@ -32,7 +32,6 @@ export class DeleteSupplier {
     const id = this.form.value.id!;
 
     let ok_option = "Si"
-
     const modal_promise = this.modal_service.showModal(ModalNotification, {
       title: "¿Realmente quiere hacer esto?",
       description: "Esta acción no se puede deshacer.",
@@ -55,9 +54,7 @@ export class DeleteSupplier {
             this.resetForm();
           },
           error: (e) => {
-            this.modal_service.showModal(ModalNotification, {
-              title: "¡Error!"
-            }, false)
+            throw e
           }
         });
       }
@@ -71,12 +68,8 @@ export class DeleteSupplier {
           this.suppliers.set(arr);
         },
         error: (err) => {
-          // esto se podria implementar 
-          this.modal_service.showModal(ModalNotification, {
-            title: "No hay proveedores!"
-          })
-
           this.suppliers.set([])
+          throw err;
         }
       }
     );

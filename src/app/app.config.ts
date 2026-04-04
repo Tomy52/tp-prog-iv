@@ -1,9 +1,15 @@
-import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZoneChangeDetection } from '@angular/core';
+import {
+  ApplicationConfig,
+  ErrorHandler,
+  provideBrowserGlobalErrorListeners,
+  provideZoneChangeDetection
+} from '@angular/core';
 import {provideRouter, withComponentInputBinding, withViewTransitions} from '@angular/router';
 import { routes } from './app.routes';
 import {provideHttpClient, withFetch, withInterceptors} from '@angular/common/http';
 import {authInterceptor} from './interceptors/auth-interceptor';
 import {tokenInterceptor} from './interceptors/token-interceptor';
+import {GlobalErrorHandler} from './services/global-error-handler';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -13,7 +19,8 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(
       withInterceptors(
         [authInterceptor, tokenInterceptor]), withFetch()
-    )
+    ),
+    { provide: ErrorHandler, useClass: GlobalErrorHandler}
 
   ]
 };
