@@ -1,19 +1,10 @@
 <section>
   <form action="" [formGroup]="form" (ngSubmit)="submit()">
 
+    
   <h2> Eliminar proveedor </h2>
-
-    @if(this.form_ok() == true)
-    {
-      <p (click)="form_ok.set(null)"> Exito! </p>
-    } @else if (this.form_ok() == false)
-    {
-      <p (click)="form_ok.set(null)"> Error! </p>
-    }
-
-    <app-supplier-dropdown-select [suppliers]="suppliers()" formControlName="id"/>
-
-    <input type="submit" value="Eliminar" [disabled]="!isValid()">
+  <app-supplier-dropdown-select [suppliers]="suppliers()" formControlName="id"/>
+  <input type="submit" value="Eliminar" [disabled]="!isValid()">
 
   </form>
 </section>

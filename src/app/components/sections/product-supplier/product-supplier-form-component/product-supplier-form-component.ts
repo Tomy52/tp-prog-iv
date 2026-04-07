@@ -12,6 +12,8 @@ import {ResponseProductSupplier} from '../../../../interfaces/product-supplier/r
 import {UpdateProductSupplier} from '../../../../interfaces/product-supplier/update-product-supplier';
 import {FieldError} from '../../../../directives/field-error';
 import {FieldErrorBorder} from '../../../../directives/field-error-border';
+import { ModalService } from '../../../../services/modal-service';
+import { ModalNotification } from '../../../reusable/modal-notification/modal-notification';
 
 @Component({
   selector: 'app-product-supplier-form-component',
@@ -32,6 +34,7 @@ export class ProductSupplierFormComponent {
   supplierService = inject(SupplierService);
   productSupplierService = inject(ProductSupplierService);
   formBuilder = inject(FormBuilder);
+  modal_service = inject(ModalService)
 
   supplierList = signal<Supplier[]>([]);
   productsList = signal<Product[]>([]);
@@ -39,8 +42,7 @@ export class ProductSupplierFormComponent {
   productSupplierToModify = input<Partial<ResponseProductSupplier>>();
   isEditing = input.required<boolean>();
 
-  err = signal<string|null>(null);
-  success = signal<boolean|null>(null);
+
 
   productSupplierForm = this.formBuilder.group({
     product: this.formBuilder.control<number | null>(null),
@@ -70,7 +72,9 @@ export class ProductSupplierFormComponent {
       next: (products) =>  { this.productsList.set(products) },
       error: (err) => {
         this.productsList.set([]);
-        alert(`${err.error}`);
+
+        throw err;
+
       }
     });
   }
@@ -80,7 +84,7 @@ export class ProductSupplierFormComponent {
       next: (suppliers) =>  { this.supplierList.set(suppliers) },
       error: (err) => {
         this.supplierList.set([]);
-        alert(`${err.error}`);
+        throw err
       }
     });
   }
@@ -103,19 +107,19 @@ export class ProductSupplierFormComponent {
       profitMargin: this.productSupplierForm.get("profitMargin")?.value!,
     };
 
-    console.log(productSupplierData);
-
     this.productSupplierService.createProductSupplier(productSupplierData).subscribe(
       {
         next: () => {
           this.productSupplierForm.reset();
-          this.success.set(true);
-          this.err.set("Precio cargado!");
+
+          this.modal_service.showModal(ModalNotification, {
+            title: "¡Relación cargada exitosamente!"
+          })
         },
         error: (e) => {
-          this.err.set(e.error);
-          this.success.set(false);
+
           this.productSupplierForm.reset();
+          throw e;
         }
       }
     );
@@ -135,12 +139,14 @@ export class ProductSupplierFormComponent {
       {
         next: () => {
           this.productSupplierForm.reset();
-          this.success.set(true);
-          this.err.set('Precio modificado!');
+
+          this.modal_service.showModal(ModalNotification, {
+            title: "¡Relación modificada exitosamente!"
+          })
+
         },
         error: (e) => {
-          this.err.set(e.error);
-          this.success.set(false);
+          throw e
         }
       }
 

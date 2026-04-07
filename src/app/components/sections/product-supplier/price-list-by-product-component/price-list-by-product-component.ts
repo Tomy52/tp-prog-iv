@@ -8,6 +8,7 @@ import {PriceByProductList} from '../../../../interfaces/product-supplier/price-
 import {PriceByProductRowComponent} from '../price-by-product-row-component/price-by-product-row-component';
 import {AllowViewUser} from '../../../../directives/allow-view-user';
 import {PageButtons} from '../../../reusable/page-buttons/page-buttons';
+import { ModalService } from '../../../../services/modal-service';
 
 @Component({
   selector: 'app-price-list-by-product-component',
@@ -31,6 +32,8 @@ export class PriceListByProductComponent {
 
   productList = signal<Product[]>([]);
   priceByProductList = signal<Partial<PriceByProductList>>({});
+
+  modal_service = inject(ModalService)
 
   priceList = computed(
     ()=> this.priceByProductList().prices?.content)
@@ -56,7 +59,9 @@ export class PriceListByProductComponent {
       next: products =>  {
       this.productList.set(products);
       }, error: error => {
-        alert(error.error);
+
+        throw error
+        
       },
       complete: () => this.searching = false
     })

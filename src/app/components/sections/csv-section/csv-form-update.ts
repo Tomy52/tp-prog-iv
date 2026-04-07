@@ -9,6 +9,8 @@ import { FailedProductsResp } from '../../../interfaces/csv-update/failed-produc
 import { FailedProductsComponent } from '../../reusable/failed-products-component/failed-products-component';
 import { SwitchWithText } from "../../reusable/switch-with-text/switch-with-text";
 import { Dialog } from "@angular/cdk/dialog"
+import { ModalService } from '../../../services/modal-service';
+import { ModalNotification } from '../../reusable/modal-notification/modal-notification';
 
 @Component({
   selector: 'app-csv-form-upload',
@@ -21,13 +23,11 @@ export class CsvFormUpdate {
   csv_service = inject(CsvService);
   form_builder = inject(FormBuilder);
   dialog = inject(Dialog)
+  modal_service = inject(ModalService)
 
   suppliers: WritableSignal<Supplier[]> = signal<Supplier[]>([]);
   supplier_service = inject(SupplierService);
   
-  failed_products_response: WritableSignal<FailedProductsResp|null> = signal<FailedProductsResp|null>(null);
-
-
   form = this.form_builder.group({
     id: [null as number | null, [Validators.required]],
     file: ['',[Validators.required]],
@@ -46,8 +46,11 @@ export class CsvFormUpdate {
           this.suppliers.set(arr);
         },
         error: (err) => {
-          console.log(err)
-          alert(`${err.detail}`);
+          // esto se podria implementar 
+          this.modal_service.showModal(ModalNotification, {
+            title: "No hay proveedores!"
+          })
+
           this.suppliers.set([])
         }
       }
@@ -70,21 +73,19 @@ export class CsvFormUpdate {
       file: this.selectedFile!,
       mode: upload_values.csv_mode ? 'add' : 'modify' 
     }
-
-    console.log(values)
     
     this.csv_service.changeProductsUsingCsv(values).subscribe(
       {
         next: (resp) => {
-          // this.failed_products_response.set(resp)
-
           const dialog_ref = this.dialog.open(FailedProductsComponent, {
             data: {resp: resp},
             disableClose: true
           })
         },
         error: (err) => {
-          console.error(err.detail)
+          this.modal_service.showModal(ModalNotification, {
+            title: "¡Error cargando datos!"
+          }, false)
         }
       }
     )

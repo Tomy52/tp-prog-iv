@@ -3,12 +3,6 @@
   <h2>Borrar producto</h2>
 
       <form [formGroup]="deleteProductForm" (ngSubmit)="deleteProduct()">
-
-        @if(success()) {
-          <p class="success">¡Producto dado de baja exitosamente!</p>
-        } @else if (success() === false) {
-          <p class="failure">Baja fallida</p>
-        }
         <app-product-dropdown-select [products]="products()" formControlName="product"/>
         <button type="submit" [disabled]="this.formIsInvalid()">Borrar</button>
       </form>

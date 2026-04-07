@@ -1,0 +1,7 @@
+/* Esto es cuando se agrega mediante el dialog, si no me equivoco, si no lo haces, este estilo no se aplica */
+:host-context(cdk-dialog-container)
+{
+    display: block;
+    background-color: white;
+    padding: 10px;
+}
