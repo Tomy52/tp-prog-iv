@@ -115,6 +115,11 @@ export const routes: Routes = [
     canActivate: [AuthGuard, privilegedUserGuard]
   },
   {
+    path:"categories/:id",
+    component: CategoryFormSection,
+    canActivate: [AuthGuard, privilegedUserGuard]
+  },
+  {
     path:"suppliers",
     component:SuppliersPage,
     canActivate: [AuthGuard]
