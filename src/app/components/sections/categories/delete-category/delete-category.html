@@ -1,0 +1,10 @@
+<section>
+    <article>
+        <form action="" [formGroup]="form" (ngSubmit)="completeForm()">
+            <h2>Eliminar categoria</h2>
+            <label for="name">Categoria</label>
+            <app-category-dropdown-select formControlName="category" [categories]="categories()"/>
+            <input type="submit" value="Eliminar" [disabled]="!isValid()">
+        </form>
+    </article>
+</section>
