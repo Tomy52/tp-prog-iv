@@ -116,11 +116,6 @@ export const routes: Routes = [
     canActivate: [AuthGuard, privilegedUserGuard]
   },
   {
-    path:"categories/:id",
-    component: CategoryFormSection,
-    canActivate: [AuthGuard, privilegedUserGuard]
-  },
-  {
     path:"delete-category",
     component: DeleteCategory,
     canActivate: [AuthGuard, privilegedUserGuard]

@@ -13,13 +13,11 @@ import { ModalNotification } from '../../../reusable/modal-notification/modal-no
   styleUrl: './category-form-section.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CategoryFormSection implements OnInit {
+export class CategoryFormSection {
   modal_service = inject(ModalService);
   category_service = inject(CategoryService)
   form_builder = inject(FormBuilder)
 
-  id = input<string>();
-  categoryObject?: Partial<Category>;
 
   form = this.form_builder.group({
     name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]]
@@ -34,12 +32,7 @@ export class CategoryFormSection implements OnInit {
       name: formData.name!
     }
 
-    if(this.id())
-    {
-      this.modifyCategory(category)
-    } else {
-      this.addCategory(category)
-    }
+    this.addCategory(category)
   }
 
 
@@ -60,50 +53,10 @@ export class CategoryFormSection implements OnInit {
     })
   }
 
-  modifyCategory(category:Partial<Category>)
-  {
-    const ok_option = "Sí";
-    const modal_promise = this.modal_service.showModal(ModalNotification, {
-      title: "Quiere continuar?",
-      options: [ok_option, 'No']
-    })
-
-    modal_promise?.subscribe((value) => {
-      if(ok_option == value)
-      {
-        this.category_service.modifyCategory(Number(this.id()),category).subscribe({
-          next: (result) => {
-            this.modal_service.showModal(ModalNotification, {
-              title: "Categoria modificada!"
-            }, false)
-
-            this.form.reset()
-            this.form.markAsPristine()
-          }
-        })
-      }
-    })
-
-  }
 
   isValid()
   {
     return this.form.valid
-  }
-
-  ngOnInit() {
-    if (this.id()) {
-      const id = this.id()!;
-      this.category_service.getCategoryById(id).subscribe({
-        next: (cat) => {
-          this.categoryObject = cat
-          this.form.setValue({
-            name: this.categoryObject.name!
-          })
-        },
-        error: () => console.error("El id no es válido")
-      });
-    }
   }
 
 

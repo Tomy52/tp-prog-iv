@@ -28,9 +28,4 @@ export class CategoryService {
   {
     return this.http.delete(`${this.url}/${id}`)
   }
-
-  modifyCategory(id: Number, category: Partial<Category>)
-  {
-    return this.http.put(`${this.url}/${id}`,category)
-  }
 }

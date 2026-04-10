@@ -1,7 +1,7 @@
 <section>
     <article>
         <form action="" [formGroup]="form" (ngSubmit)="completeForm()">
-            <h2 [textContent]="id() ? 'Editar categoria' : 'Agregar categoria'"></h2>
+            <h2 [textContent]="'Agregar categoria'"></h2>
             <label for="name">Nombre</label>
             <input type="text" name="name" id="name" formControlName="name" [appFieldErrorBorder]="form.get('name')">
             
