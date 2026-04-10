@@ -16,8 +16,8 @@
         <li><a routerLink="products">Listar</a></li>
         <li><a routerLink="form-products" *appAllowViewUser="['ROLE_MANAGER','ROLE_ADMIN']">Crear</a></li>
         <li><a routerLink="delete-product" *appAllowViewUser="['ROLE_MANAGER','ROLE_ADMIN']">Eliminar</a></li>
-        <li><a routerLink="categories">Crear Categorias</a></li>
-        <li><a routerLink="delete-category">Eliminar Categoria</a></li>
+        <li><a routerLink="categories" *appAllowViewUser="['ROLE_MANAGER','ROLE_ADMIN']">Crear Categorias</a></li>
+        <li><a routerLink="delete-category" *appAllowViewUser="['ROLE_MANAGER','ROLE_ADMIN']">Eliminar Categoria</a></li>
       </ul>
 
       <p class="subtitles">Precios</p>
