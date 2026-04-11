@@ -26,34 +26,42 @@ export class ProductService {
     return this.http.get<Product>(`${this.baseUrl}/${id}`);
   }
 
-  getFilteredAndMakeFilteredPage(page:number, size:number, name:string, showAll: boolean) : Observable<PageResponse<Product>> {
-    const offset:number = page*size;
-    console.log(showAll);
-    const products = showAll ? this.getProducts() : this.getEnabledProducts();
+  getProductsPage(page?:number, size?:number, name?:string, showAll?:boolean, category?:number): Observable<PageResponse<Product>>
+  {
+    var status = showAll ? undefined : ProductStatus.Enabled
 
-    return products.pipe(
-      map((products) => products.filter((prod) => prod.name.toLowerCase().includes(name.toLowerCase()))),
-      map((products) => products.sort((a,b) => b.status.localeCompare(a.status))),
-      map((products) => {
-        const element_count = products.length;
-        const total_pages = Math.ceil(element_count / size);
-        const number = page;
-        const content = products.slice(offset,offset+size);
-        const first = page == 0;
-        const last = (total_pages - 1) == page;
+    var query_string = '?'
 
-        const page_info: PageResponse<Product> = {
-          content:content,
-          number:number + 1,
-          totalElements:element_count,
-          totalPages:total_pages,
-          first:first,
-          last:last
-        };
-        return page_info;
-      })
-    );
+    if(page)
+    {
+      query_string += `&page=${page}`
+    }
+
+    if(size)
+    {
+      query_string += `&size=${size}`
+    }
+
+    if(name)
+    {
+      query_string += `&name=${name}`
+    }
+
+    if(category)
+    {
+      query_string += `&category=${category}`
+    }
+
+    if(status)
+    {
+      query_string += `&status=${status}`
+    }
+
+    console.log(query_string)
+
+    return this.http.get<PageResponse<Product>>(`${this.baseUrl}/page${query_string}`)
   }
+
 
   addProduct(product: Partial<Product>): Observable<Product> {
     return this.http.post<Product>(`${this.baseUrl}`,product);

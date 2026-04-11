@@ -44,17 +44,17 @@ export class ProductsPage {
 
   getProducts(query: string = this.searchTerm, showAll: boolean) {
     this.searching = true;
-    this.productService.getFilteredAndMakeFilteredPage(this.page(), this.pageSize, query, showAll).subscribe({
+    
+    this.productService.getProductsPage(this.page(),this.pageSize,query,showAll).subscribe({
       next: (x) => {
-        console.log(x);
-        this.pageData.set(x);
+        this.pageData.set(x)
+        console.log(x)
       },
       error: (e) => {
-        this.pageData.set(e.error);
-        this.errMsg = `Error: ${e.status}, ${e.statusText}`;
+        throw e;
       },
       complete: () => this.searching = false
-    });
+    })
   }
 
   toggleDisabledProductsVisibility() {
