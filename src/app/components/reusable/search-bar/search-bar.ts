@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, inject, input, output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, input, OnInit, output, ViewChild, ViewContainerRef} from '@angular/core';
 import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @Component({
@@ -11,15 +11,21 @@ import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
   styleUrl: './search-bar.css',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
+
 export class SearchBar {
+
   form_builder = inject(FormBuilder);
   disabled = input.required<boolean>();
-
+  
   query_sig = output<string>();
-
+  
+  components = input<any[]>();
+  
   query_form = this.form_builder.group({
     query: ['']
   });
+
+  @ViewChild('targetSpace', {read: ViewContainerRef}) targetSpace!:ViewContainerRef
 
   submit()
   {
@@ -32,4 +38,16 @@ export class SearchBar {
 
     this.query_sig.emit(query);
   }
+
+
+  ngAfterViewInit()
+  {
+    if(this.components())
+    {
+      this.components()!.forEach(element => {
+        this.targetSpace.createComponent(element)
+      });
+    }
+  }
 }
+  

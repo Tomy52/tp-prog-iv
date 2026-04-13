@@ -1,8 +1,10 @@
 <section>
   <h1>Lista de productos</h1>
   @if (pageData() != null && !errMsg) {
-    <app-search-bar (query_sig)="searchByName($event)" [disabled]="searching"></app-search-bar>
-
+    <app-search-bar (query_sig)="searchByName($event)" [disabled]="searching"
+    [components]="search_bar_components"></app-search-bar>
+    
+    
     <div class="toggle-area" *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']">
 
       <label for="toggle-disabled-products">Mostrar productos desactivados</label>

@@ -33,13 +33,16 @@ export class ProductsPage {
 
   searchTerm:string = '';
   displayDisabledProducts = signal<boolean>(false);
-
   searching:boolean = false;
+
+  search_bar_components = []
 
   constructor() {
     this.pageSize = Number(localStorage.getItem('pageSize')) || this.pageSizeOptions[0];
     this.pageData = signal(null);
     this.getProducts('', this.displayDisabledProducts());
+
+    
   }
 
   getProducts(query: string = this.searchTerm, showAll: boolean) {

@@ -1,6 +1,6 @@
 form {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 
@@ -14,7 +14,14 @@ input {
   border-radius: 10px;
 }
 
-form > input[type=text] {
+form > div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+form > div > input[type=text] {
   width: 50%;
   height: 40px;
   font-size: medium;
