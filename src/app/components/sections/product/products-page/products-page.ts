@@ -7,6 +7,9 @@ import {PageResponse} from '../../../../interfaces/other/page-response';
 import {Product} from '../../../../interfaces/product';
 import {AuthService} from '../../../../services/auth-service';
 import {AllowViewUser} from '../../../../directives/allow-view-user';
+import { FormBuilderComponent } from '../../../../interfaces/component-logic/form-builder-component';
+import { ProductDropdownSelect } from '../../../reusable/product-dropdown-select/product-dropdown-select';
+import { CategoryDropdownSelect } from '../../../reusable/category-dropdown-select/category-dropdown-select';
 
 @Component({
   selector: 'app-products-page',
@@ -35,8 +38,10 @@ export class ProductsPage {
   displayDisabledProducts = signal<boolean>(false);
   searching:boolean = false;
 
-  search_bar_components = []
-
+  search_bar_components: FormBuilderComponent[] = [{
+    component: CategoryDropdownSelect,
+    form_reference: "category"
+  }]
   constructor() {
     this.pageSize = Number(localStorage.getItem('pageSize')) || this.pageSizeOptions[0];
     this.pageData = signal(null);
