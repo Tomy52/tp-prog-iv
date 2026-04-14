@@ -5,11 +5,9 @@ import {ProductService} from '../../../../services/product-service';
 import {ProductList} from '../../../reusable/product-list/product-list';
 import {PageResponse} from '../../../../interfaces/other/page-response';
 import {Product} from '../../../../interfaces/product';
-import {AuthService} from '../../../../services/auth-service';
 import {AllowViewUser} from '../../../../directives/allow-view-user';
-import { FormBuilderComponent } from '../../../../interfaces/component-logic/form-builder-component';
-import { ProductDropdownSelect } from '../../../reusable/product-dropdown-select/product-dropdown-select';
-import { CategoryDropdownSelect } from '../../../reusable/category-dropdown-select/category-dropdown-select';
+import { ProductSearchBar } from "../../../reusable/product-search-bar/product-search-bar";
+import { ProductSearchBarData } from '../../../../interfaces/component-logic/product-search-bar-data';
 
 @Component({
   selector: 'app-products-page',
@@ -17,8 +15,9 @@ import { CategoryDropdownSelect } from '../../../reusable/category-dropdown-sele
     PageButtons,
     SearchBar,
     ProductList,
-    AllowViewUser
-  ],
+    AllowViewUser,
+    ProductSearchBar
+],
   templateUrl: './products-page.html',
   styleUrl: './products-page.css',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -34,26 +33,24 @@ export class ProductsPage {
   pageData: WritableSignal<PageResponse<Product> | null >;
   errMsg:string = '';
 
-  searchTerm:string = '';
-  displayDisabledProducts = signal<boolean>(false);
-  searching:boolean = false;
+  searchTerm:ProductSearchBarData = {
 
-  search_bar_components: FormBuilderComponent[] = [{
-    component: CategoryDropdownSelect,
-    form_reference: "category"
-  }]
+  };
+  searching:boolean = false;
+  
+
   constructor() {
     this.pageSize = Number(localStorage.getItem('pageSize')) || this.pageSizeOptions[0];
     this.pageData = signal(null);
-    this.getProducts('', this.displayDisabledProducts());
+    this.getProducts(this.searchTerm);
 
     
   }
 
-  getProducts(query: string = this.searchTerm, showAll: boolean) {
+  getProducts(terms:ProductSearchBarData) {
     this.searching = true;
     
-    this.productService.getProductsPage(this.page(),this.pageSize,query,showAll).subscribe({
+    this.productService.getProductsPage(this.page(),this.pageSize,terms).subscribe({
       next: (x) => {
         this.pageData.set(x)
         console.log(x)
@@ -65,37 +62,33 @@ export class ProductsPage {
     })
   }
 
-  toggleDisabledProductsVisibility() {
-    this.displayDisabledProducts.set(!this.displayDisabledProducts());
-    this.resetPageCount();
-    this.getProducts(this.searchTerm, this.displayDisabledProducts());
-  }
-
   goForward() {
     this.page.update((number) => number + 1);
-    this.getProducts(this.searchTerm, this.displayDisabledProducts());
+    this.getProducts(this.searchTerm);
   }
 
   goBack() {
     this.page.update((number) => number - 1);
-    this.getProducts(this.searchTerm, this.displayDisabledProducts());
+    this.getProducts(this.searchTerm);
   }
 
   resetPageCount() {
     this.page.set(0);
   }
 
-  searchByName(query: string) {
-    this.resetPageCount();
-    this.searchTerm = query;
-    this.getProducts(query,this.displayDisabledProducts());
-  }
 
   changePageSize(size: number) {
     this.pageSize = size;
     localStorage.setItem('pageSize',size.toString());
     this.resetPageCount();
-    this.getProducts('',this.displayDisabledProducts());
+    this.getProducts(this.searchTerm);
+  }
+
+  searchByTerms(terms:ProductSearchBarData)
+  {
+    this.searchTerm = terms
+    this.resetPageCount();
+    this.getProducts(terms)
   }
 
 }

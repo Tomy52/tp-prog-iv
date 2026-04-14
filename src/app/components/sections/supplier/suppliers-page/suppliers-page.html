@@ -1,6 +1,6 @@
 <section>
   <h1>Lista de proveedores</h1>
-      <app-search-bar (query_sig)="searchByName($event)" [disabled]="searching" ></app-search-bar>
+      <!-- <app-search-bar (query_sig)="searchByName($event)" [disabled]="searching" ></app-search-bar> -->
   @if (!error_msg) {
       @if (page_data()!.content.length != 0) {
       <app-supplier-list [suppliers]="page_data()!.content"/>

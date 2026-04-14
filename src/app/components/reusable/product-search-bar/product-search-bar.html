@@ -1,0 +1,31 @@
+<article>
+
+    <form action="" [formGroup]="form" (ngSubmit)="completeForm()">
+        <section>
+            
+            <app-search-bar formGroupName="search_term"/>
+            
+            <div>
+                <label for="categories">Categorias</label>
+                <app-category-dropdown-select id="categories" formControlName="category_id" [categories]="categories()"/>
+            </div>
+            
+            <div>
+                <label for="product_id">ID del producto</label>
+                <input type="number" name="product_id" id="product_id" formControlName="product_id" min="0">
+            </div>
+            
+            <div>
+                <label for="product-status">Estado</label>
+                <select class="desplegable-estado" name="status" id="product-status" formControlName="status">
+                    <option [ngValue]="null" selected>Ninguno</option>
+                    <option [ngValue]="productStatusEnum.Enabled">Habilitado</option>
+                    <option [ngValue]="productStatusEnum.Disabled">Deshabilitado</option>
+                </select>
+            </div>
+            
+            <button type="submit">Buscar</button>
+            <button type="button" (click)="reset()">Reinicio</button>
+        </section>
+    </form>
+</article>

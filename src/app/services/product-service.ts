@@ -4,6 +4,7 @@ import {map, Observable} from 'rxjs';
 import {Product} from '../interfaces/product';
 import {PageResponse} from '../interfaces/other/page-response';
 import {ProductStatus} from '../interfaces/productStatus';
+import { ProductSearchBarData } from '../interfaces/component-logic/product-search-bar-data';
 
 @Injectable({
   providedIn: 'root'
@@ -26,10 +27,11 @@ export class ProductService {
     return this.http.get<Product>(`${this.baseUrl}/${id}`);
   }
 
-  getProductsPage(page?:number, size?:number, name?:string, showAll?:boolean, category?:number): Observable<PageResponse<Product>>
+  getProductsPage(page?:number, size?:number, query?:ProductSearchBarData): Observable<PageResponse<Product>>
   {
-    var status = showAll ? undefined : ProductStatus.Enabled
+    // var status = showAll ? undefined : ProductStatus.Enabled
 
+    console.log(query)
     var query_string = '?'
 
     if(page)
@@ -42,19 +44,28 @@ export class ProductService {
       query_string += `&size=${size}`
     }
 
-    if(name)
+    if(query?.search_query)
     {
-      query_string += `&name=${name}`
+      const name = query?.search_query
+      query_string += `&page=${name}`
     }
 
-    if(category)
+    if(query?.category)
     {
+      const category = query.category
       query_string += `&category=${category}`
     }
 
-    if(status)
+    if(query?.product_id)
     {
-      query_string += `&status=${status}`
+      const id = query.product_id
+      query_string += `&id=${id}`
+    }
+
+    if(query?.state)
+    {
+      const state = query.state
+      query_string += `&status=${state}`
     }
 
     console.log(query_string)

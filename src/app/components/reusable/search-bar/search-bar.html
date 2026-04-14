@@ -1,24 +1,3 @@
 <article>
-  <form (ngSubmit)="submit()" [formGroup]="query_form" id="search-form">
-    <div>
-      <ng-container #targetSpace>
-        <label for="categoria">Categoria</label>
-        <select name="categoria" id="categoria">
-          <option value="">lorem</option>
-          <option value="">lorem</option>
-          <option value="">lorem</option>
-        </select>
-        
-        <label for="">Categoria 2</label>
-        <select name="categoria1" id="categoria1">
-          <option value="">lorem</option>
-        </select>
-      </ng-container>
-    </div>
-    <div>
-      <input type="text" name="query" id="query" formControlName="query" [disabled]="disabled()" placeholder="Término de búsqueda...">
-      <input type="submit" value="Buscar" [disabled]="disabled()">
-    </div>
-
-  </form>
+  <input type="text" name="query" id="query" (change)="changeValue($event)" placeholder="Término de búsqueda...">
 </article>
