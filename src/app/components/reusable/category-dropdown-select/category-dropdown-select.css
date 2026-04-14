@@ -1,0 +1,17 @@
+select {
+  font-family: "BreeSerif-regular", serif;
+  height: 30px;
+  text-align: center;
+  padding-bottom: 5px;
+
+  cursor: pointer;
+
+  background-color: white;
+  
+  border-style: ridge;
+  border-color: white;
+  border-width: 1px;
+  border-radius: 4px;
+
+  text-overflow: ellipsis;
+}

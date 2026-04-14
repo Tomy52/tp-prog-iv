@@ -14,6 +14,15 @@
         </select>
       }
 
+      <label for="stock">Stock</label>
+      <input type="number" name="stock" id="stock" formControlName="stock">
+
+      <label for="profit">Margen de ganancia</label>
+      <input type="number" name="profit" id="profit" formControlName="profit">
+
+      <label for="category">Category</label>      
+      <app-category-dropdown-select [categories]="categories()" formControlName="category" name="category" id="category"/>
+
       <button type="submit" [disabled]="!productForm.valid">Cargar</button>
 
     </form>
