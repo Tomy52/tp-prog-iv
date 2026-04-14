@@ -1,0 +1,12 @@
+<section>
+    <article>
+        <form action="" [formGroup]="form" (ngSubmit)="completeForm()">
+            <h2 [textContent]="'Agregar categoria'"></h2>
+            <label for="name">Nombre</label>
+            <input type="text" name="name" id="name" formControlName="name" [appFieldErrorBorder]="form.get('name')">
+            
+            <small class="error-msg" [appFieldError]="form.get('name')"></small>
+            <input type="submit" value="Subir" [disabled]="!isValid()">
+        </form>
+    </article>
+</section>

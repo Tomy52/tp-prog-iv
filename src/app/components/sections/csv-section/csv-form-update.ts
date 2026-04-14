@@ -46,12 +46,8 @@ export class CsvFormUpdate {
           this.suppliers.set(arr);
         },
         error: (err) => {
-          // esto se podria implementar 
-          this.modal_service.showModal(ModalNotification, {
-            title: "No hay proveedores!"
-          })
-
           this.suppliers.set([])
+          throw err
         }
       }
     );
@@ -83,9 +79,7 @@ export class CsvFormUpdate {
           })
         },
         error: (err) => {
-          this.modal_service.showModal(ModalNotification, {
-            title: "¡Error cargando datos!"
-          }, false)
+          throw err
         }
       }
     )

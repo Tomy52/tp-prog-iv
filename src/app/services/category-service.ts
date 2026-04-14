@@ -14,6 +14,11 @@ export class CategoryService {
     return this.http.get<Category[]>(this.url)
   }
 
+  getCategoryById(id:String)
+  {
+    return this.http.get<Category>(`${this.url}/${Number(id)}`)
+  }
+
   addCategory(category: Partial<Category>)
   {
     return this.http.post<Category>(this.url,category);
@@ -22,10 +27,5 @@ export class CategoryService {
   removeCategory(id: Number)
   {
     return this.http.delete(`${this.url}/${id}`)
-  }
-
-  modifyCategory(id: Number, category: Partial<Category>)
-  {
-    return this.http.put(`${this.url}/${id}`,category)
   }
 }
