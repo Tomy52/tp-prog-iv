@@ -1,54 +1,71 @@
 :root {
   --header_padding: 10px;
   --sidebar-padding: 30px;
-  --sidebar-width: 10rem;
+  --sidebar-width: 300px;
 
-  --main-color: #1B5B7E;
-  --secondary-color: #1f7ab4;
-  --tertiary-color: #1288d7;
+
+  --main-color: #2d5a4c;      
+  --secondary-color: #2c6e5a; 
+  --tertiary-color: #4c9682;
+  
+  
+  --bg-color: #f5f1e4; 
+  
   --text-color: #ffffff;
   --unfocused-text-color: #d2d2d2;
-  --bg-color: rgba(234, 245, 255, 0.78);
 
   --disabled-button-color: #9baebb;
   --disabled-button-text-color: #6a7d8c;
-
-  --disabled-card-color: rosybrown;
-
   --error-color: #FF80AB;
 
   font-family: "BreeSerif-regular", serif;
-
   box-sizing: border-box;
 }
 
+/* ESTILOS DE BODY */
 body {
   margin: 0;
-  background-color: var(--bg-color);
+
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.55)), 
+    url('/images/marmolblanco.png'); 
+    
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  
+  /* Color de respaldo */
+  background-color: var(--bg-color); 
 }
+
 
 @font-face {
   font-family: "BreeSerif-regular";
   src: url("./fonts/BreeSerif-Regular.ttf") format("truetype");
 }
 
-.success {
-  color: limegreen;
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: transparent; 
 }
 
-.failure {
-  color: var(--error-color);
+main {
+  flex: 1;
+  position: relative;
+  width: 100%;
+  background: transparent; 
 }
 
-button:disabled {
-  cursor: not-allowed;
-  background-color: var(--disabled-button-color);
-  color: var(--disabled-button-text-color);
-}
 
 button {
   cursor: pointer;
   padding: 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(22, 55, 45, 0.2);
+  transition: all 0.3s ease;
 }
 
 input {
@@ -59,31 +76,14 @@ input[type="submit"] {
   font-family: "BreeSerif-regular", serif;
   padding: 10px;
   cursor: pointer;
+  background-color: var(--main-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
 }
 
 input[type="submit"]:hover {
-  background-color: var(--tertiary-color);
-  transition: 0.1s ease-in-out;
-}
-
-input[type="submit"]:disabled {
-  background-color: var(--disabled-button-color);
-  color: var(--disabled-button-text-color);
-  cursor: not-allowed;
-}
-
-.invalid {
-  border-color: red;
-}
-
-.app-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-main {
-  flex: 1;
+  background-color: var(--secondary-color);
 }
 
 #table-wrapper {

@@ -1,42 +1,138 @@
 article {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(240, 245, 243, 0.95) 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(45, 90, 76, 0.3);
+    border-radius: 25px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+    padding: clamp(25px, 5vw, 45px); 
+    
+    width: calc(100% - 40px); 
+    max-width: 550px; 
+    margin: 20px auto;
+    
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
-    background-color: red;
+    align-items: center;
     position: relative;
+    text-align: center;
+    box-sizing: border-box;
+    max-height: 90vh; 
 }
 
-article > div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+h1 {
+    font-family: 'Cinzel', serif;
+    font-weight: 800;
+    font-size: clamp(1.4rem, 6vw, 2rem); 
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0 0 20px 0;
+    background: linear-gradient(to bottom, #2d5a4c, #16372d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-/* Esto es cuando se agrega mediante el dialog, si no me equivoco, si no lo haces, este estilo no se aplica */
-:host-context(cdk-dialog-container)
-{
-    display: block;
-    background-color: white;
-    padding: 10px;
-}
-
-/* Esto es recontra provisorio */
+/* BOTÓN X*/
 .close-button {
     position: absolute;
-    right: 0;
-    top: 0;
-    border: none;
-    padding: 8px 16px; 
-    vertical-align: middle;
-    overflow: hidden;
-    text-decoration: none;
-    color: inherit;
-    background-color: inherit;
-    text-align: center;
+    top: 15px;
+    right: 20px;
+    font-family: 'Cinzel', serif;
+    font-weight: 800;
+    font-size: 1.2rem;
     cursor: pointer;
-    white-space: nowrap;
+    color: #2d5a4c;
+    transition: all 0.2s ease;
+    padding: 5px;
+}
 
-    background-color: white;
+.close-button:hover {
+    transform: scale(1.2);
+    color: #d4af37; 
+}
+
+h2 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(0.9rem, 4vw, 1.1rem);
+    font-weight: 600;
+    margin-bottom: 25px;
+    color: #4a6d63;
+    letter-spacing: 1px;
+}
+
+/*BOTÓN DE MOSTRAR/ESCONDER PRODUCTOS*/
+button:not(.close-button) {
+    background: linear-gradient(rgba(22, 55, 45, 0.7), rgba(22, 55, 45, 0.9)), 
+                url('/images/header3.png') center/cover no-repeat;
+    color: #fcfcf9;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 12px 30px;
+    border-radius: 12px;
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(22, 55, 45, 0.2);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    width: auto;
+    min-width: 200px;
+}
+
+button:not(.close-button):hover {
+    filter: brightness(1.2);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(22, 55, 45, 0.4);
+}
+
+div:has(ul) {
+    width: 100%;
+    margin-top: 20px;
+    flex-grow: 1;
+    overflow: hidden; 
+}
+
+ul {
+    list-style: none;
+    padding: 0 10px 0 0;
+    margin: 0;
+    max-height: 250px;
+    overflow-y: auto;
+    text-align: left;
+    border-top: 1px solid rgba(45, 90, 76, 0.15);
+}
+
+li {
+    font-family: 'Verdana', sans-serif; 
+    font-size: 0.9rem;
+    padding: 12px 10px;
+    color: #2d5a4c;
+    border-bottom: 1px solid rgba(45, 90, 76, 0.05);
+}
+
+li:last-child {
+    border-bottom: none;
+}
+
+ul::-webkit-scrollbar {
+    width: 5px;
+}
+ul::-webkit-scrollbar-track {
+    background: transparent;
+}
+ul::-webkit-scrollbar-thumb {
+    background: rgba(45, 90, 76, 0.3);
+    border-radius: 10px;
+}
+
+@media (max-width: 480px) {
+    article {
+        padding: 30px 15px;
+        width: calc(100% - 20px); 
+    }
+    
+    button:not(.close-button) {
+        width: 100%; 
+    }
 }
