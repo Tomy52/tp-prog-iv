@@ -32,7 +32,7 @@ footer {
     flex: 1;
     display: flex;
     gap: clamp(10px, 2vw, 20px); 
-    justify-content: flex-start;
+    justify-content: center;
 }
 
 .footer-links a {

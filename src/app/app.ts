@@ -2,11 +2,10 @@ import {Component, inject, OnInit, signal} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router, RouterOutlet} from '@angular/router';
 import {HeaderComponent} from './components/header-component/header-component';
 import {FooterComponent} from './components/footer-component/footer-component';
-import { Background } from "./components/background/background";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent, FooterComponent, Background],
+  imports: [RouterOutlet, HeaderComponent, FooterComponent],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
