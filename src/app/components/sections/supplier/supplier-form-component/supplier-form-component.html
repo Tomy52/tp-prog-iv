@@ -2,40 +2,62 @@
 
   <form action="" (ngSubmit)="tellToBeDone()" [formGroup]="form">
 
-    <label for="name">Nombre de empresa</label>
-    <input type="text" name="name" id="name" formControlName="companyName"
-           [appFieldErrorBorder]="form.get('companyName')" placeholder="Green Test">
-    <small class="error-msg" [appFieldError]="form.get('companyName')"></small>
+       <div>
 
-    <label for="cuit">Cuit</label>
-    <input type="text" name="cuit" id="cuit" formControlName="cuit" maxlength="13" [appFieldErrorBorder]="form.get('cuit')"
-           placeholder="23-11121111-9">
-    <small class="error-msg" [appFieldError]="form.get('cuit')"></small>
+              <label for="name">Nombre de empresa</label>
+              <input type="text" name="name" id="name" formControlName="companyName"
+                     [appFieldErrorBorder]="form.get('companyName')" placeholder="Green Test">
+              <small class="error-msg" [appFieldError]="form.get('companyName')"></small>
+       </div>
 
-    <label for="email">Email</label>
-    <input type="email" name="email" id="email" formControlName="email" [appFieldErrorBorder]="form.get('email')"
-           placeholder="test1@email.com">
-    <small class="error-msg" [appFieldError]="form.get('email')"></small>
+       <div>
+              
+              <label for="cuit">Cuit</label>
+              <input type="text" name="cuit" id="cuit" formControlName="cuit" maxlength="13" [appFieldErrorBorder]="form.get('cuit')"
+                     placeholder="23-11121111-9">
+              <small class="error-msg" [appFieldError]="form.get('cuit')"></small>
+       </div>
 
-    <label for="phone">Número de teléfono</label>
-    <input type="text" name="phone" id="phone" formControlName="phone" maxlength="18" [appFieldErrorBorder]="form.get('phone')"
-           placeholder="1111111111">
-    <small class="error-msg" [appFieldError]="form.get('phone')"></small>
+       <div>
 
-    <label for="street">Calle</label>
-    <input type="text" name="street" id="street" formControlName="street"
-           [appFieldErrorBorder]="form.get('street')" placeholder="Calle 12">
-    <small class="error-msg" [appFieldError]="form.get('street')"></small>
+              <label for="email">Email</label>
+              <input type="email" name="email" id="email" formControlName="email" [appFieldErrorBorder]="form.get('email')"
+                     placeholder="test1@email.com">
+              <small class="error-msg" [appFieldError]="form.get('email')"></small>
+       </div>
 
-    <label for="number">Número de edificio</label>
-    <input type="text" name="number" id="number" formControlName="number"
-           [appFieldErrorBorder]="form.get('number')" placeholder="123">
-    <small class="error-msg" [appFieldError]="form.get('number')"></small>
+       <div>
+              
+              <label for="phone">Número de teléfono</label>
+              <input type="text" name="phone" id="phone" formControlName="phone" maxlength="18" [appFieldErrorBorder]="form.get('phone')"
+                     placeholder="1111111111">
+              <small class="error-msg" [appFieldError]="form.get('phone')"></small>
+       </div>
 
-    <label for="city">Ciudad</label>
-    <input type="text" name="city" id="city" formControlName="city" [appFieldErrorBorder]="form.get('city')"
-           placeholder="Ciudad test">
-    <small class="error-msg" [appFieldError]="form.get('city')"></small>
+       <div>
+
+              <label for="street">Calle</label>
+              <input type="text" name="street" id="street" formControlName="street"
+                     [appFieldErrorBorder]="form.get('street')" placeholder="Calle 12">
+              <small class="error-msg" [appFieldError]="form.get('street')"></small>
+       </div>
+
+       <div>
+
+              <label for="number">Número de edificio</label>
+              <input type="text" name="number" id="number" formControlName="number"
+                     [appFieldErrorBorder]="form.get('number')" placeholder="123">
+              <small class="error-msg" [appFieldError]="form.get('number')"></small>
+       </div>
+
+
+       <div class="full-width">
+
+              <label for="city">Ciudad</label>
+              <input type="text" name="city" id="city" formControlName="city" [appFieldErrorBorder]="form.get('city')"
+                     placeholder="Ciudad test">
+              <small class="error-msg" [appFieldError]="form.get('city')"></small>
+       </div>
 
     <input type="submit" value="Subir" [disabled]="!isValid()">
   </form>
