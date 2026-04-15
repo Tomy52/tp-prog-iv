@@ -1,0 +1,8 @@
+<section>
+  <h1>Usuarios</h1>
+  @if(users().length > 0){
+    <app-users-table [users]="users()"></app-users-table>
+  } @else {
+    <p>Acá no hay nada... raro</p>
+  }
+</section>

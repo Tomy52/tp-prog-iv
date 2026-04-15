@@ -1,0 +1,10 @@
+<section>
+  @if(user()) {
+    <h1>{{user().firstname}} {{user().lastname}}</h1>
+    <h2>ID usuario: {{user().idUser}}</h2>
+    <h2>Nombre de usuario: {{user().credential?.username}}</h2>
+    <h2>DNI: {{user().dni}}</h2>
+    <h2>Estado: {{user().status}}</h2>
+    <h2>Rol: {{user().credential?.role}}</h2>
+  }
+</section>

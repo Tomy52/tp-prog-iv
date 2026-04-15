@@ -25,6 +25,8 @@ import {supplierExistsGuard} from './guards/supplier-exists-guard';
 import {priceExistsGuard} from './guards/price-exists-guard';
 import {productExistsGuard} from './guards/product-exists-guard';
 import { CsvFormUpdate } from './components/sections/csv-section/csv-form-update';
+import {UsersPage} from './components/sections/user/users-page/users-page';
+import {UsersDetail} from './components/sections/user/users-detail/users-detail';
 import { CategoryFormSection } from './components/sections/categories/category-form-section/category-form-section';
 import { DeleteCategory } from './components/sections/categories/delete-category/delete-category';
 
@@ -104,6 +106,16 @@ export const routes: Routes = [
     path:"price-by-product",
     component: PriceListByProductComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path:"users",
+    component: UsersPage,
+    canActivate: [AuthGuard, privilegedUserGuard]
+  },
+  {
+    path:"users/:id",
+    component: UsersDetail,
+    canActivate: [AuthGuard, privilegedUserGuard]
   },
   {
     path:"csv-prices",
