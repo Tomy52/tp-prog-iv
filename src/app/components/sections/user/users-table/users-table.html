@@ -1,0 +1,26 @@
+<section>
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>DNI</th>
+      <th>Nombre de usuario</th>
+      <th>Rol</th>
+      <th>Estado</th>
+      <th>Detalle</th>
+    </tr>
+    </thead>
+    <tbody>
+      @for(user of users(); track user.idUser) {
+        <tr [class.row-active]="user.status === 'ENABLED'" [class.row-inactive]="user.status === 'DISABLED'">
+          <td>{{user.idUser}}</td>
+          <td>{{user.dni}}</td>
+          <td>{{user.credential.username}}</td>
+          <td>{{user.credential.role}}</td>
+          <td>{{ user.status === 'ENABLED' ? 'Activo' : 'Inactivo' }}</td>
+          <td><button [routerLink]="['/users', user.idUser]">Ver</button></td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</section>

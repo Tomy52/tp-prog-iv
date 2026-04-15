@@ -1,0 +1,18 @@
+section {
+  background-color: var(--main-color);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  width: fit-content;
+  max-width: 100%;
+  justify-content: center;
+  margin-block: 10%;
+  border-radius: 10px;
+  padding: 10px;
+  margin-inline: auto;
+}
+
+h1 {
+  color: var(--text-color)
+}
