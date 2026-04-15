@@ -1,0 +1,16 @@
+
+<article>
+    <form action="" [formGroup]="form" (ngSubmit)="submit()">
+        <section>
+
+            <div>
+                <label for="name">Nombre</label>
+                <input type="text" name="name" id="name" formControlName="name" placeholder="Termino de busqueda...">
+            </div>
+            
+            <div>
+                <button type="submit">Buscar</button>
+            </div>
+        </section>
+    </form>
+</article>

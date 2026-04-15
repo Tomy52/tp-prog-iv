@@ -3,11 +3,12 @@ import { inject, Injectable } from '@angular/core';
 import { Supplier } from '../interfaces/supplier/supplier';
 import {catchError, map, Observable, of, tap} from 'rxjs';
 import {PageResponse} from '../interfaces/other/page-response';
+import { SupplierSearchData } from '../interfaces/component-logic/supplier-search-data';
 
 @Injectable({
   providedIn: 'root'
 })
-export class  SupplierService {
+export class SupplierService {
   http = inject(HttpClient);
   url = "api/suppliers";
 
@@ -25,41 +26,29 @@ export class  SupplierService {
     return this.http.get<Supplier[]>(this.url);
   }
 
-  getFilteredAndMakeFilteredPage(page:number, size:number, name:string) : Observable<PageResponse<Supplier>>
+
+
+  getSuppliersPage(page?:number, size?:number, query?:SupplierSearchData) // works badly when trying to search by name, keep as backup
   {
-    const offset:number = page*size;
 
-    return this.http.get<Supplier[]>(this.url).pipe(
-      map((sups) => sups.filter((sup) => sup.companyName.toLowerCase().includes(name.toLowerCase()))),
-      map((sups) => {
-        const element_count = sups.length;
-        const total_pages = Math.ceil(element_count / size);
-        const number = page;
-        const content = sups.slice(offset,offset+size);
-        const first = page == 0;
-        const last = (total_pages - 1) == page;
+    let query_string = '?'
 
-        const page_info: PageResponse<Supplier> = {
-          content:content,
-          number:number + 1,
-          totalElements:element_count,
-          totalPages:total_pages,
-          first:first,
-          last:last
-        };
-        return page_info;
-      })
-    );
-  }
+    if(page)
+    {
+      query_string += `&page=${page}`
+    }
 
-  getSuppliersPage(page:number, size:number) // works badly when trying to search by name, keep as backup
-  {
-    return this.http.get<PageResponse<Supplier>>(`${this.url}/page?page=${page}&size=${size}`);
-  }
+    if(size)
+    {
+      query_string += `&size=${size}`
+    }
 
-  getSuppliersByName(page:number, size:number, name:string) // works badly when trying to search by name, keep as backup
-  {
-    return this.http.get<PageResponse<Supplier>>(`${this.url}/name/${name}?page=${page}&size=${size}`);
+    if(query?.name)
+    {
+      query_string += `&name=${query.name}`
+    }
+
+    return this.http.get<PageResponse<Supplier>>(`${this.url}/page${query_string}`);
   }
 
   updateSupplier(id:string, supplier:Partial<Supplier>) {
