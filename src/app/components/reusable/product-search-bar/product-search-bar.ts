@@ -1,15 +1,15 @@
 import { ChangeDetectionStrategy, Component, inject, output, signal, WritableSignal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { SearchBar } from "../search-bar/search-bar";
 import { CategoryDropdownSelect } from "../category-dropdown-select/category-dropdown-select";
 import { CategoryService } from '../../../services/category-service';
 import { Category } from '../../../interfaces/category';
 import { ProductStatus } from '../../../interfaces/productStatus';
 import { ProductSearchBarData } from '../../../interfaces/component-logic/product-search-bar-data';
+import { AllowViewUser } from "../../../directives/allow-view-user";
 
 @Component({
   selector: 'app-product-search-bar',
-  imports: [ReactiveFormsModule, SearchBar, CategoryDropdownSelect],
+  imports: [ReactiveFormsModule, CategoryDropdownSelect, AllowViewUser],
   templateUrl: './product-search-bar.html',
   styleUrl: './product-search-bar.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -42,7 +42,7 @@ export class ProductSearchBar {
   }
 
   form = this.form_builder.group({
-    search_term: [''],
+    tern: [''],
     category_id: [null],
     product_id: [0],
     status: [null]
@@ -52,12 +52,13 @@ export class ProductSearchBar {
   {
     const form_value = this.form.value
     const values:ProductSearchBarData = {
-      search_query: form_value.search_term!,
+      search_query: form_value.tern!,
       category: form_value.category_id!,
       product_id: form_value.product_id!,
       state: form_value.status!
     }
 
+    console.log(values)
     this.query_sig.emit(values)
   }
 

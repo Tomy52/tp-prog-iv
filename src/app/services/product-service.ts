@@ -47,7 +47,7 @@ export class ProductService {
     if(query?.search_query)
     {
       const name = query?.search_query
-      query_string += `&page=${name}`
+      query_string += `&name=${name}`
     }
 
     if(query?.category)

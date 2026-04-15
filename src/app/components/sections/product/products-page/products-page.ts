@@ -1,11 +1,9 @@
 import {ChangeDetectionStrategy, Component, inject, signal, WritableSignal} from '@angular/core';
 import {PageButtons} from '../../../reusable/page-buttons/page-buttons';
-import {SearchBar} from '../../../reusable/search-bar/search-bar';
 import {ProductService} from '../../../../services/product-service';
 import {ProductList} from '../../../reusable/product-list/product-list';
 import {PageResponse} from '../../../../interfaces/other/page-response';
 import {Product} from '../../../../interfaces/product';
-import {AllowViewUser} from '../../../../directives/allow-view-user';
 import { ProductSearchBar } from "../../../reusable/product-search-bar/product-search-bar";
 import { ProductSearchBarData } from '../../../../interfaces/component-logic/product-search-bar-data';
 
@@ -13,9 +11,7 @@ import { ProductSearchBarData } from '../../../../interfaces/component-logic/pro
   selector: 'app-products-page',
   imports: [
     PageButtons,
-    SearchBar,
     ProductList,
-    AllowViewUser,
     ProductSearchBar
 ],
   templateUrl: './products-page.html',

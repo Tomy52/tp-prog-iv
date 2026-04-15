@@ -3,15 +3,13 @@ import {SupplierService} from '../../../../services/supplier-service';
 import {Supplier} from '../../../../interfaces/supplier/supplier';
 import {PageButtons} from '../../../reusable/page-buttons/page-buttons';
 import {SupplierList} from '../../../reusable/supplier-list/supplier-list';
-import {SearchBar} from '../../../reusable/search-bar/search-bar';
 import {PageResponse} from '../../../../interfaces/other/page-response';
 
 @Component({
   selector: 'app-suppliers-page',
   imports: [
     PageButtons,
-    SupplierList,
-    SearchBar
+    SupplierList
   ],
   templateUrl: './suppliers-page.html',
   styleUrl: './suppliers-page.css',

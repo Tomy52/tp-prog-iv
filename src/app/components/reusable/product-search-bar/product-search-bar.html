@@ -2,8 +2,11 @@
 
     <form action="" [formGroup]="form" (ngSubmit)="completeForm()">
         <section>
-            
-            <app-search-bar formGroupName="search_term"/>
+
+            <div>
+                <label for="product">Nombre</label>
+                <input type="text" name="product" id="product" formControlName="tern" placeholder="Termino de busqueda...">
+            </div>
             
             <div>
                 <label for="categories">Categorias</label>
@@ -15,7 +18,7 @@
                 <input type="number" name="product_id" id="product_id" formControlName="product_id" min="0">
             </div>
             
-            <div>
+            <div *appAllowViewUser="['ROLE_MANAGER','ROLE_ADMIN']">
                 <label for="product-status">Estado</label>
                 <select class="desplegable-estado" name="status" id="product-status" formControlName="status">
                     <option [ngValue]="null" selected>Ninguno</option>
@@ -24,8 +27,10 @@
                 </select>
             </div>
             
-            <button type="submit">Buscar</button>
-            <button type="button" (click)="reset()">Reinicio</button>
+            <div>
+                <button type="submit">Buscar</button>
+                <button type="button" (click)="reset()">Reinicio</button>
+            </div>
         </section>
     </form>
 </article>

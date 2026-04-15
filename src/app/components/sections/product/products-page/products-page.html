@@ -1,9 +1,6 @@
 <section>
   <h1>Lista de productos</h1>
   @if (pageData() != null && !errMsg) {
-    <!-- <app-search-bar (query_sig)="searchByName($event)" [disabled]="searching"
-    [components]="search_bar_components"></app-search-bar>
-  -->
 
     <app-product-search-bar (query_sig)="searchByTerms($event)"/>
 
