@@ -51,20 +51,6 @@ export class SuppliersPage {
 
       complete: () => this.searching = false
     })
-    
-    /*
-    this.supplier_service.getFilteredAndMakeFilteredPage(this.page(),this.page_size,query).subscribe({
-      next: (response) => {
-        console.log(response);
-        this.page_data.set(response);
-      },
-      error: (e) => {
-        this.page_data.set(e.error);
-        this.error_msg = `Error: ${e.status}, ${e.statusText}`;
-        throw e;
-      },
-      complete: () => this.searching = false
-    });*/
   }
 
   goNextPage() // se podria desactivar el boton del formulario en caso de que sea la ultima pagina
