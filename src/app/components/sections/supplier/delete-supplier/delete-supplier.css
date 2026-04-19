@@ -78,7 +78,6 @@ input[type="submit"]:disabled {
 @media (max-width: 600px) {
     section {
         padding: 10px;
-        min-height: auto;
         margin-top: 40px;
     }
     
