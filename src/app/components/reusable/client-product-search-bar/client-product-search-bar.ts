@@ -44,8 +44,8 @@ export class ClientProductSearchBar {
 
 
   form = this.form_builder.group({
+    tern: [''], 
     category_id: [null],
-    tern: [''],
     include_oos: [false]
   })
 
@@ -65,5 +65,6 @@ export class ClientProductSearchBar {
   reset()
   {
     this.form.reset()
+    this.submit()
   }
 }

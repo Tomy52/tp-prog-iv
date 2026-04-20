@@ -6,6 +6,7 @@ import {PageResponse} from '../interfaces/other/page-response';
 import {ProductStatus} from '../interfaces/productStatus';
 import { ProductSearchBarData } from '../interfaces/component-logic/product-search-bar-data';
 import { CustomerProductInfo } from '../interfaces/product/customer-product-info';
+import { ClientProductSearchBarData } from '../interfaces/component-logic/client-product-search-bar-data';
 
 @Injectable({
   providedIn: 'root'
@@ -74,7 +75,7 @@ export class ProductService {
     return this.http.get<PageResponse<Product>>(`${this.baseUrl}/page${query_string}`)
   }
 
-  getProductsOnSale(page?:number, size?:number)
+  getProductsOnSale(page?:number, size?:number,query?:ClientProductSearchBarData)
   {
     let query_string = "?"
 
@@ -88,7 +89,21 @@ export class ProductService {
       query_string += `&size=${size}`
     }
 
-    console.log(`${this.baseUrl}/on-sale${query_string}`)
+    if(query?.name)
+    {
+      query_string += `&name=${query.name}`
+    }
+
+    if(query?.categories)
+    {
+      query_string += `&category=${query.categories}`
+    }
+
+    if(query?.include_oos != null)
+    {
+      query_string += `&include_oos${query?.include_oos}`
+    }
+
     return this.http.get<PageResponse<CustomerProductInfo>>(`${this.baseUrl}/on-sale${query_string}`)
   }
 

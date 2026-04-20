@@ -6,6 +6,7 @@ import { ProductService } from "../../../../services/product-service";
 import { PageButtons } from "../../../reusable/page-buttons/page-buttons";
 import { CustomerProductList } from "../customer-product-list/customer-product-list";
 import { ClientProductSearchBar } from "../../../reusable/client-product-search-bar/client-product-search-bar";
+import { ClientProductSearchBarData } from "../../../../interfaces/component-logic/client-product-search-bar-data";
 
 
 @Component({
@@ -30,7 +31,7 @@ export class ProductsOnSalePage {
   pageData: WritableSignal<PageResponse<CustomerProductInfo> | null >;
   errMsg:string = '';
 
-  searchTerm:ProductSearchBarData = {
+  searchTerm:ClientProductSearchBarData = {
 
   };
   searching:boolean = false;
@@ -39,16 +40,15 @@ export class ProductsOnSalePage {
   constructor() {
     this.pageSize = Number(localStorage.getItem('pageSize')) || this.pageSizeOptions[0];
     this.pageData = signal(null);
-    this.getProducts()
+    this.getProducts(this.searchTerm)
   }
 
-  getProducts() {
+  getProducts(query:ClientProductSearchBarData) {
     this.searching = true;
     
-    this.productService.getProductsOnSale(this.page(),this.pageSize).subscribe({
+    this.productService.getProductsOnSale(this.page(),this.pageSize,query).subscribe({
       next: (x) => {
         this.pageData.set(x)
-        console.log(x)
       },
       error: (e) => {
         throw e;
@@ -59,12 +59,12 @@ export class ProductsOnSalePage {
 
   goForward() {
     this.page.update((number) => number + 1);
-    this.getProducts();
+    this.getProducts(this.searchTerm);
   }
 
   goBack() {
     this.page.update((number) => number - 1);
-    this.getProducts();
+    this.getProducts(this.searchTerm);
   }
 
   resetPageCount() {
@@ -76,15 +76,14 @@ export class ProductsOnSalePage {
     this.pageSize = size;
     localStorage.setItem('pageSize',size.toString());
     this.resetPageCount();
-    this.getProducts();
+    this.getProducts(this.searchTerm);
   }
 
-  /*
-  searchByTerms(terms:ProductSearchBarData)
+  searchByTerms(terms:ClientProductSearchBarData)
   {
     this.searchTerm = terms
     this.resetPageCount();
-    this.getProducts(terms)
-  }*/
+    this.getProducts(this.searchTerm)
+  }
 
 }

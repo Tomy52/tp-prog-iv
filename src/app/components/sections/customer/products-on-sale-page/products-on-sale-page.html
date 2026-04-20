@@ -2,7 +2,7 @@
   <h1>Lista de productos en venta</h1>
   @if (pageData() != null && !errMsg) {
 
-    <app-client-product-search-bar></app-client-product-search-bar>
+    <app-client-product-search-bar (query_sig)="searchByTerms($event)"></app-client-product-search-bar>
 
     @if(pageData()!.content.length === 0) {
       <h1>No se encontraron resultados</h1>
