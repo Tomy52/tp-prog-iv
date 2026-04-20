@@ -27,6 +27,7 @@ import {productExistsGuard} from './guards/product-exists-guard';
 import { CsvFormUpdate } from './components/sections/csv-section/csv-form-update';
 import { CategoryFormSection } from './components/sections/categories/category-form-section/category-form-section';
 import { DeleteCategory } from './components/sections/categories/delete-category/delete-category';
+import { ProductsOnSalePage } from './components/sections/customer/products-on-sale-page/products-on-sale-page';
 
 
 export const routes: Routes = [
@@ -123,6 +124,11 @@ export const routes: Routes = [
   {
     path:"suppliers",
     component:SuppliersPage,
+    canActivate: [AuthGuard]
+  },
+  {
+    path:"on-sale",
+    component:ProductsOnSalePage,
     canActivate: [AuthGuard]
   },
   {

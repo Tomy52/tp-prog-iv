@@ -1,0 +1,32 @@
+h1,h2 {
+  color: white;
+  text-align: center;
+  margin: 10px;
+}
+
+section {
+  margin: 10px;
+  padding: 10px;
+
+  border-radius: 10px;
+
+  background-color: var(--main-color);
+}
+
+.toggle-area {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 10px;
+
+}
+
+.toggle-area label {
+  color: var(--text-color);
+  font-size: large;
+}
+
+#toggle-disabled-products{
+  width: 30px;
+  height: 20px;
+}

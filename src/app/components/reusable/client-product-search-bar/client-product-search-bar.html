@@ -1,0 +1,26 @@
+<article>
+    <form action="" [formGroup]="form" (ngSubmit)="submit()">
+        <section>
+
+            <div>
+                <label for="product">Nombre</label>
+                <input type="text" name="product" id="product" formControlName="tern" placeholder="Termino de busqueda...">
+            </div>
+            
+            <div>
+                <label for="categories">Categorias</label>
+                <app-category-dropdown-select id="categories" formControlName="category_id" [categories]="categories()"/>
+            </div>
+            
+            <div>
+                <label for="">Incluir productos sin stock?</label>
+                <input type="checkbox" name="" id="" formControlName="include_oos">
+            </div>
+            
+            <div>
+                <button type="submit">Buscar</button>
+                <button type="button" (click)="reset()">Reinicio</button>
+            </div>
+        </section>
+    </form>
+</article>
