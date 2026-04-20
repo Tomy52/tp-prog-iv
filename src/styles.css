@@ -4,15 +4,23 @@
   --sidebar-width: 300px;
 
 
-  --main-color: #2d5a4c;      
-  --secondary-color: #2c6e5a; 
+  --main-color: #2d5a4c;
+  --secondary-color: #2c6e5a;
   --tertiary-color: #4c9682;
-  
-  
-  --bg-color: #f5f1e4; 
-  
+
+
+  --bg-color: #f5f1e4;
+
   --text-color: #ffffff;
+  --secondary-text-color: #333333;
   --unfocused-text-color: #d2d2d2;
+  --bg-color: rgba(234, 245, 255, 0.78);
+  --th-bg-color: #c6dbe5;
+
+  --active-bg-color: #e9ffcf;
+  --active-text-color: #166534;
+  --inactive-bg-color: #ffcdd5;
+  --inactive-text-color: #991b1b;
 
   --disabled-button-color: #9baebb;
   --disabled-button-text-color: #6a7d8c;
@@ -26,17 +34,17 @@
 body {
   margin: 0;
 
-  background-image: 
-    linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.55)), 
-    url('/images/marmolblanco.png'); 
-    
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.55)),
+    url('/images/marmolblanco.png');
+
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   background-repeat: no-repeat;
-  
+
   /* Color de respaldo */
-  background-color: var(--bg-color); 
+  background-color: var(--bg-color);
 }
 
 
@@ -49,16 +57,21 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background: transparent; 
+  background: transparent;
 }
 
 main {
   flex: 1;
   position: relative;
   width: 100%;
-  background: transparent; 
+  background: transparent;
 }
 
+button:disabled {
+  cursor: not-allowed;
+  background-color: var(--disabled-button-color);
+  color: var(--disabled-button-text-color);
+}
 
 button {
   cursor: pointer;
