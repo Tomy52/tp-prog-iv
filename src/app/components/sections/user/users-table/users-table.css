@@ -4,6 +4,16 @@ section {
   align-items: center;
   justify-content: center;
   width: fit-content;
+  background-color: var(--bg-color);
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px black solid;
+}
+
+.users-table {
+  background-color: var(--bg-color);
+  padding: 5px;
+  border-radius: 5px;
 }
 
 th, td {
@@ -12,13 +22,13 @@ th, td {
 }
 
 .row-active {
-  background-color: #f1f8e9;
-  color: #2e7d32;
+  background-color: var(--active-bg-color);
+  color: var(--active-text-color);
 }
 
 .row-inactive {
-  background-color: #ffebee;
-  color: #c62828;
+  background-color: var(--inactive-bg-color);
+  color: var(--inactive-text-color);
 }
 
 tr {
@@ -30,7 +40,7 @@ tr:last-child {
 }
 
 th {
-  background-color: #c6dbe5;
+  background-color: var(--th-bg-color);
   font-weight: bold;
 }
 

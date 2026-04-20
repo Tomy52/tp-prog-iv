@@ -1,10 +1,33 @@
-<section>
-  @if(user()) {
-    <h1>{{user().firstname}} {{user().lastname}}</h1>
-    <h2>ID usuario: {{user().idUser}}</h2>
-    <h2>Nombre de usuario: {{user().credential?.username}}</h2>
-    <h2>DNI: {{user().dni}}</h2>
-    <h2>Estado: {{user().status}}</h2>
-    <h2>Rol: {{user().credential?.role}}</h2>
+<section class="detail-container">
+  @if(user(); as u) {
+    <header class="profile-header">
+      <h1 class="profile-name">{{ u.firstname }} {{ u.lastname }}</h1>
+      <span class="profile-role">{{ u.credential?.role }}</span> <!-- tengo que armar una directiva para el rol -->
+    </header>
+
+    <div class="user-cards-area">
+      <h2 class="info-header">INFORMACION</h2>
+
+      <!-- se pueden poner imagenes en lugar de emojis -->
+      <app-user-detail-card [icon]="'📁'" title="ID DEL SISTEMA" [value]="'#' + u.idUser"></app-user-detail-card>
+
+      <app-user-detail-card [icon]="'🚦'" title="Estado" [useProjection]="true">
+      <span class="badge"
+            [class.badge-active]="u.status === 'ENABLED'"
+            [class.badge-inactive]="u.status === 'DISABLED'">
+        {{ u.status === 'ENABLED' ? 'Activo' : 'Inactivo' }}
+      </span>
+      </app-user-detail-card>
+
+      <app-user-detail-card [icon]="'👤'" title="Usuario" [value]="u.credential?.username"></app-user-detail-card>
+
+      <app-user-detail-card [icon]="'🪪'" title="DOCUMENTO" [value]="u.dni"></app-user-detail-card>
+    </div>
+
+    <div class="profile-controls">
+      <button>Editar</button>
+      <button class="ch-status-button">{{ u.status === 'DISABLED' ? 'Activar' : 'Desactivar' }}</button>
+      <button class="delete-button">Eliminar</button>
+    </div>
   }
 </section>

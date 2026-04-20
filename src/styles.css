@@ -7,8 +7,15 @@
   --secondary-color: #1f7ab4;
   --tertiary-color: #1288d7;
   --text-color: #ffffff;
+  --secondary-text-color: #333333;
   --unfocused-text-color: #d2d2d2;
   --bg-color: rgba(234, 245, 255, 0.78);
+  --th-bg-color: #c6dbe5;
+
+  --active-bg-color: #e9ffcf;
+  --active-text-color: #166534;
+  --inactive-bg-color: #ffcdd5;
+  --inactive-text-color: #991b1b;
 
   --disabled-button-color: #9baebb;
   --disabled-button-text-color: #6a7d8c;

@@ -1,0 +1,12 @@
+<div class="stat-card">
+  <span class="card-icon">{{ icon() }}</span>
+  <h3>{{ title() }}</h3>
+  <p class="card-value">
+    @if(useProjection()){
+      <ng-content></ng-content>
+    } @else {
+      {{value()}}
+    }
+  </p>
+</div>
+

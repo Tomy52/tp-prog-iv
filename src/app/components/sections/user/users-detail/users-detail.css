@@ -1,0 +1,104 @@
+.detail-container {
+  max-width: 900px;
+  margin: 10px auto;
+  padding: 15px;
+  border-radius: 5px;
+  background-color: var(--main-color);
+}
+
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.profile-name {
+  margin: 0 0 8px 0;
+  color: var(--text-color);
+  font-weight: bold;
+}
+
+.profile-role {
+  color: var(--main-color);
+  background-color: var(--bg-color);
+  padding: 3px;
+  border-radius: 5px;
+  border: 1px black solid;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+
+.profile-role:hover {
+  transform: scale(101%);
+}
+
+.profile-controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-block: 10px;
+  gap: 15px;
+  text-align: center;
+}
+
+.user-cards-area {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  background-color: var(--bg-color);
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+  border: 1px black solid;
+}
+
+.info-header {
+  color: var(--secondary-text-color);
+  grid-column: 1 / -1;
+  text-align: center;
+  display: block;
+  font-weight: 700;
+  margin: 1px;
+  letter-spacing: 0.1em;
+}
+
+button{
+  background-color: var(--secondary-color);
+  border-radius: 10px;
+  border-color: var(--text-color);
+  border-width: 2px;
+  width: 100px;
+  color: var(--text-color);
+
+  margin-top: 10px;
+
+  font-size: medium;
+  font-family: "BreeSerif-regular", serif;
+}
+
+button:hover {
+  background-color: var(--tertiary-color);
+}
+
+button.delete-button:hover{
+  background-color: red;
+}
+
+.badge {
+  padding: 6px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+}
+
+.badge-active {
+  background-color: var(--active-bg-color);
+  color: var(--active-text-color);
+}
+
+.badge-inactive {
+  background-color: var(--inactive-bg-color);
+  color: var(--inactive-text-color);
+}

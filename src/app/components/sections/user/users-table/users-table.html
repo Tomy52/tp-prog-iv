@@ -1,5 +1,5 @@
 <section>
-  <table>
+  <table class="users-table">
     <thead>
     <tr>
       <th>ID</th>
@@ -13,7 +13,7 @@
     <tbody>
       @for(user of users(); track user.idUser) {
         <tr [class.row-active]="user.status === 'ENABLED'" [class.row-inactive]="user.status === 'DISABLED'">
-          <td>{{user.idUser}}</td>
+          <td>#{{user.idUser}}</td>
           <td>{{user.dni}}</td>
           <td>{{user.credential.username}}</td>
           <td>{{user.credential.role}}</td>
