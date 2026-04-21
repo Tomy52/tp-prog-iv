@@ -3,9 +3,8 @@
         <h2>{{productInfo().name}}</h2>
         <p>${{productInfo().price}}</p>
 
-        @if (productInfo()) {
-            <img src="{{productInfo().image_url}}" alt="">
-        }
+        <img src="{{getImageUrl()}}" alt="">
+        
     </div>
 
     <div class="stock">

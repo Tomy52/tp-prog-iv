@@ -10,4 +10,10 @@ import { CustomerProductInfo } from '../../../../interfaces/product/customer-pro
 })
 export class CustomerProductListCard {
   productInfo = input.required<CustomerProductInfo>()
+  
+
+  getImageUrl()
+  {
+    return this.productInfo().image_url != null ? this.productInfo().image_url : "/public/images/missing.png"
+  }
 }
