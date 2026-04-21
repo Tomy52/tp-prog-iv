@@ -4,7 +4,7 @@ import { DynamicRendererService } from '../../../services/dynamic-renderer-servi
 
 @Component({
   selector: 'app-main-menu-screen',
-  imports: [MainMenuButton],
+  imports: [],
   templateUrl: './main-menu-screen.html',
   styleUrl: './main-menu-screen.css'
 })

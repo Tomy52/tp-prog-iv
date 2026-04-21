@@ -1,10 +1,14 @@
 <article>
-    <div class="horizontal">
+    <div class="horizontal name">
         <h2>{{productInfo().name}}</h2>
         <p>${{productInfo().price}}</p>
+
+        @if (productInfo()) {
+            <img src="{{productInfo().image_url}}" alt="">
+        }
     </div>
 
-    <div>
+    <div class="stock">
         <h2>Unidades restantes: {{productInfo().stock}}</h2>
         <button>Agregar al carrito</button>
     </div>
