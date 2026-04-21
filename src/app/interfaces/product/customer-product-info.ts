@@ -6,5 +6,6 @@ export interface CustomerProductInfo {
     description: string,
     price: number,
     stock: number,
-    category: Partial<Category> | null
+    category: Partial<Category> | null,
+    image_url: string
 }
