@@ -74,8 +74,16 @@ export class ProductService {
   }
 
 
-  addProduct(product: Partial<Product>): Observable<Product> {
-    return this.http.post<Product>(`${this.baseUrl}`,product);
+  addProduct(product: Partial<Product>, file:File|undefined): Observable<Product> {
+    const formData: FormData = new FormData();
+    if(file)
+    {
+      formData.append('file', file);
+    }
+    
+    formData.append('productData', JSON.stringify(product))
+
+    return this.http.post<Product>(`${this.baseUrl}`,formData);
   }
 
   modifyProduct(modifiedProduct: Partial<Product>): Observable<Product> {
