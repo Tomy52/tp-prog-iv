@@ -9,7 +9,15 @@
   <div class="menuDiv"
     animate.enter="enter-animation"
     animate.leave="leave-animation">
-    <app-sidebar-component id="sidebar" (clickOutside)="closeSidebar()"/>
+    
+    @if (authService.getRole() == "ROLE_CUSTOMER") {
+      <app-customer-sidebar (clickOutside)="closeSidebar()"/>
+    }
+
+    <!-- admin should get their own bar maybe -->
+    @if (authService.getRole() == "ROLE_ADMIN" || authService.getRole() == "ROLE_MANAGER" || authService.getRole() == "ROLE_EMPLOYEE") {
+      <app-sidebar-component (clickOutside)="closeSidebar()"/>
+    }
   </div>
   <div class="overlay"></div>
 }

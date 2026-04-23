@@ -2,25 +2,24 @@ import {
   ChangeDetectionStrategy,
   Component,
   effect,
-  ElementRef,
   inject, OnInit,
-  signal,
-  ViewChild,
-  viewChild
+  signal
 } from '@angular/core';
-import {NavigationEnd, Router, RouterLink} from '@angular/router';
-import {SidebarComponent} from '../sidebar-component/sidebar-component';
+import { NavigationEnd, Router, RouterLink } from '@angular/router';
 import {ClickOutside} from '../../directives/click-outside';
 import {filter} from 'rxjs';
 import {AuthService} from '../../services/auth-service';
+import { CustomerSidebar } from '../sidebars/customer-sidebar/customer-sidebar';
+import { SidebarComponent } from "../sidebars/sidebar-component/sidebar-component";
 
 @Component({
   selector: 'app-header-component',
   imports: [
     RouterLink,
-    SidebarComponent,
-    ClickOutside
-  ],
+    ClickOutside,
+    CustomerSidebar,
+    SidebarComponent
+],
   templateUrl: './header-component.html',
   styleUrl: './header-component.css',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -50,11 +49,10 @@ export class HeaderComponent implements OnInit {
   getUsername() {
     this.username.set(this.authService.getUsername());
   }
-
-
+  /*
+  @ViewChild('sidebarArea', {read: ViewContainerRef}) sidebarArea!:ViewContainerRef*/
   openSidebar(): void {
     this.isSidenavOpen.set(true);
-
   }
 
   closeSidebar(){
