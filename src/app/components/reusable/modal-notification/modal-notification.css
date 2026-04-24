@@ -4,4 +4,17 @@
     display: block;
     background-color: white;
     padding: 10px;
+    border-radius: 10px;
+    max-width: 50%;
+    transform: translate(50%);
+}
+
+
+
+
+article {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
 }
