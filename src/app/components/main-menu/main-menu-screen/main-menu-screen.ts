@@ -10,14 +10,4 @@ import { ModalNotification } from '../../reusable/modal-notification/modal-notif
   styleUrl: './main-menu-screen.css'
 })
 export class MainMenuScreen {
-  notification = inject(ModalService)
-
-  showSomething()
-  {
-    this.notification.showModal(ModalNotification,{
-      title: "Algo hay algo",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
-      options: ["Ok", "No"]
-    })
-  }
 }
