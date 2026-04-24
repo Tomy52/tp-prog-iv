@@ -1,9 +1,13 @@
 <article>
     <h1>{{data()?.title || `Algo pasó`}}</h1>
-    <p>{{data()?.description}}</p>
-
-
-    @for (item of data()?.options; track $index) {
-        <button (click)="closeModal(item)" [value]="item">{{item}}</button>
+    
+    @if (data()?.description) {
+        <p>{{data()?.description}}</p>
     }
+
+    <div class="buttons">
+        @for (item of data()?.options; track $index) {
+            <button (click)="closeModal(item)" [value]="item">{{item}}</button>
+        }
+    </div>
 </article>
