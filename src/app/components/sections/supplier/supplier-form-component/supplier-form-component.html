@@ -51,14 +51,12 @@
        </div>
 
 
-       <div class="full-width">
-
-              <label for="city">Ciudad</label>
+       <div> <label for="city">Ciudad</label>
               <input type="text" name="city" id="city" formControlName="city" [appFieldErrorBorder]="form.get('city')"
                      placeholder="Ciudad test">
               <small class="error-msg" [appFieldError]="form.get('city')"></small>
        </div>
 
-    <input type="submit" value="Subir" [disabled]="!isValid()">
+       <input type="submit" value="Subir" [disabled]="form.invalid">
   </form>
 </article>
