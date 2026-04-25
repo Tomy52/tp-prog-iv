@@ -14,6 +14,6 @@ export class CustomerProductListCard {
 
   getImageUrl()
   {
-    return this.productInfo().image_url != null ? this.productInfo().image_url : "/public/images/missing.png"
+    return this.productInfo().image_url != null ? this.productInfo().image_url : "/images/missing.png"
   }
 }
