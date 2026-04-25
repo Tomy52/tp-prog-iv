@@ -3,12 +3,11 @@
     width: 100%;
 }
 
-/* Header Fijo */
 nav {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; 
     align-items: center;
-    padding: 0 5%; 
+    padding: 0 15px; 
     height: clamp(60px, 8vw, 85px);
     
     position: fixed;
@@ -29,7 +28,6 @@ nav {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
-/* Linea Plateada */
 nav::after {
     content: "";
     position: absolute;
@@ -51,14 +49,17 @@ nav::after {
 nav h1 {
     font-family: 'Cinzel', serif;
     font-weight: 800;
-    font-size: clamp(1.3rem, 5vw, 2.3rem);
+    font-size: clamp(1.1rem, 4vw, 2.3rem); 
     letter-spacing: 2px;
     text-transform: uppercase;
     margin: 0;
     cursor: pointer;
+    
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 2;
 
-    /* Efecto Plateado Cromado */
     background: linear-gradient(to bottom, #ffffff 20%, #bdbdbd 45%, #ffffff 65%, #8a8a8a 85%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -69,8 +70,8 @@ nav h1 {
     background: rgba(255, 255, 255, 0.15);
     border: 1px solid rgba(255, 255, 255, 0.4);
     border-radius: 20%;
-    width: clamp(42px, 6vw, 52px);
-    height: clamp(42px, 6vw, 52px);
+    width: clamp(38px, 6vw, 52px); 
+    height: clamp(38px, 6vw, 52px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -78,6 +79,7 @@ nav h1 {
     backdrop-filter: blur(8px);
     transition: all 0.3s ease;
     z-index: 2;
+    padding: 0;
 }
 
 .nav-bar-button:hover {
@@ -86,19 +88,21 @@ nav h1 {
 }
 
 .img-button-menu {
-    width: 24px;
+    width: 22px;
     filter: brightness(0) invert(1);
 }
 
 .user-button {
     width: auto;
-    padding: 0 20px;
+    padding: 0 10px;
     border-radius: 10px;
     color: #fff;
     font-weight: 600;
-    font-size: 0.9rem;
+    font-size: clamp(0.7rem, 2.5vw, 0.9rem); 
     text-shadow: 0 1px 2px rgba(0,0,0,0.5);
     font-family: 'Cinzel', serif;
+    white-space: nowrap;
+    text-transform: lowercase;
 }
 
 .menuDiv {
@@ -108,14 +112,12 @@ nav h1 {
     height: 100vh;
     width: 300px; 
     z-index: 2000; 
-    
     background: linear-gradient(rgba(20, 40, 30, 0.98), rgba(10, 20, 15, 1));
     backdrop-filter: blur(15px);
     border-right: 2px solid rgba(255, 255, 255, 0.1);
     box-shadow: 5px 0 25px rgba(0,0,0,0.8);
 }
 
-/* Fondo oscuro */
 .overlay {
     position: fixed;
     inset: 0;
@@ -124,29 +126,38 @@ nav h1 {
     z-index: 1500; 
 }
 
-/* ANIMACIONES */
-.enter-animation {
-    animation: slideIn 0.3s ease-out forwards;
-}
+/*Efectos de Animación*/
+.enter-animation { animation: slideIn 0.3s ease-out forwards; }
+.leave-animation { animation: slideOut 0.3s ease-in forwards; }
 
-.leave-animation {
-    animation: slideOut 0.3s ease-in forwards;
-}
+@keyframes slideIn { from { transform: translateX(-100%); } to { transform: translateX(0); } }
+@keyframes slideOut { from { transform: translateX(0); } to { transform: translateX(-100%); } }
 
-@keyframes slideIn {
-    from { transform: translateX(-100%); }
-    to { transform: translateX(0); }
-}
-
-@keyframes slideOut {
-    from { transform: translateX(0); }
-    to { transform: translateX(-100%); }
-}
 
 @media (max-width: 480px) {
-    nav { padding: 0 4%; }
-    .user-button { display: none; }
-    .menuDiv { width: 85%; } 
+    nav { padding: 0 10px; }
+    
+    .user-button { 
+        display: flex; 
+        padding: 0 8px;
+        max-width: 80px; 
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .menuDiv { width: 80%; } 
+    
+    nav h1 {
+        letter-spacing: 1px; 
+    }
+}
+
+
+@media (min-width: 768px) {
+    .user-button {
+        padding: 0 20px;
+        max-width: none;
+    }
 }
 
 @media (min-width: 1200px) {

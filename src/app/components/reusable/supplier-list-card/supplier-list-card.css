@@ -1,16 +1,8 @@
-section {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    padding: 40px 20px;
-}
-
 article {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(240, 245, 243, 0.98) 100%);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.5) 0%, rgba(240, 245, 243, 0.3) 100%);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(45, 90, 76, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
     border-radius: 20px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
     
@@ -26,6 +18,11 @@ article {
 
 article:hover {
     transform: translateY(-5px);
+    background: linear-gradient(
+        135deg, 
+        rgba(255, 255, 255, 0.6) 0%, 
+        rgba(240, 245, 243, 0.4) 100%
+    );
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
@@ -46,7 +43,7 @@ h2 {
 }
 
 .contacts, .address {
-    background: rgba(45, 90, 76, 0.04);
+    background: rgba(255, 255, 255, 0.2);
     padding: 15px;
     border-radius: 12px;
     border-left: 3px solid #2d5a4c;
@@ -67,6 +64,7 @@ p {
     color: #16372d;
     margin: 4px 0;
     line-height: 1.4;
+    font-weight: 500;
 }
 
 .boton-admin {
@@ -96,7 +94,6 @@ button:not(.eliminar-supplier) {
 }
 
 .eliminar-supplier {
-   
     background: linear-gradient(rgba(80, 10, 10, 0.7), rgba(50, 5, 5, 0.85)), 
                 url('/images/header3.png') center/cover no-repeat;
     color: #fcfcf9;
@@ -114,9 +111,8 @@ button:hover {
         max-width: 100%;
         margin: 10px 0;
     }
-    
     .boton-admin {
-        flex-direction: column;
+        flex-direction: column; 
     }
 }
 

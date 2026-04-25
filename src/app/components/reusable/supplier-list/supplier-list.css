@@ -1,61 +1,11 @@
 section {
-   
     display: flex;
-    flex-wrap: wrap;         
-    gap: 30px;               
-    justify-content: center; 
-    align-items: flex-start; 
-    
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
     padding: 40px 20px;
     width: 100%;
-    max-width: 1400px;       
-    margin: 0 auto;          
+    max-width: 1400px;
+    margin: 0 auto;
     box-sizing: border-box;
-}
-
-app-supplier-list-card {
-  
-    flex: 0 1 380px; 
-    
-
-    animation: fadeInUp 0.5s ease forwards;
-    display: block;
-}
-
-@media (max-width: 850px) {
-    section {
-        gap: 20px;
-        padding: 30px 15px;
-    }
-    
-    app-supplier-list-card {
-        flex: 0 1 45%; 
-        min-width: 300px;
-    }
-}
-
-@media (max-width: 600px) {
-    section {
-        flex-direction: column; 
-        align-items: center;    
-        gap: 25px;
-    }
-
-    app-supplier-list-card {
-        flex: 1 1 100%;      
-        width: 100%;
-        max-width: 100%;      
-    }
-}
-
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
