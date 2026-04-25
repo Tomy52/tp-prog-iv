@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, effect, inject, input, OnChanges, output, SimpleChanges } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { SupplierSearchData } from '../../../interfaces/component-logic/supplier-search-data';
 
@@ -9,9 +9,10 @@ import { SupplierSearchData } from '../../../interfaces/component-logic/supplier
   styleUrl: './supplier-search-bar.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SupplierSearchBar {
+export class SupplierSearchBar implements OnChanges {
   form_builder = inject(FormBuilder)
   form_sig = output<SupplierSearchData>();
+  disabled = input.required<boolean>()
 
   form = this.form_builder.group({
     name: ['']
@@ -29,4 +30,9 @@ export class SupplierSearchBar {
 
     this.form_sig.emit(values)
   }
+
+  ngOnChanges(): void {
+    this.disabled() ? this.form.disable() : this.form.enable()
+  }
+
 }
