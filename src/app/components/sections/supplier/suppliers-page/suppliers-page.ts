@@ -3,16 +3,17 @@ import {SupplierService} from '../../../../services/supplier-service';
 import {Supplier} from '../../../../interfaces/supplier/supplier';
 import {PageButtons} from '../../../reusable/page-buttons/page-buttons';
 import {SupplierList} from '../../../reusable/supplier-list/supplier-list';
-import {SearchBar} from '../../../reusable/search-bar/search-bar';
 import {PageResponse} from '../../../../interfaces/other/page-response';
+import { SupplierSearchBar } from "../../../reusable/supplier-search-bar/supplier-search-bar";
+import { SupplierSearchData } from '../../../../interfaces/component-logic/supplier-search-data';
 
 @Component({
   selector: 'app-suppliers-page',
   imports: [
     PageButtons,
     SupplierList,
-    SearchBar
-  ],
+    SupplierSearchBar
+],
   templateUrl: './suppliers-page.html',
   styleUrl: './suppliers-page.css',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -28,42 +29,41 @@ export class SuppliersPage {
   page_data: WritableSignal<PageResponse<Supplier> | null >;
   error_msg:string = '';
 
-  search_term:string = '';
-  searching:boolean = false;
+  query:SupplierSearchData = {
+
+  }
+  
+  searching: WritableSignal<boolean> = signal<boolean>(false)
 
   constructor() {
     this.page_size = Number(localStorage.getItem('pageSize')) || this.page_size_ops[0];
     this.page_data = signal(null);
-    this.getSuppliers('');
+    this.getSuppliers(this.query);
   }
 
-  getSuppliers(query:string = this.search_term)
+  getSuppliers(query:SupplierSearchData)
   {
-    this.searching = true; // lock up the buttons so the user doesn't click twice
-    this.supplier_service.getFilteredAndMakeFilteredPage(this.page(),this.page_size,query).subscribe({
+    this.searching.set(true); // lock up the buttons so the user doesn't click twice
+
+    this.supplier_service.getSuppliersPage(this.page(),this.page_size,query).subscribe({
       next: (response) => {
-        console.log(response);
         this.page_data.set(response);
       },
-      error: (e) => {
-        this.page_data.set(e.error);
-        this.error_msg = `Error: ${e.status}, ${e.statusText}`;
-        throw e;
-      },
-      complete: () => this.searching = false
-    });
+
+      complete: () => this.searching.set(false)
+    })
   }
 
   goNextPage() // se podria desactivar el boton del formulario en caso de que sea la ultima pagina
   {
     this.page.update((number) => number + 1);
-    this.getSuppliers(this.search_term);
+    this.getSuppliers(this.query);
   }
 
   goPreviewsPage()// se podria desactivar el boton del formulario en caso de que sea la primer pagina
   {
     this.page.update((number) => number - 1);
-    this.getSuppliers(this.search_term);
+    this.getSuppliers(this.query);
   }
 
   resetPageCount()
@@ -71,11 +71,11 @@ export class SuppliersPage {
     this.page.set(0);
   }
 
-  searchByName(query:string)
+  searchByTerms(event:SupplierSearchData)
   {
-    this.resetPageCount();
-    this.search_term = query;
-    this.getSuppliers(query);
+    this.resetPageCount()
+    this.query = event
+    this.getSuppliers(this.query)
   }
 
   changePageSize(size:number)
@@ -83,7 +83,7 @@ export class SuppliersPage {
     this.page_size = size;
     localStorage.setItem('pageSize',size.toString());
     this.resetPageCount();
-    this.getSuppliers();
+    this.getSuppliers(this.query);
   }
 
 }

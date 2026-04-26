@@ -120,7 +120,8 @@ export class ProductFormComponent {
   }
 
   updateProduct() {
-    const formInfo = this.productForm.value;
+    const formInfo = this.productForm.value
+    
     const product = this.modifiedProduct();
     console.log(formInfo)
     const updatedProduct = {

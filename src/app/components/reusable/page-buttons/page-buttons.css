@@ -1,62 +1,140 @@
-article {
-  padding: 10px;
-}
-
-.page-buttons > div {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  text-align: center;
-
-  width: 100%;
-  padding: 10px;
-}
-
-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-self: center;
-
-  text-align: center;
-  width: 40%;
-  background-color: var(--secondary-color);
-  border-radius: 10px;
-  border-color: var(--text-color);
-  border-width: 2px;
-  color: var(--text-color);
-
-
-  font-family: "BreeSerif-regular", serif;
-}
-
-button:hover {
-  background-color: var(--tertiary-color);
-}
-
-button:disabled {
-  background-color: var(--disabled-button-color);
-  color: var(--disabled-button-text-color);
-}
-
-
-p {
-  text-align: center;
+.page-buttons {
+    width: 95%;
+    max-width: 850px;
+    margin: 40px auto;
+    background: rgba(255, 255, 255, 0.4); 
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 30px;
+    padding: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    box-sizing: border-box;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
 }
 
 .page-size {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 
+    align-items: center; 
+    gap: 8px;
+    min-width: 200px; 
 }
 
-
-.select-page{
-  border-radius: 5px;
-  text-align: center;
-  margin-left: 5px;
-
-  font-family: "BreeSerif-regular", serif;
+.page-size div {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    gap: 12px;
+    width: 100%;
 }
 
+.page-size p {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 5px;
+}
 
+.select-page {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(45, 90, 76, 0.3);
+    border-radius: 12px;
+    padding: 4px 10px;
+    font-family: 'Verdana', sans-serif;
+    color: #2d5a4c;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.select-page:hover {
+    border-color: #2d5a4c;
+    background: #fff;
+}
+
+.page-buttons > div:last-child {
+    display: flex;
+    gap: 15px;
+}
+
+button {
+    min-width: 130px;
+    padding: 12px 20px;
+    border-radius: 50px;
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.4s ease;
+    color: #fcfcf9;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/*Boton atras*/
+button:first-child {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), 
+                url('/images/header3.png') center/cover no-repeat !important;
+    filter: grayscale(0.8) contrast(1.2); 
+}
+
+/*Boton siguiente*/
+button:last-child {
+    background: linear-gradient(rgba(45, 90, 76, 0.4), rgba(22, 55, 45, 0.6)), 
+                url('/images/header3.png') center/cover no-repeat !important;
+}
+
+button:hover:not(:disabled) {
+    transform: translateY(-3px) scale(1.05);
+    filter: brightness(1.2) saturate(1.2) grayscale(0);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+button:disabled {
+    cursor: not-allowed;
+    filter: grayscale(1) brightness(0.8) !important; 
+    box-shadow: none;
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+@media (max-width: 650px) {
+    .page-buttons {
+        flex-direction: column;
+        padding: 20px;
+        width: 90%; 
+        gap: 25px; 
+    }
+
+    .page-size {
+        align-items: center;
+        text-align: center;
+        width: 100%;
+    }
+
+    .page-size div {
+        justify-content: center;
+        flex-direction: column; 
+        gap: 8px;
+    }
+
+    .page-buttons > div:last-child {
+        width: 100%;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    button {
+        flex: 1;
+        min-width: 100px; 
+        padding: 10px 5px;
+        font-size: 0.7rem; 
+    }
+}
