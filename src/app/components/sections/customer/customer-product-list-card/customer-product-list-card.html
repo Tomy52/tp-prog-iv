@@ -3,12 +3,15 @@
         <h2>{{productInfo().name}}</h2>
         <p>${{productInfo().price}}</p>
 
-        <img src="{{getImageUrl()}}" alt="">
+        <img src="{{getImageUrl()}}" alt="imagen de {{productInfo().name}}">
 
     </div>
 
     <div class="stock">
         <h2>Unidades restantes: {{productInfo().stock}}</h2>
-        <button (click)="selectProduct(productInfo().idProduct)" [disabled]="productInfo().stock <= 0"> Agregar al carrito</button>
+
+      <button (click)="selectProduct(productInfo().idProduct)"
+              [disabled]="productInfo().stock <= 0"> Agregar al carrito</button>
+
     </div>
 </article>
