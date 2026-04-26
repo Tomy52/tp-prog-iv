@@ -29,6 +29,8 @@ export class SupplierSearchBar implements OnChanges {
     }
 
     this.form_sig.emit(values)
+
+    this.form.reset({ name: '' })
   }
 
   ngOnChanges(): void {
