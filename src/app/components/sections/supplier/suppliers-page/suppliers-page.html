@@ -1,13 +1,13 @@
 <section>
   <h1>Lista de proveedores</h1>
-  <app-supplier-search-bar (form_sig)="searchByTerms($event)"></app-supplier-search-bar>
+  <app-supplier-search-bar [disabled]="searching()" (form_sig)="searchByTerms($event)"></app-supplier-search-bar>
   @if (!error_msg) {
       @if (page_data()!.content.length != 0) {
       <app-supplier-list [suppliers]="page_data()!.content"/>
       <app-page-buttons (back_signal)="goPreviewsPage()"
                         (next_signal)="goNextPage()"
-                        [back_active]="page_data()!.first || searching"
-                        [forward_active]="page_data()!.last || searching"
+                        [back_active]="page_data()!.first || searching()"
+                        [forward_active]="page_data()!.last || searching()"
                         [current_page]="page_data()!.number"
                         [max_page]="page_data()!.totalPages"
 
