@@ -11,6 +11,7 @@ import {filter} from 'rxjs';
 import {AuthService} from '../../services/auth-service';
 import { CustomerSidebar } from '../sidebars/customer-sidebar/customer-sidebar';
 import { SidebarComponent } from "../sidebars/sidebar-component/sidebar-component";
+import {ShoppingCart} from '../reusable/shopping-cart/shopping-cart';
 
 @Component({
   selector: 'app-header-component',
@@ -18,8 +19,9 @@ import { SidebarComponent } from "../sidebars/sidebar-component/sidebar-componen
     RouterLink,
     ClickOutside,
     CustomerSidebar,
-    SidebarComponent
-],
+    SidebarComponent,
+    ShoppingCart
+  ],
   templateUrl: './header-component.html',
   styleUrl: './header-component.css',
   changeDetection: ChangeDetectionStrategy.OnPush

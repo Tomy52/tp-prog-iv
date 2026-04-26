@@ -1,0 +1,15 @@
+.cart-icon{
+  width: 35px;
+  height: 35px;
+  margin-left: 15px;
+
+}
+
+.item-counter{
+  background-color: darkred;
+  border-radius: 50%;
+  position: relative;
+  bottom: 20px;
+  right: 5px;
+  padding:1px 5px;
+}
