@@ -1,22 +1,23 @@
-import {ChangeDetectionStrategy, Component, effect, inject, input, signal} from '@angular/core';
-import {ProductDropdownSelect} from '../../../reusable/product-dropdown-select/product-dropdown-select';
-import {ProductService} from '../../../../services/product-service';
-import {SupplierService} from '../../../../services/supplier-service';
-import {Product} from '../../../../interfaces/product';
-import {Supplier} from '../../../../interfaces/supplier/supplier';
-import {SupplierDropdownSelect} from '../../../reusable/supplier-dropdown-select/supplier-dropdown-select';
-import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
-import {CreateProductSupplier} from '../../../../interfaces/product-supplier/create-product-supplier';
-import {ProductSupplierService} from '../../../../services/product-supplier-service';
-import {ResponseProductSupplier} from '../../../../interfaces/product-supplier/response-product-supplier';
-import {UpdateProductSupplier} from '../../../../interfaces/product-supplier/update-product-supplier';
-import {FieldError} from '../../../../directives/field-error';
-import {FieldErrorBorder} from '../../../../directives/field-error-border';
+import { ChangeDetectionStrategy, Component, effect, inject, input, signal } from '@angular/core';
+import { ProductDropdownSelect } from '../../../reusable/product-dropdown-select/product-dropdown-select';
+import { ProductService } from '../../../../services/product-service';
+import { SupplierService } from '../../../../services/supplier-service';
+import { Product } from '../../../../interfaces/product';
+import { Supplier } from '../../../../interfaces/supplier/supplier';
+import { SupplierDropdownSelect } from '../../../reusable/supplier-dropdown-select/supplier-dropdown-select';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { CreateProductSupplier } from '../../../../interfaces/product-supplier/create-product-supplier';
+import { ProductSupplierService } from '../../../../services/product-supplier-service';
+import { ResponseProductSupplier } from '../../../../interfaces/product-supplier/response-product-supplier';
+import { UpdateProductSupplier } from '../../../../interfaces/product-supplier/update-product-supplier';
+import { FieldError } from '../../../../directives/field-error';
+import { FieldErrorBorder } from '../../../../directives/field-error-border';
 import { ModalService } from '../../../../services/modal-service';
 import { ModalNotification } from '../../../reusable/modal-notification/modal-notification';
 
 @Component({
   selector: 'app-product-supplier-form-component',
+  standalone: true,
   imports: [
     ProductDropdownSelect,
     SupplierDropdownSelect,
@@ -34,7 +35,7 @@ export class ProductSupplierFormComponent {
   supplierService = inject(SupplierService);
   productSupplierService = inject(ProductSupplierService);
   formBuilder = inject(FormBuilder);
-  modal_service = inject(ModalService)
+  modal_service = inject(ModalService);
 
   supplierList = signal<Supplier[]>([]);
   productsList = signal<Product[]>([]);
@@ -42,130 +43,113 @@ export class ProductSupplierFormComponent {
   productSupplierToModify = input<Partial<ResponseProductSupplier>>();
   isEditing = input.required<boolean>();
 
-
-
+  
   productSupplierForm = this.formBuilder.group({
     product: this.formBuilder.control<number | null>(null),
     supplier: this.formBuilder.control<number | null>(null),
-    cost: this.formBuilder.nonNullable.control<number>(0, [Validators.required, Validators.min(0.1)]),
-    profitMargin: this.formBuilder.nonNullable.control<number>(0, [Validators.required, Validators.min(0.1)]),
-    price: this.formBuilder.control<number>(0)
+    cost: this.formBuilder.nonNullable.control<number>(0, [Validators.required, Validators.min(0.1)])
   });
 
   constructor() {
-
     this.getSuppliers();
     this.getProducts();
 
     effect(() => {
-      if (this.productSupplierToModify()){
-        this.productSupplierForm.get("supplier")?.patchValue(this.productSupplierToModify()?.idSupplier!)
-        this.productSupplierForm.get("product")?.patchValue(this.productSupplierToModify()?.idProduct!)
-        this.productSupplierForm.get("cost")?.patchValue(this.productSupplierToModify()?.cost!)
-        this.productSupplierForm.get("profitMargin")?.patchValue(this.productSupplierToModify()?.profitMargin!)
+      const toModify = this.productSupplierToModify();
+      if (toModify) {
+        this.productSupplierForm.patchValue({
+          supplier: toModify.idSupplier,
+          product: toModify.idProduct,
+          cost: toModify.cost
+        });
       }
     });
   }
 
   getProducts() {
     this.productService.getEnabledProducts().subscribe({
-      next: (products) =>  { this.productsList.set(products) },
+      next: (products) => { this.productsList.set(products) },
       error: (err) => {
         this.productsList.set([]);
-
         throw err;
-
       }
     });
   }
 
   getSuppliers() {
     this.supplierService.getAllSuppliersAsList().subscribe({
-      next: (suppliers) =>  { this.supplierList.set(suppliers) },
+      next: (suppliers) => { this.supplierList.set(suppliers) },
       error: (err) => {
         this.supplierList.set([]);
-        throw err
+        throw err;
       }
     });
   }
 
-  submit(){
-    if(this.productSupplierToModify() === undefined){
+  submit() {
+    if (this.productSupplierToModify() === undefined) {
       this.createProductSupplier();
     } else {
       this.updateProductSupplier();
     }
   }
 
-
   createProductSupplier() {
+    
+    const selectedProductId = this.productSupplierForm.get("product")?.value;
+    const selectedProduct = this.productsList().find(p => p.idProduct === selectedProductId);
 
-    const productSupplierData: CreateProductSupplier  = {
-      idProduct: this.productSupplierForm.get("product")?.value!,
+    const productSupplierData: CreateProductSupplier = {
+      idProduct: selectedProductId!,
       idSupplier: this.productSupplierForm.get('supplier')?.value!,
       cost: this.productSupplierForm.get("cost")?.value!,
-      profitMargin: this.productSupplierForm.get("profitMargin")?.value!,
+     
+      profitMargin: Number(selectedProduct?.profitMargin ?? 0),
     };
 
-    this.productSupplierService.createProductSupplier(productSupplierData).subscribe(
-      {
-        next: () => {
-          this.productSupplierForm.reset();
-
-          this.modal_service.showModal(ModalNotification, {
-            title: "¡Relación cargada exitosamente!"
-          })
-        },
-        error: (e) => {
-
-          this.productSupplierForm.reset();
-          throw e;
-        }
+    this.productSupplierService.createProductSupplier(productSupplierData).subscribe({
+      next: () => {
+        this.productSupplierForm.reset();
+        this.modal_service.showModal(ModalNotification, {
+          title: "¡Relación cargada exitosamente!"
+        });
+      },
+      error: (e) => {
+        throw e;
       }
-    );
-
+    });
   }
 
-  updateProductSupplier(){
-    const productSupplierData: UpdateProductSupplier  = {
-
+  updateProductSupplier() {
+   
+    const productSupplierData: UpdateProductSupplier = {
       cost: this.productSupplierForm.get("cost")?.value!,
-      profitMargin: this.productSupplierForm.get("profitMargin")?.value!,
+      profitMargin: this.productSupplierToModify()?.profitMargin ?? 0
     };
 
-    const idProductSupplier = Number(this.productSupplierToModify()?.idProductSupplier!)
+    const idProductSupplier = Number(this.productSupplierToModify()?.idProductSupplier!);
 
-    this.productSupplierService.updateProductSupplier(idProductSupplier, productSupplierData).subscribe(
-      {
-        next: () => {
-          this.productSupplierForm.reset();
-
-          this.modal_service.showModal(ModalNotification, {
-            title: "¡Relación modificada exitosamente!"
-          })
-
-        },
-        error: (e) => {
-          throw e
-        }
+    this.productSupplierService.updateProductSupplier(idProductSupplier, productSupplierData).subscribe({
+      next: () => {
+        this.productSupplierForm.reset();
+        this.modal_service.showModal(ModalNotification, {
+          title: "¡Relación modificada exitosamente!"
+        });
+      },
+      error: (e) => {
+        throw e;
       }
-
-    );
-
+    });
   }
 
-  isDropDownInvalid():boolean{
-    const product = this.productSupplierForm.get("product")?.value!;
-    const supplier = this.productSupplierForm.get("supplier")?.value!;
+  isDropDownInvalid(): boolean {
+    const product = this.productSupplierForm.get("product")?.value;
+    const supplier = this.productSupplierForm.get("supplier")?.value;
 
-    return product === null || supplier === null || isNaN(product) || isNaN(supplier);
-
+    return product === null || supplier === null || isNaN(Number(product)) || isNaN(Number(supplier));
   }
 
-  isFormInvalid(){
-
+  isFormInvalid() {
     return this.isDropDownInvalid() || this.productSupplierForm.invalid;
-
   }
-
 }
