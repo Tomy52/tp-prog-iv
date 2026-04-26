@@ -20,8 +20,11 @@
       <label for="profit">Margen de ganancia (%)</label>
       <input type="number" name="profit" id="profit" formControlName="profit" min="0">
 
-      <label for="category">Category</label>      
+      <label for="category">Categoria</label>      
       <app-category-dropdown-select [categories]="categories()" formControlName="category" name="category" id="category"/>
+
+      <label for="image">Imagen</label>
+      <input type="file" name="image" id="image" (change)="onFileSelected($event)" accept="image/*">
 
       <button type="submit" [disabled]="!productForm.valid">Cargar</button>
 
