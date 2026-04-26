@@ -1,10 +1,12 @@
-import {ChangeDetectionStrategy, Component, inject, signal} from '@angular/core';
-import {Product} from '../../../interfaces/product';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {ShoppingCartService} from '../../../services/shopping-cart-service';
+import {Tooltip} from '../../../directives/tooltip';
 
 @Component({
   selector: 'app-shopping-cart',
-  imports: [],
+  imports: [
+    Tooltip
+  ],
   templateUrl: './shopping-cart.html',
   styleUrl: './shopping-cart.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
