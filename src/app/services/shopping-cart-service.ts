@@ -56,7 +56,4 @@ export class ShoppingCartService {
     return item ? item.quantity : 0;
   }
 
-  getItems(){
-
-  }
 }
