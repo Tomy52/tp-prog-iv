@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, inject, input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, input, signal} from '@angular/core';
 import { CustomerProductInfo } from '../../../../interfaces/product/customer-product-info';
 import {ShoppingCartService} from '../../../../services/shopping-cart-service';
 
@@ -12,7 +12,9 @@ import {ShoppingCartService} from '../../../../services/shopping-cart-service';
 export class CustomerProductListCard {
   productInfo = input.required<CustomerProductInfo>()
 
-  shoppingCart = inject(ShoppingCartService);
+  isClicked = signal<boolean>(false);
+
+  shoppingCartService = inject(ShoppingCartService);
 
   getImageUrl()
   {
@@ -20,9 +22,14 @@ export class CustomerProductListCard {
   }
 
     selectProduct(productId:number){
-    this.shoppingCart.addToCart(productId);
+    this.shoppingCartService.addToCart(productId);
       this.productInfo().stock -= 1;
+      this.isClicked.set(true);
     }
 
+    unselectProduct(productId:number){
+    this.shoppingCartService.removeFromCart(productId);
+    this.productInfo().stock += 1;
+    }
 
 }

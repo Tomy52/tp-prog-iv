@@ -3,9 +3,9 @@
 <img appTooltip="Ver Carrito" class="cart-icon" src="images/carrito.png" alt="Icono de un carrito de compras">
 
 
-@if (items().length > 0){
+@if (items() > 0){
 
-  <span class="item-counter">{{ items().length }}</span>
+  <span class="item-counter">{{ items() }}</span>
 
 }
 </div>

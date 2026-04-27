@@ -1,6 +1,7 @@
 import {inject, Injectable, signal} from '@angular/core';
 import {Product} from '../interfaces/product';
 import {ProductService} from './product-service';
+import {CartItem} from '../interfaces/cart-item';
 
 @Injectable({
   providedIn: 'root',
@@ -8,54 +9,50 @@ import {ProductService} from './product-service';
 export class ShoppingCartService {
 
   productService = inject(ProductService);
-  cartItems = signal<Product[]>([]);
+  cartItems = signal<CartItem[]>([]);
 
-  constructor() {
-    if (localStorage.getItem('shoppingCart') !== null) {
-      this.getSessionCart();
-    }
-
-
-  }
-
+  constructor() {}
 
   addToCart(productId: number) {
-  console.log(productId);
-
     this.productService.getProductById(productId).subscribe({
-      next: data => {
-        this.cartItems.update( items => [...items, data]);
-      }, error: error => {
-        throw new error(error);
-      }, complete: () => {
-        this.setSessionCart()
+      next: (product) => {
+        this.cartItems.update((items) => {
+          const existingItem = items.find(i => i.product.idProduct === productId);
+
+          if (existingItem) {
+            return items.map(i =>
+              i.product.idProduct === productId
+                ? { ...i, quantity: i.quantity + 1 }
+                : i
+            );
+          }
+          return [...items, { product, quantity: 1 }];
+        });
+      },
+      error: (err) => console.error(err)
+    });
+  }
+
+  removeFromCart(productId: number) {
+    this.cartItems.update((items) => {
+      const existingItem = items.find(i => i.product.idProduct === productId);
+
+      if (!existingItem) return items;
+
+      if (existingItem.quantity > 1) {
+        return items.map(item =>
+          item.product.idProduct === productId
+            ? {...item, quantity: item.quantity - 1}
+            : item
+        );
+      } else {
+        return items.filter(item => item.product.idProduct !== productId);
       }
-    })
-
+    });
   }
 
-  //todo -> todavia estos metodos no estan funcionales 100 por ciento.
-  setSessionCart() {
-    const productsIds: number[] = [];
-
-    for (const item of this.cartItems()) {
-      productsIds.push(item.idProduct);
-    }
-
-    localStorage.setItem('shoppingCart', JSON.stringify(productsIds!));
-
+  getQuantity(productId: number):number {
+    const item = this.cartItems().find(i => i.product.idProduct === productId);
+    return item ? item.quantity : 0;
   }
-
-  getSessionCart() {
-    const storedIds = localStorage.getItem('shoppingCart');
-
-    if (storedIds !== null) {
-
-      this.cartItems.update(data => [...data, JSON.parse(storedIds!)]);
-
-    }
-
-  }
-
-
 }
