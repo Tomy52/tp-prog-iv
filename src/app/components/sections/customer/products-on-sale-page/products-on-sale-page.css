@@ -7,9 +7,7 @@ h1,h2 {
 section {
   margin: 10px;
   padding: 10px;
-
   border-radius: 10px;
-
   background-color: var(--main-color);
 }
 
@@ -18,7 +16,6 @@ section {
   flex-direction: row;
   justify-content: center;
   margin-bottom: 10px;
-
 }
 
 .toggle-area label {

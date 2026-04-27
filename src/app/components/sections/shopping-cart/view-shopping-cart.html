@@ -1,0 +1,14 @@
+<section>
+  <h2>Carrito</h2>
+  <div class="items-container">
+
+    @for (item of cartItems(); track $index) {
+      <p>{{item.product.name}} - <small> {{item.quantity}} </small></p>
+    }
+
+  </div>
+<div class="buttons-container">
+  <button>Confirmar Pedido</button>
+  <button><a routerLink="/on-sale">Volver</a></button>
+</div>
+</section>
