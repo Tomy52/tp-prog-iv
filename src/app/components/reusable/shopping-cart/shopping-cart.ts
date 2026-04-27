@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, computed, inject} from '@angular/core';
 import {ShoppingCartService} from '../../../services/shopping-cart-service';
 import {Tooltip} from '../../../directives/tooltip';
 
@@ -15,7 +15,9 @@ export class ShoppingCart {
 
   shoppingCartService = inject(ShoppingCartService);
 
-  items =  this.shoppingCartService.cartItems;
+  items =  computed(
+    () => this.shoppingCartService.cartItems().reduce(
+      (acc, item) => acc + item.quantity, 0));
 
 
 
