@@ -55,4 +55,8 @@ export class ShoppingCartService {
     const item = this.cartItems().find(i => i.product.idProduct === productId);
     return item ? item.quantity : 0;
   }
+
+  getItems(){
+
+  }
 }
