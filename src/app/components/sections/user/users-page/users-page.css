@@ -1,5 +1,5 @@
 section {
-  background-color: var(--main-color);
+  background: linear-gradient(135deg, rgba(45, 90, 76, 0.05) 0%, rgba(255, 255, 255, 0.8) 100%) !important;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -11,8 +11,23 @@ section {
   border-radius: 10px;
   padding: 10px;
   margin-inline: auto;
+  backdrop-filter: blur(15px);
 }
 
-h1 {
-  color: var(--text-color)
+#users-page-header,
+#users-page-subtitle {
+  color: var(--secondary-text-color);
+  font-family: "Cinzel", serif;
+}
+
+#users-page-header {
+  font-size: 2.5rem;
+  letter-spacing: 0.3rem;
+  font-weight: bold;
+}
+
+#users-page-subtitle {
+  letter-spacing:0.2rem ;
+  margin-bottom: 10px;
+  font-weight: 500;
 }

@@ -7,19 +7,17 @@
   --main-color: #2d5a4c;
   --secondary-color: #2c6e5a;
   --tertiary-color: #4c9682;
-
-
-  --bg-color: #f5f1e4;
+  --bg-color: rgb(253 255 234 / 0.78);
 
   --text-color: #ffffff;
   --secondary-text-color: #333333;
   --unfocused-text-color: #d2d2d2;
-  --bg-color: rgba(234, 245, 255, 0.78);
-  --th-bg-color: #c6dbe5;
+  --table-bg-color: #c3c1bb;
+  --th-bg-color: #e5d7c6;
 
-  --active-bg-color: #e9ffcf;
+  --active-bg-color: #b4e1bc;
   --active-text-color: #166534;
-  --inactive-bg-color: #ffcdd5;
+  --inactive-bg-color: #e1b7bc;
   --inactive-text-color: #991b1b;
 
   --disabled-button-color: #9baebb;

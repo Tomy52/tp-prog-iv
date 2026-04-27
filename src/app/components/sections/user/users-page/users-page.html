@@ -1,5 +1,6 @@
 <section>
-  <h1>Usuarios</h1>
+  <span id="users-page-header">Usuarios</span>
+  <span id="users-page-subtitle">Gestión y visualización</span>
   @if(users().length > 0){
     <app-users-table [users]="users()"></app-users-table>
   } @else {

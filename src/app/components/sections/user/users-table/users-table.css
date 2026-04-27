@@ -4,16 +4,22 @@ section {
   align-items: center;
   justify-content: center;
   width: fit-content;
-  background-color: var(--bg-color);
+  background-color: var(--table-bg-color);
   padding: 10px;
   border-radius: 5px;
-  border: 1px black solid;
+  border: 1px #d3d3d3 solid;
 }
 
 .users-table {
   background-color: var(--bg-color);
   padding: 5px;
   border-radius: 5px;
+  box-shadow: 1px 1px 1px 1px rgb(0 0 0 / 0.13);
+  border-collapse: collapse;
+}
+
+thead{
+  border-bottom: 1px solid #ba9c84;
 }
 
 th, td {
@@ -32,6 +38,8 @@ th, td {
 }
 
 tr {
+  font-family: "Gideon Roman",serif;
+  font-weight: bold;
   border-bottom: 1px solid var(--tertiary-color);
 }
 
@@ -45,18 +53,20 @@ th {
 }
 
 button{
-  background-color: var(--secondary-color);
+  font-family: "Cinzel", serif;
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)),
+  url('/images/header3.png') center/cover no-repeat;
+  color: #fcfcf9;
   border-radius: 10px;
   border-color: var(--text-color);
   border-width: 2px;
-  color: var(--text-color);
-
   width: 80px;
   font-size: medium;
-  font-family: "BreeSerif-regular", serif;
 }
 
 
 button:hover{
   background-color: var(--tertiary-color);
+  transform: scale(103%);
+  filter: brightness(125%);
 }
