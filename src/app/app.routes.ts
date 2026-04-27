@@ -29,6 +29,8 @@ import {UsersPage} from './components/sections/user/users-page/users-page';
 import {UsersDetail} from './components/sections/user/users-detail/users-detail';
 import { CategoryFormSection } from './components/sections/categories/category-form-section/category-form-section';
 import { DeleteCategory } from './components/sections/categories/delete-category/delete-category';
+import {UsersPage} from './components/sections/user/users-page/users-page';
+import {UsersDetail} from './components/sections/user/users-detail/users-detail';
 
 
 export const routes: Routes = [
