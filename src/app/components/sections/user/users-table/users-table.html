@@ -12,12 +12,18 @@
     </thead>
     <tbody>
       @for(user of users(); track user.idUser) {
-        <tr [class.row-active]="user.status === 'ENABLED'" [class.row-inactive]="user.status === 'DISABLED'">
+        <tr>
           <td>#{{user.idUser}}</td>
           <td>{{user.dni}}</td>
           <td>{{user.credential.username}}</td>
           <td>{{user.credential.role}}</td>
-          <td>{{ user.status === 'ENABLED' ? 'Activo' : 'Inactivo' }}</td>
+          <td>
+            <span class="badge"
+                  [class.badge-active]="user.status === 'ENABLED'"
+                  [class.badge-inactive]="user.status === 'DISABLED'">
+            {{ user.status === 'ENABLED' ? 'Activo' : 'Inactivo' }}
+            </span>
+          </td>
           <td><button [routerLink]="['/users', user.idUser]">Ver</button></td>
         </tr>
       }

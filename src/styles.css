@@ -13,7 +13,9 @@
   --secondary-text-color: #333333;
   --unfocused-text-color: #d2d2d2;
   --table-bg-color: #c3c1bb;
-  --th-bg-color: #e5d7c6;
+  --tr-bg-color: ghostwhite;
+  --tr-bg-color-even: whitesmoke;
+  --th-bg-color: lightgray;
 
   --active-bg-color: #b4e1bc;
   --active-text-color: #166534;

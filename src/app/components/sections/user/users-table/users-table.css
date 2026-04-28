@@ -5,7 +5,6 @@ section {
   justify-content: center;
   width: fit-content;
   background-color: var(--table-bg-color);
-  padding: 10px;
   border-radius: 5px;
   border: 1px #d3d3d3 solid;
 }
@@ -14,12 +13,12 @@ section {
   background-color: var(--bg-color);
   padding: 5px;
   border-radius: 5px;
-  box-shadow: 1px 1px 1px 1px rgb(0 0 0 / 0.13);
   border-collapse: collapse;
 }
 
-thead{
-  border-bottom: 1px solid #ba9c84;
+thead {
+  border-bottom: 1px solid gainsboro;
+  text-transform: uppercase;
 }
 
 th, td {
@@ -27,20 +26,19 @@ th, td {
   text-align: center;
 }
 
-.row-active {
-  background-color: var(--active-bg-color);
-  color: var(--active-text-color);
-}
-
-.row-inactive {
-  background-color: var(--inactive-bg-color);
-  color: var(--inactive-text-color);
+thead tr {
+  font-family: Cinzel, serif;
 }
 
 tr {
-  font-family: "Gideon Roman",serif;
-  font-weight: bold;
-  border-bottom: 1px solid var(--tertiary-color);
+  font-family: "Merriweather",serif;
+  font-weight: 300;
+  border-bottom: 1px solid gainsboro;
+  background-color: var(--tr-bg-color);
+}
+
+tr:nth-child(even) {
+  background-color: var(--tr-bg-color-even);
 }
 
 tr:last-child {
@@ -52,21 +50,39 @@ th {
   font-weight: bold;
 }
 
+.badge {
+  padding: 6px;
+  border: #ffffff 2px solid;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.badge-active {
+  background: linear-gradient(rgb(23 156 33 / 0.66), rgb(22 39 27 / 0.79)),
+  url('/images/marmolblanco.png') center/cover no-repeat;
+  color: var(--text-color);
+}
+
+.badge-inactive {
+  background: linear-gradient(rgb(239 65 65 / 0.66), rgb(115 34 34 / 0.79)),
+  url('/images/marmolblanco.png') center/cover no-repeat;
+  color: var(--text-color);
+}
+
 button{
   font-family: "Cinzel", serif;
-  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)),
-  url('/images/header3.png') center/cover no-repeat;
-  color: #fcfcf9;
+  background: linear-gradient(rgb(255 255 255 / 0.2), rgb(92 92 92 / 0.4)),
+  url('/images/marmol_botones.png') center/cover no-repeat;
+  color: var(--secondary-text-color);
   border-radius: 10px;
   border-color: var(--text-color);
   border-width: 2px;
   width: 80px;
   font-size: medium;
+  font-weight: 600;
 }
 
-
 button:hover{
-  background-color: var(--tertiary-color);
-  transform: scale(103%);
-  filter: brightness(125%);
+  filter: brightness(105%);
 }
