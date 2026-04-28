@@ -11,7 +11,9 @@ export class ShoppingCartService {
   productService = inject(ProductService);
   cartItems = signal<CartItem[]>([]);
 
-  constructor() {}
+  constructor() {
+    this.loadCartState()
+  }
 
   addToCart(productId: number) {
     this.productService.getProductByIdCustomer(productId).subscribe({
@@ -54,6 +56,17 @@ export class ShoppingCartService {
   getQuantity(productId: number):number {
     const item = this.cartItems().find(i => i.product.idProduct === productId);
     return item ? item.quantity : 0;
+  }
+
+  saveCartState()
+  {
+    localStorage.setItem("cart",JSON.stringify(this.cartItems()))
+  }
+
+  loadCartState()
+  {
+    const cart_string = localStorage.getItem("cart")
+    console.log(cart_string)
   }
 
 }
