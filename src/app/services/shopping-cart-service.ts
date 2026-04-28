@@ -2,6 +2,7 @@ import {inject, Injectable, signal} from '@angular/core';
 import {Product} from '../interfaces/product';
 import {ProductService} from './product-service';
 import {CartItem} from '../interfaces/cart-item';
+import { EncryptionService } from './encryption-service';
 
 @Injectable({
   providedIn: 'root',
@@ -9,6 +10,7 @@ import {CartItem} from '../interfaces/cart-item';
 export class ShoppingCartService {
 
   productService = inject(ProductService);
+  encryption_service = inject(EncryptionService);
   cartItems = signal<CartItem[]>([]);
 
   constructor() {
@@ -30,6 +32,8 @@ export class ShoppingCartService {
           }
           return [...items, { product, quantity: 1 }];
         });
+
+        this.saveCartState()
       },
       error: (err) => console.error(err)
     });
@@ -51,6 +55,7 @@ export class ShoppingCartService {
         return items.filter(item => item.product.idProduct !== productId);
       }
     });
+    this.saveCartState()
   }
 
   getQuantity(productId: number):number {
@@ -60,13 +65,16 @@ export class ShoppingCartService {
 
   saveCartState()
   {
-    localStorage.setItem("cart",JSON.stringify(this.cartItems()))
+    this.encryption_service.setItem("cart",JSON.stringify(this.cartItems()))
   }
 
   loadCartState()
   {
-    const cart_string = localStorage.getItem("cart")
-    console.log(cart_string)
+    const cart_string = this.encryption_service.getItem("cart");
+
+    if(!cart_string) return
+    
+    this.cartItems.set(JSON.parse(cart_string));
   }
 
 }
