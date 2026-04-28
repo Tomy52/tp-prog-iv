@@ -2,6 +2,7 @@
   <span id="users-page-header">Usuarios</span>
   <span id="users-page-subtitle">Gestión y visualización</span>
   @if(users().length > 0){
+    <app-user-search-bar></app-user-search-bar>
     <app-users-table [users]="users()"></app-users-table>
   } @else {
     <h1>Cargando...</h1>
