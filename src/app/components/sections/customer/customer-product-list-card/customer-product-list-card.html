@@ -11,12 +11,9 @@
         <h2>Unidades restantes: {{productInfo().stock}}</h2>
       @if(!this.isClicked()){
         <button (click)="selectProduct(productInfo().idProduct)"> Agregar al carrito</button>
-
       } @else {
-
-        <button class="quantityControl" (click)="selectProduct(productInfo().idProduct)" [disabled]="productInfo().stock <= 0" >+</button>
+        <button class="quantityControl" (click)="selectProduct(productInfo().idProduct)" [disabled]="productInfo().stock <= 0">+</button>
         <button class="quantityControl" (click)="unselectProduct(productInfo().idProduct)" [disabled]="this.shoppingCartService.getQuantity(productInfo().idProduct) <= 0 ">-</button>
-
       }
 
 

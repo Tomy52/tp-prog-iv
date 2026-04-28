@@ -14,7 +14,7 @@ export class ShoppingCartService {
   constructor() {}
 
   addToCart(productId: number) {
-    this.productService.getProductById(productId).subscribe({
+    this.productService.getProductByIdCustomer(productId).subscribe({
       next: (product) => {
         this.cartItems.update((items) => {
           const existingItem = items.find(i => i.product.idProduct === productId);

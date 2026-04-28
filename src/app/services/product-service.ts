@@ -104,7 +104,7 @@ export class ProductService {
       query_string += `&include_oos${query?.include_oos}`
     }
 
-    return this.http.get<PageResponse<CustomerProductInfo>>(`${this.baseUrl}/on-sale${query_string}`)
+    return this.http.get<PageResponse<CustomerProductInfo>>(`api/sales/on-sale${query_string}`)
   }
 
 
@@ -118,5 +118,11 @@ export class ProductService {
 
   deleteProduct(idProduct: number): Observable<Object> {
     return this.http.delete(`${this.baseUrl}/${idProduct}`);
+  }
+
+
+  getProductByIdCustomer(id:number)
+  {
+    return this.http.get<CustomerProductInfo>(`api/sales/product/${id}`);
   }
 }
