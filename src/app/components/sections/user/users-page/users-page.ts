@@ -44,7 +44,7 @@ export class UsersPage {
   getUsers(query:UserSearchBarData)
   {
     this.searching = true;
-    this.userService.getUsers(query).subscribe(
+    this.userService.getUsers(query,this.page(),this.page_size).subscribe(
       {
         next: (response) => {
           this.page_data.set(response)

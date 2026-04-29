@@ -2,7 +2,7 @@
   <span id="users-page-header">Usuarios</span>
   <span id="users-page-subtitle">Gestión y visualización</span>
   @if (page_data() != null) {
-    <app-user-search-bar></app-user-search-bar>
+    <app-user-search-bar [disabled]="searching" (form_sig)="searchByTerms($event)"></app-user-search-bar>
     @if(page_data()!.content.length === 0) {
       <h1>No se encontraron resultados</h1>
     } @else {
