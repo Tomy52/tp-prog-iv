@@ -27,6 +27,7 @@ export class UserSearchBar {
   submit()
   {
     const form_values = this.form.value;
+
   
     const values:UserSearchBarData = {
       dni: form_values.dni!,
@@ -34,7 +35,9 @@ export class UserSearchBar {
       role: form_values.role!
     }
 
+    console.log(values)
     this.form_sig.emit(values)
+    this.form.reset()
   }
 
   ngOnChanges(): void {
