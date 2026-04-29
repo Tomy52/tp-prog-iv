@@ -2,6 +2,8 @@ import {inject, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {UserInfo} from '../interfaces/user/user-info';
+import { UserSearchBarData } from '../interfaces/component-logic/user-search-bar-data';
+import { PageResponse } from '../interfaces/other/page-response';
 
 @Injectable({
   providedIn: 'root',
@@ -10,8 +12,11 @@ export class UserService {
   http = inject(HttpClient);
   base_url = "api/users";
 
-  public getUsers(): Observable<UserInfo[]> {
-    return this.http.get<UserInfo[]>(`${this.base_url}/list`);
+  public getUsers(query:UserSearchBarData): Observable<PageResponse<UserInfo>> {
+
+    var query_string = "?"
+
+    return this.http.get<PageResponse<UserInfo>>(`${this.base_url}/page${query_string}`);
   }
 
   public getUserById(id: string): Observable<UserInfo> {

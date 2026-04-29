@@ -1,10 +1,56 @@
 <section>
   <span id="users-page-header">Usuarios</span>
   <span id="users-page-subtitle">Gestión y visualización</span>
-  @if(users().length > 0){
+  @if (page_data() != null) {
     <app-user-search-bar></app-user-search-bar>
-    <app-users-table [users]="users()"></app-users-table>
-  } @else {
-    <h1>Cargando...</h1>
+    @if(page_data()!.content.length === 0) {
+      <h1>No se encontraron resultados</h1>
+    } @else {
+      <app-users-table [users]="page_data()!.content"></app-users-table>
+      <app-page-buttons
+      (back_signal)="goBack()",
+      (next_signal)="goForward()",
+      [back_active]="page_data()!.first || searching",
+      [forward_active]="page_data()!.last || searching",
+      [max_page]="page_data()!.totalPages"
+      [current_page]="page()"
+
+      (size_changed)="changePageSize($event)"
+      [page_size_ops]="page_size_ops"
+      >
+
+        
+      </app-page-buttons>
+    }  
   }
 </section>
+
+
+<!--
+<section>
+  <h1>Lista de productos</h1>
+  @if (pageData() != null && !errMsg) {
+
+    <app-product-search-bar (query_sig)="searchByTerms($event)"/>
+
+    @if(pageData()!.content.length === 0) {
+      <h1>No se encontraron resultados</h1>
+    } @else {
+      <app-product-list [products]="pageData()!.content"/>
+      <app-page-buttons (back_signal)="goBack()"
+                        (next_signal)="goForward()"
+                        [back_active]="pageData()!.first || searching"
+                        [forward_active]="pageData()!.last || searching"
+                        [current_page]="pageData()!.number"
+                        [max_page]="pageData()!.totalPages"
+
+                        (size_changed)="changePageSize($event)"
+                        [page_size_ops]="pageSizeOptions">
+      </app-page-buttons>
+    }
+  } @else {
+    <h1> {{ errMsg }}</h1>
+  }
+</section>
+
+-->

@@ -2,9 +2,30 @@
   <form (ngSubmit)="submit()">
     <section>
       <div>
-        <label for="placeholder">Criterio</label>
+        <label for="placeholder">DNI</label>
         <input type="text" name="name" id="placeholder" placeholder="Término de busqueda...">
       </div>
+
+      <div>
+        <label for="status">Estado</label>
+        <select name="status" id="status">
+          <option [value]="null">Todos</option>
+          <option value="ENABLED">Activo</option>
+          <option value="DISABLED">Desactivado</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="role">Ról</label>
+        <select name="role" id="role">
+          <option [value]="null" selected>Todos</option>
+          <option value="ADMIN">Admin</option>
+          <option value="MANAGER">Manager</option>
+          <option value="EMPLOYEE">Empleado</option>
+          <option value="CUSTOMER">Cliente</option>
+        </select>
+      </div>
+
       <div>
         <button type="submit">Buscar</button>
       </div>
