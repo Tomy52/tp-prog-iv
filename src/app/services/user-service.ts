@@ -47,4 +47,15 @@ export class UserService {
   public getUserById(id: string): Observable<UserInfo> {
     return this.http.get<UserInfo>(`${this.base_url}/${id}`);
   }
+
+
+  public modifyUser(user:Partial<UserInfo>)
+  {
+    return this.http.put<UserInfo>(`${this.base_url}/${user.idUser}`,user);
+  }
+
+  public deleteUser(id:string)
+  {
+    return this.http.delete(`${this.base_url}/${id}?deletionType=hard`)
+  }
 }
