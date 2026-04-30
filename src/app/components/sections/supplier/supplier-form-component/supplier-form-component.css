@@ -120,40 +120,38 @@ input[type="submit"]:disabled {
         width: 92%; 
         padding: 30px 15px; 
         margin: 20px auto;
-        /* Evitamos que cualquier contenido desborde el cristal */
+   
         overflow: hidden; 
     }
 
     form {
-        /* 🟢 CAMBIO CLAVE: Una sola columna para que bajen uno debajo del otro */
         grid-template-columns: 1fr; 
         gap: 20px; 
     }
 
     form > div {
-        /* Aseguramos que los divs internos no intenten ser más anchos que el article */
+    
         width: 100%;
         box-sizing: border-box;
     }
 
     input[type="text"],
     input[type="email"] {
-        /* Ajustamos el padding para que no se vea tan gigante en pantallas chicas */
+
         padding: 12px;
         font-size: 0.9rem;
         width: 100%;
     }
 
     input[type="submit"] {
-        /* 🟢 CAMBIO CLAVE: Ocupa todo el ancho disponible en la columna única */
         grid-column: 1; 
         width: 100%; 
-        max-width: 250px; /* Para que no sea un botón gigante de lado a lado */
+        max-width: 250px; 
         min-width: 0; 
         padding: 14px 20px;
         font-size: 1rem;
         letter-spacing: 3px;
-        margin: 20px auto 0 auto; /* Centrado */
+        margin: 20px auto 0 auto; 
     }
 
     label {
