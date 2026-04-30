@@ -125,4 +125,9 @@ export class ProductService {
   {
     return this.http.get<CustomerProductInfo>(`api/sales/product/${id}`);
   }
+
+  checkItemsInCart(ids:number[])
+  {
+    return this.http.get<CustomerProductInfo[]>(`api/sales/products/${ids}`)
+  }
 }

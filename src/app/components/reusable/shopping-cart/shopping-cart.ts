@@ -17,7 +17,7 @@ export class ShoppingCart {
 
   shoppingCartService = inject(ShoppingCartService);
 
-  items =  computed(
+  items = computed(
     () => this.shoppingCartService.cartItems().reduce(
       (acc, item) => acc + item.quantity, 0));
 

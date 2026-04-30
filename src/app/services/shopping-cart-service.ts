@@ -3,6 +3,7 @@ import {Product} from '../interfaces/product';
 import {ProductService} from './product-service';
 import {CartItem} from '../interfaces/cart-item';
 import { EncryptionService } from './encryption-service';
+import { CustomerProductInfo } from '../interfaces/product/customer-product-info';
 
 @Injectable({
   providedIn: 'root',
@@ -65,16 +66,90 @@ export class ShoppingCartService {
 
   saveCartState()
   {
-    this.encryption_service.setItem("cart",JSON.stringify(this.cartItems()))
+    localStorage.setItem("cart", JSON.stringify(this.cartItems())) // delete when it works
+    // this.encryption_service.setItem("cart",JSON.stringify(this.cartItems())) uncomment when it works
   }
 
   loadCartState()
   {
-    const cart_string = this.encryption_service.getItem("cart");
+    // const cart_string = this.encryption_service.getItem("cart"); uncomment when it works
+    const cart_string = localStorage.getItem("cart"); // delete when it works
 
     if(!cart_string) return
     
     this.cartItems.set(JSON.parse(cart_string));
+    this.checkCartValidity()
+  }
+
+
+  checkCartValidity()
+  {
+    const id_list = this.cartItems().map((x) => x.product.idProduct);
+    console.log(this.cartItems())
+
+     this.productService.checkItemsInCart(id_list).subscribe({
+      next: (items) => {
+        const new_cart: CartItem[] = this.cartItems()
+        const response_array: CustomerProductInfo[] = items
+        const deleted_products: CartItem[] = [];
+        const non_ok_stock: CartItem[] = [];
+        const modifiedProducts: CartItem[] = [];
+
+
+        for(let i = this.cartItems().length - 1; i >= 0; i--)
+        {
+          const cart_item = this.cartItems()[i]
+          const response_item = response_array.find((item) => item.idProduct === cart_item.product.idProduct);
+
+          console.log(response_item)
+          if(!response_item)
+          {
+            this.cartItems().splice(i,1);
+            deleted_products.push(cart_item);
+            continue
+          }
+
+          const is_stock_not_ok = this.checkStockAvailability(response_item, cart_item)
+          const is_price_lower = this.checkIfPriceShouldBeLower(response_item, cart_item)
+
+          if(is_stock_not_ok)
+          {
+            cart_item.quantity = cart_item.quantity - Math.abs(response_item.stock - cart_item.quantity)
+            console.log(cart_item.quantity) 
+            non_ok_stock.push(cart_item);
+          }
+
+          if(is_price_lower)
+          {
+            cart_item.product.price = response_item.price
+            modifiedProducts.push(cart_item)
+          }
+
+          new_cart.push(cart_item);
+        }
+        
+
+        console.log({
+          current_cart: this.cartItems(),
+          non_ok_stock: non_ok_stock,
+          modifiedProducts: modifiedProducts
+        })
+
+        this.cartItems.set(new_cart)
+      }
+    })
+
+  }
+
+
+  private checkStockAvailability(response_product:CustomerProductInfo, cart_item:CartItem)
+  {
+    return (response_product.stock < cart_item.quantity)
+  }
+
+  private checkIfPriceShouldBeLower(response_product:CustomerProductInfo, cart_item:CartItem)
+  {
+    return (response_product.price < cart_item.product.price)
   }
 
 }
