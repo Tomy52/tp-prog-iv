@@ -29,6 +29,7 @@ import {UsersPage} from './components/sections/user/users-page/users-page';
 import {UsersDetail} from './components/sections/user/users-detail/users-detail';
 import { CategoryFormSection } from './components/sections/categories/category-form-section/category-form-section';
 import { DeleteCategory } from './components/sections/categories/delete-category/delete-category';
+import { UserFormComponent } from './components/sections/user/user-form-component/user-form-component';
 
 
 export const routes: Routes = [
@@ -115,6 +116,16 @@ export const routes: Routes = [
   {
     path:"users/:id",
     component: UsersDetail,
+    canActivate: [AuthGuard, privilegedUserGuard]
+  },
+  {
+    path:"users-add",
+    component: UserFormComponent,
+    canActivate: [AuthGuard, privilegedUserGuard]
+  },
+  {
+    path:"users-add/:id",
+    component: UserFormComponent,
     canActivate: [AuthGuard, privilegedUserGuard]
   },
   {

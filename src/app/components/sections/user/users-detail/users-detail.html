@@ -25,7 +25,9 @@
     </div>
 
     <div class="profile-controls">
-      <button>Editar</button>
+      @if (u.credential?.role != "CUSTOMER") {
+        <button (click)="redirectToEdit()">Editar</button>
+      }
       <button class="ch-status-button" (click)="changeUserState(getCurrentOpositeState())">{{ u.status === 'DISABLED' ? 'Activar' : 'Desactivar' }}</button>
       <button class="delete-button" (click)="deleteUser()">Eliminar</button>
     </div>

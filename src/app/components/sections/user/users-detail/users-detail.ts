@@ -38,8 +38,9 @@ export class UsersDetail {
   {
     const user_data = JSON.parse(JSON.stringify(this.user()))
 
+    // copy so its not by reference
     user_data.status = state;
-    this.userService.modifyUser(user_data).subscribe({
+    this.userService.modifyUser(user_data, user_data.id).subscribe({
       next: (new_info) => {
         this.user.set(new_info)
       }, error: (err) => {
@@ -62,7 +63,7 @@ export class UsersDetail {
       next: (result) => {
         if(result == ok_value)
         {
-          this.userService.deleteUser(this.id()).subscribe({
+          this.userService.deleteUser(this.id(), "hard").subscribe({
             next: () => {
               this.router.navigate(["/users"])
             }, error: (err) => {
@@ -72,6 +73,11 @@ export class UsersDetail {
         }
       }
     })
+  }
+
+  redirectToEdit()
+  {
+    this.router.navigate([`users-add/${this.id()}`])
   }
 
 }

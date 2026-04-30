@@ -49,13 +49,18 @@ export class UserService {
   }
 
 
-  public modifyUser(user:Partial<UserInfo>)
+  public modifyUser(user:Partial<UserInfo>, id:number)
   {
-    return this.http.put<UserInfo>(`${this.base_url}/${user.idUser}`,user);
+    return this.http.put<UserInfo>(`${this.base_url}/${id}`,user);
   }
 
-  public deleteUser(id:string)
+  public deleteUser(id:string, mode:string)
   {
-    return this.http.delete(`${this.base_url}/${id}?deletionType=hard`)
+    return this.http.delete(`${this.base_url}/${id}?deletionType=${mode}`)
+  }
+
+  public uploadUser(user:Partial<UserInfo>)
+  {
+    return this.http.post<UserInfo>(`${this.base_url}`,user)
   }
 }
