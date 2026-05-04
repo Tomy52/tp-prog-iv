@@ -1,0 +1,47 @@
+<article>
+    <h1>{{notification_data()?.title}}</h1>
+    <h2>{{notification_data()?.description}}</h2>
+
+    <div class="scrollable">
+        @if (data()?.removed_products?.length != 0) {
+            <div>
+                <h3>Estos productos no existen, y fueron removidos del carrito</h3>
+                <ul>
+                    @for (item of data()?.removed_products; track $index) {
+                        <li>{{item.product.name}}</li>
+                    }
+                </ul>
+            </div>
+        }
+        
+        @if (data()?.modified_product?.length != 0) {
+            <div>
+                <h3>Estos productos tienen el precio modificado</h3>
+                <ul>
+                    @for (item of data()?.modified_product; track $index) {
+                        <li>{{item.product.name}} - ${{item.product.price}}</li>
+                    }
+                </ul>
+        </div>
+    }
+    
+    @if (data()?.bad_stock?.length != 0) {
+        <div>
+            <h3>El stock pedido de estos productos es menor al disponible</h3>
+            <ul>
+                @for (item of data()?.bad_stock; track $index) {
+                    <li>{{item.product.name}} - {{item.quantity}} unidade(s) disponibles</li>
+                }
+            </ul>
+        </div>
+    }
+    </div>
+    
+    
+    <div class="buttons">
+        @for (item of notification_data()?.options; track $index) {
+            <button (click)="closeModal(item)" [value]="item">{{item}}</button>
+        }
+    </div>
+    
+</article>

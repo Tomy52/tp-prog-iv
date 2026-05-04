@@ -1,9 +1,11 @@
 import {inject, Injectable, signal} from '@angular/core';
-import {Product} from '../interfaces/product';
 import {ProductService} from './product-service';
 import {CartItem} from '../interfaces/cart-item';
 import { EncryptionService } from './encryption-service';
 import { CustomerProductInfo } from '../interfaces/product/customer-product-info';
+import { ShoppingCartFailResults } from '../interfaces/component-logic/shopping-cart-fail-results';
+import { ModalService } from './modal-service';
+import { FailedCartResults } from '../components/reusable/failed-cart-results/failed-cart-results';
 
 @Injectable({
   providedIn: 'root',
@@ -12,6 +14,7 @@ export class ShoppingCartService {
 
   productService = inject(ProductService);
   encryption_service = inject(EncryptionService);
+  modal_service = inject(ModalService)
   cartItems = signal<CartItem[]>([]);
 
   constructor() {
@@ -89,8 +92,6 @@ export class ShoppingCartService {
   checkCartValidity()
   {
     const id_list = this.cartItems().map((x) => x.product.idProduct);
-    console.log(this.cartItems())
-
 
      this.productService.checkItemsInCart(id_list).subscribe({
       next: (items) => {
@@ -106,7 +107,6 @@ export class ShoppingCartService {
           const cart_item = this.cartItems()[i]
           const response_item = response_array.find((item) => item.idProduct === cart_item.product.idProduct);
 
-          console.log(response_item)
           if(!response_item)
           {
             this.cartItems().splice(i,1);
@@ -120,8 +120,8 @@ export class ShoppingCartService {
           if(is_stock_not_ok)
           {
             cart_item.quantity = cart_item.quantity - Math.abs(response_item.stock - cart_item.quantity)
-            console.log(cart_item.quantity) 
             non_ok_stock.push(cart_item);
+            console.log("test")
           }
 
           if(is_price_lower)
@@ -132,15 +132,15 @@ export class ShoppingCartService {
 
           new_cart.push(cart_item);
         }
-        
-
-        console.log({
-          current_cart: this.cartItems(),
-          non_ok_stock: non_ok_stock,
-          modifiedProducts: modifiedProducts
-        })
-
         this.cartItems.set(new_cart)
+
+        const new_notification: ShoppingCartFailResults = {
+          removed_products: deleted_products,
+          bad_stock: non_ok_stock,
+          modified_product: modifiedProducts
+        }
+
+        this.handleShowingNotification(new_notification)
       }
     })
 
@@ -149,12 +149,25 @@ export class ShoppingCartService {
 
   private checkStockAvailability(response_product:CustomerProductInfo, cart_item:CartItem)
   {
+    console.log(response_product.stock,cart_item.quantity)
     return (response_product.stock < cart_item.quantity)
   }
 
   private checkIfPriceShouldBeLower(response_product:CustomerProductInfo, cart_item:CartItem)
   {
     return (response_product.price < cart_item.product.price)
+  }
+
+  private handleShowingNotification(data:ShoppingCartFailResults)
+  {
+    console.log(data)
+    if(data.bad_stock?.length || data.modified_product?.length || data.removed_products?.length)
+    {
+      this.modal_service.showCartErrorModal(FailedCartResults,{
+        title: "Aviso!",
+        description: "Las siguientes cosas sucedieron:"
+      },data,false)
+    }
   }
 
 }
