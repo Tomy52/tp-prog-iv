@@ -149,7 +149,6 @@ export class ShoppingCartService {
 
   private checkStockAvailability(response_product:CustomerProductInfo, cart_item:CartItem)
   {
-    console.log(response_product.stock,cart_item.quantity)
     return (response_product.stock < cart_item.quantity)
   }
 
@@ -163,10 +162,20 @@ export class ShoppingCartService {
     console.log(data)
     if(data.bad_stock?.length || data.modified_product?.length || data.removed_products?.length)
     {
-      this.modal_service.showCartErrorModal(FailedCartResults,{
+      const label = this.modal_service.showCartErrorModal(FailedCartResults,{
         title: "Aviso!",
         description: "Las siguientes cosas sucedieron:"
       },data,false)
+
+      label.subscribe((result) => {
+        if(result == "Remover")
+        {
+          const remove_ids = data.bad_stock?.map((cart_item) => cart_item.product.idProduct)
+
+          this.cartItems.set(this.cartItems().filter((cart_item) => !remove_ids?.includes(cart_item.product.idProduct)))
+          this.saveCartState()
+        }
+      })
     }
   }
 

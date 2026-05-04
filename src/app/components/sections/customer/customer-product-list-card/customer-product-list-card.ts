@@ -15,7 +15,7 @@ export class CustomerProductListCard implements OnInit {
   isClicked = signal<boolean>(false);
   shoppingCartService = inject(ShoppingCartService);
 
-  ngOnInit(): void {
+  ngOnInit(): void { // this makes a race condition
     this.updateCardsStockByCart()
   }
 

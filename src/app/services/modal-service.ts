@@ -30,11 +30,16 @@ export class ModalService {
   {
     if(data.options == undefined) data.options = ["Ok"]
 
+    if(shopping_cart_fail.bad_stock?.length)
+    {
+      data.options = ["Remover", "Dejar"]
+    }
+
     return this.dialog.open(comp, {
       data: {data: shopping_cart_fail,
         notification_data: data
       },
       disableClose: disable_close
-    })
+    }).closed
   }
 }
