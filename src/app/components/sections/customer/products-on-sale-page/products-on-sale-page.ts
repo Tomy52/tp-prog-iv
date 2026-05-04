@@ -1,5 +1,4 @@
 import { Component, ChangeDetectionStrategy, inject, signal, WritableSignal } from "@angular/core";
-import { ProductSearchBarData } from "../../../../interfaces/component-logic/product-search-bar-data";
 import { PageResponse } from "../../../../interfaces/other/page-response";
 import { CustomerProductInfo } from "../../../../interfaces/product/customer-product-info";
 import { ProductService } from "../../../../services/product-service";
@@ -35,7 +34,7 @@ export class ProductsOnSalePage {
 
   };
   searching:boolean = false;
-  
+
 
   constructor() {
     this.pageSize = Number(localStorage.getItem('pageSize')) || this.pageSizeOptions[0];
@@ -45,7 +44,7 @@ export class ProductsOnSalePage {
 
   getProducts(query:ClientProductSearchBarData) {
     this.searching = true;
-    
+
     this.productService.getProductsOnSale(this.page(),this.pageSize,query).subscribe({
       next: (x) => {
         this.pageData.set(x)

@@ -123,3 +123,20 @@ span.tool-tip p.tool-tip-text {
   color: whitesmoke;
   margin: 0;
 }
+
+@media only screen and (max-width: 480px){
+
+  span.tool-tip {
+    top: 45px;
+    right: 10px;
+
+  }
+}
+
+@media screen and (min-width: 480px) and (max-width: 1024px) {
+  span.tool-tip {
+    top: 50px;
+    right: 10px;
+
+  }
+}
