@@ -24,6 +24,7 @@ export class ShoppingCartService {
         this.cartItems.update((items) => {
           const existingItem = items.find(i => i.product.idProduct === productId);
 
+
           if (existingItem) {
             return items.map(i =>
               i.product.idProduct === productId
@@ -74,10 +75,13 @@ export class ShoppingCartService {
   {
     // const cart_string = this.encryption_service.getItem("cart"); uncomment when it works
     const cart_string = localStorage.getItem("cart"); // delete when it works
-
     if(!cart_string) return
+
+    const json = JSON.parse(cart_string)
+
+    if(json.length == 0) return
     
-    this.cartItems.set(JSON.parse(cart_string));
+    this.cartItems.set(json);
     this.checkCartValidity()
   }
 
@@ -87,9 +91,10 @@ export class ShoppingCartService {
     const id_list = this.cartItems().map((x) => x.product.idProduct);
     console.log(this.cartItems())
 
+
      this.productService.checkItemsInCart(id_list).subscribe({
       next: (items) => {
-        const new_cart: CartItem[] = this.cartItems()
+        const new_cart: CartItem[] = []
         const response_array: CustomerProductInfo[] = items
         const deleted_products: CartItem[] = [];
         const non_ok_stock: CartItem[] = [];
