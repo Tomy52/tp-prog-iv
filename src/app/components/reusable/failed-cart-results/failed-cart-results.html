@@ -13,7 +13,7 @@
                 </ul>
             </div>
         }
-        
+
         @if (data()?.modified_product?.length != 0) {
             <div>
                 <h3>Estos productos tienen el precio modificado</h3>
@@ -24,7 +24,7 @@
                 </ul>
         </div>
     }
-    
+
     @if (data()?.bad_stock?.length != 0) {
         <div>
             <h3>El stock pedido de estos productos es menor al disponible</h3>
@@ -36,12 +36,12 @@
         </div>
     }
     </div>
-    
-    
+
+
     <div class="buttons">
         @for (item of notification_data()?.options; track $index) {
             <button (click)="closeModal(item)" [value]="item">{{item}}</button>
         }
     </div>
-    
+
 </article>

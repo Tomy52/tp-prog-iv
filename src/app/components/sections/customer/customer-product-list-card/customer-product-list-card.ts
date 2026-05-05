@@ -37,13 +37,16 @@ export class CustomerProductListCard implements OnInit {
 
   updateCardsStockByCart()
   {
-    const current_stock = this.shoppingCartService.getQuantity(this.productInfo().idProduct);
+    const cart_stock = this.shoppingCartService.getQuantity(this.productInfo().idProduct);
 
-    if(current_stock >= 1) this.isClicked.set(true)
-      
-    this.productInfo().stock -= current_stock;
+    if(cart_stock >= 1) this.isClicked.set(true)
+
+    if (this.productInfo().stock - cart_stock < 0){
+      this.productInfo().stock = 0;
+    } else {
+      this.productInfo().stock = this.productInfo().stock - cart_stock;
+    }
+
   }
-
-  
 
 }

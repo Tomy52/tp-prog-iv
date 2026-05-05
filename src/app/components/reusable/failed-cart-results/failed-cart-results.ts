@@ -14,7 +14,7 @@ export class FailedCartResults {
   data = signal<ShoppingCartFailResults|undefined>(undefined);
   notification_data = signal<NotificationData|undefined>(undefined);
   dialog_data = inject(DIALOG_DATA)
-  
+
   constructor()
   {
     this.data.set(this.dialog_data.data)

@@ -9,15 +9,15 @@ import { ShoppingCartFailResults } from '../interfaces/component-logic/shopping-
 export class ModalService {
   dialog = inject(Dialog);
   showing = signal<boolean>(false)
-  
+
 
   // Esto es Any asi puede tomar cualquier componente
   showModal(comp: any, data: NotificationData, disable_close: boolean = true)
   {
     if(this.showing()) return
-   
+
     if(data.options == undefined) data.options = ["Ok"]
-    
+
 
     return this.dialog.open(comp, {
       data: {data: data},

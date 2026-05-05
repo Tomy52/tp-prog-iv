@@ -16,6 +16,8 @@ export class ShoppingCartService {
   encryption_service = inject(EncryptionService);
   modal_service = inject(ModalService)
   cartItems = signal<CartItem[]>([]);
+  returnedStock = signal<CustomerProductInfo[]>([]);
+
 
   constructor() {
     this.loadCartState()
@@ -83,7 +85,7 @@ export class ShoppingCartService {
     const json = JSON.parse(cart_string)
 
     if(json.length == 0) return
-    
+
     this.cartItems.set(json);
     this.checkCartValidity()
   }
@@ -159,7 +161,6 @@ export class ShoppingCartService {
 
   private handleShowingNotification(data:ShoppingCartFailResults)
   {
-    console.log(data)
     if(data.bad_stock?.length || data.modified_product?.length || data.removed_products?.length)
     {
       const label = this.modal_service.showCartErrorModal(FailedCartResults,{
@@ -172,7 +173,12 @@ export class ShoppingCartService {
         {
           const remove_ids = data.bad_stock?.map((cart_item) => cart_item.product.idProduct)
 
+          this.returnedStock.set( this.cartItems().filter((cartItem) =>  remove_ids?.includes(cartItem.product.idProduct)).map(
+            cartItem => cartItem.product
+          ) );
+
           this.cartItems.set(this.cartItems().filter((cart_item) => !remove_ids?.includes(cart_item.product.idProduct)))
+
           this.saveCartState()
         }
       })
