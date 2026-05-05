@@ -182,4 +182,10 @@ export class ShoppingCartService {
     }
   }
 
+
+  calculateTotalPrice()
+  {
+    return this.cartItems().reduce((acc, item) => acc + (item.product.price * item.quantity), 0);
+  }
+
 }

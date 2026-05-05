@@ -15,6 +15,7 @@ export class ViewShoppingCart {
 
   shoppingCartService = inject(ShoppingCartService);
   cartItems = computed(()=> this.shoppingCartService.cartItems());
+  finalPrice = computed(()=> this.shoppingCartService.calculateTotalPrice())
 
   constructor() {
     console.log(this.cartItems())
