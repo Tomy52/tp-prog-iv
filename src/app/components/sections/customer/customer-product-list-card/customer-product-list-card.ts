@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, inject, input, OnInit, signal} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, input, OnInit, output, signal} from '@angular/core';
 import { CustomerProductInfo } from '../../../../interfaces/product/customer-product-info';
 import {ShoppingCartService} from '../../../../services/shopping-cart-service';
 
@@ -15,8 +15,12 @@ export class CustomerProductListCard implements OnInit {
   isClicked = signal<boolean>(false);
   shoppingCartService = inject(ShoppingCartService);
 
+  returnedStock = output<CustomerProductInfo[]>()
+
+
   ngOnInit(): void { // this makes a race condition
     this.updateCardsStockByCart()
+    this.reloadStock()
   }
 
   getImageUrl()
@@ -48,5 +52,22 @@ export class CustomerProductListCard implements OnInit {
     }
 
   }
+
+  // este metodo deberia agregar las unidades en sus respectivos productos...
+  reloadStock(){
+
+    const items = this.shoppingCartService.returnedStock();
+
+    console.log(items);
+
+    if (items.length !== 0) {
+
+      this.returnedStock.emit(items);
+
+    }
+
+
+  }
+
 
 }

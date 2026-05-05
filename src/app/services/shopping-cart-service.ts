@@ -173,6 +173,7 @@ export class ShoppingCartService {
         {
           const remove_ids = data.bad_stock?.map((cart_item) => cart_item.product.idProduct)
 
+          //aca tenemos la lista de items que fueron devueltos
           this.returnedStock.set( this.cartItems().filter((cartItem) =>  remove_ids?.includes(cartItem.product.idProduct)).map(
             cartItem => cartItem.product
           ) );
