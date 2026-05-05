@@ -32,6 +32,10 @@ export class ShoppingCartService {
         this.cartItems.update((items) => {
           const existingItem = items.find(i => i.product.idProduct === productId);
 
+          if(!this.checkIfRequestedProductStockIsOK(this.getQuantity(productId) + 1,product.stock))
+          {
+            console.log("this is very wrong")
+          }
 
           if (existingItem) {
             return items.map(i =>
@@ -188,4 +192,8 @@ export class ShoppingCartService {
     return this.cartItems().reduce((acc, item) => acc + (item.product.price * item.quantity), 0);
   }
 
+  checkIfRequestedProductStockIsOK(request:number, recieved:number)
+  {
+    return recieved >= request
+  }
 }

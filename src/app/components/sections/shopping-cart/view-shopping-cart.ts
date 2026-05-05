@@ -18,7 +18,7 @@ export class ViewShoppingCart {
   finalPrice = computed(()=> this.shoppingCartService.calculateTotalPrice())
 
   constructor() {
-    console.log(this.cartItems())
+    this.shoppingCartService.checkCartValidity()
   }
 
 }
