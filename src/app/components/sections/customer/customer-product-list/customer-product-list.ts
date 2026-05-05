@@ -11,12 +11,4 @@ import { CustomerProductListCard } from "../customer-product-list-card/customer-
 })
 export class CustomerProductList {
   products = input.required<CustomerProductInfo[]>();
-
-
-  handleReturnedStock(event:CustomerProductInfo[]){
-
-    console.log('handleReturnedStock' + event);
-
-  }
-
 }

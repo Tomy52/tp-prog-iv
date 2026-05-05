@@ -6,6 +6,7 @@ import { CustomerProductInfo } from '../interfaces/product/customer-product-info
 import { ShoppingCartFailResults } from '../interfaces/component-logic/shopping-cart-fail-results';
 import { ModalService } from './modal-service';
 import { FailedCartResults } from '../components/reusable/failed-cart-results/failed-cart-results';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -16,8 +17,10 @@ export class ShoppingCartService {
   encryption_service = inject(EncryptionService);
   modal_service = inject(ModalService)
   cartItems = signal<CartItem[]>([]);
-  returnedStock = signal<CustomerProductInfo[]>([]);
 
+  // product changed (this sucks, this would send 2n updates to cards just to check make a search to an array into the service)
+  // however this is much better in terms of tidiness
+  checkIfIChanged = new Subject<any>();
 
   constructor() {
     this.loadCartState()
@@ -72,14 +75,13 @@ export class ShoppingCartService {
 
   saveCartState()
   {
-    localStorage.setItem("cart", JSON.stringify(this.cartItems())) // delete when it works
-    // this.encryption_service.setItem("cart",JSON.stringify(this.cartItems())) uncomment when it works
+    this.encryption_service.setItem("cart",JSON.stringify(this.cartItems()))
   }
 
   loadCartState()
   {
-    // const cart_string = this.encryption_service.getItem("cart"); uncomment when it works
-    const cart_string = localStorage.getItem("cart"); // delete when it works
+    const cart_string = this.encryption_service.getItem("cart");
+    
     if(!cart_string) return
 
     const json = JSON.parse(cart_string)
@@ -123,7 +125,6 @@ export class ShoppingCartService {
           {
             cart_item.quantity = cart_item.quantity - Math.abs(response_item.stock - cart_item.quantity)
             non_ok_stock.push(cart_item);
-            console.log("test")
           }
 
           if(is_price_lower)
@@ -141,7 +142,7 @@ export class ShoppingCartService {
           bad_stock: non_ok_stock,
           modified_product: modifiedProducts
         }
-
+        this.checkIfIChanged.next(undefined)
         this.handleShowingNotification(new_notification)
       }
     })
@@ -173,13 +174,8 @@ export class ShoppingCartService {
         {
           const remove_ids = data.bad_stock?.map((cart_item) => cart_item.product.idProduct)
 
-          //aca tenemos la lista de items que fueron devueltos
-          this.returnedStock.set( this.cartItems().filter((cartItem) =>  remove_ids?.includes(cartItem.product.idProduct)).map(
-            cartItem => cartItem.product
-          ) );
-
           this.cartItems.set(this.cartItems().filter((cart_item) => !remove_ids?.includes(cart_item.product.idProduct)))
-
+          this.checkIfIChanged.next(undefined)
           this.saveCartState()
         }
       })

@@ -1,5 +1,5 @@
 <section>
   @for (p of products(); track p.idProduct) {
-    <app-customer-product-list-card (returnedStock)="handleReturnedStock($event)" [productInfo]="p"></app-customer-product-list-card>
+    <app-customer-product-list-card [productInfo]="p"></app-customer-product-list-card>
   }
 </section>
