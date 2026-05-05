@@ -57,7 +57,7 @@ export class CsvFormUpdate {
 
   onFileSelected(event:any) {
     this.selectedFile = <File>event.target.files[0] 
-  } 
+  }
 
   completeForm()
   {
@@ -73,6 +73,7 @@ export class CsvFormUpdate {
     this.csv_service.changeProductsUsingCsv(values).subscribe(
       {
         next: (resp) => {
+          this.cleanUp()
           const dialog_ref = this.dialog.open(FailedProductsComponent, {
             data: {resp: resp},
             disableClose: true
@@ -83,6 +84,13 @@ export class CsvFormUpdate {
         }
       }
     )
+  }
+
+  cleanUp()
+  {
+    this.form.reset()
+    this.form.markAsPristine()
+    this.selectedFile = null
   }
 
   

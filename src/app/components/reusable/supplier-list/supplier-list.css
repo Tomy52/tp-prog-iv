@@ -1,5 +1,11 @@
 section {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(300px, 1fr));
-  gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 40px 20px;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    box-sizing: border-box;
 }

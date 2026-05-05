@@ -32,7 +32,8 @@ export class SuppliersPage {
   query:SupplierSearchData = {
 
   }
-  searching:boolean = false;
+  
+  searching: WritableSignal<boolean> = signal<boolean>(false)
 
   constructor() {
     this.page_size = Number(localStorage.getItem('pageSize')) || this.page_size_ops[0];
@@ -42,14 +43,14 @@ export class SuppliersPage {
 
   getSuppliers(query:SupplierSearchData)
   {
-    this.searching = true; // lock up the buttons so the user doesn't click twice
+    this.searching.set(true); // lock up the buttons so the user doesn't click twice
 
     this.supplier_service.getSuppliersPage(this.page(),this.page_size,query).subscribe({
       next: (response) => {
         this.page_data.set(response);
       },
 
-      complete: () => this.searching = false
+      complete: () => this.searching.set(false)
     })
   }
 

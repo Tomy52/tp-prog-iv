@@ -69,6 +69,13 @@ export class ProductFormComponent {
     })
   }
 
+  selectedFile: File | undefined = undefined;
+
+  onFileSelected(event:any) {
+    this.selectedFile = <File>event.target.files[0]
+  }
+
+
   submit() {
     let ok_option = 'Si'
     const modal_promise = this.modal_service.showModal(ModalNotification,{
@@ -101,16 +108,13 @@ export class ProductFormComponent {
       idCategory: formInfo.category
     };
 
-    this.productService.addProduct(product).subscribe(
+    this.productService.addProduct(product, this.selectedFile).subscribe(
       {
         next: () => {
-
+          this.cleanUp()
           this.modal_service.showModal(ModalNotification, {
             title: "¡Carga exitosa!"
           }, false)
-
-          this.productForm.markAsPristine();
-          this.productForm.reset();
         },
         error: (err) => {
           throw err
@@ -135,7 +139,7 @@ export class ProductFormComponent {
 
     this.productService.modifyProduct(updatedProduct).subscribe({
       next: () => {
-          
+        this.cleanUp()
         this.modal_service.showModal(ModalNotification, {
           title: "¡Modificación exitosa!"
         }, false)
@@ -145,6 +149,14 @@ export class ProductFormComponent {
         throw err
       }
     });
+  }
+
+
+  cleanUp()
+  {
+    this.productForm.markAsPristine();
+    this.productForm.reset();
+    this.selectedFile = undefined;
   }
 
 
