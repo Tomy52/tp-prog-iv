@@ -161,7 +161,7 @@ export class ShoppingCartService {
 
   private checkIfPriceShouldBeLower(response_product:CustomerProductInfo, cart_item:CartItem)
   {
-    return (response_product.price < cart_item.product.price)
+    return (response_product.price != cart_item.product.price)
   }
 
   private handleShowingNotification(data:ShoppingCartFailResults)
