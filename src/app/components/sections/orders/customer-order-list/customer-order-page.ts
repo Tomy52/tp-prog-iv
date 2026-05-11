@@ -5,10 +5,11 @@ import { OrderData } from '../../../../interfaces/orders/order-data';
 import { OrderService } from '../../../../services/order-service';
 import { PageButtons } from "../../../reusable/page-buttons/page-buttons";
 import { OrderList } from "../../../reusable/order-list/order-list";
+import { CustomerOrderSearchBar } from "../../../reusable/customer-order-search-bar/customer-order-search-bar";
 
 @Component({
   selector: 'app-customer-list',
-  imports: [PageButtons, OrderList],
+  imports: [PageButtons, OrderList, CustomerOrderSearchBar],
   templateUrl: './customer-order-page.html',
   styleUrl: './customer-order-page.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

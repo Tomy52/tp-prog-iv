@@ -1,0 +1,15 @@
+<article>
+    <form action="">
+        <section>
+            <div>
+                <label for="Status">Estado de pedido</label>
+                <select name="" id="">
+                    @for(keypar of getAllOptions(); track $index)
+                    {
+                        <option [value]="keypar.key">{{keypar.value}}</option>
+                    }
+                </select>
+            </div>
+        </section>
+    </form>
+</article>
