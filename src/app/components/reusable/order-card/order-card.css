@@ -1,0 +1,11 @@
+article {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px;
+}
+
+div {
+    padding: 5px 10px;
+}

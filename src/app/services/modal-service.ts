@@ -2,6 +2,7 @@ import { Dialog } from '@angular/cdk/dialog';
 import { inject, Injectable, signal } from '@angular/core';
 import { NotificationData } from '../interfaces/other/notification-data';
 import { ShoppingCartFailResults } from '../interfaces/component-logic/shopping-cart-fail-results';
+import { OrderData } from '../interfaces/orders/order-data';
 
 @Injectable({
   providedIn: 'root',
@@ -41,5 +42,14 @@ export class ModalService {
       },
       disableClose: disable_close
     }).closed
+  }
+
+  showOrderDataModal(comp:any, data:OrderData, disable_close:boolean = true)
+  {
+
+    this.dialog.open(comp, {
+      data: {data: data},
+      disableClose: disable_close
+    })
   }
 }

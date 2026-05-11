@@ -29,9 +29,13 @@ import {UsersPage} from './components/sections/user/users-page/users-page';
 import {UsersDetail} from './components/sections/user/users-detail/users-detail';
 import { CategoryFormSection } from './components/sections/categories/category-form-section/category-form-section';
 import { DeleteCategory } from './components/sections/categories/delete-category/delete-category';
+<<<<<<< HEAD
 import { ProductsOnSalePage } from './components/sections/customer/products-on-sale-page/products-on-sale-page';
 import {ViewShoppingCart} from './components/sections/shopping-cart/view-shopping-cart';
 import { UserFormComponent } from './components/sections/user/user-form-component/user-form-component';
+=======
+import { CustomerOrderList } from './components/sections/orders/customer-order-list/customer-order-page';
+>>>>>>> f52c51c ((add, wip) listing orders basic info)
 
 
 export const routes: Routes = [
@@ -151,6 +155,7 @@ export const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+<<<<<<< HEAD
     path:"on-sale",
     component:ProductsOnSalePage,
     canActivate: [AuthGuard]
@@ -158,6 +163,10 @@ export const routes: Routes = [
   {
     path:"shoppingCart",
     component:ViewShoppingCart,
+=======
+    path:"my-orders",
+    component:CustomerOrderList,
+>>>>>>> f52c51c ((add, wip) listing orders basic info)
     canActivate: [AuthGuard]
   },
   {
