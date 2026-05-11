@@ -1,0 +1,19 @@
+<article>
+    <h1>ID orden: {{data()?.orderId}}</h1>
+
+    <div class="items">
+        <h2>Items</h2>
+
+        @for (item of data()?.orderItems; track $index) {
+            <ul>
+                <li> {{item.quantity}} {{item.productInfo.name}} - ${{item.priceAtOrder}} = ${{item.priceAtOrder * item.quantity}} </li>
+            </ul>
+        }
+    </div>
+
+    <div class="prices">
+        <p>Total: ${{data()?.total}}</p>
+        <p>Total final: ${{data()?.finalTotal}}</p>
+    </div>
+
+</article>
