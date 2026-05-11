@@ -6,6 +6,7 @@ import { OrderService } from '../../../../services/order-service';
 import { PageButtons } from "../../../reusable/page-buttons/page-buttons";
 import { OrderList } from "../../../reusable/order-list/order-list";
 import { CustomerOrderSearchBar } from "../../../reusable/customer-order-search-bar/customer-order-search-bar";
+import { CustomerOrderSearchData } from '../../../../interfaces/component-logic/customer-order-search-data';
 
 @Component({
   selector: 'app-customer-list',
@@ -25,7 +26,7 @@ export class CustomerOrderList {
   pageData: WritableSignal<PageResponse<OrderData> | null >;
   errMsg:string = '';
 
-  searchTerm:ProductSearchBarData = {
+  searchTerm:CustomerOrderSearchData = {
 
   };
   searching:boolean = false;
@@ -37,10 +38,10 @@ export class CustomerOrderList {
     this.getOrders(this.searchTerm);
   }
 
-  getOrders(terms:ProductSearchBarData) {
+  getOrders(terms:CustomerOrderSearchData) {
     this.searching = true;
     
-    this.orderService.getAllCustomerOrders(this.page(),this.pageSize).subscribe({
+    this.orderService.getAllCustomerOrders(this.page(),this.pageSize, terms).subscribe({
       next: (x) => {
         this.pageData.set(x)
         console.log(x)
@@ -74,7 +75,7 @@ export class CustomerOrderList {
     this.getOrders(this.searchTerm);
   }
 
-  searchByTerms(terms:ProductSearchBarData)
+  searchByTerms(terms:CustomerOrderSearchData)
   {
     this.searchTerm = terms
     this.resetPageCount();

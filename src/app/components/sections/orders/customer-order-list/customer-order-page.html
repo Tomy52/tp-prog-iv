@@ -3,7 +3,7 @@
   @if (pageData() != null && !errMsg) {
 
     <!-- <app-product-search-bar (query_sig)="searchByTerms($event)"/> -->
-     <app-customer-order-search-bar/>
+     <app-customer-order-search-bar [disabled]="searching" (query_sig)="searchByTerms($event)" />
 
     @if(pageData()!.content.length === 0) {
       <h1>No tenés pedidos!</h1>

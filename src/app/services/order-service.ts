@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { OrderData } from '../interfaces/orders/order-data';
 import { HttpClient } from '@angular/common/http';
 import { PageResponse } from '../interfaces/other/page-response';
+import { CustomerOrderSearchData } from '../interfaces/component-logic/customer-order-search-data';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +14,7 @@ export class OrderService {
 
   http: HttpClient = inject(HttpClient);
 
-  getAllCustomerOrders(page:number, size:number, status?:string) : Observable<PageResponse<OrderData>>
+  getAllCustomerOrders(page:number, size:number, terms:CustomerOrderSearchData) : Observable<PageResponse<OrderData>>
   {
     let query_string = '?'
 
@@ -27,12 +28,11 @@ export class OrderService {
       query_string += `&size=${size}`
     }
 
-    if(status)
+    if(terms.status)
     {
-      query_string += `&status=${status}`
+      query_string += `&status=${terms.status}`
     }
 
-    console.log(query_string)
     return this.http.get<PageResponse<OrderData>>(`${this.orderUrl}/my-orders${query_string}`);
   }
 }

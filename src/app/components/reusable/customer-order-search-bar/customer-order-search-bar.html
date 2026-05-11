@@ -1,14 +1,19 @@
 <article>
-    <form action="">
+    <form action="" (ngSubmit)="submit()" [formGroup]="form">
         <section>
             <div>
-                <label for="Status">Estado de pedido</label>
-                <select name="" id="">
+                <label for="status">Estado de pedido</label>
+                <select name="status" id="status" formControlName="status">
+                    <option value="">Todos</option>
                     @for(keypar of getAllOptions(); track $index)
                     {
                         <option [value]="keypar.key">{{keypar.value}}</option>
                     }
                 </select>
+            </div>
+
+            <div>
+                <button type="submit">Buscar</button>
             </div>
         </section>
     </form>
