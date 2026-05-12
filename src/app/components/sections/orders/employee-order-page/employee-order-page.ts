@@ -8,10 +8,11 @@ import { OrderData } from '../../../../interfaces/orders/order-data';
 import { PageResponse } from '../../../../interfaces/other/page-response';
 import { OrderService } from '../../../../services/order-service';
 import { EmployeeOrderSearchData } from '../../../../interfaces/component-logic/employee-order-search-data';
+import { EmployeeOrderSearchBar } from "../../../reusable/employee-order-search-bar/employee-order-search-bar";
 
 @Component({
   selector: 'app-employee-order-page',
-  imports: [CustomerOrderSearchBar, OrderList, PageButtons],
+  imports: [OrderList, PageButtons, EmployeeOrderSearchBar],
   templateUrl: './employee-order-page.html',
   styleUrl: './employee-order-page.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

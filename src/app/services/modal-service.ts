@@ -56,10 +56,6 @@ export class ModalService {
       
     }
 
-    console.log(comp_type)
-
-    console.log(OrderPopupType.CUSTOMER == comp_type)
-
     if(OrderPopupType.CUSTOMER == comp_type)
     {
       component_type = OrderDataPopupCustomer

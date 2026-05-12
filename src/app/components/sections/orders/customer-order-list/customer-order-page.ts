@@ -1,18 +1,17 @@
 import { ChangeDetectionStrategy, Component, inject, signal, WritableSignal } from '@angular/core';
-import { ProductSearchBarData } from '../../../../interfaces/component-logic/product-search-bar-data';
 import { PageResponse } from '../../../../interfaces/other/page-response';
 import { OrderData } from '../../../../interfaces/orders/order-data';
 import { OrderService } from '../../../../services/order-service';
 import { PageButtons } from "../../../reusable/page-buttons/page-buttons";
 import { OrderList } from "../../../reusable/order-list/order-list";
-import { CustomerOrderSearchBar } from "../../../reusable/customer-order-search-bar/customer-order-search-bar";
 import { CustomerOrderSearchData } from '../../../../interfaces/component-logic/customer-order-search-data';
-import { OrderDataPopupCustomer } from '../../../reusable/order-data-popup-customer/order-data-popup-customer';
 import { OrderPopupType } from '../../../../interfaces/component-logic/order-popup-type';
+import { EmployeeOrderSearchBar } from "../../../reusable/employee-order-search-bar/employee-order-search-bar";
+import { EmployeeOrderSearchData } from '../../../../interfaces/component-logic/employee-order-search-data';
 
 @Component({
   selector: 'app-customer-list',
-  imports: [PageButtons, OrderList, CustomerOrderSearchBar],
+  imports: [PageButtons, OrderList, EmployeeOrderSearchBar],
   templateUrl: './customer-order-page.html',
   styleUrl: './customer-order-page.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -77,7 +76,7 @@ export class CustomerOrderList {
     this.getOrders(this.searchTerm);
   }
 
-  searchByTerms(terms:CustomerOrderSearchData)
+  searchByTerms(terms:EmployeeOrderSearchData)
   {
     this.searchTerm = terms
     this.resetPageCount();
