@@ -1,24 +1,23 @@
 import { ChangeDetectionStrategy, Component, inject, signal, WritableSignal } from '@angular/core';
-import { ProductSearchBarData } from '../../../../interfaces/component-logic/product-search-bar-data';
-import { PageResponse } from '../../../../interfaces/other/page-response';
-import { OrderData } from '../../../../interfaces/orders/order-data';
-import { OrderService } from '../../../../services/order-service';
-import { PageButtons } from "../../../reusable/page-buttons/page-buttons";
-import { OrderList } from "../../../reusable/order-list/order-list";
 import { CustomerOrderSearchBar } from "../../../reusable/customer-order-search-bar/customer-order-search-bar";
+import { OrderList } from "../../../reusable/order-list/order-list";
+import { PageButtons } from "../../../reusable/page-buttons/page-buttons";
 import { CustomerOrderSearchData } from '../../../../interfaces/component-logic/customer-order-search-data';
-import { OrderDataPopupCustomer } from '../../../reusable/order-data-popup-customer/order-data-popup-customer';
 import { OrderPopupType } from '../../../../interfaces/component-logic/order-popup-type';
+import { OrderData } from '../../../../interfaces/orders/order-data';
+import { PageResponse } from '../../../../interfaces/other/page-response';
+import { OrderService } from '../../../../services/order-service';
+import { EmployeeOrderSearchData } from '../../../../interfaces/component-logic/employee-order-search-data';
 
 @Component({
-  selector: 'app-customer-list',
-  imports: [PageButtons, OrderList, CustomerOrderSearchBar],
-  templateUrl: './customer-order-page.html',
-  styleUrl: './customer-order-page.css',
+  selector: 'app-employee-order-page',
+  imports: [CustomerOrderSearchBar, OrderList, PageButtons],
+  templateUrl: './employee-order-page.html',
+  styleUrl: './employee-order-page.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CustomerOrderList {
-  orderService = inject(OrderService);
+export class EmployeeOrderPage {
+    orderService = inject(OrderService);
 
   page = signal<number>(0);
 
@@ -28,7 +27,7 @@ export class CustomerOrderList {
   pageData: WritableSignal<PageResponse<OrderData> | null >;
   errMsg:string = '';
 
-  searchTerm:CustomerOrderSearchData = {
+  searchTerm:EmployeeOrderSearchData = {
 
   };
   searching:boolean = false;
@@ -40,10 +39,10 @@ export class CustomerOrderList {
     this.getOrders(this.searchTerm);
   }
 
-  getOrders(terms:CustomerOrderSearchData) {
+  getOrders(terms:EmployeeOrderSearchData) {
     this.searching = true;
     
-    this.orderService.getAllCustomerOrders(this.page(),this.pageSize, terms).subscribe({
+    this.orderService.getAllOrders(this.page(),this.pageSize, terms).subscribe({
       next: (x) => {
         this.pageData.set(x)
         console.log(x)
@@ -86,6 +85,6 @@ export class CustomerOrderList {
 
   getComponentType()
   {
-    return OrderPopupType.CUSTOMER
+    return OrderPopupType.EMPLOYEE
   }
 }

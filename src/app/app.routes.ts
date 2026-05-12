@@ -35,7 +35,11 @@ import {ViewShoppingCart} from './components/sections/shopping-cart/view-shoppin
 import { UserFormComponent } from './components/sections/user/user-form-component/user-form-component';
 =======
 import { CustomerOrderList } from './components/sections/orders/customer-order-list/customer-order-page';
+<<<<<<< HEAD
 >>>>>>> f52c51c ((add, wip) listing orders basic info)
+=======
+import { EmployeeOrderPage } from './components/sections/orders/employee-order-page/employee-order-page';
+>>>>>>> a601d1a ((add) show different popups according to endpoint)
 
 
 export const routes: Routes = [
@@ -167,6 +171,11 @@ export const routes: Routes = [
     path:"my-orders",
     component:CustomerOrderList,
 >>>>>>> f52c51c ((add, wip) listing orders basic info)
+    canActivate: [AuthGuard]
+  },
+  {
+    path:"all-orders",
+    component:EmployeeOrderPage,
     canActivate: [AuthGuard]
   },
   {

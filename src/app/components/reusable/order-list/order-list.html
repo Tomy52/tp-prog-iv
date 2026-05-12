@@ -1,5 +1,5 @@
 <section>
   @for (order of orderData(); track order.orderId) {
-    <app-order-card [orderData]="order"></app-order-card>
+    <app-order-card [popup_component]="componentType()" [orderData]="order"></app-order-card>
   }
 </section>
