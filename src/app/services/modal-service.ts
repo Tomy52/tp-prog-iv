@@ -4,7 +4,8 @@ import { NotificationData } from '../interfaces/other/notification-data';
 import { ShoppingCartFailResults } from '../interfaces/component-logic/shopping-cart-fail-results';
 import { OrderData } from '../interfaces/orders/order-data';
 import { OrderPopupType } from '../interfaces/component-logic/order-popup-type';
-import { OrderDataPopupCustomer } from '../components/reusable/order-data-popup-customer/order-data-popup-customer';
+import { OrderDataPopupCustomer } from '../components/reusable/order-pop-up/order-data-popup-customer/order-data-popup-customer';
+import { OrderDataPopupEmployee } from '../components/reusable/order-pop-up/order-data-popup-employee/order-data-popup-employee';
 
 @Injectable({
   providedIn: 'root',
@@ -53,7 +54,7 @@ export class ModalService {
 
     if(OrderPopupType.EMPLOYEE == comp_type)
     {
-      
+      component_type = OrderDataPopupEmployee
     }
 
     if(OrderPopupType.CUSTOMER == comp_type)
@@ -63,9 +64,9 @@ export class ModalService {
 
     if(!component_type) return
 
-    this.dialog.open(component_type, {
+    return this.dialog.open<any>(component_type, {
       data: {data: data},
       disableClose: disable_close
-    })
+    }).closed
   }
 }

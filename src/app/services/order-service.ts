@@ -63,4 +63,9 @@ export class OrderService {
 
     return this.http.get<PageResponse<OrderData>>(`${this.orderUrl}${query_string}`)
   }
+
+  changeStatus(id:number, statusChanged:object)
+  {
+    return this.http.patch(`${this.orderUrl}/${id}`,statusChanged)
+  }
 }

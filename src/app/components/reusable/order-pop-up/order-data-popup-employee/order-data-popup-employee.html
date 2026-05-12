@@ -1,0 +1,44 @@
+<article>
+    <h1>ID orden: {{data()?.orderId}}</h1>
+
+    <div>
+        <h2>Datos del usuario</h2>
+        <ul>
+            <li>{{data()?.userInfo?.firstName + " " + data()?.userInfo?.lastName}}</li>
+            <li>{{data()?.userInfo?.dni}}</li>
+        </ul>
+
+    </div>
+
+    
+    <div class="items">
+        <h2>Items</h2>
+
+        @for (item of data()?.orderItems; track $index) {
+            <ul>
+                <li> {{item.quantity}} {{item.productInfo.name}} - ${{item.priceAtOrder}} = ${{item.priceAtOrder * item.quantity}} </li>
+            </ul>
+        }
+    </div>
+
+    <div class="prices">
+        <p>Total: ${{data()?.total}}</p>
+        <p>Total final: ${{data()?.finalTotal}}</p>
+    </div>
+
+    @if (checkIfControlsShouldBeEnabled()) {
+        <div class="controls">
+            <h2>Estado</h2>
+            <form action="" (submit)="updateStatus()" [formGroup]="form">
+                <select name="state" id="state" formControlName="status">
+                    @for (item of enum_list(); track $index) {
+                        <option [value]="item.key">{{item.value}}</option>    
+                    }
+                </select>
+                
+                <button type="submit">Cambiar</button>
+            </form>
+        </div>
+    }
+        
+</article>

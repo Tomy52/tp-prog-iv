@@ -1,12 +1,12 @@
 <article>
     <div>
-        <h2>ID orden: {{orderData().orderId}}</h2>
-        <h4>Creacion: {{orderData().createdAt}}</h4>
-        <h4>Estado: {{orderData().status}}</h4>
+        <h2>ID orden: {{orderData()!.orderId}}</h2>
+        <h4>Creación: {{orderData()!.createdAt}}</h4>
+        <h4>Estado: {{orderData()!.status}}</h4>
     </div>
 
     <div>
-        <p>Total: ${{orderData().total}}</p>
+        <p>Total: ${{orderData()!.total}}</p>
         <button (click)="showOrderDataPopUp()">Ver datos</button>
     </div>
 </article>
