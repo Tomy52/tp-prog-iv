@@ -31,8 +31,6 @@ export class ProductService {
 
   getProductsPage(page?:number, size?:number, query?:ProductSearchBarData): Observable<PageResponse<Product>>
   {
-    // var status = showAll ? undefined : ProductStatus.Enabled
-
     console.log(query)
     var query_string = '?'
 

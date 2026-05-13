@@ -6,6 +6,7 @@ import { PageButtons } from "../../../reusable/page-buttons/page-buttons";
 import { CustomerProductList } from "../customer-product-list/customer-product-list";
 import { ClientProductSearchBar } from "../../../reusable/client-product-search-bar/client-product-search-bar";
 import { ClientProductSearchBarData } from "../../../../interfaces/component-logic/client-product-search-bar-data";
+import { ShoppingCartService } from "../../../../services/shopping-cart-service";
 
 
 @Component({
@@ -21,6 +22,7 @@ import { ClientProductSearchBarData } from "../../../../interfaces/component-log
 })
 export class ProductsOnSalePage {
   productService = inject(ProductService);
+  shopping_cart_service = inject(ShoppingCartService)
 
   page = signal<number>(0);
 
@@ -48,6 +50,7 @@ export class ProductsOnSalePage {
     this.productService.getProductsOnSale(this.page(),this.pageSize,query).subscribe({
       next: (x) => {
         this.pageData.set(x)
+        this.shopping_cart_service.checkCartValidity(x.content);
       },
       error: (e) => {
         throw e;

@@ -93,64 +93,65 @@ export class ShoppingCartService {
     if(json.length == 0) return
 
     this.cartItems.set(json);
-    this.checkCartValidity()
+    this.getCurrentCartItemsToCheckValidity()
   }
 
-
-  checkCartValidity()
+  getCurrentCartItemsToCheckValidity()
   {
     const id_list = this.cartItems().map((x) => x.product.idProduct);
 
-     this.productService.checkItemsInCart(id_list).subscribe({
-      next: (items) => {
-        const new_cart: CartItem[] = []
-        const response_array: CustomerProductInfo[] = items
-        const deleted_products: CartItem[] = [];
-        const non_ok_stock: CartItem[] = [];
-        const modifiedProducts: CartItem[] = [];
-
-
-        for(let i = this.cartItems().length - 1; i >= 0; i--)
-        {
-          const cart_item = this.cartItems()[i]
-          const response_item = response_array.find((item) => item.idProduct === cart_item.product.idProduct);
-
-          if(!response_item)
-          {
-            this.cartItems().splice(i,1);
-            deleted_products.push(cart_item);
-            continue
-          }
-
-          const is_stock_not_ok = this.checkStockAvailability(response_item, cart_item)
-          const is_price_lower = this.checkIfPriceShouldBeLower(response_item, cart_item)
-
-          if(is_stock_not_ok)
-          {
-            cart_item.quantity = cart_item.quantity - Math.abs(response_item.stock - cart_item.quantity)
-            non_ok_stock.push(cart_item);
-          }
-
-          if(is_price_lower)
-          {
-            cart_item.product.price = response_item.price
-            modifiedProducts.push(cart_item)
-          }
-
-          new_cart.push(cart_item);
-        }
-        this.cartItems.set(new_cart)
-
-        const new_notification: ShoppingCartFailResults = {
-          removed_products: deleted_products,
-          bad_stock: non_ok_stock,
-          modified_product: modifiedProducts
-        }
-        this.checkIfIChanged.next(undefined)
-        this.handleShowingNotification(new_notification)
+    this.productService.checkItemsInCart(id_list).subscribe({
+      next: (customerProducts) => {
+        this.checkCartValidity(customerProducts)
       }
     })
+  }
 
+  checkCartValidity(customerProducts:CustomerProductInfo[])
+  { 
+    const new_cart: CartItem[] = []
+    const response_array: CustomerProductInfo[] = customerProducts
+    const deleted_products: CartItem[] = [];
+    const non_ok_stock: CartItem[] = [];
+    const modifiedProducts: CartItem[] = [];
+
+    for(let i = this.cartItems().length - 1; i >= 0; i--)
+    {
+      const cart_item = this.cartItems()[i]
+      const response_item = response_array.find((item) => item.idProduct === cart_item.product.idProduct);
+
+      if(!response_item)
+      {
+        this.cartItems().splice(i,1);
+        deleted_products.push(cart_item);
+        continue
+      }
+
+      const is_stock_not_ok = this.checkStockAvailability(response_item, cart_item)
+      const is_price_lower = this.checkIfPriceShouldBeLower(response_item, cart_item)
+      
+      if(is_stock_not_ok)
+      {
+        cart_item.quantity = cart_item.quantity - Math.abs(response_item.stock - cart_item.quantity)
+        non_ok_stock.push(cart_item);
+      }
+
+      if(is_price_lower)
+      {
+        cart_item.product.price = response_item.price
+        modifiedProducts.push(cart_item)
+      }
+      
+      new_cart.push(cart_item);
+    }
+    this.cartItems.set(new_cart)
+    const new_notification: ShoppingCartFailResults = {
+      removed_products: deleted_products,
+      bad_stock: non_ok_stock,
+      modified_product: modifiedProducts
+    }
+    this.checkIfIChanged.next(undefined)
+    this.handleShowingNotification(new_notification)
   }
 
 
