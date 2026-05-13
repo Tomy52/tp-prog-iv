@@ -141,7 +141,7 @@ export class ShoppingCartService {
         cart_item.product.price = response_item.price
         modifiedProducts.push(cart_item)
       }
-      
+
       new_cart.push(cart_item);
     }
     this.cartItems.set(new_cart)
@@ -150,7 +150,9 @@ export class ShoppingCartService {
       bad_stock: non_ok_stock,
       modified_product: modifiedProducts
     }
+
     this.checkIfIChanged.next(undefined)
+    this.saveCartState()
     this.handleShowingNotification(new_notification)
   }
 
@@ -170,7 +172,7 @@ export class ShoppingCartService {
     if(data.bad_stock?.length || data.modified_product?.length || data.removed_products?.length)
     {
       const label = this.modal_service.showCartErrorModal(FailedCartResults,{
-        title: "Aviso!",
+        title: "¡Aviso!",
         description: "Las siguientes cosas sucedieron:"
       },data,false)
 
