@@ -1,0 +1,41 @@
+<section>
+  <h1>Nuevo usuario</h1>
+
+  <form [formGroup]="form" (ngSubmit)="register()">
+    <label for="first">Nombre</label>
+    <input type="text" id="first" formControlName="firstname" [appFieldErrorBorder]="form.get('firstname')" placeholder="Juan">
+    <small class="error-msg" [appFieldError]="form.get('firstname')"></small>
+
+    <label for="last">Apellido</label>
+    <input type="text" id="last" formControlName="lastname" [appFieldErrorBorder]="form.get('lastname')" placeholder="Pérez">
+    <small class="error-msg" [appFieldError]="form.get('lastname')"></small>
+
+
+    <label for="dni-number">Número de documento (DNI)</label>
+    <input type="text" id="dni-number" formControlName="dni"
+           inputmode="numeric" maxlength="8" [appFieldErrorBorder]="form.get('dni')" placeholder="1234567"/>
+    <small class="error-msg" [appFieldError]="form.get('dni')"></small>
+
+    <label for="user">Nombre de usuario</label>
+    <input type="text" id="user" formControlName="username" [appFieldErrorBorder]="form.get('username')" placeholder="fulanito">
+    <small class="error-msg" [appFieldError]="form.get('username')"></small>
+
+
+    <label for="pass">Contraseña</label>
+    <input type="password" id="pass" formControlName="password" [appFieldErrorBorder]="form.get('password')">
+    <small class="error-msg" [appFieldError]="form.get('password')"></small>
+
+    <label for="role">Rol</label>
+    <select name="role" id="role" formControlName="role">
+        <option value="ADMIN">Admin</option>
+        <option value="MANAGER">Manager</option>
+        <option value="EMPLOYEE">Empleado</option>
+    </select>
+    
+    <div class="registration-form-buttons">
+      <button [disabled]="!form.valid" type="submit">Registrar</button>
+      <button class="return-btn" routerLink="/login" type="button">Volver</button>
+    </div>
+
+  </form>
+</section>
