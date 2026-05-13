@@ -1,35 +1,33 @@
-  <aside>
+<aside>
+  <div>
+    <p class="subtitles">Proveedores</p>
+    <ul>
+      <li><a routerLink="suppliers" >Ver</a></li>
+      <li><a routerLink="form-suppliers" *appAllowViewUser="['ROLE_MANAGER','ROLE_ADMIN']" >Nuevo</a></li>
+      <li><a routerLink="delete-supplier" *appAllowViewUser="['ROLE_MANAGER','ROLE_ADMIN']">Eliminar</a></li>
+      <li><a routerLink="/price-by-supplier">Buscar precios</a></li>
+    </ul>
 
-    <div>
+    <p class="subtitles">Productos</p>
+    <ul>
+      <li><a routerLink="products" >Ver</a></li>
+      <li><a routerLink="form-products" *appAllowViewUser="['ROLE_MANAGER','ROLE_ADMIN']">Nuevo</a></li>
+      <li><a routerLink="delete-product" *appAllowViewUser="['ROLE_MANAGER','ROLE_ADMIN']" >Eliminar</a></li>
+      <li><a routerLink="/price-by-product" >Buscar precios</a></li>
+    </ul>
 
-      <p class="subtitles">Proveedores</p>
+    <p class="subtitles">Categorías</p>
+    <ul>
+      <li><a routerLink="categories" *appAllowViewUser="['ROLE_MANAGER','ROLE_ADMIN']" >Nueva</a></li>
+      <li><a routerLink="delete-category" *appAllowViewUser="['ROLE_MANAGER','ROLE_ADMIN']" >Eliminar</a></li>
+    </ul>
 
-      <ul>
-        <li><a routerLink="suppliers">Listar</a></li>
-        <li><a routerLink="form-suppliers" *appAllowViewUser="['ROLE_MANAGER','ROLE_ADMIN']">Crear</a></li>
-        <li><a routerLink="delete-supplier" *appAllowViewUser="['ROLE_MANAGER','ROLE_ADMIN']">Eliminar</a></li>
-      </ul>
+    <p class="subtitles">Gestion</p>
+    <ul>
+      <li><a routerLink="/product-supplier" *appAllowViewUser="['ROLE_MANAGER','ROLE_ADMIN']">Nueva Relación</a></li>
+      <li><a routerLink="/csv-prices" *appAllowViewUser="['ROLE_MANAGER','ROLE_ADMIN']">Cargar Listas</a></li>
+    </ul>
 
-      <p class="subtitles">Productos</p>
-
-      <ul>
-        <li><a routerLink="products">Listar</a></li>
-        <li><a routerLink="form-products" *appAllowViewUser="['ROLE_MANAGER','ROLE_ADMIN']">Crear</a></li>
-        <li><a routerLink="delete-product" *appAllowViewUser="['ROLE_MANAGER','ROLE_ADMIN']">Eliminar</a></li>
-        <li><a routerLink="categories" *appAllowViewUser="['ROLE_MANAGER','ROLE_ADMIN']">Crear Categorias</a></li>
-        <li><a routerLink="delete-category" *appAllowViewUser="['ROLE_MANAGER','ROLE_ADMIN']">Eliminar Categoria</a></li>
-      </ul>
-
-      <p class="subtitles">Precios</p>
-      
-      <ul>
-        <li><a routerLink="/product-supplier" *appAllowViewUser="['ROLE_MANAGER','ROLE_ADMIN']">Crear Relación</a></li>
-        <li><a routerLink="/price-by-supplier">Por Proveedor</a></li>
-        <li><a routerLink="/price-by-product">Por Producto</a></li>
-        <li><a routerLink="/csv-prices" *appAllowViewUser="['ROLE_MANAGER','ROLE_ADMIN']"> Uso de archivos </a></li>
-      </ul>
-
-      <p class="subtitles"><a routerLink="/login" (click)="logOut()">Salir</a></p>
-      
-    </div>
-  </aside>
+    <p class="subtitles logout"><a routerLink="/login" (click)="logOut()">Salir</a></p>
+  </div>
+</aside>

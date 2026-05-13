@@ -24,7 +24,7 @@ export class DeleteSupplier {
   }
 
   form = this.form_builder.group({
-    id: [null as number | null, [Validators.required]]
+    id: [null, [Validators.required]]
   });
 
   submit()
@@ -82,6 +82,7 @@ export class DeleteSupplier {
 
   resetForm()
   {
+    this.form.reset()
     this.form.markAsPristine();
     this.form.markAsUntouched();
   }
