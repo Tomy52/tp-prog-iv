@@ -25,7 +25,7 @@ export class OrderDataPopupCustomer {
 
   private dialogRef = inject(DialogRef, {optional: true})
   protected closeModal(status:string) {
-    this.dialogRef?.close("CANCELLED")
+    this.dialogRef?.close(status)
   }
 
   changeStatus()

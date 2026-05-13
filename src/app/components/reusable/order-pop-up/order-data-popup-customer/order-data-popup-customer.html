@@ -16,8 +16,10 @@
         <p>Total final: ${{data()?.finalTotal}}</p>
     </div>
 
-    <div class="buttons">
-        <button (click)="changeStatus()">Cancelar</button>
-    </div>
+    @if (data()?.status != "CANCELLED") {
+        <div class="buttons">
+            <button (click)="changeStatus()">Cancelar</button>
+        </div>
+    }
 
 </article>
