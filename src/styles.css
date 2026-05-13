@@ -106,7 +106,7 @@ input[type="submit"]:hover {
 
 span.tool-tip{
   position:absolute;
-  top:60px;
+  top:65px;
   background-color: #2d5a4c;
   z-index:1000;
   pointer-events:none;
@@ -116,7 +116,6 @@ span.tool-tip{
   border-radius: 8px;
   opacity: 1;
   transition: opacity 0.4s ease-in;
-
 }
 
 span.tool-tip p.tool-tip-text {
@@ -127,15 +126,14 @@ span.tool-tip p.tool-tip-text {
 @media only screen and (max-width: 480px){
 
   span.tool-tip {
-    top: 45px;
+    top: 42px;
     right: 10px;
-
   }
 }
 
 @media screen and (min-width: 480px) and (max-width: 1024px) {
   span.tool-tip {
-    top: 50px;
+    top: 42px;
     right: 10px;
 
   }
