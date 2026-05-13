@@ -8,10 +8,11 @@ import { CustomerOrderSearchData } from '../../../../interfaces/component-logic/
 import { OrderPopupType } from '../../../../interfaces/component-logic/order-popup-type';
 import { EmployeeOrderSearchBar } from "../../../reusable/employee-order-search-bar/employee-order-search-bar";
 import { EmployeeOrderSearchData } from '../../../../interfaces/component-logic/employee-order-search-data';
+import { CustomerOrderSearchBar } from "../../../reusable/customer-order-search-bar/customer-order-search-bar";
 
 @Component({
   selector: 'app-customer-list',
-  imports: [PageButtons, OrderList, EmployeeOrderSearchBar],
+  imports: [PageButtons, OrderList, CustomerOrderSearchBar],
   templateUrl: './customer-order-page.html',
   styleUrl: './customer-order-page.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -76,7 +77,7 @@ export class CustomerOrderList {
     this.getOrders(this.searchTerm);
   }
 
-  searchByTerms(terms:EmployeeOrderSearchData)
+  searchByTerms(terms:CustomerOrderSearchData)
   {
     this.searchTerm = terms
     this.resetPageCount();

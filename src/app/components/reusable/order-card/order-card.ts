@@ -4,6 +4,7 @@ import { OrderStatus } from '../../../interfaces/orders/order-status';
 import { ModalService } from '../../../services/modal-service';
 import { OrderDataPopupCustomer } from '../order-pop-up/order-data-popup-customer/order-data-popup-customer';
 import { OrderPopupType } from '../../../interfaces/component-logic/order-popup-type';
+import { EnumMappingService } from '../../../services/enum-mapping-service';
 
 @Component({
   selector: 'app-order-card',
@@ -16,6 +17,7 @@ export class OrderCard {
   orderData = model<OrderData>();
   modal_service = inject(ModalService);
   popup_component = input.required<OrderPopupType>();
+  enum_mapping_service = inject(EnumMappingService)
 
 
   showOrderDataPopUp()
@@ -29,6 +31,11 @@ export class OrderCard {
         this.handleStatusChange(value);
       }
     })
+  }
+  
+  getEnumValue()
+  {
+    return this.enum_mapping_service.searchEnumValue(OrderStatus,this.orderData()?.status!);
   }
 
 

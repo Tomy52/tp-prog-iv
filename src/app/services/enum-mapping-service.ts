@@ -20,4 +20,13 @@ export class EnumMappingService {
 
     return obj;
   }
+
+  searchEnumValue<T>(enumType: T, value:string)
+  {
+    let string = String(enumType[value as keyof typeof enumType])
+
+    console.log(string)
+
+    return string
+  }
 }
