@@ -12,7 +12,17 @@
   --bg-color: #f5f1e4;
 
   --text-color: #ffffff;
+  --secondary-text-color: #333333;
   --unfocused-text-color: #d2d2d2;
+  --table-bg-color: #c3c1bb;
+  --tr-bg-color: ghostwhite;
+  --tr-bg-color-even: whitesmoke;
+  --th-bg-color: lightgray;
+
+  --active-bg-color: #b4e1bc;
+  --active-text-color: #166534;
+  --inactive-bg-color: #e1b7bc;
+  --inactive-text-color: #991b1b;
 
   --disabled-button-color: #9baebb;
   --disabled-button-text-color: #6a7d8c;
@@ -59,6 +69,11 @@ main {
   background: transparent;
 }
 
+button:disabled {
+  cursor: not-allowed;
+  background-color: var(--disabled-button-color);
+  color: var(--disabled-button-text-color);
+}
 
 button {
   cursor: pointer;

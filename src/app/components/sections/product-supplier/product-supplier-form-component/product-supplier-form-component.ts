@@ -48,7 +48,6 @@ export class ProductSupplierFormComponent {
     product: this.formBuilder.control<number | null>(null),
     supplier: this.formBuilder.control<number | null>(null),
     cost: this.formBuilder.nonNullable.control<number>(0, [Validators.required, Validators.min(0.1)]),
-    profitMargin: this.formBuilder.nonNullable.control<number>(0, [Validators.required, Validators.min(0.1)]),
     price: this.formBuilder.control<number>(0)
   });
 
@@ -62,7 +61,6 @@ export class ProductSupplierFormComponent {
         this.productSupplierForm.get("supplier")?.patchValue(this.productSupplierToModify()?.idSupplier!)
         this.productSupplierForm.get("product")?.patchValue(this.productSupplierToModify()?.idProduct!)
         this.productSupplierForm.get("cost")?.patchValue(this.productSupplierToModify()?.cost!)
-        this.productSupplierForm.get("profitMargin")?.patchValue(this.productSupplierToModify()?.profitMargin!)
       }
     });
   }
@@ -99,12 +97,17 @@ export class ProductSupplierFormComponent {
 
 
   createProductSupplier() {
+    
+    const selectedProductId = this.productSupplierForm.get("product")?.value!;
+    const selectedProduct = this.productsList().find(product => product.idProduct === this.productSupplierForm.get("product")?.value!);
 
     const productSupplierData: CreateProductSupplier  = {
-      idProduct: this.productSupplierForm.get("product")?.value!,
+
+      idProduct: selectedProductId,
       idSupplier: this.productSupplierForm.get('supplier')?.value!,
       cost: this.productSupplierForm.get("cost")?.value!,
-      profitMargin: this.productSupplierForm.get("profitMargin")?.value!,
+
+      profitMargin: Number(Number(selectedProduct?.profitMargin ?? 0).toFixed(2)),
     };
 
     this.productSupplierService.createProductSupplier(productSupplierData).subscribe(
@@ -130,7 +133,7 @@ export class ProductSupplierFormComponent {
     const productSupplierData: UpdateProductSupplier  = {
 
       cost: this.productSupplierForm.get("cost")?.value!,
-      profitMargin: this.productSupplierForm.get("profitMargin")?.value!,
+      profitMargin: Number(Number(this.productSupplierToModify()?.profitMargin ?? 0).toFixed(2)),
     };
 
     const idProductSupplier = Number(this.productSupplierToModify()?.idProductSupplier!)

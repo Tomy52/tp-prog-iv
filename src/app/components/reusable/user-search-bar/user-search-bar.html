@@ -1,0 +1,34 @@
+<article>
+  <form (ngSubmit)="submit()" [formGroup]="form">
+    <section>
+      <div>
+        <label for="placeholder">DNI</label>
+        <input type="text" name="name" id="placeholder" placeholder="Término de busqueda..." formControlName="dni">
+      </div>
+
+      <div>
+        <label for="status">Estado</label>
+        <select name="status" id="status" formControlName="status">
+          <option [value]="null" disabled selected>Todos</option>
+          <option value="ENABLED">Activo</option>
+          <option value="DISABLED">Desactivado</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="role">Ról</label>
+        <select name="role" id="role" formControlName="role">
+          <option [value]="null" disabled selected>Todos</option>
+          <option value="ADMIN">Admin</option>
+          <option value="MANAGER">Manager</option>
+          <option value="EMPLOYEE">Empleado</option>
+          <option value="CUSTOMER">Cliente</option>
+        </select>
+      </div>
+
+      <div>
+        <button type="submit">Buscar</button>
+      </div>
+    </section>
+  </form>
+</article>
