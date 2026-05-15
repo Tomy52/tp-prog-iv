@@ -2,14 +2,26 @@
   <button class="nav-bar-button" title="Ver barra de navegación" (click)="openSidebar()">
     <img class="img-button-menu" src="images/iconoMenu.png" alt="menuHamburguesa"></button>
   <h1 routerLink="main-menu" title="Regresar al menú principal">PreciOSO</h1>
-  <button class="nav-bar-button user-button" title="Ver panel de usuario">{{username()}}</button>
+  <div class="user-button-container">
+    <app-shopping-cart></app-shopping-cart>
+    <button class="nav-bar-button user-button" title="Ver panel de usuario">{{username()}}</button>
+  </div>
+
 </nav>
 
 @if(isSidenavOpen()){
   <div class="menuDiv"
     animate.enter="enter-animation"
     animate.leave="leave-animation">
-    <app-sidebar-component id="sidebar" (clickOutside)="closeSidebar()"/>
+
+    @if (authService.getRole() == "ROLE_CUSTOMER") {
+      <app-customer-sidebar (clickOutside)="closeSidebar()"/>
+    }
+
+    <!-- admin should get their own bar maybe -->
+    @if (authService.getRole() == "ROLE_ADMIN" || authService.getRole() == "ROLE_MANAGER" || authService.getRole() == "ROLE_EMPLOYEE") {
+      <app-sidebar-component (clickOutside)="closeSidebar()"/>
+    }
   </div>
   <div class="overlay"></div>
 }

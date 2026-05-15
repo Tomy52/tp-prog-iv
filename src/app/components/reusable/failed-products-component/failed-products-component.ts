@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, input, OnInit, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { FailedProductsResp } from '../../../interfaces/csv-update/failed-products-resp';
 import { DIALOG_DATA, DialogRef } from '@angular/cdk/dialog';
 
@@ -14,11 +14,11 @@ export class FailedProductsComponent {
   show_err = signal<boolean>(false);
   showing = signal<boolean>(false);
   dialog_data = inject(DIALOG_DATA)
-  
+
   constructor()
   {
     this.failed_product_resp.set(this.dialog_data.resp)
-    
+
     if(this.failed_product_resp()?.nonAffectedProducts[0])
       {
         this.show_err.update(() => true)

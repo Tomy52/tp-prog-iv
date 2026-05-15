@@ -1,13 +1,27 @@
-import { Component, inject } from '@angular/core';
+import { AfterViewInit, Component, inject, ViewChild, ViewContainerRef } from '@angular/core';
 import { MainMenuButton } from "../main-menu-button/main-menu-button";
-import { ModalService } from '../../../services/modal-service';
-import { ModalNotification } from '../../reusable/modal-notification/modal-notification';
+import { DynamicRendererService } from '../../../services/dynamic-renderer-service';
 
 @Component({
   selector: 'app-main-menu-screen',
-  imports: [MainMenuButton],
+  imports: [],
   templateUrl: './main-menu-screen.html',
   styleUrl: './main-menu-screen.css'
 })
-export class MainMenuScreen {
+export class MainMenuScreen implements AfterViewInit {
+  @ViewChild('menuOptions', {read: ViewContainerRef}) menuOptions!:ViewContainerRef
+  dynamic_render = inject(DynamicRendererService)
+
+  ngAfterViewInit(): void {
+    const component = this.dynamic_render.selectMainMenu()
+
+    if(component)
+    {
+      this.menuOptions.createComponent(component);
+    }
+
+  }
+  
+
 }
+  

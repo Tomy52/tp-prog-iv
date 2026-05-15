@@ -7,7 +7,9 @@
   --main-color: #2d5a4c;
   --secondary-color: #2c6e5a;
   --tertiary-color: #4c9682;
-  --bg-color: rgb(253 255 234 / 0.78);
+
+
+  --bg-color: #f5f1e4;
 
   --text-color: #ffffff;
   --secondary-text-color: #333333;
@@ -114,3 +116,40 @@ input[type="submit"]:hover {
   border: 2px solid red;
 }
 
+/*clases del tooltip*/
+
+
+span.tool-tip{
+  position:absolute;
+  top:65px;
+  background-color: #2d5a4c;
+  z-index:1000;
+  pointer-events:none;
+  user-select: none;
+  box-shadow: 0 0 5px whitesmoke;
+  padding: .2rem 1rem;
+  border-radius: 8px;
+  opacity: 1;
+  transition: opacity 0.4s ease-in;
+}
+
+span.tool-tip p.tool-tip-text {
+  color: whitesmoke;
+  margin: 0;
+}
+
+@media only screen and (max-width: 480px){
+
+  span.tool-tip {
+    top: 42px;
+    right: 10px;
+  }
+}
+
+@media screen and (min-width: 480px) and (max-width: 1024px) {
+  span.tool-tip {
+    top: 42px;
+    right: 10px;
+
+  }
+}

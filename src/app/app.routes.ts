@@ -29,6 +29,8 @@ import {UsersPage} from './components/sections/user/users-page/users-page';
 import {UsersDetail} from './components/sections/user/users-detail/users-detail';
 import { CategoryFormSection } from './components/sections/categories/category-form-section/category-form-section';
 import { DeleteCategory } from './components/sections/categories/delete-category/delete-category';
+import { ProductsOnSalePage } from './components/sections/customer/products-on-sale-page/products-on-sale-page';
+import {ViewShoppingCart} from './components/sections/shopping-cart/view-shopping-cart';
 import { UserFormComponent } from './components/sections/user/user-form-component/user-form-component';
 
 
@@ -146,6 +148,16 @@ export const routes: Routes = [
   {
     path:"suppliers",
     component:SuppliersPage,
+    canActivate: [AuthGuard]
+  },
+  {
+    path:"on-sale",
+    component:ProductsOnSalePage,
+    canActivate: [AuthGuard]
+  },
+  {
+    path:"shoppingCart",
+    component:ViewShoppingCart,
     canActivate: [AuthGuard]
   },
   {

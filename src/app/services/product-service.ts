@@ -5,6 +5,8 @@ import {Product} from '../interfaces/product';
 import {PageResponse} from '../interfaces/other/page-response';
 import {ProductStatus} from '../interfaces/productStatus';
 import { ProductSearchBarData } from '../interfaces/component-logic/product-search-bar-data';
+import { CustomerProductInfo } from '../interfaces/product/customer-product-info';
+import { ClientProductSearchBarData } from '../interfaces/component-logic/client-product-search-bar-data';
 
 @Injectable({
   providedIn: 'root'
@@ -29,8 +31,6 @@ export class ProductService {
 
   getProductsPage(page?:number, size?:number, query?:ProductSearchBarData): Observable<PageResponse<Product>>
   {
-    // var status = showAll ? undefined : ProductStatus.Enabled
-
     console.log(query)
     var query_string = '?'
 
@@ -73,6 +73,38 @@ export class ProductService {
     return this.http.get<PageResponse<Product>>(`${this.baseUrl}/page${query_string}`)
   }
 
+  getProductsOnSale(page?:number, size?:number,query?:ClientProductSearchBarData)
+  {
+    let query_string = "?"
+
+    if(page)
+    {
+      query_string += `&page=${page}`
+    }
+
+    if(size)
+    {
+      query_string += `&size=${size}`
+    }
+
+    if(query?.name)
+    {
+      query_string += `&name=${query.name}`
+    }
+
+    if(query?.categories)
+    {
+      query_string += `&category=${query.categories}`
+    }
+
+    if(query?.include_oos != null)
+    {
+      query_string += `&include_oos${query?.include_oos}`
+    }
+
+    return this.http.get<PageResponse<CustomerProductInfo>>(`api/sales/on-sale${query_string}`)
+  }
+
 
   addProduct(product: Partial<Product>, file:File|undefined): Observable<Product> {
     const formData: FormData = new FormData();
@@ -92,5 +124,16 @@ export class ProductService {
 
   deleteProduct(idProduct: number): Observable<Object> {
     return this.http.delete(`${this.baseUrl}/${idProduct}`);
+  }
+
+
+  getProductByIdCustomer(id:number)
+  {
+    return this.http.get<CustomerProductInfo>(`api/sales/product/${id}`);
+  }
+
+  checkItemsInCart(ids:number[])
+  {
+    return this.http.get<CustomerProductInfo[]>(`api/sales/products/${ids}`)
   }
 }
