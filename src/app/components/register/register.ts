@@ -65,8 +65,12 @@ export class Register implements OnInit {
         },
         error: (err) => {
           this.success.set(false);
-          alert("Registro fallido: " + `${err.error}`);
-          this.err.set(`${err.error}`);
+          const rtabackend = typeof err.error === 'string' 
+        ? err.error 
+        : (err.error?.message || 'Usuario o DNI ya registrado. Por favor, intente con otro.');
+
+        this.err.set(rtabackend); 
+        console.error("Detalle técnico:", err);
         }
       }
     );

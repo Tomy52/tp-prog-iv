@@ -1,20 +1,292 @@
-section {
-  width: 100%;
-  max-width: 300px;
+.main-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background: url('/images/marmolblanco.png') center/cover no-repeat;
+    padding: 5vh;
+    box-sizing: border-box;
+    box-shadow: inset 0 0 150px rgba(0, 0, 0, 0.25); 
+    overflow-x: hidden;
+}
+
+.glass-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.4));
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 40px;
+    width: 100%;
+    max-width: 480px;
+    padding: 80px 40px 40px; 
+    position: relative;
+    box-shadow: 0 30px 60px rgba(3, 49, 1, 0.767);
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.contenedorImg {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -35%); 
+    z-index: 100;
+}
+
+.contenedorImg img {
+    width: 140px; 
+    height: auto;
+    filter: drop-shadow(0 12px 20px rgba(0,0,0,0.35));
+}
+
+h1 {
+    font-family: 'Cinzel', serif;
+    color: #2d5a4c;
+    text-align: center;
+    letter-spacing: 6px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-size: 2rem;
+    width: 100%;
+}
+
+label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    color: #2d5a4c;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center; 
+    width: 100%;
+    display: block;
+    margin-top: 7px;
+    margin-bottom: 2px;
 }
 
 input {
-  width: 300px;
-  box-sizing: border-box;
+    width: 100%;
+    padding: 16px;
+    border-radius: 18px;
+    border: 1.5px solid rgba(45, 90, 76, 0.2);
+    background: rgba(255, 255, 255, 0.95);
+    font-size: 1rem;
+    color: #16372d;
+    text-align: center;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    font-family: 'Cinzel', serif;
+}
+
+input:focus {
+    outline: none;
+    border-color: #2d5a4c;
+    background: #ffffff;
+    box-shadow: 0 0 15px rgba(45, 90, 76, 0.15);
+    transform: scale(1.02);
+}
+
+/* Manejo de mensajes */
+.error-msg {
+    font-family: 'Cinzel', serif;
+    color: #a94442; 
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: block;
+    margin-top: 2px;
+    min-height: 1.2em; 
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+/* Error o éxito */
+.success, .failure {
+    width: 100%;
+    max-width: 400px; 
+    margin: 15px auto;
+    padding: 12px;
+    border-radius: 15px;
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+    animation: fadeInSlide 0.4s ease-out;
+}
+
+.success { 
+    background: rgba(45, 90, 76, 0.15); 
+    color: #2d5a4c;
+    border: 1px solid rgba(45, 90, 76, 0.3);
+  }
+
+.failure {
+    background: rgba(169, 68, 66, 0.1); 
+    color: #a94442;
+    border: 1px solid rgba(169, 68, 66, 0.2);
+}
+
+.success:hover, .failure:hover {
+    filter: brightness(0.9);
+    transform: translateY(-2px);
 }
 
 .registration-form-buttons {
-  display: flex;
-  flex-direction: row;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+    width: 100%;
 }
 
 .registration-form-buttons button {
-  margin: 10px;
-  display: flex;
-  justify-content: center;
+    width: 100%;
+    max-width: 400px; 
+    padding: 22px;
+    border-radius: 20px;
+    border: none;
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-sizing: border-box;
+}
+
+button[type="submit"] {
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), 
+                url('/images/header3.png') center/cover no-repeat !important;
+    color: #ffffff;
+    box-shadow: 0 12px 25px rgba(22, 55, 45, 0.35);
+}
+
+.return-btn {
+    background: transparent !important; 
+    border: 1.5px solid #2d5a4c !important;
+    color: #2d5a4c !important;
+    font-size: 1rem !important;
+   
+}
+
+button:hover:not(:disabled) {
+    transform: translateY(-3px);
+    filter: brightness(1.1);
+    box-shadow: 0 15px 30px rgba(22, 55, 45, 0.45);
+}
+
+button:disabled {
+    filter: grayscale(1);
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+@keyframes fadeInSlide {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@media (max-width: 768px) {
+    .glass-card {
+        max-width: 85%;
+        padding: 60px 25px 30px; 
+        margin: 20px 0; 
+    }
+
+    h1 {
+        font-size: 1.4rem;
+        letter-spacing: 3px;
+    }
+
+    .contenedorImg img {
+        width: 110px;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .main-container {
+        align-items: flex-start; 
+        padding: 40px 15px; 
+        overflow-y: auto; 
+    }
+
+    .glass-card {
+        padding: 50px 15px 20px;
+        max-width: 100%;
+        border-radius: 25px;
+    }
+
+    .contenedorImg {
+       
+        transform: translate(-50%, -35%); 
+    }
+
+    .contenedorImg img {
+        width: 90px;
+    }
+
+    h1 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+
+    label {
+        font-size: 0.75rem;
+        margin-top: 5px;
+        letter-spacing: 1px;
+    }
+
+    input {
+        padding: 10px;
+        font-size: 0.9rem;
+        border-radius: 12px;
+    }
+
+    .error-msg {
+        font-size: 0.65rem;
+        min-height: 1em;
+    }
+
+    .registration-form-buttons {
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .registration-form-buttons button {
+        padding: 14px;
+        font-size: 0.85rem;
+        letter-spacing: 3px;
+        border-radius: 15px;
+    }
+}
+
+@media (max-height: 600px) {
+    .contenedorImg {
+        display: none; 
+    }
+    .glass-card {
+        padding-top: 20px;
+        margin-top: 10px;
+    }
+    h1 {
+        font-size: 1rem;
+        margin-bottom: 5px;
+    }
 }

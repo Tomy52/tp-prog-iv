@@ -1,100 +1,202 @@
-.contenedorImg{
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.login-page {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+    background: url('/images/marmolblanco.png') center/cover no-repeat;
 }
 
-img{
-  max-width: 100%;
-  height: auto;
-
-  width: 12%;
-  padding-top: 3%;
-  padding-bottom: 3%;
+.logo-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -35%); 
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    width: 100%; 
 }
 
-section{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-
-  width: 100%;
-  max-width: 300px;
-  height: 50%;
-  margin: 0 auto;
-  padding: 20px;
-
-  background: var(--main-color);
-  border-radius: 25px;
-
+.diamond-logo {
+    width: 180px; 
+    height: auto;
+    filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.3));
+    animation: float 6s ease-in-out infinite;
 }
 
-h1{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-wrap: auto;
-  text-align: center;
-
-  color: var(--text-color);
+.glass-card {
+    background: linear-gradient(135deg, rgba(105, 104, 104, 0.801), rgba(187, 197, 187, 0.4));
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(4, 56, 2, 0.6);
+    border-radius: 40px;
+    padding: 80px 50px 20px; 
+    width: 100%;
+    max-width: 480px; 
+    box-shadow: 0 30px 60px rgba(3, 49, 1, 0.767);
+    text-align: center;
+    position: relative;
+    margin-top: 0;
+    box-sizing: border-box;
 }
 
-form{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+h1 {
+    font-family: 'Cinzel', serif;
+    color: #2d5a4c;
+    letter-spacing: 6px;
+    margin-bottom: 40px;
+    margin-top: 0;
+    font-size: 2rem; 
+    font-weight: 700;
+    text-transform: uppercase;
 }
 
-label{
-  padding: 8px;
-
-  color: var(--text-color);
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    width: 100%;
 }
 
-input{
-  width: 100%;
-  padding: 10px;
-
-  border-radius: 10px;
-
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 25px;
+    width: 90%; 
 }
 
-button{
-  background-color: var(--secondary-color);
-  border-radius: 10px;
-  border-color: var(--text-color);
-  border-width: 2px;
-  color: var(--text-color);
-
-  margin-top: 10%;
-
-  width: 100px;
-  font-size: medium;
-  font-family: "BreeSerif-regular", serif;
-
+label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    color: #2d5a4c;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center; 
+    width: 100%;
 }
 
-button:hover {
-  background-color: var(--tertiary-color);
-  transition: 0.1s ease-in-out;
+input {
+    width: 100%;
+    padding: 16px;
+    border-radius: 18px;
+    border: 1.5px solid rgba(45, 90, 76, 0.2);
+    background: rgba(255, 255, 255, 0.95);
+    font-size: 1rem;
+    color: #16372d;
+    text-align: center;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    box-sizing: border-box;
 }
 
-button:disabled {
-  background-color: var(--disabled-button-color);
-  color: var(--disabled-button-text-color)
+input:focus {
+    outline: none;
+    border-color: #2d5a4c;
+    background: #ffffff;
+    box-shadow: 0 0 15px rgba(45, 90, 76, 0.15);
+    transform: scale(1.02);
 }
 
-.register-cta {
-  display: flex;
-  padding-top: 10px;
-  color: var(--unfocused-text-color);
-  text-decoration: none;
+.btn-marmol {
+    width: 90%; 
+    padding: 20px;
+    margin-top: 15px;
+    border-radius: 20px;
+    border: none;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), 
+                url('/images/header3.png') center/cover no-repeat !important;
+    color: #ffffff;
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 12px 25px rgba(22, 55, 45, 0.35);
+    transition: all 0.4s ease;
 }
 
-.register-cta:hover {
-  color: var(--text-color);
+.btn-marmol:hover:not(:disabled) {
+    transform: translateY(-3px);
+    filter: brightness(1.1);
+    box-shadow: 0 15px 30px rgba(22, 55, 45, 0.45);
+}
+
+.nav-link {
+    display: inline-block;
+    margin-top: 30px;
+    color: #4a6b5f;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: #2d5a4c;
+    text-decoration: underline;
+}
+
+/* Animacion diamante*/
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+
+@media (max-width: 480px) {
+
+    .diamond-logo { 
+        width: 210px;
+        margin-bottom: 3px;
+    }
+
+    .logo-container {
+        transform: translate(-50%, -85%);
+    }
+
+    .glass-card {
+        width: 100%;
+        margin-top: -160px; 
+        padding: 20px 20px 30px; 
+        border-radius: 30px;
+    }
+
+    h1 {
+        font-size: 1.3rem;
+        margin-bottom: 25px;
+        letter-spacing: 3px;
+    }
+
+    .form-field {
+        margin-bottom: 15px;
+        width: 100%;
+    }
+
+    label {
+        font-size: 0.75rem;
+        margin-bottom: 5px;
+    }
+
+    input {
+        padding: 14px; 
+        font-size: 1rem;
+    }
+
+    .btn-marmol {
+        width: 100%;
+        padding: 15px;
+        font-size: 1rem;
+    }
+
+    .nav-link {
+        margin-top: 20px;
+        font-size: 0.85rem;
+    }
 }
