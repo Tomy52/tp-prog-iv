@@ -156,6 +156,54 @@ export class ShoppingCartService {
     this.handleShowingNotification(new_notification)
   }
 
+  checkPageItems(pageProducts:CustomerProductInfo[])
+  {
+    const new_cart: CartItem[] = []
+    const response_array: CustomerProductInfo[] = pageProducts
+    const deleted_products: CartItem[] = [];
+    const non_ok_stock: CartItem[] = [];
+    const modifiedProducts: CartItem[] = [];
+
+    for(let i = this.cartItems().length - 1; i >= 0; i--)
+    {
+      const cart_item = this.cartItems()[i]
+      const response_item = response_array.find((item) => item.idProduct === cart_item.product.idProduct);
+
+      if(!response_item)
+      {
+        new_cart.push(cart_item);
+        continue
+      }
+
+      const is_stock_not_ok = this.checkStockAvailability(response_item, cart_item)
+      const is_price_lower = this.checkIfPriceShouldBeLower(response_item, cart_item)
+      
+      if(is_stock_not_ok)
+      {
+        cart_item.quantity = cart_item.quantity - Math.abs(response_item.stock - cart_item.quantity)
+        non_ok_stock.push(cart_item);
+      }
+
+      if(is_price_lower)
+      {
+        cart_item.product.price = response_item.price
+        modifiedProducts.push(cart_item)
+      }
+
+      new_cart.push(cart_item);
+    }
+    this.cartItems.set(new_cart)
+    const new_notification: ShoppingCartFailResults = {
+      removed_products: deleted_products,
+      bad_stock: non_ok_stock,
+      modified_product: modifiedProducts
+    }
+
+    this.checkIfIChanged.next(undefined)
+    this.saveCartState()
+    this.handleShowingNotification(new_notification)
+  }
+
 
   private checkStockAvailability(response_product:CustomerProductInfo, cart_item:CartItem)
   {

@@ -50,7 +50,7 @@ export class ProductsOnSalePage {
     this.productService.getProductsOnSale(this.page(),this.pageSize,query).subscribe({
       next: (x) => {
         this.pageData.set(x)
-        this.shopping_cart_service.checkCartValidity(x.content);
+        this.shopping_cart_service.checkPageItems(x.content);
       },
       error: (e) => {
         throw e;
