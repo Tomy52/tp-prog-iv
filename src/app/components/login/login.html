@@ -1,16 +1,29 @@
-<div class="contenedorImg">
-  <img src="images/login/preciOSO-removebg-preview.png" alt="Imagen de usuario">
-</div>
-<section>
-  <h1>Iniciar Sesión</h1>
+<main class="login-page">
+  <!-- Contenedor del Logo -->
+  <article class="glass-card">
+    
+    <div class="logo-container">
+      <img src="/images/diamante.png" alt="Precioso Diamond" class="diamond-logo">
+    </div>
 
-  <form [formGroup]="authForm" (ngSubmit)="login()">
-    <label for="name">Usuario</label>
-    <input type="text" id="name" formControlName="username">
-    <label for="pass">Contraseña</label>
-    <input type="password" id="pass" formControlName="password">
-    <button [disabled]="!authForm.valid" type="submit">Ingresar</button>
-  </form>
+    <h1>Iniciar Sesión</h1>
 
-  <a class="register-cta" routerLink="/register">¿Usuario nuevo? Registrate</a>
-</section>
+    <form [formGroup]="authForm" (ngSubmit)="login()">
+      <div class="form-field">
+        <label for="name">Usuario</label>
+        <input type="text" id="name" formControlName="username" placeholder="admin">
+      </div>
+
+      <div class="form-field">
+        <label for="pass">Contraseña</label>
+        <input type="password" id="pass" formControlName="password" placeholder="••••••••">
+      </div>
+
+      <button [disabled]="!authForm.valid" type="submit" class="btn-marmol">
+        Ingresar
+      </button>
+    </form>
+
+    <a class="nav-link" routerLink="/register">¿Usuario nuevo? Registrate</a>
+  </article>
+</main>
