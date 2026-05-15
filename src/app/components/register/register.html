@@ -36,8 +36,6 @@
 
       @if(success() && err()) {
         <p class="success" (click)="err.set(null)">{{ err() }}</p>
-      } @else if (success() === false && err()) {
-        <p class="failure" (click)="err.set(null)">{{ err() }}</p>
       }
     
 
