@@ -21,4 +21,14 @@ export class ViewShoppingCart {
     this.shoppingCartService.getCurrentCartItemsToCheckValidity()
   }
 
+  generateOrder()
+  {
+    this.shoppingCartService.generateOrder()
+  }
+
+  enableButton()
+  {
+    return this.cartItems().length != 0
+  }
+
 }

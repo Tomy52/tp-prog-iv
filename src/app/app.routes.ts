@@ -32,6 +32,8 @@ import { DeleteCategory } from './components/sections/categories/delete-category
 import { ProductsOnSalePage } from './components/sections/customer/products-on-sale-page/products-on-sale-page';
 import {ViewShoppingCart} from './components/sections/shopping-cart/view-shopping-cart';
 import { UserFormComponent } from './components/sections/user/user-form-component/user-form-component';
+import { CustomerOrderList } from './components/sections/orders/customer-order-list/customer-order-page';
+import { EmployeeOrderPage } from './components/sections/orders/employee-order-page/employee-order-page';
 
 
 export const routes: Routes = [
@@ -158,6 +160,16 @@ export const routes: Routes = [
   {
     path:"shoppingCart",
     component:ViewShoppingCart,
+    canActivate: [AuthGuard]
+  },
+  {
+    path:"my-orders",
+    component:CustomerOrderList,
+    canActivate: [AuthGuard]
+  },
+  {
+    path:"all-orders",
+    component:EmployeeOrderPage,
     canActivate: [AuthGuard]
   },
   {

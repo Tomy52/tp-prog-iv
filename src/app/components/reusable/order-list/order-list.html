@@ -1,0 +1,5 @@
+<section>
+  @for (order of orderData(); track order.orderId) {
+    <app-order-card [orderData]="order" [popup_component]="componentType()"></app-order-card>
+  }
+</section>

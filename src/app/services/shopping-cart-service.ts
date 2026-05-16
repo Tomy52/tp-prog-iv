@@ -7,6 +7,9 @@ import { ShoppingCartFailResults } from '../interfaces/component-logic/shopping-
 import { ModalService } from './modal-service';
 import { FailedCartResults } from '../components/reusable/failed-cart-results/failed-cart-results';
 import { Subject } from 'rxjs';
+import { OrderService } from './order-service';
+import { ModalNotification } from '../components/reusable/modal-notification/modal-notification';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -21,6 +24,9 @@ export class ShoppingCartService {
   // product changed (this sucks, this would send 2n updates to cards just to check make a search to an array into the service)
   // however this is much better in terms of tidiness
   checkIfIChanged = new Subject<any>();
+
+  order_service = inject(OrderService)
+  router = inject(Router)
 
   constructor() {
     this.loadCartState()
@@ -246,5 +252,24 @@ export class ShoppingCartService {
   checkIfRequestedProductStockIsOK(request:number, recieved:number)
   {
     return recieved >= request
+  }
+
+  generateOrder()
+  {
+    this.order_service.createOrder(this.cartItems()).subscribe({
+      next: () => {
+        this.cartItems.set([])
+        this.saveCartState()
+        this.modal_service.showModal(ModalNotification,{
+          title: "¡Pedido creado!",
+          description: "Será redireccionado a la lista de pedidos"
+        })?.subscribe(() => {
+          this.router.navigate(['my-orders'])
+        })
+      },
+      error: (err) => {
+        throw err
+      }
+    });
   }
 }

@@ -39,8 +39,6 @@ export class ProductsPage {
     this.pageSize = Number(localStorage.getItem('pageSize')) || this.pageSizeOptions[0];
     this.pageData = signal(null);
     this.getProducts(this.searchTerm);
-
-    
   }
 
   getProducts(terms:ProductSearchBarData) {

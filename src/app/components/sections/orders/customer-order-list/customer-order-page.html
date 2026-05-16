@@ -1,0 +1,25 @@
+<section>
+  <h1>Lista de ordenes</h1>
+  @if (pageData() != null && !errMsg) {
+
+    <app-customer-order-search-bar [disabled]="searching" (query_sig)="searchByTerms($event)"/>
+
+    @if(pageData()!.content.length === 0) {
+      <h1>No tenés pedidos!</h1>
+    } @else {
+      <app-order-list [componentType]="getComponentType()" [orderData]="pageData()!.content" />
+      <app-page-buttons (back_signal)="goBack()"
+                        (next_signal)="goForward()"
+                        [back_active]="pageData()!.first || searching"
+                        [forward_active]="pageData()!.last || searching"
+                        [current_page]="pageData()!.number"
+                        [max_page]="pageData()!.totalPages"
+
+                        (size_changed)="changePageSize($event)"
+                        [page_size_ops]="pageSizeOptions">
+      </app-page-buttons>
+    }
+  } @else {
+    <h1> {{ errMsg }}</h1>
+  }
+</section>
