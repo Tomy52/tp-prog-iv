@@ -23,4 +23,5 @@ article {
 
 article:hover {
   background-color: var(--secondary-color);
+  cursor: pointer;
 }
