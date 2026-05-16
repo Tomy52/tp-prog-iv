@@ -13,7 +13,7 @@ import { CreateOrderOrderItem } from '../interfaces/component-logic/create-order
   providedIn: 'root',
 })
 export class OrderService {
-  createOrderUrl = "api/sales/make-order"
+  createOrderUrl = "api/sales/create-order"
   orderUrl = "api/orders"
 
   http: HttpClient = inject(HttpClient);
@@ -86,6 +86,6 @@ export class OrderService {
       items: order_obj
     }
 
-    this.http.post(`${this.createOrderUrl}`,order);
+    return this.http.post(`${this.createOrderUrl}`,order);
   }
 }

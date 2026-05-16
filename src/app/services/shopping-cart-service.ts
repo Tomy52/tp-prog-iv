@@ -8,6 +8,8 @@ import { ModalService } from './modal-service';
 import { FailedCartResults } from '../components/reusable/failed-cart-results/failed-cart-results';
 import { Subject } from 'rxjs';
 import { OrderService } from './order-service';
+import { ModalNotification } from '../components/reusable/modal-notification/modal-notification';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -24,6 +26,7 @@ export class ShoppingCartService {
   checkIfIChanged = new Subject<any>();
 
   order_service = inject(OrderService)
+  router = inject(Router)
 
   constructor() {
     this.loadCartState()
@@ -253,6 +256,20 @@ export class ShoppingCartService {
 
   generateOrder()
   {
-    this.order_service.createOrder(this.cartItems());
+    this.order_service.createOrder(this.cartItems()).subscribe({
+      next: () => {
+        this.cartItems.set([])
+        this.saveCartState()
+        this.modal_service.showModal(ModalNotification,{
+          title: "¡Pedido creado!",
+          description: "Será redireccionado a la lista de pedidos"
+        })?.subscribe(() => {
+          this.router.navigate(['my-orders'])
+        })
+      },
+      error: (err) => {
+        throw err
+      }
+    });
   }
 }
