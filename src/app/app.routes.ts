@@ -29,17 +29,11 @@ import {UsersPage} from './components/sections/user/users-page/users-page';
 import {UsersDetail} from './components/sections/user/users-detail/users-detail';
 import { CategoryFormSection } from './components/sections/categories/category-form-section/category-form-section';
 import { DeleteCategory } from './components/sections/categories/delete-category/delete-category';
-<<<<<<< HEAD
 import { ProductsOnSalePage } from './components/sections/customer/products-on-sale-page/products-on-sale-page';
 import {ViewShoppingCart} from './components/sections/shopping-cart/view-shopping-cart';
 import { UserFormComponent } from './components/sections/user/user-form-component/user-form-component';
-=======
 import { CustomerOrderList } from './components/sections/orders/customer-order-list/customer-order-page';
-<<<<<<< HEAD
->>>>>>> f52c51c ((add, wip) listing orders basic info)
-=======
 import { EmployeeOrderPage } from './components/sections/orders/employee-order-page/employee-order-page';
->>>>>>> a601d1a ((add) show different popups according to endpoint)
 
 
 export const routes: Routes = [
@@ -159,7 +153,6 @@ export const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-<<<<<<< HEAD
     path:"on-sale",
     component:ProductsOnSalePage,
     canActivate: [AuthGuard]
@@ -167,10 +160,11 @@ export const routes: Routes = [
   {
     path:"shoppingCart",
     component:ViewShoppingCart,
-=======
+    canActivate: [AuthGuard]
+  },
+  {
     path:"my-orders",
     component:CustomerOrderList,
->>>>>>> f52c51c ((add, wip) listing orders basic info)
     canActivate: [AuthGuard]
   },
   {
