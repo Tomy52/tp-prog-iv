@@ -22,6 +22,11 @@
       <li><a routerLink="delete-category" *appAllowViewUser="['ROLE_MANAGER','ROLE_ADMIN']" >Eliminar</a></li>
     </ul>
 
+    <p class="subtitles">Ordenes</p>
+    <ul>
+      <li><a routerLink="all-orders" *appAllowViewUser="['ROLE_MANAGER','ROLE_ADMIN']">Ver</a> </li>
+    </ul>
+    
     <p class="subtitles">Gestion</p>
     <ul>
       <li><a routerLink="/product-supplier" *appAllowViewUser="['ROLE_MANAGER','ROLE_ADMIN']">Nueva Relación</a></li>
