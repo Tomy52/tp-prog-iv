@@ -5,6 +5,9 @@ import { HttpClient } from '@angular/common/http';
 import { PageResponse } from '../interfaces/other/page-response';
 import { CustomerOrderSearchData } from '../interfaces/component-logic/customer-order-search-data';
 import { EmployeeOrderSearchData } from '../interfaces/component-logic/employee-order-search-data';
+import { CartItem } from '../interfaces/cart-item';
+import { OrderItem } from '../interfaces/orders/order-item';
+import { CreateOrderOrderItem } from '../interfaces/component-logic/create-order-order-item';
 
 @Injectable({
   providedIn: 'root',
@@ -67,5 +70,22 @@ export class OrderService {
   changeStatus(id:number, statusChanged:object)
   {
     return this.http.patch(`${this.orderUrl}/${id}`,statusChanged)
+  }
+
+  createOrder(order_items:CartItem[])
+  {
+    let order_obj = order_items.map((item) => {
+      let order_item:CreateOrderOrderItem = {
+        itemId: item.product.idProduct,
+        quantity: item.quantity
+      }
+      return order_item
+    })
+
+    let order = {
+      items: order_obj
+    }
+
+    this.http.post(`${this.createOrderUrl}`,order);
   }
 }
