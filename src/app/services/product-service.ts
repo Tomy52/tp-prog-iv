@@ -112,8 +112,9 @@ export class ProductService {
     {
       formData.append('file', file);
     }
-    
-    formData.append('productData', JSON.stringify(product))
+
+    const productBlob = new Blob([JSON.stringify(product)], { type: 'application/json; charset=utf-8' });
+    formData.append('productData', productBlob);
 
     return this.http.post<Product>(`${this.baseUrl}`,formData);
   }
