@@ -1,0 +1,14 @@
+.menu-container {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: max(15px, 2vh);
+}
+
+.menu-container.horizontal {
+    flex-direction: row;
+}
+
+.menu-container.vertical {
+    flex-direction: column;
+}

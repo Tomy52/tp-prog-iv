@@ -5,7 +5,7 @@ import { MainMenuButton } from "../../main-menu/main-menu-button/main-menu-butto
   selector: 'app-admin-menu',
   imports: [MainMenuButton],
   templateUrl: './admin-menu.html',
-  styleUrl: './admin-menu.css',
+  styleUrls: ['../main-menu-shared-styles/menu-styles.css','./admin-menu.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AdminMenu {
