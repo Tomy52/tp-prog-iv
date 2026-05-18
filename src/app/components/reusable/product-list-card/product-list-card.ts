@@ -39,5 +39,10 @@ export class ProductListCard {
     return this.productInfo().status === ProductStatus.Disabled;
   }
 
+  getPictureURL()
+  {
+    return this.productInfo().image_url != null ? this.productInfo().image_url : "/images/missing.png"
+  }
+
   protected readonly ProductStatus = ProductStatus;
 }

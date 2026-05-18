@@ -7,6 +7,8 @@
     <h3>Información</h3>
     <p>Id: {{ productInfo().idProduct }}</p>
     <p>Estado: {{ productInfo().status === ProductStatus.Enabled ? "Activo" : "Inactivo" }}</p>
+    <p>Stock: {{ productInfo().stock }}</p>
+    <img [src]="getPictureURL()">
   </div>
 
   <div class="boton-admin" *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']">
