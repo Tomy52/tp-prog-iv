@@ -16,7 +16,7 @@
         <p>Total final: ${{data()?.finalTotal}}</p>
     </div>
 
-    @if (data()?.status != "CANCELLED") {
+    @if (checkIfControlsShouldBeEnabled()) {
         <div class="buttons">
             <button (click)="changeStatus()">Cancelar</button>
         </div>
