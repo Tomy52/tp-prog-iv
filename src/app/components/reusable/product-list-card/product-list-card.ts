@@ -5,6 +5,8 @@ import {Product} from '../../../interfaces/product';
 import {ProductService} from '../../../services/product-service';
 import {ProductStatus} from '../../../interfaces/productStatus';
 import {NgClass} from '@angular/common';
+import { ModalService } from '../../../services/modal-service';
+import { ModalNotification } from '../modal-notification/modal-notification';
 
 @Component({
   selector: 'app-product-list-card',
@@ -17,18 +19,30 @@ export class ProductListCard {
   productInfo = input.required<Product>();
   productService = inject(ProductService);
   router = inject(Router);
+  modal_service = inject(ModalService)
 
 
   deleteProduct() {
-    const ok = confirm(`¿Realmente quiere dar de baja ${this.productInfo().name}?\n\nTip: Esto eliminara todos los precios relacionados`);
+    let ok_option = "Si"
 
-    if(ok)
-    {
-      this.productService.deleteProduct(this.productInfo().idProduct).subscribe({
-        next: () => window.location.reload(),
-        error: () => console.error('Error borrando el producto')
-      });
-    }
+    const modal = this.modal_service.showModal(ModalNotification, {
+      title: `¿Realmente quiere dar de baja ${this.productInfo().name}?`,
+      description: 'Tip: Esto eliminara todos los precios relacionados',
+      options: [ok_option,"No"]
+    })
+
+
+    modal?.subscribe({
+      next: (result) => {
+        if(result == ok_option)
+        {
+          this.productService.deleteProduct(this.productInfo().idProduct).subscribe({
+            next: () => window.location.reload(),
+            error: (err) => {throw err}
+          });
+        }
+      }
+    })
   }
 
   updateProduct() {
