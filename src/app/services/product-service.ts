@@ -68,6 +68,11 @@ export class ProductService {
       query_string += `&status=${state}`
     }
 
+    if(query?.stock)
+    {
+      query_string += `&rem_stock=${query.stock}`
+    }
+
     console.log(query_string)
 
     return this.http.get<PageResponse<Product>>(`${this.baseUrl}/page${query_string}`)

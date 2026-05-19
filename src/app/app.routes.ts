@@ -20,7 +20,6 @@ import {
   PriceListByProductComponent
 } from './components/sections/product-supplier/price-list-by-product-component/price-list-by-product-component';
 import {ProductsPage} from './components/sections/product/products-page/products-page';
-import {privilegedUserGuard} from './guards/privileged-user-guard';
 import {supplierExistsGuard} from './guards/supplier-exists-guard';
 import {priceExistsGuard} from './guards/price-exists-guard';
 import {productExistsGuard} from './guards/product-exists-guard';
@@ -34,7 +33,12 @@ import {ViewShoppingCart} from './components/sections/shopping-cart/view-shoppin
 import { UserFormComponent } from './components/sections/user/user-form-component/user-form-component';
 import { CustomerOrderList } from './components/sections/orders/customer-order-list/customer-order-page';
 import { EmployeeOrderPage } from './components/sections/orders/employee-order-page/employee-order-page';
+import { roleGuardGuard } from './guards/role-guard-guard';
 
+const employee_role_ABM = "ROLE_MANAGER"
+const admin_role = "ROLE_ADMIN"
+const employee_roles = ["ROLE_EMPLOYEE",employee_role_ABM,admin_role]
+const customer_role = "ROLE_CUSTOMER"
 
 export const routes: Routes = [
   {
@@ -42,7 +46,8 @@ export const routes: Routes = [
     component: Login,
     data: {
       showHeader: false,
-      showFooter: false}
+      showFooter: false
+    }
   },
   {
     path: "register",
@@ -60,117 +65,189 @@ export const routes: Routes = [
   {
     path: "form-products",
     component: ProductFormSection,
-    canActivate: [AuthGuard,privilegedUserGuard]
+    canActivate: [AuthGuard,roleGuardGuard],
+    data: {
+      allowedUsers: employee_role_ABM
+    }
   },
   {
     path:"form-products/:id",
     component: ProductFormSection,
-    canActivate: [AuthGuard,privilegedUserGuard, productExistsGuard]
+    canActivate: [AuthGuard,productExistsGuard, roleGuardGuard],
+    data: {
+      allowedUsers: employee_role_ABM
+    }
   },
   {
     path:"products",
     component:ProductsPage,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard,roleGuardGuard],
+    data: {
+      allowedUsers: employee_roles
+    }
   },
   {
     path: "delete-product",
     component: DeleteProductFormComponent,
-    canActivate: [AuthGuard,privilegedUserGuard]
+    canActivate: [AuthGuard,roleGuardGuard],
+    data: {
+      allowedUsers: employee_role_ABM
+    }
   },
   {
     path:"form-suppliers",
     component:SupplierFormSection,
-    canActivate: [AuthGuard,privilegedUserGuard]
+    canActivate: [AuthGuard,roleGuardGuard],
+    data: {
+      allowedUsers: employee_role_ABM
+    }
   },
   {
     path:"form-suppliers/:id",
     component:SupplierFormSection,
-    canActivate: [AuthGuard,privilegedUserGuard,supplierExistsGuard]
+    canActivate: [AuthGuard,roleGuardGuard,supplierExistsGuard],
+    data: {
+      allowedUsers: employee_role_ABM
+    }
   },
   {
     path:"delete-supplier",
     component:DeleteSupplier,
-    canActivate: [AuthGuard,privilegedUserGuard]
+    canActivate: [AuthGuard,roleGuardGuard],
+    data: {
+      allowedUsers: employee_role_ABM
+    }
   },
   {
     path:"product-supplier",
     component: ProductSupplierFormSection,
-    canActivate: [AuthGuard, privilegedUserGuard]
+    canActivate: [AuthGuard,roleGuardGuard],
+    data: {
+      allowedUsers: employee_role_ABM
+    }
   },
   {
     path:"product-supplier/:id",
     component: ProductSupplierFormSection,
-    canActivate: [AuthGuard, privilegedUserGuard, priceExistsGuard]
+    canActivate: [AuthGuard, priceExistsGuard,roleGuardGuard],
+    data: {
+      allowedUsers: employee_role_ABM
+    }
   },
   {
     path:"price-by-supplier",
     component: PriceBySupplierListComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard,roleGuardGuard],
+    data: {
+      allowedUsers: employee_role_ABM
+    }
   },
   {
     path:"price-by-product",
     component: PriceListByProductComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard,roleGuardGuard],
+    data: {
+      allowedUsers: employee_role_ABM
+    }
   },
   {
     path:"users",
     component: UsersPage,
-    canActivate: [AuthGuard, privilegedUserGuard]
+    canActivate: [AuthGuard,roleGuardGuard],
+    data: {
+      allowedUsers: admin_role
+    }
   },
   {
     path:"users/:id",
     component: UsersDetail,
-    canActivate: [AuthGuard, privilegedUserGuard]
+    canActivate: [AuthGuard,roleGuardGuard],
+    data: {
+      allowedUsers: admin_role
+    }
   },
   {
     path:"users-add",
     component: UserFormComponent,
-    canActivate: [AuthGuard, privilegedUserGuard]
+    canActivate: [AuthGuard,roleGuardGuard],
+    data: {
+      allowedUsers: admin_role
+    }
   },
   {
     path:"users-add/:id",
     component: UserFormComponent,
-    canActivate: [AuthGuard, privilegedUserGuard]
+    canActivate: [AuthGuard,roleGuardGuard],
+    data: {
+      allowedUsers: admin_role
+    }
   },
   {
     path:"csv-prices",
     component: CsvFormUpdate,
-    canActivate: [AuthGuard, privilegedUserGuard]
+    canActivate: [AuthGuard,roleGuardGuard],
+    data: {
+      allowedUsers: employee_role_ABM
+    }
   },
   {
     path:"categories",
     component: CategoryFormSection,
-    canActivate: [AuthGuard, privilegedUserGuard]
+    canActivate: [AuthGuard,roleGuardGuard],
+    data: {
+      allowedUsers: employee_role_ABM
+    }
   },
   {
     path:"delete-category",
     component: DeleteCategory,
-    canActivate: [AuthGuard, privilegedUserGuard]
+    canActivate: [AuthGuard,roleGuardGuard],
+    data: {
+      allowedUsers: employee_role_ABM
+    }
   },
   {
     path:"suppliers",
     component:SuppliersPage,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard,roleGuardGuard],
+    data: {
+      allowedUsers: employee_roles
+    }
   },
   {
     path:"on-sale",
     component:ProductsOnSalePage,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard,roleGuardGuard],
+    data: {
+      allowedUsers: customer_role,
+      applyHierarchy: false // checkout src/app/guards/role-guard-guard.ts to understand how it works
+    }
   },
   {
     path:"shoppingCart",
     component:ViewShoppingCart,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard,roleGuardGuard],
+    data: {
+      allowedUsers: customer_role,
+      applyHierarchy: false // checkout src/app/guards/role-guard-guard.ts to understand how it works
+    }
   },
   {
     path:"my-orders",
     component:CustomerOrderList,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard,roleGuardGuard],
+    data: {
+      allowedUsers: customer_role,
+      applyHierarchy: false
+    }
   },
   {
     path:"all-orders",
     component:EmployeeOrderPage,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard,roleGuardGuard],
+    data: {
+      allowedUsers: employee_roles
+    }
   },
   {
     path:"**",

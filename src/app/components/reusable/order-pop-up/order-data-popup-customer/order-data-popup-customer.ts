@@ -62,4 +62,9 @@ export class OrderDataPopupCustomer {
       }
     })
   }
+  
+  checkIfControlsShouldBeEnabled()
+  {
+    return !(this.data()?.status == "CANCELLED" || this.data()?.status == "COMPLETED")
+  }
 }

@@ -144,7 +144,3 @@ p.subtitles a:hover {
     backdrop-filter: blur(6px);
     z-index: 1050;
 }
-
-@media (max-width: 480px) {
-    aside { width: 85%; } 
-}
