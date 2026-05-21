@@ -6,7 +6,7 @@ import { SupplierSearchData } from '../../../interfaces/component-logic/supplier
   selector: 'app-supplier-search-bar',
   imports: [ReactiveFormsModule],
   templateUrl: './supplier-search-bar.html',
-  styleUrl: './supplier-search-bar.css',
+  styleUrls: ['./supplier-search-bar.css','../styles/search-bar-styles.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SupplierSearchBar implements OnChanges {
