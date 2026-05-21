@@ -6,7 +6,7 @@ import { RouterLink } from "@angular/router";
   selector: 'app-admin-sidebar',
   imports: [RouterLink],
   templateUrl: './admin-sidebar.html',
-  styleUrl: './admin-sidebar.css',
+  styleUrls: ['./admin-sidebar.css',"../styles/sidebar-style.css"],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AdminSidebar {

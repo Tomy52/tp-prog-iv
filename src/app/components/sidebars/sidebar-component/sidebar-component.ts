@@ -10,7 +10,7 @@ import { AuthService } from "../../../services/auth-service";
     AllowViewUser,
   ],
   templateUrl: './sidebar-component.html',
-  styleUrl: "./sidebar-component.css"
+  styleUrls: ["./sidebar-component.css","../styles/sidebar-style.css"]
 })
 export class SidebarComponent {
 
