@@ -8,7 +8,7 @@ import { CustomerOrderSearchData } from '../../../interfaces/component-logic/cus
   selector: 'app-customer-order-search-bar',
   imports: [ReactiveFormsModule],
   templateUrl: './customer-order-search-bar.html',
-  styleUrl: './customer-order-search-bar.css',
+  styleUrls: ['./customer-order-search-bar.css','../styles/search-bar-styles.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CustomerOrderSearchBar implements OnChanges {
