@@ -5,3 +5,7 @@ div {
 section {
     flex-wrap: wrap;
 }
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
