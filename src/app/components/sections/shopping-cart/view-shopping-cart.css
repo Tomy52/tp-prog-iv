@@ -55,6 +55,8 @@ p:hover {
   justify-content: center;
 
   max-width: 50%;
+  gap: 10px;
+  flex-direction: column;
 }
 
 button,a{
@@ -76,6 +78,11 @@ button,a{
   flex: 1;
 }
 
+button:hover,a:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1) saturate(1.2);
+}
+
 a {
   display: flex;
   justify-content: center;
@@ -92,4 +99,3 @@ button:disabled {
 button:hover {
   background-color: var(--tertiary-color);
 }
-
