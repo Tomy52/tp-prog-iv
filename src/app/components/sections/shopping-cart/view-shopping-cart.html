@@ -3,7 +3,8 @@
   <div class="items-container">
 
     @for (item of cartItems(); track $index) {
-      <p>{{item.product.name}} - <small> {{item.quantity}} </small> - ${{item.product.price * item.quantity}}</p>
+      <app-customer-product-list-card [productInfo]="item.product" [taken_stock]="item.quantity" />
+      <!-- <p>{{item.product.name}} - <small> {{item.quantity}} </small> - ${{item.product.price * item.quantity}}</p> -->
     }
     
     <div>Total: ${{finalPrice()}}</div>

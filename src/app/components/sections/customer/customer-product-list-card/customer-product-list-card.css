@@ -4,14 +4,17 @@ article {
   justify-content: space-between; /* distribuye contenido y manda botones abajo */
   align-items: center;
 
-  height: 100%;
-
-  border: 1px solid black;
-
-  padding: 2px;
-  background-color: var(--bg-color);
-  border-radius: 5px;
-
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.5) 0%, rgba(240, 245, 243, 0.3) 100%);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  
+  width: 100%;
+  padding: 25px;
+  gap: 15px; 
+  box-sizing: border-box;
 }
 
 button{
@@ -39,13 +42,32 @@ button:hover {
 
 
 div {
-  background-color: var(--bg-color);
   margin: 5px;
   padding: 2px;
   border-radius: 10px;
 }
 
 .horizontal {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
+}
+
+.buttons {
+  display: flex;
+}
+
+.buttons > * {
+  flex: 1;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.name {
+  display: flex;
+  flex-direction: column;
+}
+
+.name > img {
+  height: auto;
+  max-width: 200px;
 }

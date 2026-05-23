@@ -1,12 +1,14 @@
 import {ChangeDetectionStrategy, Component, computed, inject} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {ShoppingCartService} from '../../../services/shopping-cart-service';
+import { CustomerProductListCard } from "../customer/customer-product-list-card/customer-product-list-card";
 
 @Component({
   selector: 'app-shopping-cart',
   imports: [
-    RouterLink
-  ],
+    RouterLink,
+    CustomerProductListCard
+],
   templateUrl: './view-shopping-cart.html',
   styleUrl: './view-shopping-cart.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

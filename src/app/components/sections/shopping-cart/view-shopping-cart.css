@@ -43,7 +43,8 @@ button>a{
 .items-container>p{
   color: #16372d;
   line-height: 1.5rem;
-  transition: transform 300ms ease-in-out
+  transition: transform 300ms ease-in-out;
+  text-shadow: 2px 2px 25px;
 }
 
 p:hover {

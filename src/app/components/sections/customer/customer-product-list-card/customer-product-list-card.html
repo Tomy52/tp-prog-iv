@@ -1,8 +1,6 @@
 <article>
     <div class="horizontal name">
-        <h2>{{productInfo().name}}</h2>
-        <p>${{productInfo().price}}</p>
-
+        <h2>{{productInfo().name}} - ${{productInfo().price}}</h2>
         <img src="{{getImageUrl()}}" alt="imagen de {{productInfo().name}}">
 
     </div>
@@ -12,8 +10,11 @@
       @if(this.taken_stock() == 0){
         <button (click)="selectProduct(productInfo().idProduct)"> Agregar al carrito</button>
       } @else {
-        <button class="quantityControl" (click)="selectProduct(productInfo().idProduct)" [disabled]="calculateStockRemainingStock() <= 0">+</button>
-        <button class="quantityControl" (click)="unselectProduct(productInfo().idProduct)" [disabled]="taken_stock() == 0">-</button>
+        <div class="buttons">
+          <button class="quantityControl" (click)="unselectProduct(productInfo().idProduct)" [disabled]="taken_stock() == 0">-</button>
+          <p>{{taken_stock()}}</p>
+          <button class="quantityControl" (click)="selectProduct(productInfo().idProduct)" [disabled]="calculateStockRemainingStock() <= 0">+</button>
+        </div>
       }
 
 

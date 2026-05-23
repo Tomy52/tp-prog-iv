@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, inject, input, OnInit, output, signal} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, input, model, OnInit, output, signal} from '@angular/core';
 import { CustomerProductInfo } from '../../../../interfaces/product/customer-product-info';
 import {ShoppingCartService} from '../../../../services/shopping-cart-service';
 import { Subject } from 'rxjs';
@@ -14,7 +14,7 @@ export class CustomerProductListCard implements OnInit {
   productInfo = input.required<CustomerProductInfo>()
   isClicked = signal<boolean>(false);
   shoppingCartService = inject(ShoppingCartService);
-  taken_stock = signal<number>(0);
+  taken_stock = model<number>(0);
   returnedStock = output<CustomerProductInfo[]>()
 
   ngOnInit(): void { // this makes a race condition
