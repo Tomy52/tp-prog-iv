@@ -1,0 +1,39 @@
+<aside>
+  <div>
+    <p class="subtitles">Proveedores</p>
+    <ul>
+      <li><a routerLink="suppliers" >Ver</a></li>
+      <li><a routerLink="form-suppliers" >Nuevo</a></li>
+      <li><a routerLink="delete-supplier">Eliminar</a></li>
+      <li><a routerLink="/price-by-supplier">Buscar precios</a></li>
+    </ul>
+
+    <p class="subtitles">Productos</p>
+    <ul>
+      <li><a routerLink="products" >Ver</a></li>
+      <li><a routerLink="form-products">Nuevo</a></li>
+      <li><a routerLink="delete-product" >Eliminar</a></li>
+      <li><a routerLink="/price-by-product" >Buscar precios</a></li>
+    </ul>
+
+    <p class="subtitles">Categorías</p>
+    <ul>
+      <li><a routerLink="categories" >Nueva</a></li>
+      <li><a routerLink="delete-category" >Eliminar</a></li>
+    </ul>
+
+    <p class="subtitles">Gestion</p>
+    <ul>
+      <li><a routerLink="/product-supplier">Nueva Relación</a></li>
+      <li><a routerLink="/csv-prices">Cargar Listas</a></li>
+    </ul>
+
+    <p class="subtitles">Usuarios</p>
+    <ul>
+        <li><a routerLink="/users">Ver</a></li>
+        <li><a routerLink="/users-add">Añadir usuario</a></li>
+    </ul>
+
+    <p class="subtitles logout"><a routerLink="/login" (click)="logOut()">Salir</a></p>
+  </div>
+</aside>

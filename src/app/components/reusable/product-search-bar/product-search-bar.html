@@ -26,6 +26,11 @@
                     <option [ngValue]="productStatusEnum.Disabled">Deshabilitado</option>
                 </select>
             </div>
+
+            <div>
+                <label for="stock">Stock restante (igual o menor)</label>
+                <input type="number" name="stock" id="stock" min="0" formControlName="stock">
+            </div>
             
             <div>
                 <button type="submit">Buscar</button>
