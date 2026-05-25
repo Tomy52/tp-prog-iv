@@ -12,6 +12,7 @@ import {AuthService} from '../../services/auth-service';
 import { CustomerSidebar } from '../sidebars/customer-sidebar/customer-sidebar';
 import { SidebarComponent } from "../sidebars/sidebar-component/sidebar-component";
 import {ShoppingCart} from '../reusable/shopping-cart/shopping-cart';
+import { AdminSidebar } from "../sidebars/admin-sidebar/admin-sidebar";
 
 @Component({
   selector: 'app-header-component',
@@ -20,8 +21,9 @@ import {ShoppingCart} from '../reusable/shopping-cart/shopping-cart';
     ClickOutside,
     CustomerSidebar,
     SidebarComponent,
-    ShoppingCart
-  ],
+    ShoppingCart,
+    AdminSidebar
+],
   templateUrl: './header-component.html',
   styleUrl: './header-component.css',
   changeDetection: ChangeDetectionStrategy.OnPush

@@ -27,6 +27,12 @@
                 </select>
             </div>
 
+       
+            <div>
+                <label for="stock">Stock restante (igual o menor)</label>
+                <input type="number" name="stock" id="stock" min="0" formControlName="stock">
+            </div>
+            
             <div class="button-container">
                 <button type="submit">Buscar</button>
                 <button type="button" (click)="reset()">Reiniciar</button>

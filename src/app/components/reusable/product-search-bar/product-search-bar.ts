@@ -45,7 +45,8 @@ export class ProductSearchBar {
     tern: [''],
     category_id: [null],
     product_id: [0],
-    status: [null]
+    status: [null],
+    stock: [0]
   })
 
   completeForm()
@@ -55,10 +56,10 @@ export class ProductSearchBar {
       search_query: form_value.tern!,
       category: form_value.category_id!,
       product_id: form_value.product_id!,
-      state: form_value.status!
+      state: form_value.status!,
+      stock: form_value.stock!
     }
 
-    console.log(values)
     this.query_sig.emit(values)
   }
 
