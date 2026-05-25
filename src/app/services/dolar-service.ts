@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { DolarPrice } from '../interfaces/component-logic/dolar-price';
+import { DolarPrice } from '../interfaces/dolar/dolar-price';
 
 @Injectable({
   providedIn: 'root',

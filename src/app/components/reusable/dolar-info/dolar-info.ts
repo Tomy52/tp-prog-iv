@@ -1,14 +1,15 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { DolarService } from '../../../services/dolar-service';
-import { DolarPrice } from '../../../interfaces/component-logic/dolar-price';
+import { DolarPrice } from '../../../interfaces/dolar/dolar-price';
 import { EnumMappingService } from '../../../services/enum-mapping-service';
 import { EnumMap } from '../../../interfaces/component-logic/enum-map';
 import { DolarEnum } from '../../../interfaces/dolar/dolar-enum';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { DatePipe, formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-dolar-info',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, DatePipe],
   templateUrl: './dolar-info.html',
   styleUrl: './dolar-info.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -51,6 +52,11 @@ export class DolarInfo {
   onChange(event:any)
   {
     this.searchDolarData(event.target.value)    
+  }
+
+  parseDate()
+  {
+    return formatDate(this.dolar_info()?.ultima_actualizacion!, 'dd-MM-yyyy HH:mm', 'en-US')
   }
 
 }

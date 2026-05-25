@@ -1,19 +1,19 @@
 @if (!searching()) {
     @if (success()) {
-        <div class="horizontal">
+        <div class="horizontal bar-container">
             <div>
-                Compra: ${{dolar_info()?.compra}}
+                <p> Compra: ${{dolar_info()?.compra}} </p>
             </div>
             <div>
-                Venta: ${{dolar_info()?.venta}}
+                <p> Venta: ${{dolar_info()?.venta}} </p>
             </div>
             <div>
-                Actualizado: {{dolar_info()?.ultima_actualizacion}}
+                <p> Fecha: {{ parseDate() }}  </p>
             </div>
             <div>
                 <form action="" [formGroup]="form">
-                <label for="dolar">Moneda: </label>
-                    <select name="dolar" id="dolar" (change)="onChange($event)" formControlName="exchange">
+                <label for="exchange">Moneda: </label>
+                    <select name="exchange" id="exchange" (change)="onChange($event)" formControlName="exchange">
                         @for (item of enum_options(); track $index) {
                             <option [value]="item.key">{{item.value}}</option>
                         }
@@ -23,9 +23,9 @@
         </div>
     } @else {
         <div>
-            No se puede buscar el precio del dolar, intentelo mas tarde.
+            <p> No se puede buscar el precio del dolar, intentelo mas tarde. </p>
         </div>
     }
 } @else {
-    <div> Buscando.. </div>
+    <div> Buscando... </div>
 }
