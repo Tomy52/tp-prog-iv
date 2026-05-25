@@ -9,8 +9,9 @@ export class DolarService {
   http = inject(HttpClient)
   url = "api/misc/dollar"
 
-  getDolarInfoFromBackend(exchange_rate:string = "oficial")
+  getDolarInfoFromBackend(exchange_rate?:string)
   {
-    return this.http.get<DolarPrice>(`this.url?exchange_rate=${exchange_rate}`)
+    if(!exchange_rate) exchange_rate = "oficial"
+    return this.http.get<DolarPrice>(`${this.url}?exchange_rate=${exchange_rate}`)
   }
 }
