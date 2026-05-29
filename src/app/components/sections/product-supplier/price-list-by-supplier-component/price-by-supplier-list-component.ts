@@ -9,7 +9,6 @@ import {ProductSupplierRowComponent} from '../price-by-supplier-row-component/pr
 import {PageButtons} from '../../../reusable/page-buttons/page-buttons';
 import {AllowViewUser} from '../../../../directives/allow-view-user';
 import { ModalService } from '../../../../services/modal-service';
-import { ModalNotification } from '../../../reusable/modal-notification/modal-notification';
 
 @Component({
   selector: 'app-price-list-by-supplier-component',

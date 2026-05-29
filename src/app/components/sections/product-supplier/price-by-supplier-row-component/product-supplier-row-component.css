@@ -6,13 +6,9 @@ td{
 button{
   border: none;
   box-shadow: #02111b 1px 1px 1px;
-
   background-color: var(--secondary-color);
   border-radius: 5px;
-  border-color: var(--text-color);
-  border-width: 2px;
   color: var(--text-color);
-
   width: min-content;
   font-size: small;
   font-family: "BreeSerif-regular", serif;
@@ -22,7 +18,12 @@ button.edit-button:hover{
   background-color: var(--tertiary-color);
 }
 
-button.delete-button:hover{
-  background-color: red;
+
+
+button.delete-button{
+  background-color: #8a0000;
 }
 
+button.delete-button:hover{
+  background-color: #b30202;
+}

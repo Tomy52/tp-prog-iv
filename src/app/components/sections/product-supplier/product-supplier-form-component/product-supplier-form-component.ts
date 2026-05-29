@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, effect, inject, input, signal} from '@angular/core';
+import {ChangeDetectionStrategy, Component, effect, inject, input, output, signal} from '@angular/core';
 import {ProductDropdownSelect} from '../../../reusable/product-dropdown-select/product-dropdown-select';
 import {ProductService} from '../../../../services/product-service';
 import {SupplierService} from '../../../../services/supplier-service';
@@ -14,6 +14,7 @@ import {FieldError} from '../../../../directives/field-error';
 import {FieldErrorBorder} from '../../../../directives/field-error-border';
 import { ModalService } from '../../../../services/modal-service';
 import { ModalNotification } from '../../../reusable/modal-notification/modal-notification';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-product-supplier-form-component',
@@ -35,14 +36,13 @@ export class ProductSupplierFormComponent {
   productSupplierService = inject(ProductSupplierService);
   formBuilder = inject(FormBuilder);
   modal_service = inject(ModalService)
+  router = inject(Router);
 
   supplierList = signal<Supplier[]>([]);
   productsList = signal<Product[]>([]);
 
   productSupplierToModify = input<Partial<ResponseProductSupplier>>();
   isEditing = input.required<boolean>();
-
-
 
   productSupplierForm = this.formBuilder.group({
     product: this.formBuilder.control<number | null>(null),
@@ -63,6 +63,7 @@ export class ProductSupplierFormComponent {
         this.productSupplierForm.get("cost")?.patchValue(this.productSupplierToModify()?.cost!)
       }
     });
+
   }
 
   getProducts() {
@@ -97,7 +98,7 @@ export class ProductSupplierFormComponent {
 
 
   createProductSupplier() {
-    
+
     const selectedProductId = this.productSupplierForm.get("product")?.value!;
     const selectedProduct = this.productsList().find(product => product.idProduct === this.productSupplierForm.get("product")?.value!);
 
@@ -146,6 +147,7 @@ export class ProductSupplierFormComponent {
           this.modal_service.showModal(ModalNotification, {
             title: "¡Relación modificada exitosamente!"
           })
+          this.goBack();
 
         },
         error: (e) => {
@@ -168,6 +170,12 @@ export class ProductSupplierFormComponent {
   isFormInvalid(){
 
     return this.isDropDownInvalid() || this.productSupplierForm.invalid;
+
+  }
+
+  goBack(){
+
+    this.router.navigate(["/price-by-supplier"]);
 
   }
 
