@@ -44,7 +44,7 @@
                         (next_signal)="goNextPage()"
                         [back_active]="supplierProductList().productsList!.first || searching"
                         [forward_active]="supplierProductList().productsList!.last || searching"
-                        [current_page]="supplierProductList().productsList!.number + 1"
+                        [current_page]="supplierProductList().productsList!.number"
                         [max_page]="supplierProductList().productsList!.totalPages"
 
                         (size_changed)="changePageSize($event)"

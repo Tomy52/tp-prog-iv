@@ -49,7 +49,7 @@
                           (next_signal)="goNextPage()"
                           [back_active]="priceByProductList().prices!.first || searching"
                           [forward_active]="priceByProductList().prices!.last || searching"
-                          [current_page]="priceByProductList().prices!.number + 1"
+                          [current_page]="priceByProductList().prices!.number"
                           [max_page]="priceByProductList().prices!.totalPages"
 
                           (size_changed)="changePageSize($event)"
