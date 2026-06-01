@@ -27,7 +27,7 @@ export class GlobalErrorHandler implements ErrorHandler{
         this.errorData.set(apiError);
 
         this.modal_service.showModal(ModalNotification, {
-          title: `${apiError.title} | Error: ${apiError.status}`,
+          title: `${apiError.title}`,
           description: apiError.detail
         }, false)
 
