@@ -1,7 +1,7 @@
 <section>
   <article>
     <h2> Precios según producto </h2>
-  <form [formGroup]="productForm"
+    <form [formGroup]="productForm"
         (ngSubmit)="getPricesByProductList()">
 
     <app-product-dropdown-select [products]="productList()"
@@ -12,50 +12,51 @@
   </form>
   </article>
 
-  @if (priceList() !== undefined){
-
-    <h3>Proveedores que tienen: {{ priceByProductList().name}}</h3>
-
-    @if(priceList()?.length === 0){
-    <p>No hay Proveedores registrados que tengan el Producto solicitado</p>
-
-    } @else {
-
-      <div id="table-wrapper">
-        <table>
-          <thead>
-          <tr>
-            <th> Proveedor</th>
-            <th *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']"> Costo </th>
-            <th *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']"> Precio en USD </th>
-            <th *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']"></th>
-            <th *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']"></th>
-
-          </tr>
-          </thead>
-          <tbody>
-
-            @for (productPrice of priceList(); track $index) {
-              <tr app-price-by-product-row-component
-                  [productPrice]="productPrice"
-                  [productSupplierId]="productPrice.idProductSupplier"
-                  (rowDeleted)="handleRowDeletion($event)"></tr>
-            }
-          </tbody>
-        </table>
-      </div>
-
+  <div class="div-container">
+    @if (priceList() !== undefined){
+      
+      <h3>Proveedores que tienen: {{ priceByProductList().name}}</h3>
+      
+      @if(priceList()?.length === 0){
+        <p>No hay Proveedores registrados que tengan el Producto solicitado</p>
+        
+      } @else {
+        
+        <div id="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th> Proveedor</th>
+                <th *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']"> Costo </th>
+                <th *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']"> Precio en USD </th>
+                <th *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']"></th>
+                <th *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']"></th>
+                
+              </tr>
+            </thead>
+            <tbody>
+              
+              @for (productPrice of priceList(); track $index) {
+                <tr app-price-by-product-row-component
+                [productPrice]="productPrice"
+                [productSupplierId]="productPrice.idProductSupplier"
+                (rowDeleted)="handleRowDeletion($event)"></tr>
+              }
+            </tbody>
+          </table>
+        </div>
+        
         <app-page-buttons (back_signal)="goPreviewsPage()"
-                          (next_signal)="goNextPage()"
-                          [back_active]="priceByProductList().prices!.first || searching"
-                          [forward_active]="priceByProductList().prices!.last || searching"
-                          [current_page]="priceByProductList().prices!.number + 1"
-                          [max_page]="priceByProductList().prices!.totalPages"
-
-                          (size_changed)="changePageSize($event)"
-                          [page_size_ops]="pageSizeOptions">
-        </app-page-buttons>
+        (next_signal)="goNextPage()"
+        [back_active]="priceByProductList().prices!.first || searching"
+        [forward_active]="priceByProductList().prices!.last || searching"
+        [current_page]="priceByProductList().prices!.number"
+        [max_page]="priceByProductList().prices!.totalPages"
+        
+        (size_changed)="changePageSize($event)"
+        [page_size_ops]="pageSizeOptions">
+      </app-page-buttons>
     }
   }
-
+  </div>
 </section>

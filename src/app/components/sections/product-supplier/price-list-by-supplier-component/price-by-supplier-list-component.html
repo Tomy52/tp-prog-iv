@@ -7,13 +7,14 @@
     </form>
   </article>
 
+  <div class="div-container">
 @if (priceList() !== undefined){
 
   <h3>Lista de Precios de {{ supplierProductList().companyName}}</h3>
 
   @if (priceList()?.length === 0){
 
-    <p>El Proveedor no tiene productos sociados</p>
+    <p>El Proveedor no tiene productos asociados</p>
 
   } @else {
     <div id="table-wrapper">
@@ -22,9 +23,8 @@
         <tr>
           <th> Nombre </th>
           <th *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']"> Costo </th>
-          <th *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']"> Precio en USD</th>
-          <th *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']"></th>
-          <th *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']"></th>
+          <th *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']"> Precio (USD)</th>
+          <th *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']" colspan="2">Opciones</th>
 
         </tr>
         </thead>
@@ -37,12 +37,14 @@
           }
         </tbody>
       </table>
+
     </div>
+
       <app-page-buttons (back_signal)="goPreviewsPage()"
                         (next_signal)="goNextPage()"
                         [back_active]="supplierProductList().productsList!.first || searching"
                         [forward_active]="supplierProductList().productsList!.last || searching"
-                        [current_page]="supplierProductList().productsList!.number + 1"
+                        [current_page]="supplierProductList().productsList!.number"
                         [max_page]="supplierProductList().productsList!.totalPages"
 
                         (size_changed)="changePageSize($event)"
@@ -51,4 +53,5 @@
   }
 
 }
+  </div>
   </section>
