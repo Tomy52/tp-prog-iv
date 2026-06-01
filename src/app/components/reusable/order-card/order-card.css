@@ -1,5 +1,15 @@
 article {
-    background-color: white;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.5) 0%, rgba(240, 245, 243, 0.3) 100%);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    
+    gap: 15px; 
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -9,3 +19,4 @@ article {
 div {
     padding: 5px 10px;
 }
+
