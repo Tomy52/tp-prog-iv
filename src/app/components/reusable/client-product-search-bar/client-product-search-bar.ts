@@ -9,7 +9,7 @@ import { ClientProductSearchBarData } from '../../../interfaces/component-logic/
   selector: 'app-client-product-search-bar',
   imports: [CategoryDropdownSelect,ReactiveFormsModule],
   templateUrl: './client-product-search-bar.html',
-  styleUrl: './client-product-search-bar.css',
+  styleUrls: ['./client-product-search-bar.css','../styles/search-bar-styles.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ClientProductSearchBar {

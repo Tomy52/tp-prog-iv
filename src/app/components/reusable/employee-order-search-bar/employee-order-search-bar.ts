@@ -9,7 +9,7 @@ import { EmployeeOrderSearchData } from '../../../interfaces/component-logic/emp
   selector: 'app-employee-order-search-bar',
   imports: [ReactiveFormsModule],
   templateUrl: './employee-order-search-bar.html',
-  styleUrl: './employee-order-search-bar.css',
+  styleUrls: ['./employee-order-search-bar.css','../styles/search-bar-styles.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EmployeeOrderSearchBar {
