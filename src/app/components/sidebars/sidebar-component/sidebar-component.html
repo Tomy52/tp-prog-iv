@@ -28,6 +28,11 @@
       <li><a routerLink="/csv-prices" *appAllowViewUser="['ROLE_MANAGER','ROLE_ADMIN']">Cargar Listas</a></li>
     </ul>
 
+    <p class="subtitles">Pedidos</p>
+    <ul>
+      <li><a routerLink="/all-orders">Todos los pedidos</a></li>
+    </ul>
+
     <p class="subtitles logout"><a routerLink="/login" (click)="logOut()">Salir</a></p>
   </div>
 </aside>
