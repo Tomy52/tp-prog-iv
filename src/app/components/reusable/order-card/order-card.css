@@ -13,10 +13,14 @@ article {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 20px;
+    margin: 10px;
 }
 
 div {
     padding: 5px 10px;
+}
+
+button {
+    width: 100%;
 }
 

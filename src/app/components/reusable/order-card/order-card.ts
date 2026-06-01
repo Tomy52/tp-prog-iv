@@ -19,7 +19,6 @@ export class OrderCard {
   popup_component = input.required<OrderPopupType>();
   enum_mapping_service = inject(EnumMappingService)
 
-
   showOrderDataPopUp()
   {
     const popup = this.modal_service.showOrderDataModal(this.popup_component(),this.orderData()!,false)
