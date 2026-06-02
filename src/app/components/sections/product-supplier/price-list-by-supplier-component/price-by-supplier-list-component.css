@@ -31,7 +31,6 @@ h3{
   margin-top: 30px;
   border-radius: 30px;
   box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3);
-  width: 90%;
   margin-bottom: 15px;
 }
 
@@ -103,6 +102,10 @@ button:hover{
 
   .paginator-container{
     width: 100%;
+  }
+
+  .list-container{
+    width: 90%;
   }
 
 }
