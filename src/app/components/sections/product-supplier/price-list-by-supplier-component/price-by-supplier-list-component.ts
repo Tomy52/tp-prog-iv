@@ -9,6 +9,7 @@ import {ProductSupplierRowComponent} from '../price-by-supplier-row-component/pr
 import {PageButtons} from '../../../reusable/page-buttons/page-buttons';
 import {AllowViewUser} from '../../../../directives/allow-view-user';
 import { ModalService } from '../../../../services/modal-service';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-price-list-by-supplier-component',
@@ -34,7 +35,6 @@ export class PriceBySupplierListComponent {
   page = signal<number>(0);
   pageSize:number;
   pageSizeOptions:number[] = [2,5,10];
-
   searching:boolean = false;
 
   supplierList = signal<Supplier[]>([]);
