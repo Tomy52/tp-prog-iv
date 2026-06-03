@@ -1,9 +1,7 @@
 <section id="delete-product-form">
-
-  <h2>Borrar producto</h2>
-
-      <form [formGroup]="deleteProductForm" (ngSubmit)="deleteProduct()">
+  <form [formGroup]="deleteProductForm" (ngSubmit)="deleteProduct()">
+        <h2>Borrar producto</h2>
         <app-product-dropdown-select [products]="products()" formControlName="product"/>
-        <button type="submit" [disabled]="this.formIsInvalid()">Borrar</button>
-      </form>
+        <input type="submit" [disabled]="this.formIsInvalid()" value="Borrar">
+    </form>
 </section>
