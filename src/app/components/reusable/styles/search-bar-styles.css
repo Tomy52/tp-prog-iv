@@ -131,7 +131,7 @@ button:hover {
 @media (max-width: 1505px) {
     .large-search-bar {
         flex-direction: column;
-        max-width: 315px;
+        max-width: fit-content;
     }
 
     .large-search-bar > section {

@@ -12,7 +12,7 @@ const select_value_accessor = {
   selector: 'app-category-dropdown-select',
   imports: [ReactiveFormsModule, FormsModule],
   templateUrl: './category-dropdown-select.html',
-  styleUrl: './category-dropdown-select.css',
+  styleUrls: ['./category-dropdown-select.css','../styles/select-style.css'],
   providers: [select_value_accessor]
 })
 export class CategoryDropdownSelect implements ControlValueAccessor {
