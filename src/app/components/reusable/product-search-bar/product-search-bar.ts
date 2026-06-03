@@ -11,7 +11,7 @@ import { AllowViewUser } from "../../../directives/allow-view-user";
   selector: 'app-product-search-bar',
   imports: [ReactiveFormsModule, CategoryDropdownSelect, AllowViewUser],
   templateUrl: './product-search-bar.html',
-  styleUrls: ['./product-search-bar.css','../styles/search-bar-styles.css'],
+  styleUrls: ['./product-search-bar.css','../styles/search-bar-styles.css','../styles/select-style.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductSearchBar {

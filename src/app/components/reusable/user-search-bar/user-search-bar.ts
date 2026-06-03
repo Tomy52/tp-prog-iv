@@ -9,7 +9,7 @@ import { UserSearchBarData } from '../../../interfaces/component-logic/user-sear
     FormsModule
   ],
   templateUrl: './user-search-bar.html',
-  styleUrls: ['./user-search-bar.css','../styles/search-bar-styles.css'],
+  styleUrls: ['./user-search-bar.css','../styles/search-bar-styles.css','../styles/select-style.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UserSearchBar {

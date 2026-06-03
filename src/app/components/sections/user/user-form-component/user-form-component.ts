@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
   selector: 'app-user-form-component',
   imports: [ReactiveFormsModule, FieldError, FieldErrorBorder],
   templateUrl: './user-form-component.html',
-  styleUrls: ['./user-form-component.css','../../../register/register.css'],
+  styleUrls: ['./user-form-component.css','../../../register/register.css','../../../reusable/styles/select-style.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UserFormComponent implements OnInit {

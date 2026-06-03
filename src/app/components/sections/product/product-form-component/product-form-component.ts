@@ -21,7 +21,7 @@ import { Category } from '../../../../interfaces/category';
     CategoryDropdownSelect
 ],
   templateUrl: './product-form-component.html',
-  styleUrl: './product-form-component.css',
+  styleUrls: ['./product-form-component.css','../../../reusable/styles/select-style.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductFormComponent {
