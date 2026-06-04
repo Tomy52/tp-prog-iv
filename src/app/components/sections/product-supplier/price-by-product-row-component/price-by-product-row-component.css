@@ -1,3 +1,7 @@
+:host{
+  display: contents;
+}
+
 td{
   text-align: center;
   padding: 8px;
@@ -18,12 +22,31 @@ button.edit-button:hover{
   background-color: var(--tertiary-color);
 }
 
-
-
 button.delete-button{
   background-color: #8a0000;
 }
 
 button.delete-button:hover{
   background-color: #b30202;
+}
+
+.details-container{
+  background-color: #a8a7a7;
+  border-radius: 10px;
+
+}
+
+.detail-span{
+  margin: 10px
+}
+
+@media (max-width: 760px){
+  .hide-on-desktop{
+    display: table-cell;
+  }
+
+  .hide-on-mobile{
+    display: none;
+  }
+
 }
