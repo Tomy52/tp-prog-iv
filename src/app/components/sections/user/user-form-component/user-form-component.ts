@@ -108,6 +108,11 @@ export class UserFormComponent implements OnInit {
     }
   }
 
+  canShowRoleSelect()
+  {
+    return this.userObject?.credential?.role == "CUSTOMER"
+  }
+
 
 
 
