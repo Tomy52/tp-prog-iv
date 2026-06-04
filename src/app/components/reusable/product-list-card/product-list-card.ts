@@ -58,5 +58,15 @@ export class ProductListCard {
     return this.productInfo().image_url != null ? this.productInfo().image_url : "/images/missing.png"
   }
 
+  getPrice()
+  {
+    let text = "Precio venta: ";
+    if(!this.productInfo().price) text = "No tiene precio de venta"
+    if(this.productInfo().price) text += `$${this.productInfo().price}`
+
+
+    return text
+  }
+
   protected readonly ProductStatus = ProductStatus;
 }
