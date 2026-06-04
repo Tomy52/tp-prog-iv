@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, inject, input, output, signal} from '@angular/core';
+import {ChangeDetectionStrategy, Component, effect, HostListener, inject, input, output, signal} from '@angular/core';
 import {ResponsePriceSupplier} from '../../../../interfaces/product-supplier/response-price-supplier';
 import {RouterLink} from "@angular/router";
 import {ProductSupplierService} from "../../../../services/product-supplier-service";
@@ -22,7 +22,22 @@ export class ProductSupplierRowComponent {
   productPrice = input.required<ResponsePriceSupplier>();
   productSupplierId = input.required<number | undefined>();
 
+  private windowWidth = signal(window.innerWidth);
   isExpanded = signal<boolean>(false);
+
+  constructor() {
+    effect(() => {
+      const width = this.windowWidth();
+      if (width > 768 && this.isExpanded()) {
+        this.isExpanded.set(false);
+      }
+    });
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event) {
+    this.windowWidth.set((event.target as Window).innerWidth);
+  }
 
   deleteProductSupplier() {
     const id = this.productSupplierId();
@@ -34,15 +49,10 @@ export class ProductSupplierRowComponent {
         }
       })
 
-
     }
   }
 
   protected toggleDetails() {
-    if (this.isExpanded()) {
-      this.isExpanded.set(false);
-    }else {
-      this.isExpanded.set(true);
-    }
+    this.isExpanded.update(value => !value);
   }
 }
