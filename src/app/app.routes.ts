@@ -34,6 +34,7 @@ import { UserFormComponent } from './components/sections/user/user-form-componen
 import { CustomerOrderList } from './components/sections/orders/customer-order-list/customer-order-page';
 import { EmployeeOrderPage } from './components/sections/orders/employee-order-page/employee-order-page';
 import { roleGuardGuard } from './guards/role-guard-guard';
+import { userExistsGuard } from './guards/user-exists-guard';
 
 const employee_role_ABM = "ROLE_MANAGER"
 const admin_role = "ROLE_ADMIN"
@@ -161,7 +162,7 @@ export const routes: Routes = [
   {
     path:"users/:id",
     component: UsersDetail,
-    canActivate: [AuthGuard,roleGuardGuard],
+    canActivate: [AuthGuard,roleGuardGuard,userExistsGuard],
     data: {
       allowedUsers: admin_role
     }
@@ -177,7 +178,7 @@ export const routes: Routes = [
   {
     path:"users-add/:id",
     component: UserFormComponent,
-    canActivate: [AuthGuard,roleGuardGuard],
+    canActivate: [AuthGuard,roleGuardGuard,userExistsGuard],
     data: {
       allowedUsers: admin_role
     }

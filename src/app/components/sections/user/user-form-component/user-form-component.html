@@ -25,12 +25,14 @@
     <input type="password" id="pass" formControlName="password" [appFieldErrorBorder]="form.get('password')">
     <small class="error-msg" [appFieldError]="form.get('password')"></small>
 
-    <label for="role">Rol</label>
-    <select name="role" id="role" formControlName="role">
+    @if (!canShowRoleSelect()) {
+      <label for="role">Rol</label>
+      <select name="role" id="role" formControlName="role">
         <option value="ADMIN">Admin</option>
         <option value="MANAGER">Manager</option>
         <option value="EMPLOYEE">Empleado</option>
-    </select>
+      </select>
+    }
     
     <div class="registration-form-buttons">
       <button [disabled]="!form.valid" type="submit">Agregar</button>
