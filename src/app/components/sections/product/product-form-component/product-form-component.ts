@@ -10,6 +10,7 @@ import { ModalNotification } from '../../../reusable/modal-notification/modal-no
 import { CategoryDropdownSelect } from "../../../reusable/category-dropdown-select/category-dropdown-select";
 import { CategoryService } from '../../../../services/category-service';
 import { Category } from '../../../../interfaces/category';
+import { ReturnService } from '../../../../services/return-service';
 
 @Component({
   selector: 'app-product-form-component',
@@ -29,6 +30,8 @@ export class ProductFormComponent {
   productService: ProductService = inject(ProductService);
   modal_service: ModalService = inject(ModalService);
   category_service: CategoryService = inject(CategoryService)
+
+  return_service: ReturnService = inject(ReturnService)
 
 
   modifiedProduct = input<Partial<Product>>();
@@ -142,7 +145,12 @@ export class ProductFormComponent {
         this.cleanUp()
         this.modal_service.showModal(ModalNotification, {
           title: "¡Modificación exitosa!"
-        }, false)
+        })?.subscribe({
+          next: () => {
+            this.goBack()   
+          }
+        })
+        
 
       },
       error: (err) => {
@@ -157,6 +165,11 @@ export class ProductFormComponent {
     this.productForm.markAsPristine();
     this.productForm.reset();
     this.selectedFile = undefined;
+  }
+
+  goBack()
+  {
+    this.return_service.goBack()
   }
 
 

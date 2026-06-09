@@ -15,6 +15,7 @@ import {FieldErrorBorder} from '../../../../directives/field-error-border';
 import { ModalService } from '../../../../services/modal-service';
 import { ModalNotification } from '../../../reusable/modal-notification/modal-notification';
 import {Router} from '@angular/router';
+import { ReturnService } from '../../../../services/return-service';
 
 @Component({
   selector: 'app-product-supplier-form-component',
@@ -36,6 +37,7 @@ export class ProductSupplierFormComponent {
   productSupplierService = inject(ProductSupplierService);
   formBuilder = inject(FormBuilder);
   modal_service = inject(ModalService)
+  return_service = inject(ReturnService)
   router = inject(Router);
 
   supplierList = signal<Supplier[]>([]);
@@ -146,9 +148,11 @@ export class ProductSupplierFormComponent {
 
           this.modal_service.showModal(ModalNotification, {
             title: "¡Relación modificada exitosamente!"
+          })?.subscribe({
+            next: () => {
+              this.goBack();
+            }
           })
-          this.goBack();
-
         },
         error: (e) => {
           throw e
@@ -174,9 +178,7 @@ export class ProductSupplierFormComponent {
   }
 
   goBack(){
-
-    this.router.navigate(["/price-by-supplier"]);
-
+    this.return_service.goBack()
   }
 
 }
