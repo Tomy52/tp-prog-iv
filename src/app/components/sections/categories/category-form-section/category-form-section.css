@@ -7,6 +7,15 @@ section {
     box-sizing: border-box;
 }
 
+form > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    gap: 8px;
+    width: 100%;
+    min-width: 0; 
+}
+
 form {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(240, 245, 243, 0.95) 100%);
     backdrop-filter: blur(15px);
