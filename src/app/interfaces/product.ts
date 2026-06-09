@@ -8,6 +8,7 @@ export interface Product {
   status: ProductStatus
   stock: Number
   profitMargin: Number
+  price: number
   category: Partial<Category> | null
   image_url: string
 }

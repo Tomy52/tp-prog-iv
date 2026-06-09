@@ -5,13 +5,13 @@ article {
   border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 20px;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-  
+
   width: 100%;
-  max-width: 380px; 
+  max-width: 380px;
   padding: 25px;
   display: flex;
   flex-direction: column;
-  gap: 15px; 
+  gap: 15px;
   box-sizing: border-box;
   transition: all 0.3s ease;
 }
@@ -19,8 +19,8 @@ article {
 article:hover {
   transform: translateY(-5px);
   background: linear-gradient(
-      135deg, 
-      rgba(255, 255, 255, 0.6) 0%, 
+      135deg,
+      rgba(255, 255, 255, 0.6) 0%,
       rgba(240, 245, 243, 0.4) 100%
   );
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
@@ -47,6 +47,9 @@ h2 {
   padding: 15px;
   border-radius: 12px;
   border-left: 3px solid #2d5a4c;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 h3 {
@@ -59,12 +62,24 @@ h3 {
 }
 
 p {
-  font-family: 'Verdana', sans-serif;
-  font-size: 0.85rem;
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
   color: #16372d;
   margin: 4px 0;
   line-height: 1.4;
   font-weight: 500;
+}
+
+p.price{
+  font-size: 1.2rem;
+  border-radius: 5px;
+  width: 100%;
+  text-align: center;
+  background-color: #2c6e5a;
+  color: #fcfcf9;
+  font-family: 'Cinzel', serif;
+  margin-top: 15px;
+  padding: 5px 0;
 }
 
 .boton-admin {
@@ -88,16 +103,16 @@ button {
 }
 
 button:not(.baja-producto) {
-  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), 
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)),
     url('/images/header3.png') center/cover no-repeat;
   color: #fcfcf9;
 }
 
 .baja-producto {
-    background: linear-gradient(rgba(80, 10, 10, 0.7), rgba(50, 5, 5, 0.85)), 
+    background: linear-gradient(rgba(80, 10, 10, 0.7), rgba(50, 5, 5, 0.85)),
                 url('/images/header3.png') center/cover no-repeat;
     color: #fcfcf9;
-    filter: sepia(1) hue-rotate(-50deg) saturate(1.5); 
+    filter: sepia(1) hue-rotate(-50deg) saturate(1.5);
     box-shadow: 0 8px 15px rgba(80, 10, 10, 0.2);
 }
 
@@ -106,6 +121,14 @@ button:hover {
   filter: brightness(1.1) saturate(1.2);
 }
 
+
+img {
+  max-width: 100%;
+  border: 1px solid rgba(53, 92, 79, 0.25);
+  border-radius: 10px;
+}
+
+
 @media (max-width: 450px) {
   article {
     max-width: 100%;
@@ -113,11 +136,7 @@ button:hover {
   }
 
   .boton-admin {
-    flex-direction: column; 
+    flex-direction: column;
   }
 }
 
-img {
-  max-width: 100%;
-  border: 1px solid black;
-}
