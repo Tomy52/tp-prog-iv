@@ -52,6 +52,7 @@ p, h2, h4 {
   color: #16372d;
   margin: 4px 0;
   font-weight: 500;
+  font-size: clamp(2rem,2vw,2.5rem);
 }
 
 button:disabled {

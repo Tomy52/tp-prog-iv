@@ -13,9 +13,14 @@ section {
 }
 
 h2 {
-  color: white;
+  font-family: 'Cinzel', serif;
+  color: #2d5a4c;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-weight: 800;
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
   text-align: center;
-  margin: 10px;
+  margin-bottom: 30px;
 }
 
 h4 {
@@ -99,4 +104,17 @@ button:disabled {
 
 button:hover {
   background-color: var(--tertiary-color);
+}
+
+.item-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.final-price {
+  font-family: 'Verdana', sans-serif;
+  color: #16372d;
+  margin: 4px 0;
+  font-weight: 500;
 }

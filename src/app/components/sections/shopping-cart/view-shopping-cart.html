@@ -2,12 +2,13 @@
   <h2>Mi Carrito</h2>
   <div class="items-container">
 
-    @for (item of cartItems(); track $index) {
-      <app-customer-product-list-card [productInfo]="item.product" [taken_stock]="item.quantity" />
-      <!-- <p>{{item.product.name}} - <small> {{item.quantity}} </small> - ${{item.product.price * item.quantity}}</p> -->
-    }
+    <div class="item-list">
+      @for (item of cartItems(); track $index) {
+        <app-customer-product-list-card [productInfo]="item.product" [taken_stock]="item.quantity" />
+      }
+    </div>
     
-    <div>Total: ${{finalPrice()}}</div>
+    <div class="final-price">Total: ${{finalPrice()}}</div>
   </div>
   <div class="buttons-container">
     <button (click)="generateOrder()" [disabled]="!enableButton()">Confirmar Pedido</button>
