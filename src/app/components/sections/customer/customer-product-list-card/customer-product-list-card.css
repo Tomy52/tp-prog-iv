@@ -102,3 +102,9 @@ button:hover {
   height: auto;
   max-width: 200px;
 }
+
+@media (max-width: 761px) {
+  article {
+    flex-direction: column;
+  }
+}
