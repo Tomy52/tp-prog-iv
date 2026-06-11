@@ -13,8 +13,11 @@
       @if(this.taken_stock() == 0){
         <button (click)="selectProduct(productInfo().idProduct)"> Agregar al carrito</button>
       } @else {
-        <button class="quantityControl" (click)="selectProduct(productInfo().idProduct)" [disabled]="calculateStockRemainingStock() <= 0">+</button>
-        <button class="quantityControl" (click)="unselectProduct(productInfo().idProduct)" [disabled]="taken_stock() == 0">-</button>
+        <div class="controls">
+          <button class="quantityControl" (click)="selectProduct(productInfo().idProduct)" [disabled]="calculateStockRemainingStock() <= 0">+</button>
+          <p>{{taken_stock()}}</p>
+          <button class="quantityControl remove-stock" (click)="unselectProduct(productInfo().idProduct)" [disabled]="taken_stock() == 0">-</button>
+        </div>
       }
     </div>
 
