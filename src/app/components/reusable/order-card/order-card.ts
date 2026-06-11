@@ -5,10 +5,13 @@ import { ModalService } from '../../../services/modal-service';
 import { OrderDataPopupCustomer } from '../order-pop-up/order-data-popup-customer/order-data-popup-customer';
 import { OrderPopupType } from '../../../interfaces/component-logic/order-popup-type';
 import { EnumMappingService } from '../../../services/enum-mapping-service';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-order-card',
-  imports: [],
+  imports: [
+    DatePipe
+  ],
   templateUrl: './order-card.html',
   styleUrl: './order-card.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -22,7 +25,7 @@ export class OrderCard {
   showOrderDataPopUp()
   {
     const popup = this.modal_service.showOrderDataModal(this.popup_component(),this.orderData()!,false)
-    
+
     if(!popup) return
 
     popup.subscribe({
@@ -31,7 +34,7 @@ export class OrderCard {
       }
     })
   }
-  
+
   getEnumValue()
   {
     return this.enum_mapping_service.searchEnumValue(OrderStatus,this.orderData()?.status!);
@@ -44,4 +47,4 @@ export class OrderCard {
 
     this.orderData.update((data) => ({...data, status: status}))
   }
-} 
+}

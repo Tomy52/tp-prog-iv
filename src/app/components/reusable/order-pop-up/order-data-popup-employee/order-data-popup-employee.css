@@ -4,6 +4,10 @@ article {
     align-items: center;
 }
 
+.user-details{
+  width: 100%;
+}
+
 li, p{
     font-family: 'Verdana', sans-serif;
     color: #16372d;
@@ -30,7 +34,7 @@ h2, h1 {
 
 button {
     all:unset;
-    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), 
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)),
     url('/images/header3.png') center/cover no-repeat;
     color: #fcfcf9;
     width: 100%;
