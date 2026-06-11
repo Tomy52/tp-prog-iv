@@ -1,14 +1,17 @@
-h1,h2 {
-  color: white;
-  text-align: center;
-  margin: 10px;
+h1 {
+    font-family: 'Cinzel', serif;
+    color: #2d5a4c;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-weight: 800;
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    text-align: center;
+    margin-bottom: 30px;
 }
 
 section {
   margin: 10px;
   padding: 10px;
-  border-radius: 10px;
-  background-color: var(--main-color);
 }
 
 .toggle-area {
@@ -16,11 +19,6 @@ section {
   flex-direction: row;
   justify-content: center;
   margin-bottom: 10px;
-}
-
-.toggle-area label {
-  color: var(--text-color);
-  font-size: large;
 }
 
 #toggle-disabled-products{
