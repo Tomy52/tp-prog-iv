@@ -72,7 +72,7 @@ input:focus {
     text-align: center;
 }
 
-input[type="submit"] {
+input[type="submit"], button {
     grid-column: 1 / -1; 
     justify-self: center; 
     
@@ -100,7 +100,7 @@ input[type="submit"] {
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-input[type="submit"]:not(:disabled):hover {
+input[type="submit"]:not(:disabled):hover, button:hover {
     transform: translateY(-5px) scale(1.02);
     box-shadow: 0 20px 45px rgba(22, 55, 45, 0.5);
     filter: brightness(1.1);
@@ -143,7 +143,7 @@ input[type="submit"]:disabled {
         width: 100%;
     }
 
-    input[type="submit"] {
+    input[type="submit"], button {
         grid-column: 1; 
         width: 100%; 
         max-width: 250px; 

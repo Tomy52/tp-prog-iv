@@ -4,6 +4,7 @@ import { Supplier } from '../../../../interfaces/supplier/supplier';
 import { SupplierFormComponent } from "../supplier-form-component/supplier-form-component";
 import { ModalService } from '../../../../services/modal-service';
 import { ModalNotification } from '../../../reusable/modal-notification/modal-notification';
+import { ReturnService } from '../../../../services/return-service';
 
 @Component({
   selector: 'app-supplier-form-section',
@@ -14,6 +15,7 @@ import { ModalNotification } from '../../../reusable/modal-notification/modal-no
 export class SupplierFormSection implements OnInit {
   supplier_service = inject(SupplierService);
   modal_service = inject(ModalService)
+  return_service = inject(ReturnService)
   id = input<string>();
 
 
@@ -76,7 +78,11 @@ export class SupplierFormSection implements OnInit {
           this.modal_service.showModal(ModalNotification, {
             title: "¡Proveedor modificado!",
             description: "Proveedor modificado exitosamente."
-          }, false);
+          })?.subscribe({
+            next: () => {
+              this.return_service.goBack()
+            }
+          });
 
         },
         error: (e) =>{

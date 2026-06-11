@@ -58,5 +58,9 @@
        </div>
 
        <input type="submit" value="Subir" [disabled]="form.invalid">
+       
+       @if (modified_supplier()) {
+       <button type="button" (click)="return_service.goBack()">Cancelar</button>
+       }
   </form>
 </article>

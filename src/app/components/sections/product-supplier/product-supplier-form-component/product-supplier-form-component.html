@@ -31,9 +31,11 @@
     <small class="error-msg" [appFieldError]="productSupplierForm.get('cost')"></small>
     </div>
 
-
     <button [disabled]="isFormInvalid()" type="submit">{{isEditing()? 'Editar' : 'Crear' }}</button>
-    <button type="button" (click)="goBack()">Cancelar</button>
+
+    @if (isEditing()) {
+      <button type="button" (click)="goBack()">Cancelar</button>
+    }
 
 
   </form>
