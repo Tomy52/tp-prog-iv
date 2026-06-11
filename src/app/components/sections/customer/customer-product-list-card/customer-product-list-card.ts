@@ -65,5 +65,7 @@ export class CustomerProductListCard implements OnInit {
     return this.productInfo().stock - this.taken_stock()
   }
 
+  
+
 
 }
