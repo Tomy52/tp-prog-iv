@@ -140,6 +140,8 @@ export class ShoppingCartService {
       {
         cart_item.quantity = cart_item.quantity - Math.abs(response_item.stock - cart_item.quantity)
         non_ok_stock.push(cart_item);
+      } else {
+        this.updateProductInfo(response_item,cart_item)
       }
 
       if(is_price_lower)
@@ -188,6 +190,8 @@ export class ShoppingCartService {
       {
         cart_item.quantity = cart_item.quantity - Math.abs(response_item.stock - cart_item.quantity)
         non_ok_stock.push(cart_item);
+      } else {
+        this.updateProductInfo(response_item,cart_item)
       }
 
       if(is_price_lower)
@@ -219,6 +223,19 @@ export class ShoppingCartService {
   private checkIfPriceShouldBeLower(response_product:CustomerProductInfo, cart_item:CartItem)
   {
     return (response_product.price != cart_item.product.price)
+  }
+
+  updateProductInfo(response_product:CustomerProductInfo,cart_item:CartItem)
+  {
+    if(response_product.stock !== cart_item.product.stock)
+    {
+      cart_item.product.stock = response_product.stock 
+    }
+
+    if(response_product.name !== cart_item.product.name)
+    {
+      cart_item.product.name = response_product.name
+    }
   }
 
   private handleShowingNotification(data:ShoppingCartFailResults)
