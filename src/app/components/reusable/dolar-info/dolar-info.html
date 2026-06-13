@@ -1,6 +1,6 @@
 @if (!searching()) {
     @if (success()) {
-        <div class="horizontal bar-container">
+        <section class="horizontal bar-container">
             <div>
                 <p> Compra: ${{dolar_info()?.compra}} </p>
             </div>
@@ -20,7 +20,7 @@
                     </select>
                 </form>
             </div>
-        </div>
+        </section>
     } @else {
         <div>
             <p> No se puede buscar el precio del dolar, intentelo mas tarde. </p>

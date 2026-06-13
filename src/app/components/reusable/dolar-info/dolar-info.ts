@@ -11,7 +11,7 @@ import { DatePipe, formatDate } from '@angular/common';
   selector: 'app-dolar-info',
   imports: [ReactiveFormsModule, DatePipe],
   templateUrl: './dolar-info.html',
-  styleUrl: './dolar-info.css',
+  styleUrls: ['./dolar-info.css','../styles/select-style.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DolarInfo {
