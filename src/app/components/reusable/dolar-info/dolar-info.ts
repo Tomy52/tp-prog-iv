@@ -54,9 +54,10 @@ export class DolarInfo {
     this.searchDolarData(event.target.value)    
   }
 
-  parseDate()
+  getDate()
   {
-    return formatDate(this.dolar_info()?.ultima_actualizacion!, 'dd-MM-yyyy HH:mm', 'en-US')
+    console.log(this.dolar_info()?.ultima_actualizacion)
+    return this.dolar_info()?.ultima_actualizacion;
   }
 
 }

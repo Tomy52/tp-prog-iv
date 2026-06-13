@@ -8,7 +8,7 @@
                 <p> Venta: ${{dolar_info()?.venta}} </p>
             </div>
             <div>
-                <p> Fecha: {{ parseDate() }}  </p>
+                <p> Fecha: {{ getDate() | date: 'dd-MM-yyyy hh:mm'}}  </p>
             </div>
             <div>
                 <form action="" [formGroup]="form">

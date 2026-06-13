@@ -4,5 +4,5 @@ export interface DolarPrice {
     casa:string,
     venta:number,
     compra:number,
-    ultima_actualizacion:string
+    ultima_actualizacion:Date
 }
