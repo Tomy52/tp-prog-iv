@@ -20,3 +20,33 @@ thead {
   border-bottom: 1px solid gainsboro;
   text-transform: uppercase;
 }
+
+th {
+  background-color: var(--th-bg-color);
+  font-weight: bold;
+}
+
+th {
+  padding: 10px 20px;
+  text-align: center;
+}
+
+thead tr {
+  font-family: Cinzel, serif;
+}
+
+@media (max-width: 760px){
+
+  th {
+    padding: calc(5px - 1vw) calc(10px - 1vw);
+  }
+
+  .hide-on-desktop{
+    display: table-cell;
+  }
+
+  .hide-on-mobile{
+    display: none;
+  }
+
+}

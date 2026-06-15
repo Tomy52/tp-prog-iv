@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, effect, HostListener, input, signal } from '@angular/core';
 import { UserInfo } from '../../../../interfaces/user/user-info';
 import { RouterLink } from "@angular/router";
 

@@ -1,7 +1,7 @@
 <td>{{user().dni}}</td>
 <td>{{user().credential.username}}</td>
-<td>{{user().credential.role}}</td>
-<td>
+<td class="hide-on-mobile">{{user().credential.role}}</td>
+<td class="hide-on-mobile">
   <span class="badge"
         [class.badge-active]="user().status === 'ENABLED'"
         [class.badge-inactive]="user().status === 'DISABLED'">

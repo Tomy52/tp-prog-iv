@@ -6,7 +6,6 @@ import { UsersTableRow } from "../users-table-row/users-table-row";
 @Component({
   selector: 'app-users-table',
   imports: [
-    RouterLink,
     UsersTableRow
 ],
   templateUrl: './users-table.html',
