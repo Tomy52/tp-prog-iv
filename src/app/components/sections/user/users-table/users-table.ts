@@ -1,6 +1,5 @@
 import {ChangeDetectionStrategy, Component, input} from '@angular/core';
 import {UserInfo} from '../../../../interfaces/user/user-info';
-import {RouterLink} from '@angular/router';
 import { UsersTableRow } from "../users-table-row/users-table-row";
 
 @Component({
