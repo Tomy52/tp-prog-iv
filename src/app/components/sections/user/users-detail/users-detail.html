@@ -26,8 +26,8 @@
 
     <div class="profile-controls">
       <button (click)="redirectToEdit()">Editar</button>
-      <button class="ch-status-button" (click)="changeUserState(getCurrentOpositeState())">{{ u.status === 'DISABLED' ? 'Activar' : 'Desactivar' }}</button>
-      <button class="delete-button" (click)="deleteUser()">Eliminar</button>
+      <button (click)="changeUserState(getCurrentOpositeState())" [class.destructive]="getCurrentOpositeState() === 'DISABLED'">{{ u.status === 'DISABLED' ? 'Activar' : 'Desactivar' }}</button>
+      <button class="delete-button destructive" (click)="deleteUser()">Eliminar</button>
     </div>
   }
 </section>

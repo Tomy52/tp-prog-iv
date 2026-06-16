@@ -3,7 +3,13 @@
   margin: 10px auto;
   padding: 15px;
   border-radius: 5px;
-  background-color: var(--main-color);
+
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.5) 0%, rgba(240, 245, 243, 0.3) 100%);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
 }
 
 .profile-header {
@@ -65,27 +71,40 @@
   letter-spacing: 0.1em;
 }
 
-button{
-  background-color: var(--secondary-color);
+button {
+  flex: 1;
+  padding: 12px;
   border-radius: 10px;
-  border-color: var(--text-color);
-  border-width: 2px;
-  width: 100px;
-  color: var(--text-color);
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
 
-  margin-top: 10px;
+button:not(.destructive) {
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)),
+    url('/images/header3.png') center/cover no-repeat;
+  color: #fcfcf9;
+}
 
-  font-size: medium;
-  font-family: "BreeSerif-regular", serif;
+.destructive {
+    background: linear-gradient(rgba(80, 10, 10, 0.7), rgba(50, 5, 5, 0.85)),
+                url('/images/header3.png') center/cover no-repeat;
+    color: #fcfcf9;
+    filter: sepia(1) hue-rotate(-50deg) saturate(1.5);
+    box-shadow: 0 8px 15px rgba(80, 10, 10, 0.2);
 }
 
 button:hover {
-  background-color: var(--tertiary-color);
+  transform: translateY(-3px);
+  filter: brightness(1.1) saturate(1.2);
 }
 
-button.delete-button:hover{
-  background-color: red;
-}
+
 
 .badge {
   padding: 6px;
