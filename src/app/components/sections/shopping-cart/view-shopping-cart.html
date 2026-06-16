@@ -5,13 +5,15 @@
     <div class="item-list">
       @for (item of cartItems(); track $index) {
         <app-customer-product-list-card [productInfo]="item.product"></app-customer-product-list-card>
+      } @empty {
+        <h2>No tiene productos en carrito</h2>
       }
     </div>
     
-    <div class="final-price">Total: ${{finalPrice()}}</div>
   </div>
   <div class="buttons-container">
+    <div class="final-price">Total: ${{finalPrice()}}</div>
     <button (click)="generateOrder()" [disabled]="!enableButton()">Confirmar Pedido</button>
-    <a routerLink="/on-sale">Volver</a>
+    <a routerLink="/on-sale">Ver productos en venta</a>
 </div>
 </section>
