@@ -36,6 +36,11 @@
 body {
   margin: 0;
 
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 80px; /* Ajustá este número según el alto real de tu footer */
+  box-sizing: border-box;
+
   background-image:
     linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.55)),
     url('/images/marmolblanco.png');
