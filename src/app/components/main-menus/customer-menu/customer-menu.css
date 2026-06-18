@@ -226,6 +226,12 @@
   margin-bottom: 2px;
 }
 
+.stat-data {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
 .stat-label {
   font-weight: 700;
   font-size: 0.85rem;
@@ -359,7 +365,6 @@ app-main-menu-button {
 
 @media (max-width: 1024px) {
   .dashboard-layout {
-  
     padding-top: 140px !important; 
   }
 
@@ -376,11 +381,11 @@ app-main-menu-button {
 
 
 @media (max-width: 650px) {
-  .dashboard-layout {
+  /* .dashboard-layout {
    
     padding-top: 590px !important; 
     padding-bottom: 260px !important;
-  }
+  } */
   .dashboard-columns {
    
     padding-bottom: 70px !important;
