@@ -27,7 +27,11 @@
       <input type="file" name="image" id="image" (change)="onFileSelected($event)" accept="image/*">
 
       <button type="submit" [disabled]="!productForm.valid">Cargar</button>
-
+      
+      @if (modifiedProduct()) {
+        <button type="button" onclick="goBack()">Cancelar</button>
+      }
+    
     </form>
 </section>
 

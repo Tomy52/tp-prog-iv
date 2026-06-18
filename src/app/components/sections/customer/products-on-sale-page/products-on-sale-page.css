@@ -1,14 +1,20 @@
-h1,h2 {
-  color: white;
+
+h1, h2 {
+  font-family: 'Cinzel', serif;
+  font-weight: 800;
+  font-size: 2rem;
   text-align: center;
+  color: #2d5a4c;
   margin: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
 }
 
 section {
   margin: 10px;
   padding: 10px;
   border-radius: 10px;
-  background-color: var(--main-color);
 }
 
 .toggle-area {

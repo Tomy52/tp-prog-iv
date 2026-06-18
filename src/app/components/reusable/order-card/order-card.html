@@ -1,11 +1,11 @@
 <article>
-    <div>
+    <div class="title">
         <h2>ID orden: {{orderData()!.orderId}}</h2>
-        <h4>Creación: {{orderData()!.createdAt}}</h4>
+        <h4>Creación: {{ orderData()!.createdAt | date: 'dd-MM-yyyy hh:mm'}}</h4>
         <h4>Estado: {{getEnumValue()}}</h4>
     </div>
 
-    <div>
+    <div class="buttons">
         <p>Total: ${{orderData()!.total}}</p>
         <button (click)="showOrderDataPopUp()">Ver datos</button>
     </div>

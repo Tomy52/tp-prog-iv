@@ -1,3 +1,7 @@
+:host{
+  display: contents;
+}
+
 td{
   text-align: center;
   padding: 8px;
@@ -6,13 +10,9 @@ td{
 button{
   border: none;
   box-shadow: #02111b 1px 1px 1px;
-
   background-color: var(--secondary-color);
   border-radius: 5px;
-  border-color: var(--text-color);
-  border-width: 2px;
   color: var(--text-color);
-
   width: min-content;
   font-size: small;
   font-family: "BreeSerif-regular", serif;
@@ -22,7 +22,31 @@ button.edit-button:hover{
   background-color: var(--tertiary-color);
 }
 
-button.delete-button:hover{
-  background-color: red;
+button.delete-button{
+  background-color: #8a0000;
 }
 
+button.delete-button:hover{
+  background-color: #b30202;
+}
+
+.details-container{
+  background-color: #a8a7a7;
+  border-radius: 10px;
+
+}
+
+.detail-span{
+  margin: 10px
+}
+
+@media (max-width: 760px){
+  .hide-on-desktop{
+    display: table-cell;
+  }
+
+  .hide-on-mobile{
+    display: none;
+  }
+
+}

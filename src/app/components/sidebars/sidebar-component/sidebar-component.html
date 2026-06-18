@@ -5,7 +5,7 @@
       <li><a routerLink="suppliers" >Ver</a></li>
       <li><a routerLink="form-suppliers" *appAllowViewUser="['ROLE_MANAGER','ROLE_ADMIN']" >Nuevo</a></li>
       <li><a routerLink="delete-supplier" *appAllowViewUser="['ROLE_MANAGER','ROLE_ADMIN']">Eliminar</a></li>
-      <li><a routerLink="/price-by-supplier">Buscar precios</a></li>
+      <li><a routerLink="/price-by-supplier" *appAllowViewUser="['ROLE_MANAGER','ROLE_ADMIN']">Buscar precios</a></li>
     </ul>
 
     <p class="subtitles">Productos</p>
@@ -13,24 +13,24 @@
       <li><a routerLink="products" >Ver</a></li>
       <li><a routerLink="form-products" *appAllowViewUser="['ROLE_MANAGER','ROLE_ADMIN']">Nuevo</a></li>
       <li><a routerLink="delete-product" *appAllowViewUser="['ROLE_MANAGER','ROLE_ADMIN']" >Eliminar</a></li>
-      <li><a routerLink="/price-by-product" >Buscar precios</a></li>
+      <li><a routerLink="/price-by-product" *appAllowViewUser="['ROLE_MANAGER','ROLE_ADMIN']">Buscar precios</a></li>
     </ul>
 
-    <p class="subtitles">Categorías</p>
+    <p class="subtitles" *appAllowViewUser="['ROLE_MANAGER','ROLE_ADMIN']">Categorías</p>
     <ul>
       <li><a routerLink="categories" *appAllowViewUser="['ROLE_MANAGER','ROLE_ADMIN']" >Nueva</a></li>
       <li><a routerLink="delete-category" *appAllowViewUser="['ROLE_MANAGER','ROLE_ADMIN']" >Eliminar</a></li>
     </ul>
 
-    <p class="subtitles">Ordenes</p>
-    <ul>
-      <li><a routerLink="all-orders" *appAllowViewUser="['ROLE_MANAGER','ROLE_ADMIN']">Ver</a> </li>
-    </ul>
-    
-    <p class="subtitles">Gestion</p>
+    <p class="subtitles" *appAllowViewUser="['ROLE_MANAGER','ROLE_ADMIN']">Gestion</p>
     <ul>
       <li><a routerLink="/product-supplier" *appAllowViewUser="['ROLE_MANAGER','ROLE_ADMIN']">Nueva Relación</a></li>
       <li><a routerLink="/csv-prices" *appAllowViewUser="['ROLE_MANAGER','ROLE_ADMIN']">Cargar Listas</a></li>
+    </ul>
+
+    <p class="subtitles">Pedidos</p>
+    <ul>
+      <li><a routerLink="/all-orders" *appAllowViewUser="['ROLE_MANAGER','ROLE_ADMIN']">Ver</a></li>
     </ul>
 
     <p class="subtitles logout"><a routerLink="/login" (click)="logOut()">Salir</a></p>

@@ -143,6 +143,21 @@ span.tool-tip p.tool-tip-text {
   margin: 0;
 }
 
+/* Comienzo clases para ocultar en movil y desktop*/
+
+
+.hide-on-mobile{
+  display: table-cell;
+}
+
+.hide-on-desktop{
+  display: none;
+}
+
+
+/* Fin clases para ocultar en movil y desktop*/
+
+
 @media only screen and (max-width: 480px){
 
   span.tool-tip {
@@ -158,3 +173,5 @@ span.tool-tip p.tool-tip-text {
 
   }
 }
+
+

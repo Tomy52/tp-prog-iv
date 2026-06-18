@@ -10,7 +10,7 @@ import { ModalNotification } from '../../../reusable/modal-notification/modal-no
   selector: 'app-category-form-section',
   imports: [ReactiveFormsModule, FieldErrorBorder, FieldError],
   templateUrl: './category-form-section.html',
-  styleUrl: './category-form-section.css',
+  styleUrls: ['./category-form-section.css','../../../register/register.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CategoryFormSection {

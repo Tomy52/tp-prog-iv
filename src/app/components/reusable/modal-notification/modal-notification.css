@@ -42,11 +42,11 @@ p {
 }
 
 button {
-    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), 
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)),
                 url('/images/header3.png') center/cover no-repeat !important;
     color: #fcfcf9;
     border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 20px 0px;
+    padding: 20px 10px;
     border-radius: 18px;
     font-family: 'Cinzel', serif;
     font-weight: 700;

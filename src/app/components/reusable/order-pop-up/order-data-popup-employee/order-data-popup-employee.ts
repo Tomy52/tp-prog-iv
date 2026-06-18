@@ -14,7 +14,7 @@ import { routes } from '../../../../app.routes';
   selector: 'app-order-data-popup-employee',
   imports: [ReactiveFormsModule],
   templateUrl: './order-data-popup-employee.html',
-  styleUrls: ['../../modal-notification/modal-notification.css','./order-data-popup-employee.css'],
+  styleUrls: ['../../modal-notification/modal-notification.css','./order-data-popup-employee.css','../../styles/select-style.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OrderDataPopupEmployee {

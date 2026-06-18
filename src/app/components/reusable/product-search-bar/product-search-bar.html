@@ -1,24 +1,24 @@
 <article>
 
-    <form action="" [formGroup]="form" (ngSubmit)="completeForm()">
+    <form action="" [formGroup]="form" (ngSubmit)="completeForm()" class="large-search-bar">
         <section>
 
-            <div>
+            <div class="flex-container">
                 <label for="product">Nombre</label>
                 <input type="text" name="product" id="product" formControlName="tern" placeholder="Termino de busqueda...">
             </div>
-            
-            <div>
+
+            <div class="flex-container">
                 <label for="categories">Categorias</label>
                 <app-category-dropdown-select id="categories" formControlName="category_id" [categories]="categories()"/>
             </div>
-            
-            <div>
+
+            <div class="flex-container">
                 <label for="product_id">ID del producto</label>
                 <input type="number" name="product_id" id="product_id" formControlName="product_id" min="0">
             </div>
-            
-            <div *appAllowViewUser="['ROLE_MANAGER','ROLE_ADMIN']">
+
+            <div *appAllowViewUser="['ROLE_MANAGER','ROLE_ADMIN']" class="flex-container">
                 <label for="product-status">Estado</label>
                 <select class="desplegable-estado" name="status" id="product-status" formControlName="status">
                     <option [ngValue]="null" selected>Ninguno</option>
@@ -26,10 +26,16 @@
                     <option [ngValue]="productStatusEnum.Disabled">Deshabilitado</option>
                 </select>
             </div>
-            
+
+       
             <div>
+                <label for="stock">Stock restante (igual o menor)</label>
+                <input type="number" name="stock" id="stock" min="0" formControlName="stock">
+            </div>
+            
+            <div class="button-container">
                 <button type="submit">Buscar</button>
-                <button type="button" (click)="reset()">Reinicio</button>
+                <button type="button" (click)="reset()">Reiniciar</button>
             </div>
         </section>
     </form>

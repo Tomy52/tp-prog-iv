@@ -1,6 +1,18 @@
 
   <td>{{ productPrice().companyName }} </td>
   <td *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']">{{ productPrice().cost }}</td>
-  <td *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']">{{ productPrice().dollarPrice }}</td>
-  <td *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']"><button class="edit-button" routerLink="/product-supplier/{{productSupplierId()}}">Editar</button></td>
-  <td *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']"><button class="delete-button" (click)="deleteProductSupplier()">Borrar</button></td>
+  <td *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']" class="hide-on-mobile">{{ productPrice().dollarPrice }}</td>
+  <td *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']" class="hide-on-mobile"><button class="edit-button" routerLink="/product-supplier/{{productSupplierId()}}">Editar</button></td>
+  <td *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']" class="hide-on-mobile"><button class="delete-button" (click)="deleteProductSupplier()">Borrar</button></td>
+  <td *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']" class="hide-on-desktop"><button class="edit-button" (click)="toggleDetails()">Mostrar</button></td>
+
+
+  @if(this.isExpanded()){
+  <tr>
+    <td class="details-container" colspan="3">
+      <span class="detail-span">Precio(usd): {{productPrice().dollarPrice}}</span>
+      <span class="detail-span"><button class="edit-button" routerLink="/product-supplier/{{productSupplierId()}}">Editar</button></span>
+      <span class="detail-span"><button class="delete-button" (click)="deleteProductSupplier()">Borrar</button></span>
+    </td>
+  </tr>
+  }

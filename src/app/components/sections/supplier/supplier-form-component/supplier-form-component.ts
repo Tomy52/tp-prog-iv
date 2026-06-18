@@ -4,6 +4,7 @@ import {Supplier} from '../../../../interfaces/supplier/supplier';
 import {Address} from '../../../../interfaces/supplier/address';
 import {FieldError} from '../../../../directives/field-error';
 import {FieldErrorBorder} from '../../../../directives/field-error-border';
+import { ReturnService } from '../../../../services/return-service';
 
 @Component({
   selector: 'app-supplier-form-component',
@@ -13,9 +14,10 @@ import {FieldErrorBorder} from '../../../../directives/field-error-border';
 })
 export class SupplierFormComponent {
   form_builder = inject(FormBuilder);
-
   data_sig = output<Partial<Supplier>>();
   modified_supplier = input<Partial<Supplier>>();
+
+  return_service = inject(ReturnService)
 
   form = this.form_builder.group({
     companyName: ['', [Validators.required, Validators.minLength(3)]],

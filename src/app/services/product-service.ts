@@ -68,6 +68,11 @@ export class ProductService {
       query_string += `&status=${state}`
     }
 
+    if(query?.stock)
+    {
+      query_string += `&rem_stock=${query.stock}`
+    }
+
     console.log(query_string)
 
     return this.http.get<PageResponse<Product>>(`${this.baseUrl}/page${query_string}`)
@@ -112,8 +117,9 @@ export class ProductService {
     {
       formData.append('file', file);
     }
-    
-    formData.append('productData', JSON.stringify(product))
+
+    const productBlob = new Blob([JSON.stringify(product)], { type: 'application/json; charset=utf-8' });
+    formData.append('productData', productBlob);
 
     return this.http.post<Product>(`${this.baseUrl}`,formData);
   }

@@ -87,7 +87,7 @@ input[type="number"] {
     transition: all 0.3s ease;
 }
 
-button[type="submit"] {
+button {
     align-self: center;
     margin-top: 10px;
     background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), 

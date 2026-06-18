@@ -9,7 +9,7 @@ import { ModalNotification } from '../../modal-notification/modal-notification';
   selector: 'app-order-data-popup-customer',
   imports: [],
   templateUrl: './order-data-popup-customer.html',
-  styleUrls: ['../../modal-notification/modal-notification.css','./order-data-popup-customer.css'],
+  styleUrls: ['../../modal-notification/modal-notification.css','./order-data-popup-customer.css','../../styles/select-style.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OrderDataPopupCustomer {
@@ -61,5 +61,10 @@ export class OrderDataPopupCustomer {
         throw err
       }
     })
+  }
+  
+  checkIfControlsShouldBeEnabled()
+  {
+    return !(this.data()?.status == "CANCELLED" || this.data()?.status == "COMPLETED")
   }
 }

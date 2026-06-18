@@ -1,25 +1,25 @@
 <article>
-    <form action="" [formGroup]="form" (ngSubmit)="submit()">
+    <form action="" [formGroup]="form" (ngSubmit)="submit()" class="large-search-bar">
         <section>
 
-            <div>
+            <div class="flex-container">
                 <label for="product">Nombre</label>
                 <input type="text" name="product" id="product" formControlName="tern" placeholder="Termino de busqueda...">
             </div>
-            
-            <div>
+
+            <div class="flex-container">
                 <label for="categories">Categorias</label>
                 <app-category-dropdown-select id="categories" formControlName="category_id" [categories]="categories()"/>
             </div>
-            
-            <div>
-                <label for="checkbox">Incluir productos sin stock?</label>
-                <input type="checkbox" name="checkbox" id="checkbox">
+
+            <div class="flex-container">
+              <label for="checkbox">Incluir productos sin stock?</label>
+              <input type="checkbox" name="checkbox" id="checkbox">
             </div>
-            
-            <div>
+
+            <div class="button-container">
                 <button type="submit">Buscar</button>
-                <button type="button" (click)="reset()">Reinicio</button>
+                <button type="button" (click)="reset()">Reiniciar</button>
             </div>
         </section>
     </form>

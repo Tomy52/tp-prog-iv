@@ -25,16 +25,18 @@
     <input type="password" id="pass" formControlName="password" [appFieldErrorBorder]="form.get('password')">
     <small class="error-msg" [appFieldError]="form.get('password')"></small>
 
-    <label for="role">Rol</label>
-    <select name="role" id="role" formControlName="role">
+    @if (!canShowRoleSelect()) {
+      <label for="role">Rol</label>
+      <select name="role" id="role" formControlName="role">
         <option value="ADMIN">Admin</option>
         <option value="MANAGER">Manager</option>
         <option value="EMPLOYEE">Empleado</option>
-    </select>
+      </select>
+    }
     
     <div class="registration-form-buttons">
-      <button [disabled]="!form.valid" type="submit">Registrar</button>
-      <button class="return-btn" routerLink="/login" type="button">Volver</button>
+      <button [disabled]="!form.valid" type="submit">Agregar</button>
+      <button class="return-btn" routerLink="/users" type="button">Volver</button>
     </div>
 
   </form>
