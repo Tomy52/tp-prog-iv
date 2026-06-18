@@ -362,6 +362,21 @@ app-main-menu-button {
   color: #333;
 }
 
+.price-button {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.price-button button {
+  filter: none;
+  background: linear-gradient(135deg, #1b382b 0%, #0f251b 100%);
+  border: 1px solid #d4af37;
+  color: #ffffff ;
+  text-shadow: none ;
+}
+
 
 @media (max-width: 1024px) {
   .dashboard-layout {
