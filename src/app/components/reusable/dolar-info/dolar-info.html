@@ -1,31 +1,39 @@
+<section class="bar-container">
+
+    <div>
+        <h2>Precio de dolar {{dolar_info()?.nombre}}</h2>
+        <span class="gold-divider"></span>
+    </div>
 @if (!searching()) {
-    @if (success()) {
-        <section class="horizontal bar-container">
+
+        @if (success()) {
+            <section class="bar-direction">
+                <div>
+                    <p> Compra: ${{dolar_info()?.compra}} </p>
+                </div>
+                <div>
+                    <p> Venta: ${{dolar_info()?.venta}} </p>
+                </div>
+                <div>
+                    <p> Fecha: {{ getDate() | date: 'dd-MM-yyyy hh:mm'}}  </p>
+                </div>
+                <div>
+                    <form action="" [formGroup]="form">
+                        <label for="exchange">Moneda: </label>
+                        <select name="exchange" id="exchange" (change)="onChange($event)" formControlName="exchange">
+                            @for (item of enum_options(); track $index) {
+                                <option [value]="item.key">{{item.value}}</option>
+                            }
+                        </select>
+                    </form>
+                </div>
+            </section>
+        } @else {
             <div>
-                <p> Compra: ${{dolar_info()?.compra}} </p>
+                <p> No se puede buscar el precio del dolar, intentelo mas tarde. </p>
             </div>
-            <div>
-                <p> Venta: ${{dolar_info()?.venta}} </p>
-            </div>
-            <div>
-                <p> Fecha: {{ getDate() | date: 'dd-MM-yyyy hh:mm'}}  </p>
-            </div>
-            <div>
-                <form action="" [formGroup]="form">
-                <label for="exchange">Moneda: </label>
-                    <select name="exchange" id="exchange" (change)="onChange($event)" formControlName="exchange">
-                        @for (item of enum_options(); track $index) {
-                            <option [value]="item.key">{{item.value}}</option>
-                        }
-                    </select>
-                </form>
-            </div>
-        </section>
+        }
     } @else {
-        <div>
-            <p> No se puede buscar el precio del dolar, intentelo mas tarde. </p>
-        </div>
+        <div> Buscando... </div>
     }
-} @else {
-    <div> Buscando... </div>
-}
+</section>
