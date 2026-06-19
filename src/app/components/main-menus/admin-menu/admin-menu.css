@@ -1,0 +1,18 @@
+.btn-usuarios ::ng-deep article,
+.btn-usuarios ::ng-deep button,
+.btn-usuarios ::ng-deep a {
+  filter: none !important;
+  background: linear-gradient(135deg, #1b382b 0%, #0f251b 100%) !important;
+  border: 1px solid #d4af37 !important;
+  color: #ffffff !important;
+  text-shadow: none !important;
+}
+
+.btn-usuarios {
+  transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  width: 100%;
+}
+
+.btn-usuarios:hover {
+  transform: translateY(-4px);
+}
