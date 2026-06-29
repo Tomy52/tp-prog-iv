@@ -8,9 +8,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-users-detail',
-  imports: [
-    UserDetailCard
-  ],
+  imports: [UserDetailCard],
   templateUrl: './users-detail.html',
   styleUrl: './users-detail.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

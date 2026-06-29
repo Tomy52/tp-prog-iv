@@ -1,0 +1,73 @@
+td {
+  padding: 10px 20px;
+  text-align: center;
+}
+
+tr {
+  font-family: "Merriweather",serif;
+  font-weight: 300;
+  border-bottom: 1px solid gainsboro;
+  background-color: var(--tr-bg-color);
+}
+
+tr:nth-child(even) {
+  background-color: var(--tr-bg-color-even);
+}
+
+tr:last-child {
+  border-bottom: none;
+}
+
+
+.badge {
+  padding: 6px;
+  border: #ffffff 2px solid;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.badge-active {
+  background: linear-gradient(rgb(23 156 33 / 0.66), rgb(22 39 27 / 0.79)),
+  url('/images/marmolblanco.png') center/cover no-repeat;
+  color: var(--text-color);
+}
+
+.badge-inactive {
+  background: linear-gradient(rgb(239 65 65 / 0.66), rgb(115 34 34 / 0.79)),
+  url('/images/marmolblanco.png') center/cover no-repeat;
+  color: var(--text-color);
+}
+
+button{
+  font-family: "Cinzel", serif;
+  background: linear-gradient(rgb(255 255 255 / 0.2), rgb(92 92 92 / 0.4)),
+  url('/images/marmol_botones.png') center/cover no-repeat;
+  color: var(--secondary-text-color);
+  border-radius: 10px;
+  border-color: var(--text-color);
+  border-width: 2px;
+  width: 80px;
+  font-size: medium;
+  font-weight: 600;
+}
+
+button:hover{
+  filter: brightness(105%);
+}
+
+
+@media (max-width: 760px){
+  th {
+    padding: 5px 10px;
+  }
+
+  .hide-on-desktop{
+    display: table-cell;
+  }
+
+  .hide-on-mobile{
+    display: none;
+  }
+
+}
