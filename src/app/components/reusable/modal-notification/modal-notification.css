@@ -14,7 +14,19 @@
 }
 
 
+h1 {
+    width: 100%;
+    text-align: center;
+    font-family: 'Cinzel', serif;
+    font-weight: 800;
+    color: #2d5a4c;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
 
+.center {
+    text-align: center;
+}
 
 article {
     display: flex;
