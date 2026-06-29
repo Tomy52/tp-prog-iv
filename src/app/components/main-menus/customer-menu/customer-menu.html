@@ -1,2 +1,126 @@
-<app-main-menu-button router_link="on-sale" texto="Productos en venta"/>
-<app-main-menu-button router_link="" texto="Pedidos"/>
+<div class="dashboard-layout">
+
+  <main class="dashboard-columns">
+
+    <div class="carousel-wrapper">
+      <section class="premium-carousel">
+        <div class="carousel-track">
+          
+          <div class="carousel-slide" [class.active]="currentSlide === 0">
+            <img src="images/compraYRetiro.png" alt="compra y retiro" class="carousel-img">
+            <div class="slide-overlay"></div>
+            <div class="slide-content">
+              <h2>Hace tu pedido</h2>
+              <p>¡Retiro sin costo ni demora!</p>
+            </div>
+          </div>
+
+          <div class="carousel-slide" [class.active]="currentSlide === 1">
+            <img src="images/promoWeb.png" alt="promo web" class="carousel-img">
+            <div class="slide-overlay"></div>
+            <div class="slide-content">
+            </div>
+          </div>
+
+          <div class="carousel-slide" [class.active]="currentSlide === 2">
+            <img src="images/jubilados2.png" alt="jubilados" class="carousel-img">
+            <div class="slide-overlay"></div>
+            <div class="slide-content">
+              <h2>Lunes de jubilados</h2>
+              <p>10% de descuento</p>
+            </div>
+          </div>
+
+          <div class="carousel-slide slide-sorpresa" [class.active]="currentSlide === 3">
+            <div class="slide-overlay"></div>
+            <div class="mystery-box-container">
+              @if (!premioAbierto) {
+                <div class="gift-box" (click)="revelarPremio()">
+                  <span class="box-icon">🎁</span>
+                  <h3>¡Tenés un regalo exclusivo!</h3>
+                  <p>Hacé clic para descubrir tu beneficio VIP</p>
+                </div>
+              } @else {
+                <div class="prize-revealed animate-prize">
+                  <span class="prize-icon">✨ 💎 ✨</span>
+                  <h2>¡Felicidades!</h2>
+                  <p class="prize-desc">Obtuviste un <strong>15% OFF</strong></p>
+                  <div class="price-button">
+                    <span class="coupon-code">CÓDIGO: PRECIOSO15</span>
+                    <button class="btn-reset-box" (click)="cerrarBox($event)">Volver a jugar</button>
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+
+        </div>
+
+        <div class="carousel-dots">
+          <span class="dot" [class.active]="currentSlide === 0" (click)="irAlSlide(0)"></span>
+          <span class="dot" [class.active]="currentSlide === 1" (click)="irAlSlide(1)"></span>
+          <span class="dot" [class.active]="currentSlide === 2" (click)="irAlSlide(2)"></span>
+          <span class="dot" [class.active]="currentSlide === 3" (click)="irAlSlide(3)"></span>
+        </div>
+
+        <button class="carousel-control prev" (click)="slideAnterior()">&#10094;</button>
+        <button class="carousel-control next" (click)="slideSiguiente()">&#10095;</button>
+      </section>
+    </div>
+
+    <div class="right-column">
+      
+      <aside class="premium-aside-panel">
+        
+        <div class="aside-left-content">
+          <div class="aside-card-header">
+            <h3>Mi Espacio</h3>
+            <span class="gold-divider"></span>
+          </div>
+          <div class="welcome-client-card">
+            <p class="welcome-text">¡Hola de nuevo!</p>
+            <p class="client-status">Cliente Exclusivo</p>
+          </div>
+        </div>
+
+        <div class="aside-right-content">
+          <div class="info-stat-block">
+            <div class="stat-icon">✨</div>
+            <div class="stat-data">
+              <span class="stat-label">Horarios</span>
+              <span class="stat-value">Lunes a Sábados</span>
+              <span class="stat-value">9:00 a 21:00</span>
+            </div>
+          </div>
+          
+          <div class="info-stat-block">
+            <div class="stat-icon">🚚</div>
+            <div class="stat-data">
+              <span class="stat-label">Envíos</span>
+              <span class="stat-value">Entregas en</span>
+              <span class="stat-value">24-48 horas</span>
+            </div>
+          </div>
+        </div>
+
+      </aside>
+
+      <div class="menu-form-card">
+        <div class="menu-container">
+          
+          <div class="btn-productos">
+            <app-main-menu-button router_link="on-sale" texto="Productos en venta">
+            </app-main-menu-button>
+          </div>
+          
+          <div class="btn-pedidos">
+            <app-main-menu-button router_link="all-orders" texto="Todos los pedidos"></app-main-menu-button>
+          </div>
+
+        </div>
+      </div>
+
+    </div> 
+  </main>
+
+</div>

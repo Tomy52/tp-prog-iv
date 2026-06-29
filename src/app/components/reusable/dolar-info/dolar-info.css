@@ -1,37 +1,40 @@
 .bar-container {
-    display: flex;
-    gap: min(1.2rem,2vw);
-    flex-wrap: wrap;
-    align-items: stretch;
+  background: rgba(255, 255, 255, 0.85); 
+  backdrop-filter: blur(4px);
+  padding: 20px; 
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  
+  width: 100%;
+  max-width: 480px; 
+  box-sizing: border-box;
+  align-self: flex-start;
+
+  text-align: center;
+}
+
+h2 {
+    margin: 10px;
+}
+
+.bar-direction {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+
+  margin: 10px 0px;
+}
+
+.gold-divider {
+  display: block;
+  height: 3px;
+  background-color: #d4af37;
 }
 
 div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.5) 0%, rgba(240, 245, 243, 0.3) 100%);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    border-radius: 20px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-    padding: 10px;
-    border-radius: 10px;
-
-    text-align: center;
-    flex-grow: 1;
-    color: black;
-    
-}
-
-div:hover {
-  background: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.6) 0%,
-      rgba(240, 245, 243, 0.4) 100%
-  );
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    color: #444;
 }
 
 p {

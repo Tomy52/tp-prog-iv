@@ -13,7 +13,7 @@ import { CustomerSidebar } from '../sidebars/customer-sidebar/customer-sidebar';
 import { SidebarComponent } from "../sidebars/sidebar-component/sidebar-component";
 import {ShoppingCart} from '../reusable/shopping-cart/shopping-cart';
 import { AdminSidebar } from "../sidebars/admin-sidebar/admin-sidebar";
-import { AllowViewUser } from "../../directives/allow-view-user";
+import {AllowViewUser} from '../../directives/allow-view-user';
 
 @Component({
   selector: 'app-header-component',
@@ -25,7 +25,7 @@ import { AllowViewUser } from "../../directives/allow-view-user";
     ShoppingCart,
     AdminSidebar,
     AllowViewUser
-],
+  ],
   templateUrl: './header-component.html',
   styleUrl: './header-component.css',
   changeDetection: ChangeDetectionStrategy.OnPush

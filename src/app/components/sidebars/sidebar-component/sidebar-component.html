@@ -30,7 +30,7 @@
 
     <p class="subtitles">Pedidos</p>
     <ul>
-      <li><a routerLink="/all-orders">Todos los pedidos</a></li>
+      <li><a routerLink="/all-orders" *appAllowViewUser="['ROLE_MANAGER','ROLE_ADMIN']">Ver</a></li>
     </ul>
 
     <p class="subtitles logout"><a routerLink="/login" (click)="logOut()">Salir</a></p>

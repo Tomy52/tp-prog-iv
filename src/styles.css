@@ -36,6 +36,10 @@
 body {
   margin: 0;
 
+  position: relative;
+  min-height: 100vh;
+  box-sizing: border-box;
+
   background-image:
     linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.55)),
     url('/images/marmolblanco.png');
