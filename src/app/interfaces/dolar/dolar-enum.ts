@@ -1,9 +1,9 @@
 export enum DolarEnum {
-    oficial = "Dolar Oficial",
-    blue = "Dolar Blue",
-    bolsa = "Dolar Bolsa",
-    contadoconliqui = "Dolar CCL",
-    tarjeta = "Dolar Tarjeta",
-    mayorista = "Dolar Mayorista",
-    cripto = "Dolar Cripto"
+    oficial = "Dólar Oficial",
+    blue = "Dólar Blue",
+    bolsa = "Dólar Bolsa",
+    contadoconliqui = "Dólar CCL",
+    tarjeta = "Dólar Tarjeta",
+    mayorista = "Dólar Mayorista",
+    cripto = "Dólar Cripto"
 }
