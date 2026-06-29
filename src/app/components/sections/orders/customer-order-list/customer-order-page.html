@@ -1,5 +1,5 @@
 <section>
-  <h1>Lista de ordenes</h1>
+  <h1>Lista de pedidos</h1>
   @if (pageData() != null && !errMsg) {
 
     <app-customer-order-search-bar [disabled]="searching" (query_sig)="searchByTerms($event)"/>
