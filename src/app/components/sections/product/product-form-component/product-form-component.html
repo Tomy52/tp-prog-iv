@@ -1,30 +1,42 @@
-<section id="add-product-form">
+<article id="add-product-form">
 
     <form [formGroup]="productForm" (ngSubmit)="submit()">
 
-      <label for="product-name">Nombre del producto</label>
-      <input type="text" id="product-name" formControlName="name" [appFieldErrorBorder]="productForm.get('name')" placeholder="Harina">
-      <small class="error-msg" [appFieldError]="productForm.get('name')"></small>
+      <div>
+        <label for="product-name">Nombre del producto</label>
+        <input type="text" id="product-name" formControlName="name" [appFieldErrorBorder]="productForm.get('name')" placeholder="Harina">
+        <small class="error-msg" [appFieldError]="productForm.get('name')"></small>
+      </div>
 
       @if(modifiedProduct()) {
-        <label for="product-status">Estado</label>
-        <select class="desplegable-estado" name="status" id="product-status" formControlName="status">
-          <option [ngValue]="productStatusEnum.Enabled">Habilitado</option>
-          <option [ngValue]="productStatusEnum.Disabled">Deshabilitado</option>
-        </select>
+        <div>
+          <label for="product-status">Estado</label>
+          <select class="desplegable-estado" name="status" id="product-status" formControlName="status">
+            <option [ngValue]="productStatusEnum.Enabled">Habilitado</option>
+            <option [ngValue]="productStatusEnum.Disabled">Deshabilitado</option>
+          </select>
+        </div>
       }
 
-      <label for="stock">Stock</label>
-      <input type="number" name="stock" id="stock" formControlName="stock">
+      <div>
+        <label for="stock">Stock</label>
+        <input type="number" name="stock" id="stock" formControlName="stock">
+      </div>
 
-      <label for="profit">Margen de ganancia (%)</label>
-      <input type="number" name="profit" id="profit" formControlName="profit" min="0">
+      <div>
+        <label for="profit">Margen de ganancia (%)</label>
+        <input type="number" name="profit" id="profit" formControlName="profit" min="0">
+      </div>
 
-      <label for="category">Categoría</label>      
-      <app-category-dropdown-select [categories]="categories()" formControlName="category" name="category" id="category"/>
+      <div>
+        <label for="category">Categoría</label>      
+        <app-category-dropdown-select [categories]="categories()" formControlName="category" name="category" id="category"/>
+      </div>
 
-      <label for="image">Imagen</label>
-      <input type="file" name="image" id="image" (change)="onFileSelected($event)" accept="image/*">
+      <div>
+        <label for="image">Imagen</label>
+        <input type="file" name="image" id="image" (change)="onFileSelected($event)" accept="image/*">
+      </div>
 
       <button type="submit" [disabled]="!productForm.valid">Cargar</button>
       
@@ -33,5 +45,5 @@
       }
     
     </form>
-</section>
+</article>
 

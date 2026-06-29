@@ -1,6 +1,6 @@
 <section>
   <article>
-  <h2> Precios según proveedores </h2>
+  <h1> Precios según proveedores </h1>
     <form [formGroup]="supplierForm" (ngSubmit)="search()">
       <app-supplier-dropdown-select [suppliers]="supplierList()" formControlName="supplier"></app-supplier-dropdown-select>
       <button [disabled]="supplierList().length === 0 || !this.supplierForm.valid || searching" type="submit">Buscar</button>
