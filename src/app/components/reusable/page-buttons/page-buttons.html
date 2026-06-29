@@ -1,9 +1,9 @@
 <article class="page-buttons">
 
   <div class="page-size">
-    <p>{{`Pagina ${current_page() + 1} de ${max_page()}`}}</p>
+    <p>{{`Página ${current_page() + 1} de ${max_page()}`}}</p>
     <div>
-      <label for="size">Resultados por pagina: </label>
+      <label for="size">Resultados por página: </label>
       <select class="select-page" (change)="changeSize()" [(ngModel)]="selected_page_size" name="size">
       @for (number of page_size_ops(); track $index)
       {
@@ -15,7 +15,7 @@
 
 
   <div>
-    <button (click)="sendBackSignal()" [disabled]="back_active()" title="Botón de pagina anterior">{{back_button_text()}}</button>
-    <button (click)="sendNextSignal()" [disabled]="forward_active()" title="Botón de pagina posterior">{{next_button_text()}}</button>
+    <button (click)="sendBackSignal()" [disabled]="back_active()" title="Botón de página anterior">{{back_button_text()}}</button>
+    <button (click)="sendNextSignal()" [disabled]="forward_active()" title="Botón de página posterior">{{next_button_text()}}</button>
   </div>
 </article>
