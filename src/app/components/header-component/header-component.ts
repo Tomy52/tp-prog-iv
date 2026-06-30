@@ -65,5 +65,10 @@ export class HeaderComponent implements OnInit {
     this.isSidenavOpen.set(false);
   }
 
+  logout() {
+    this.authService.logOut();
+    window.location.reload();
+  }
+
 
 }
