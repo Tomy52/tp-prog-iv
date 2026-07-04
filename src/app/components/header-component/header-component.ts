@@ -34,6 +34,7 @@ export class HeaderComponent implements OnInit {
 
   router = inject(Router);
   isSidenavOpen = signal<boolean>(false);
+  isUserPanelOpen = signal<boolean>(false);
   authService = inject(AuthService);
   username = signal<string>("");
 

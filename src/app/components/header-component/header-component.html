@@ -5,12 +5,14 @@
   <div class="user-button-container">
     <app-shopping-cart *appAllowViewUser="['ROLE_CUSTOMER']"></app-shopping-cart>
 
-    <div class="user-dropdown-container">
-      <button class="nav-bar-button user-button">
+    <div class="user-dropdown-container"
+         (clickOutside)="isUserPanelOpen.set(false)">
+
+      <button class="nav-bar-button user-button" (click)="isUserPanelOpen.set(!isUserPanelOpen())">
         {{username()}}
       </button>
 
-      <div class="dropdown-content">
+      <div class="dropdown-content" [class.is-open]="isUserPanelOpen()">
         <button class="logout-btn" (click)="logout()">Cerrar sesión</button>
       </div>
     </div>
