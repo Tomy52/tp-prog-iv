@@ -150,7 +150,7 @@ export class ProductSupplierFormComponent {
             title: "¡Relación modificada exitosamente!"
           })?.subscribe({
             next: () => {
-              this.goBack();
+              this.return_service.goBack()
             }
           })
         },
@@ -175,10 +175,6 @@ export class ProductSupplierFormComponent {
 
     return this.isDropDownInvalid() || this.productSupplierForm.invalid;
 
-  }
-
-  goBack(){
-    this.return_service.goBack()
   }
 
 }
