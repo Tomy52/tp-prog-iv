@@ -5,7 +5,7 @@ import {ProductSupplierService} from '../../../../services/product-supplier-serv
 import {AllowViewUser} from '../../../../directives/allow-view-user';
 
 @Component({
-  selector: 'tr[app-price-by-product-row-component]',
+  selector: '<app-price-by-product-row-component>',
   imports: [
     RouterLink,
     AllowViewUser
