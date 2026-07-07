@@ -41,7 +41,7 @@
       <button type="submit" [disabled]="!productForm.valid">Cargar</button>
       
       @if (modifiedProduct()) {
-        <button type="button" onclick="goBack()">Cancelar</button>
+        <button type="button" onclick="return_service.goBack()">Cancelar</button>
       }
     
     </form>
