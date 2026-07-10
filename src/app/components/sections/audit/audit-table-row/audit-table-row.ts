@@ -11,4 +11,17 @@ import {DatePipe} from "@angular/common";
 })
 export class AuditTableRow {
   log = input.required<AuditLog>();
+
+  public prettifyCategory(rawCat: string): string {
+    const categories: Record<string, string> = {
+      ADDRESS: "Dirección",
+      CREDENTIAL: "Credencial",
+      PRODUCT: "Producto",
+      SUPPLIER: "Proveedor",
+      PRODUCT_SUPPLIER: "Producto - proveedor",
+      USER: "Usuario"
+    };
+
+    return categories[rawCat] || "";
+  }
 }

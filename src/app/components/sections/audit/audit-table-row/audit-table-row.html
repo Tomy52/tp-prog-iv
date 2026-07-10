@@ -1,7 +1,7 @@
 <td>{{ log().revisionId }}</td>
 <td>{{ log().revisionDate | date:'dd/MM/yyyy HH:mm' }}</td>
 <td>{{ log().userId ? log().userId : 'Sistema' }}</td>
-<td>{{ log().category }}</td>
+<td>{{ this.prettifyCategory(log().category) }}</td>
 <td>
             <span [attr.data-type]="log().revisionType" class="badge"
                   [class.badge-add]="log().revisionType === 0"
