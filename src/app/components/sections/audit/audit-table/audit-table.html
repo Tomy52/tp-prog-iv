@@ -1,0 +1,19 @@
+<section>
+  <table class="audit-table">
+    <thead>
+    <tr>
+      <th>ID movimiento</th>
+      <th>Fecha y Hora</th>
+      <th>Usuario generador</th>
+      <th>Categoría</th>
+      <th>Operación</th>
+      <th>Detalle</th>
+    </tr>
+    </thead>
+    <tbody>
+      @for (log of logs(); track log.revisionId) {
+        <tr app-audit-table-row [log]="log">
+      }
+    </tbody>
+  </table>
+</section>

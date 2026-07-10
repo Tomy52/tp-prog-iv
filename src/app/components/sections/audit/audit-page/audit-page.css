@@ -1,0 +1,37 @@
+section {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  width: fit-content;
+  max-width: 100%;
+  justify-content: center;
+  border-radius: 10px;
+  padding: 10px;
+  margin-inline: auto;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  font-family: 'Cinzel', serif;
+  color: #112d24;
+  margin-top: 3vh;
+  margin-bottom: 2vh;
+}
+
+#audit-page-header {
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: 0.3rem;
+  text-shadow: -1px -1px 0 rgba(255, 255, 255, 0.5);
+}
+
+#audit-page-subtitle {
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  letter-spacing: 0.2rem;
+  font-weight: 500;
+  text-shadow: -1px -1px 0 rgba(255, 255, 255, 0.5);
+}

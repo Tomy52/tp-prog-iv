@@ -1,0 +1,51 @@
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  background-color: var(--table-bg-color);
+  border-radius: 5px;
+  border: 1px #d3d3d3 solid;
+}
+
+.audit-table {
+  background-color: var(--bg-color);
+  padding: 5px;
+  border-radius: 5px;
+  border-collapse: collapse;
+}
+
+thead {
+  border-bottom: 1px solid gainsboro;
+  text-transform: uppercase;
+}
+
+th {
+  background-color: var(--th-bg-color);
+  font-weight: bold;
+}
+
+th {
+  padding: 10px 20px;
+  text-align: center;
+}
+
+thead tr {
+  font-family: Cinzel, serif;
+}
+
+tr {
+  font-family: "Merriweather", serif;
+  font-weight: 300;
+  border-bottom: 1px solid gainsboro;
+  background-color: var(--tr-bg-color);
+}
+
+tr:nth-child(even) {
+  background-color: var(--tr-bg-color-even);
+}
+
+tr:last-child {
+  border-bottom: none;
+}

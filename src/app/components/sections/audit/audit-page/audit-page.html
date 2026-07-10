@@ -1,0 +1,28 @@
+<header>
+  <span id="audit-page-header">Auditorías</span>
+  <span id="audit-page-subtitle">Historial de operaciones</span>
+</header>
+
+<section>
+  @if (page_data() != null) {
+    <app-audit-search-bar [disabled]="searching" (form_sig)="searchByTerms($event)"></app-audit-search-bar>
+
+    @if (page_data()!.content.length === 0) {
+      <h1>No se encontraron resultados</h1>
+    } @else {
+      <app-audit-table [logs]="page_data()!.content"></app-audit-table>
+
+      <app-page-buttons
+        (back_signal)="goBack()"
+        (next_signal)="goForward()"
+        [back_active]="page_data()!.first || searching"
+        [forward_active]="page_data()!.last || searching"
+        [max_page]="page_data()!.totalPages"
+        [current_page]="page()"
+        (size_changed)="changePageSize($event)"
+        [page_size_ops]="page_size_ops"
+      >
+      </app-page-buttons>
+    }
+  }
+</section>
