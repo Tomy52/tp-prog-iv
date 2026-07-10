@@ -1,0 +1,24 @@
+.detail-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+.card-title {
+  font-family: "Merriweather", serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-block: 10px;
+}
+
+.tip-btn {
+  font-size: large !important;
+  margin-bottom: 5px !important;
+}
+
+.return-btn {
+  margin-top: 20px;
+  height: 50px !important;
+  width: fit-content !important;
+}

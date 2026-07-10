@@ -3,12 +3,13 @@ import {HttpClient} from '@angular/common/http';
 import {AuditLog} from '../interfaces/audit/audit-log';
 import {Observable} from 'rxjs';
 import {PageResponse} from '../interfaces/other/page-response';
+import {AuditDetailLog} from '../interfaces/audit/audit-detail-log';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuditService {
-  baseUrl:string = "api/audit/logs";
+  baseUrl:string = "api/audit";
   http = inject(HttpClient);
 
   getAuditLogs(page?:number, size?:number, sort?: string, category?: string, type?:string): Observable<PageResponse<AuditLog>> {
@@ -34,6 +35,10 @@ export class AuditService {
       query_string += `&type=${type}`;
     }
 
-    return this.http.get<PageResponse<AuditLog>>(`${this.baseUrl}${query_string}`);
+    return this.http.get<PageResponse<AuditLog>>(`${this.baseUrl}/logs${query_string}`);
+  }
+
+  getAuditDetail(category: string, revId: string): Observable<AuditDetailLog> {
+    return this.http.get<AuditDetailLog>(`${this.baseUrl}/detail/${category}/${revId}`);
   }
 }

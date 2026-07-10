@@ -1,17 +1,17 @@
 <td>{{ log().revisionId }}</td>
 <td>{{ log().revisionDate | date:'dd/MM/yyyy HH:mm' }}</td>
-<td>{{ log().userId ? log().userId : 'Sistema' }}</td>
+<td><a [routerLink]="['/users', log().userId]" title="Ver usuario relacionado">{{ log().userId ? log().userId : 'Sistema' }}</a></td>
 <td>{{ this.prettifyCategory(log().category) }}</td>
 <td>
             <span [attr.data-type]="log().revisionType" class="badge"
-                  [class.badge-add]="log().revisionType === 0"
+                  [class.badge-active]="log().revisionType === 0"
                   [class.badge-update]="log().revisionType === 1"
-                  [class.badge-delete]="log().revisionType === 2">
+                  [class.badge-inactive]="log().revisionType === 2">
               {{ log().revisionType === 0 ? 'ALTA' : log().revisionType === 1 ? 'MODIFICACIÓN' : 'BAJA' }}
             </span>
 </td>
 <td>
-  <button type="button" disabled title="en construcción">
+  <button type="button" [routerLink]="['/audit', log().category, log().revisionId]" title="Ver detalles del movimiento">
     Ver
   </button>
 </td>

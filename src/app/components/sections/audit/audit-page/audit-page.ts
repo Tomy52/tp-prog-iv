@@ -5,6 +5,8 @@ import { PageResponse } from '../../../../interfaces/other/page-response';
 import {AuditSearchBar, AuditSearchBarData} from '../../../reusable/audit-search-bar/audit-search-bar';
 import { AuditTable } from '../audit-table/audit-table';
 import { PageButtons } from "../../../reusable/page-buttons/page-buttons";
+import {ModalService} from '../../../../services/modal-service';
+import {ModalNotification} from '../../../reusable/modal-notification/modal-notification';
 
 @Component({
   selector: 'app-audit-page',
@@ -20,6 +22,7 @@ import { PageButtons } from "../../../reusable/page-buttons/page-buttons";
 })
 export class AuditPage {
   private readonly auditService = inject(AuditService);
+  private readonly modalService = inject(ModalService);
 
   page = signal<number>(0);
   page_size: number;
@@ -94,5 +97,15 @@ export class AuditPage {
     this.query = terms;
     this.resetPageCount();
     this.getLogs(terms);
+  }
+
+  openTipModal() {
+    this.modalService.showModal(ModalNotification,{
+      title: "Tip:",
+      description: "Aquellas entradas de la tabla que compartan un mismo ID de movimiento," +
+        " corresponden a operaciones que afectaron más" +
+        " de un registro a la vez (por ejemplo: creación de usuarios)",
+      options: ["Entendido"]
+    });
   }
 }

@@ -36,6 +36,7 @@ import { EmployeeOrderPage } from './components/sections/orders/employee-order-p
 import { roleGuardGuard } from './guards/role-guard-guard';
 import { userExistsGuard } from './guards/user-exists-guard';
 import {AuditPage} from './components/sections/audit/audit-page/audit-page';
+import {AuditDetail} from './components/sections/audit/audit-detail/audit-detail';
 
 const employee_role_ABM = "ROLE_MANAGER"
 const admin_role = "ROLE_ADMIN"
@@ -254,6 +255,14 @@ export const routes: Routes = [
   {
     path:"audit",
     component:AuditPage,
+    canActivate: [AuthGuard, roleGuardGuard],
+    data: {
+      allowedUsers: admin_role
+    }
+  },
+  {
+    path:"audit/:category/:rev",
+    component:AuditDetail,
     canActivate: [AuthGuard, roleGuardGuard],
     data: {
       allowedUsers: admin_role
