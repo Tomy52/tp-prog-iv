@@ -266,7 +266,8 @@ export const routes: Routes = [
     component:AuditDetail,
     canActivate: [AuthGuard, roleGuardGuard],
     data: {
-      allowedUsers: admin_role
+      allowedUsers: admin_role,
+      applyHierarchy: false
     }
   },
   {
