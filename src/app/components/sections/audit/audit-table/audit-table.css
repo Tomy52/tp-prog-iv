@@ -52,7 +52,7 @@ tr:last-child {
 }
 
 
-@media (max-width: 760px){
+@media (max-width: 860px){
   .hide-on-desktop{
     display: table-cell;
   }
