@@ -50,3 +50,28 @@ tr:nth-child(even) {
 tr:last-child {
   border-bottom: none;
 }
+
+@media (max-width: 760px){
+  :host {
+    overflow-x: scroll;
+    width: 100%;
+  }
+
+  .hide-on-desktop{
+    display: table-cell;
+  }
+
+  .hide-on-mobile{
+    display: none;
+  }
+
+  table {
+    font-size: small;
+    padding: 0;
+  }
+
+  th {
+    padding: 2px 7px;
+  }
+
+}

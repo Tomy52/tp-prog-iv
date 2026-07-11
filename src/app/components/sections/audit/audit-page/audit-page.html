@@ -7,7 +7,7 @@
   @if (page_data() != null) {
     <div class="search-and-tip">
       <app-audit-search-bar [disabled]="searching" (form_sig)="searchByTerms($event)"></app-audit-search-bar>
-      <button class="tip-btn" (click)="openTipModal()" title="Ver consejo">💡</button>
+      <button class="tip-btn hide-on-mobile" (click)="openTipModal()" title="Ver consejo">💡</button>
     </div>
 
     @if (page_data()!.content.length === 0) {

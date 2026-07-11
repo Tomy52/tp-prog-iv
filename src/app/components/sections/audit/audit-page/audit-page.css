@@ -50,3 +50,17 @@ header {
   font-weight: 500;
   text-shadow: -1px -1px 0 rgba(255, 255, 255, 0.5);
 }
+
+@media (max-width: 760px){
+  section {
+    padding: 0;
+  }
+
+  .hide-on-desktop{
+    display: table-cell;
+  }
+
+  .hide-on-mobile{
+    display: none;
+  }
+}
