@@ -19,8 +19,17 @@ a:visited {
   color: inherit;
 }
 
-@media (max-width: 760px){
+@media (max-width: 780px){
   td {
     padding: 10px !important;
+  }
+
+
+  .hide-on-desktop{
+    display: table-cell;
+  }
+
+  .hide-on-mobile{
+    display: none;
   }
 }
