@@ -39,7 +39,10 @@
               <td>
                 @if (item.value === null || item.value === undefined) {
                   <span title="No hay nada">-</span>
-                } @else {
+                } @else if (item.key === "password") {
+                  •••••
+                }
+                @else {
                   {{ item.value }}
                 }
                 <!--                No lo probe porque no funciona la carga de fotos-->
