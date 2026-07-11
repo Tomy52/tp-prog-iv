@@ -1,5 +1,5 @@
-<td>{{ log().revisionId }}</td>
-<td>{{ log().revisionDate | date:'dd/MM/yyyy HH:mm' }}</td>
+<td class="hide-on-mobile">{{ log().revisionId }}</td>
+<td class="hide-on-mobile">{{ log().revisionDate | date:'dd/MM/yyyy HH:mm' }}</td>
 <td><a [routerLink]="['/users', log().userId]" title="Ver usuario relacionado">{{ log().userId ? log().userId : 'Sistema' }}</a></td>
 <td>{{ this.prettifyCategory(log().category) }}</td>
 <td>
