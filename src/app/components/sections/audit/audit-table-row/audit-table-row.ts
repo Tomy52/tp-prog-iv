@@ -19,7 +19,7 @@ export class AuditTableRow {
       CREDENTIAL: "Credencial",
       PRODUCT: "Producto",
       SUPPLIER: "Proveedor",
-      PRODUCT_SUPPLIER: "Producto - proveedor",
+      PRODUCT_SUPPLIER: "Producto - Proveedor",
       USER: "Usuario"
     };
 
