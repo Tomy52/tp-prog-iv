@@ -1,0 +1,35 @@
+.badge-update {
+  background: linear-gradient(rgb(114 65 239 / 0.66), rgb(57 34 115 / 0.79)),
+  url('/images/marmolblanco.png') center/cover no-repeat;
+  color: var(--text-color);
+}
+
+button {
+  width: 60px;
+  height: 2rem;
+  padding: 0 6px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:visited {
+  color: inherit;
+}
+
+@media (max-width: 780px){
+  td {
+    padding: 10px !important;
+  }
+
+
+  .hide-on-desktop{
+    display: table-cell;
+  }
+
+  .hide-on-mobile{
+    display: none;
+  }
+}

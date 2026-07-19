@@ -1,0 +1,32 @@
+<article>
+  <form (ngSubmit)="submit()" [formGroup]="form" class="large-search-bar">
+    <section>
+      <div>
+        <label for="category">Categoría</label>
+        <select name="category" id="category" formControlName="category">
+          <option [value]="null" selected>Todas</option>
+          <option value="ADDRESS">Dirección</option>
+          <option value="CREDENTIAL">Credencial</option>
+          <option value="PRODUCT">Producto</option>
+          <option value="PRODUCT_SUPPLIER">Producto - Proveedor</option>
+          <option value="SUPPLIER">Proveedor</option>
+          <option value="USER">Usuario</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="revisionType">Operación</label>
+        <select name="revisionType" id="revisionType" formControlName="revisionType">
+          <option [value]="null" selected>Todas</option>
+          <option value="0">Alta</option>
+          <option value="1">Modificación</option>
+          <option value="2">Baja</option>
+        </select>
+      </div>
+
+      <div>
+        <button type="submit">Buscar</button>
+      </div>
+    </section>
+  </form>
+</article>
