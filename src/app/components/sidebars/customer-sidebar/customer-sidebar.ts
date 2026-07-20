@@ -1,6 +1,5 @@
 import { Component, inject } from "@angular/core";
 import { RouterLink } from "@angular/router";
-import { AuthService } from "../../../services/auth-service";
 
 
 @Component({
@@ -10,9 +9,4 @@ import { AuthService } from "../../../services/auth-service";
   styleUrls: ['./customer-sidebar.css',"../styles/sidebar-style.css"]
 })
 export class CustomerSidebar {
-  authService = inject(AuthService);
-
-  logOut(){
-    this.authService.logOut();
-  }
 }

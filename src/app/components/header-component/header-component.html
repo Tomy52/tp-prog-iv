@@ -4,7 +4,21 @@
   <h1 routerLink="main-menu" title="Regresar al menú principal">PreciOSO</h1>
   <div class="user-button-container">
     <app-shopping-cart *appAllowViewUser="['ROLE_CUSTOMER']"></app-shopping-cart>
-    <button class="nav-bar-button user-button" title="Ver panel de usuario">{{username()}}</button>
+
+    <div class="user-dropdown-container"
+         (clickOutside)="isUserPanelOpen.set(false)">
+
+      <button title="Ver opciones de usuario" class="nav-bar-button user-button" (click)="isUserPanelOpen.set(!isUserPanelOpen())">
+        {{username()}}
+      </button>
+
+      <div class="dropdown-content" [class.is-open]="isUserPanelOpen()">
+        <button class="logout-btn" (click)="openTipModal()">
+          <img class="logout-icon" src="images/icons/logout.svg">
+          <span class="logout-btn-text">Cerrar sesión</span>
+        </button>
+      </div>
+    </div>
   </div>
 
 </nav>
