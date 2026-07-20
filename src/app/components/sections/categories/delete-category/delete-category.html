@@ -6,7 +6,8 @@
 <section>
     <article>
         <form action="" [formGroup]="form" (ngSubmit)="completeForm()">
-            <app-category-dropdown-select formControlName="category" [categories]="categories()"/>
+            <label for="category">Categoría</label>
+            <app-category-dropdown-select formControlName="category" id="category" [categories]="categories()"/>
             <input type="submit" value="Eliminar" [disabled]="!isValid()">
         </form>
     </article>

@@ -6,7 +6,7 @@
     background: url('/images/marmolblanco.png') center/cover no-repeat;
     padding: 5vh;
     box-sizing: border-box;
-    box-shadow: inset 0 0 150px rgba(0, 0, 0, 0.25); 
+    box-shadow: inset 0 0 150px rgba(0, 0, 0, 0.25);
     overflow-x: hidden;
 }
 
@@ -18,7 +18,7 @@
     border-radius: 40px;
     width: 100%;
     max-width: 480px;
-    padding: 80px 40px 40px; 
+    padding: 80px 40px 40px;
     position: relative;
     box-shadow: 0 30px 60px rgba(3, 49, 1, 0.767);
     box-sizing: border-box;
@@ -29,12 +29,12 @@
     position: absolute;
     top: 0;
     left: 50%;
-    transform: translate(-50%, -35%); 
+    transform: translate(-50%, -35%);
     z-index: 100;
 }
 
 .contenedorImg img {
-    width: 140px; 
+    width: 140px;
     height: auto;
     filter: drop-shadow(0 12px 20px rgba(0,0,0,0.35));
 }
@@ -48,20 +48,6 @@ h1 {
     text-transform: uppercase;
     font-size: 2rem;
     width: 100%;
-}
-
-label {
-    font-family: 'Cinzel', serif;
-    font-size: 0.9rem;
-    color: #2d5a4c;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    text-align: center; 
-    width: 100%;
-    display: block;
-    margin-top: 7px;
-    margin-bottom: 2px;
 }
 
 input {
@@ -90,14 +76,14 @@ input:focus {
 /* Manejo de mensajes */
 .error-msg {
     font-family: 'Cinzel', serif;
-    color: #a94442; 
+    color: #a94442;
     font-size: 0.7rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
     display: block;
     margin-top: 2px;
-    min-height: 1.2em; 
+    min-height: 1.2em;
     text-align: center;
     transition: all 0.3s ease;
 }
@@ -105,7 +91,7 @@ input:focus {
 /* Error o éxito */
 .success, .failure {
     width: 100%;
-    max-width: 400px; 
+    max-width: 400px;
     margin: 15px auto;
     padding: 12px;
     border-radius: 15px;
@@ -121,14 +107,14 @@ input:focus {
     animation: fadeInSlide 0.4s ease-out;
 }
 
-.success { 
-    background: rgba(45, 90, 76, 0.15); 
+.success {
+    background: rgba(45, 90, 76, 0.15);
     color: #2d5a4c;
     border: 1px solid rgba(45, 90, 76, 0.3);
   }
 
 .failure {
-    background: rgba(169, 68, 66, 0.1); 
+    background: rgba(169, 68, 66, 0.1);
     color: #a94442;
     border: 1px solid rgba(169, 68, 66, 0.2);
 }
@@ -149,7 +135,7 @@ input:focus {
 
 .registration-form-buttons button {
     width: 100%;
-    max-width: 400px; 
+    max-width: 400px;
     padding: 22px;
     border-radius: 20px;
     border: none;
@@ -164,18 +150,18 @@ input:focus {
 }
 
 button[type="submit"] {
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), 
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)),
                 url('/images/header3.png') center/cover no-repeat !important;
     color: #ffffff;
     box-shadow: 0 12px 25px rgba(22, 55, 45, 0.35);
 }
 
 .return-btn {
-    background: transparent !important; 
+    background: transparent !important;
     border: 1.5px solid #2d5a4c !important;
     color: #2d5a4c !important;
     font-size: 1rem !important;
-   
+
 }
 
 button:hover:not(:disabled) {
@@ -205,8 +191,8 @@ button:disabled {
 @media (max-width: 768px) {
     .glass-card {
         max-width: 85%;
-        padding: 60px 25px 30px; 
-        margin: 20px 0; 
+        padding: 60px 25px 30px;
+        margin: 20px 0;
     }
 
     h1 {
@@ -222,9 +208,9 @@ button:disabled {
 
 @media (max-width: 480px) {
     .main-container {
-        align-items: flex-start; 
-        padding: 40px 15px; 
-        overflow-y: auto; 
+        align-items: flex-start;
+        padding: 40px 15px;
+        overflow-y: auto;
     }
 
     .glass-card {
@@ -234,8 +220,8 @@ button:disabled {
     }
 
     .contenedorImg {
-       
-        transform: translate(-50%, -35%); 
+
+        transform: translate(-50%, -35%);
     }
 
     .contenedorImg img {
@@ -279,7 +265,7 @@ button:disabled {
 
 @media (max-height: 600px) {
     .contenedorImg {
-        display: none; 
+        display: none;
     }
     .glass-card {
         padding-top: 20px;

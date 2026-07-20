@@ -6,8 +6,9 @@
 <section>
   <form action="" [formGroup]="form" (ngSubmit)="submit()">
 
-  <app-supplier-dropdown-select [suppliers]="suppliers()" formControlName="id"/>
-  <input type="submit" value="Eliminar" [disabled]="!isValid()">
+    <label for="suppliers">Proveedor</label>
+    <app-supplier-dropdown-select id="suppliers" [suppliers]="suppliers()" formControlName="id"/>
+    <input type="submit" value="Eliminar" [disabled]="!isValid()">
 
   </form>
 </section>
