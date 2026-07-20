@@ -14,6 +14,9 @@ import { SidebarComponent } from "../sidebars/sidebar-component/sidebar-componen
 import {ShoppingCart} from '../reusable/shopping-cart/shopping-cart';
 import { AdminSidebar } from "../sidebars/admin-sidebar/admin-sidebar";
 import {AllowViewUser} from '../../directives/allow-view-user';
+import {Tooltip} from '../../directives/tooltip';
+import {ModalService} from '../../services/modal-service';
+import {ModalNotification} from '../reusable/modal-notification/modal-notification';
 
 @Component({
   selector: 'app-header-component',
@@ -24,7 +27,8 @@ import {AllowViewUser} from '../../directives/allow-view-user';
     SidebarComponent,
     ShoppingCart,
     AdminSidebar,
-    AllowViewUser
+    AllowViewUser,
+    Tooltip
   ],
   templateUrl: './header-component.html',
   styleUrl: './header-component.css',
@@ -33,6 +37,7 @@ import {AllowViewUser} from '../../directives/allow-view-user';
 export class HeaderComponent implements OnInit {
 
   router = inject(Router);
+  modalService = inject(ModalService);
   isSidenavOpen = signal<boolean>(false);
   isUserPanelOpen = signal<boolean>(false);
   authService = inject(AuthService);
@@ -69,6 +74,25 @@ export class HeaderComponent implements OnInit {
   logout() {
     this.authService.logOut();
     window.location.reload();
+  }
+
+  openTipModal() {
+    const ok_option = "Si";
+
+    const modal = this.modalService.showModal(ModalNotification,{
+      title: "Cerrar sesión",
+      description: "¿Está seguro que desea cerrar la sesión?",
+      options: [ok_option,"No"]
+    });
+
+    modal?.subscribe({
+      next: (response) => {
+        if(response == ok_option)
+        {
+          this.logout();
+        }
+      }
+    });
   }
 
 

@@ -150,38 +150,19 @@ nav h1 {
   box-shadow: 0 8px 24px rgba(0,0,0,0.25);
   border-radius: 10px;
   padding: 6px 0;
-  z-index: 1001;
-
-  display: flex;
-  flex-direction: row;
-  align-content: center;
-  justify-content: center;
 }
 
-/* Para que el hover se enganche bien */
-.dropdown-content::before {
-  content: '';
-  position: absolute;
-  top: -15px;
-  left: 0;
-  width: 100%;
-  height: 15px;
-  background: transparent;
-}
-
-.user-dropdown-container:hover .dropdown-content,
 .dropdown-content.is-open {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
-
   top: calc(100% + 12px);
   transform: translate(-50%, 0) scale(1);
 }
 
 .logout-btn {
-  width: 85%;
-  /*padding: 12px 24px;*/
+  width: 100%;
+  padding: 12px 24px;
   border: none;
   background: none;
   color: var(--close-color);
@@ -189,12 +170,12 @@ nav h1 {
   font-size: 0.9em;
   cursor: pointer;
   text-align: center;
-  white-space: nowrap;
 }
 
-.logout-btn:hover {
-  background-color: var(--active-bg-color);
-  border-radius: 8px;
+.logout-icon {
+  visibility: hidden;
+  width: 0;
+  height: 0;
 }
 
 .menuDiv {
@@ -245,9 +226,12 @@ nav h1 {
   }
 
   .dropdown-content {
+    display: flex;
+    justify-content: center;
     top: calc(100% + 8px);
-    min-width: 120px;
+    min-width: 40px;
     border-radius: 8px;
+    padding: 5px;
   }
 
   .dropdown-content::before {
@@ -256,8 +240,23 @@ nav h1 {
   }
 
   .logout-btn {
-    padding: 8px 16px;
     font-size: 0.8rem;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .logout-icon {
+    visibility: visible;
+    width: 20px;
+    height: 20px;
+    filter: invert(24%) sepia(93%) saturate(4051%) hue-rotate(345deg) brightness(89%) contrast(91%);
+  }
+
+  .logout-btn-text {
+    visibility: hidden;
   }
 
   .menuDiv {

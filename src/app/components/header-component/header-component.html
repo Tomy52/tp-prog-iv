@@ -8,12 +8,15 @@
     <div class="user-dropdown-container"
          (clickOutside)="isUserPanelOpen.set(false)">
 
-      <button class="nav-bar-button user-button" (click)="isUserPanelOpen.set(!isUserPanelOpen())">
+      <button title="Ver opciones de usuario" class="nav-bar-button user-button" (click)="isUserPanelOpen.set(!isUserPanelOpen())">
         {{username()}}
       </button>
 
       <div class="dropdown-content" [class.is-open]="isUserPanelOpen()">
-        <button class="logout-btn" (click)="logout()">Cerrar sesión</button>
+        <button class="logout-btn" (click)="openTipModal()">
+          <img class="logout-icon" src="images/icons/logout.svg">
+          <span class="logout-btn-text">Cerrar sesión</span>
+        </button>
       </div>
     </div>
   </div>
