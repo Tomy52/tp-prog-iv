@@ -3,16 +3,16 @@ article {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: var(--header_padding);
+  padding: var(--header-padding);
 
   /* etc */
   text-align: center;
-  
+
   height: 50px;
   transition: background-color .1s ease-in-out;
-  
 
-  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), 
+
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)),
     url('/images/header3.png') center/cover no-repeat !important;
   color: #fcfcf9;
   border: 1px solid rgba(255, 255, 255, 0.2);
