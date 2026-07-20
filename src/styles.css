@@ -100,9 +100,15 @@ input[type="submit"]:hover {
   background-color: var(--secondary-color);
 }
 
-#table-wrapper {
-  max-width: 80%;
-  overflow-x: auto;
+.table-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  background-color: var(--table-bg-color);
+  border-radius: 5px;
+  border: 1px #d3d3d3 solid;
 }
 
 .error-msg {
@@ -114,6 +120,101 @@ input[type="submit"]:hover {
 .error-border {
   border: 2px solid red;
 }
+
+/*Estilos de tabla*/
+
+table {
+  background-color: var(--bg-color);
+  padding: 5px;
+  border-radius: 5px;
+  border-collapse: collapse;
+  overflow: hidden;
+}
+
+thead {
+  border-bottom: 1px solid gainsboro;
+  text-transform: uppercase;
+}
+
+th {
+  background-color: var(--th-bg-color);
+  font-weight: bold;
+}
+
+th {
+  padding: 10px 20px;
+  text-align: center;
+}
+
+thead tr {
+  font-family: Cinzel, serif;
+}
+
+tr {
+  font-family: "Merriweather", serif;
+  font-weight: 300;
+  border-bottom: 1px solid gainsboro;
+  background-color: var(--tr-bg-color);
+}
+
+tr:nth-child(even) {
+  background-color: var(--tr-bg-color-even);
+}
+
+tr:last-child {
+  border-bottom: none;
+}
+
+td {
+  padding: 10px 20px;
+  text-align: center;
+}
+
+.badge {
+  padding: 6px;
+  border: #ffffff 2px solid;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.badge-active {
+  background: linear-gradient(rgb(23 156 33 / 0.66), rgb(22 39 27 / 0.79)),
+  url('/images/marmolblanco.png') center/cover no-repeat;
+  color: var(--text-color);
+}
+
+.badge-inactive {
+  background: linear-gradient(rgb(239 65 65 / 0.66), rgb(115 34 34 / 0.79)),
+  url('/images/marmolblanco.png') center/cover no-repeat;
+  color: var(--text-color);
+}
+
+.badge-update {
+  background: linear-gradient(rgb(114 65 239 / 0.66), rgb(57 34 115 / 0.79)),
+  url('/images/marmolblanco.png') center/cover no-repeat;
+  color: var(--text-color);
+}
+
+/*button{*/
+/*  font-family: "Cinzel", serif;*/
+/*  background: linear-gradient(rgb(255 255 255 / 0.2), rgb(92 92 92 / 0.4)),*/
+/*  url('/images/marmol_botones.png') center/cover no-repeat;*/
+/*  color: var(--secondary-text-color);*/
+/*  border-radius: 10px;*/
+/*  border-color: var(--text-color);*/
+/*  border-width: 2px;*/
+/*  width: 60px;*/
+/*  height: 2rem;*/
+/*  padding: 0 6px;*/
+/*  font-size: medium;*/
+/*  font-weight: 600;*/
+/*}*/
+
+/*button:hover{*/
+/*  filter: brightness(105%);*/
+/*}*/
+
 
 /*clases del tooltip*/
 
@@ -160,11 +261,47 @@ span.tool-tip p.tool-tip-text {
   }
 }
 
+@media (max-width: 760px){
+
+  .table-wrapper {
+    overflow-x: scroll;
+  }
+
+  table {
+    font-size: small;
+    padding: 0;
+  }
+
+  th {
+    padding: 2px 7px;
+  }
+
+  td {
+    padding: 3px;
+  }
+
+  .badge {
+    font-size: smaller;
+  }
+
+  /*button {*/
+  /*  width: 40px;*/
+  /*  font-size: small;*/
+  /*}*/
+
+  .hide-on-desktop{
+    display: table-cell;
+  }
+
+  .hide-on-mobile{
+    display: none;
+  }
+}
+
 @media screen and (min-width: 480px) and (max-width: 1024px) {
   span.tool-tip {
     top: 42px;
     right: 10px;
-
   }
 }
 

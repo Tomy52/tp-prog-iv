@@ -6,7 +6,7 @@ import { RouterLink } from "@angular/router";
   selector: 'tr[app-users-table-row]',
   imports: [RouterLink],
   templateUrl: './users-table-row.html',
-  styleUrl: './users-table-row.css',
+  styleUrls: ['./users-table-row.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UsersTableRow {

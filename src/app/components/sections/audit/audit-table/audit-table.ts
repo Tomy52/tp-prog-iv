@@ -7,7 +7,7 @@ import {AuditTableRow} from '../audit-table-row/audit-table-row';
   selector: 'app-audit-table',
   imports: [CommonModule, AuditTableRow],
   templateUrl: './audit-table.html',
-  styleUrl: './audit-table.css',
+  styleUrls: ['./audit-table.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AuditTable {
