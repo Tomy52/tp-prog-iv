@@ -73,7 +73,7 @@ button{
   color: var(--text-color);
   width: 80px;
   font-size: medium;
-  font-family: "BreeSerif-regular", serif;
+  font-family: "Merriweather", serif;
 }
 
 button:hover{
