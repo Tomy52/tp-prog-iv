@@ -29,7 +29,7 @@
   --error-color: #FF80AB;
   --close-color: #e83f3f;
 
-  font-family: "BreeSerif-regular", serif;
+  font-family: "Merriweather", serif;
   box-sizing: border-box;
 }
 
@@ -52,12 +52,6 @@ body {
 
   /* Color de respaldo */
   background-color: var(--bg-color);
-}
-
-
-@font-face {
-  font-family: "BreeSerif-regular";
-  src: url("./fonts/BreeSerif-Regular.ttf") format("truetype");
 }
 
 .app-container {
@@ -93,7 +87,7 @@ input {
 }
 
 input[type="submit"] {
-  font-family: "BreeSerif-regular", serif;
+  font-family: "Merriweather", serif;
   padding: 10px;
   cursor: pointer;
   background-color: var(--main-color);

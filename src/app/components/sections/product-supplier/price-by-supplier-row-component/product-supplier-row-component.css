@@ -15,7 +15,7 @@ button{
   color: var(--text-color);
   width: min-content;
   font-size: small;
-  font-family: "BreeSerif-regular", serif;
+  font-family: "Merriweather", serif;
 }
 
 button.edit-button:hover{

@@ -34,7 +34,7 @@
     <button [disabled]="isFormInvalid()" type="submit">{{isEditing()? 'Editar' : 'Crear' }}</button>
 
     @if (isEditing()) {
-      <button type="button" (click)="goBack()">Cancelar</button>
+      <button type="button" (click)="this.return_service.goBack()">Cancelar</button>
     }
 
 

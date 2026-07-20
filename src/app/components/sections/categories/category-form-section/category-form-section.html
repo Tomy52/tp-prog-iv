@@ -4,7 +4,7 @@
             <h2 [textContent]="'Agregar categoría'"></h2>
             <div>
                 <label for="name">Nombre</label>
-                <input type="text" name="name" id="name" formControlName="name" [appFieldErrorBorder]="form.get('name')">
+                <input type="text" placeholder="Ej.: SinTACC" name="name" id="name" formControlName="name" [appFieldErrorBorder]="form.get('name')">
             </div>
             <small class="error-msg" [appFieldError]="form.get('name')"></small>
             <input type="submit" value="Subir" [disabled]="!isValid()">

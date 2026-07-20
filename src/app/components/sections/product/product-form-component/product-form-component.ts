@@ -147,7 +147,7 @@ export class ProductFormComponent {
           title: "¡Modificación exitosa!"
         })?.subscribe({
           next: () => {
-            this.goBack()   
+            this.return_service.goBack()   
           }
         })
         
@@ -167,10 +167,6 @@ export class ProductFormComponent {
     this.selectedFile = undefined;
   }
 
-  goBack()
-  {
-    this.return_service.goBack()
-  }
 
 
   protected readonly productStatusEnum = ProductStatus;
