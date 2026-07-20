@@ -68,6 +68,21 @@ main {
   background: transparent;
 }
 
+
+label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.9rem;
+  color: #2d5a4c;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
+  width: 100%;
+  display: block;
+  margin-top: 7px;
+  margin-bottom: 2px;
+}
+
 button:disabled {
   cursor: not-allowed;
   background-color: var(--disabled-button-color);
