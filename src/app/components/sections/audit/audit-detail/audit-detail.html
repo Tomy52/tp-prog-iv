@@ -1,0 +1,63 @@
+<header>
+  <span id="audit-page-header">Auditorías</span>
+  <span id="audit-page-subtitle">Detalle de operación</span>
+</header>
+
+<div class="detail-container">
+  @if (loading()) {
+    <p>Cargando información del movimiento...</p>
+  } @else {
+
+    <section>
+      <span class="card-title">Datos de la operación</span>
+      <table>
+        <tr>
+          <td>Tipo de entidad afectada:</td>
+          <td>{{ category() }}</td>
+        </tr>
+        <tr>
+          <td>ID del movimiento:</td>
+          <td>{{ revisionId() }}</td>
+        </tr>
+      </table>
+    </section>
+
+    <section>
+      <span class="card-title">Valores del registro afectado</span>
+      <button class="tip-btn" (click)="openTipModal()" title="Ver consejo">💡</button>
+      <table>
+        <thead>
+        <tr>
+          <th>Campo</th>
+          <th>Valor</th>
+        </tr>
+        </thead>
+        <tbody>
+          @for (item of detail() | keyvalue; track item.key) {
+            <tr>
+              <td>{{ item.key }}</td>
+              <td>
+                @if (item.value === null || item.value === undefined) {
+                  <span title="No hay nada">-</span>
+                } @else if (item.key === "password") {
+                  •••••
+                }
+                @else {
+                  {{ item.value }}
+                }
+                <!--                No lo probe porque no funciona la carga de fotos-->
+                <!--                @else if (item.key === "image_url" ) {-->
+                <!--                  <img ngSrc="${item.value}">-->
+                <!--                }-->
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </section>
+
+    <button class="return-btn" type="button" routerLink="/audit">
+      Volver
+    </button>
+  }
+</div>
