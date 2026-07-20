@@ -1,5 +1,9 @@
+<header>
+  <span class="page-title">Productos</span>
+  <span class="page-subtitle">Productos en venta</span>
+</header>
+
 <section>
-  <h1>Lista de productos en venta</h1>
   @if (pageData() != null && !errMsg) {
 
     <app-client-product-search-bar (query_sig)="searchByTerms($event)"></app-client-product-search-bar>

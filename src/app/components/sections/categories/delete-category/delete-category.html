@@ -1,7 +1,11 @@
+<header>
+  <span class="page-title">Categorías</span>
+  <span class="page-subtitle">Eliminar categoría</span>
+</header>
+
 <section>
     <article>
         <form action="" [formGroup]="form" (ngSubmit)="completeForm()">
-            <h2>Eliminar categoría</h2>
             <app-category-dropdown-select formControlName="category" [categories]="categories()"/>
             <input type="submit" value="Eliminar" [disabled]="!isValid()">
         </form>

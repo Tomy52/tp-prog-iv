@@ -1,6 +1,9 @@
+<header>
+  <span class="page-title">Usuarios</span>
+  <span class="page-subtitle">Gestión y visualización</span>
+</header>
+
 <section>
-  <span id="users-page-header">Usuarios</span>
-  <span id="users-page-subtitle">Gestión y visualización</span>
   @if (page_data() != null) {
     <app-user-search-bar [disabled]="searching" (form_sig)="searchByTerms($event)"></app-user-search-bar>
     @if(page_data()!.content.length === 0) {
@@ -19,9 +22,9 @@
       [page_size_ops]="page_size_ops"
       >
 
-        
+
       </app-page-buttons>
-    }  
+    }
   }
 </section>
 

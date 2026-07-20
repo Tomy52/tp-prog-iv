@@ -13,26 +13,3 @@ section {
   margin-inline: auto;
   /* backdrop-filter: blur(15px); */
 }
-
-#users-page-header,
-#users-page-subtitle {
-  font-family: 'Cinzel', serif;
-  color: #2d5a4c;
-  text-align: center;
-}
-
-#users-page-header {
-  font-size: 2.5rem;
-  font-weight: 800;
-  font-size: clamp(1.5rem, 5vw, 2.5rem);
-  letter-spacing: 0.3rem;
-  font-weight: bold;
-}
-
-#users-page-subtitle {
-  font-weight: 800;
-  font-size: clamp(1.5rem, 5vw, 2.5rem);
-  letter-spacing:0.2rem ;
-  margin-bottom: 10px;
-  font-weight: 500;
-}

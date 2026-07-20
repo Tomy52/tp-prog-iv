@@ -1,5 +1,9 @@
+<header>
+  <span class="page-title">Proveedores</span>
+  <span class="page-subtitle">Listado y búsqueda</span>
+</header>
+
 <section>
-  <h1>Lista de proveedores</h1>
   <app-supplier-search-bar [disabled]="searching()" (form_sig)="searchByTerms($event)"></app-supplier-search-bar>
   @if (!error_msg) {
       @if (page_data()!.content.length != 0) {
