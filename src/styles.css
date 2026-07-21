@@ -8,8 +8,7 @@
   --secondary-color: #2c6e5a;
   --tertiary-color: #4c9682;
 
-
-  --bg-color: #f5f1e4;
+  --bg-color: #dee6e1;
 
   --text-color: #ffffff;
   --secondary-text-color: #333333;
@@ -42,7 +41,7 @@ body {
   box-sizing: border-box;
 
   background-image:
-    linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.55)),
+    linear-gradient(rgb(230 230 230 / 0.35), rgb(66 66 66 / 0.55)),
     url('/images/marmolblanco.png');
 
   background-size: cover;
