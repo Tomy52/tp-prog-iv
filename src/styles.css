@@ -9,6 +9,8 @@
   --tertiary-color: #4c9682;
 
   --bg-color: #dee6e1;
+  --bg: linear-gradient(rgb(230 230 230 / 0.35), rgb(66 66 66 / 0.55)),
+  url('/images/marmolblanco.png');
 
   --text-color: #ffffff;
   --secondary-text-color: #333333;
@@ -40,9 +42,8 @@ body {
   min-height: 100vh;
   box-sizing: border-box;
 
-  background-image:
-    linear-gradient(rgb(230 230 230 / 0.35), rgb(66 66 66 / 0.55)),
-    url('/images/marmolblanco.png');
+  background-image: var(--bg);
+
 
   background-size: cover;
   background-position: center;
