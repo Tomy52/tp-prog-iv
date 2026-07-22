@@ -21,7 +21,8 @@ import { ModalService } from '../../../../services/modal-service';
     PageButtons,
   ],
   templateUrl: './price-list-by-product-component.html',
-  styleUrl: './price-list-by-product-component.css',
+  styleUrls: ['./price-list-by-product-component.css',
+    '../../../reusable/styles/search-bar-styles.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PriceListByProductComponent {
@@ -61,7 +62,7 @@ export class PriceListByProductComponent {
       }, error: error => {
 
         throw error
-        
+
       },
       complete: () => this.searching = false
     })

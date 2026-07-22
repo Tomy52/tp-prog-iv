@@ -7,7 +7,7 @@
   <article>
     <form [formGroup]="productForm"
         (ngSubmit)="getPricesByProductList()">
-
+      <label>Producto</label>
     <app-product-dropdown-select [products]="productList()"
                                  formControlName="product" />
 
@@ -18,11 +18,8 @@
 
   <div class="list-container">
     @if (priceList() !== undefined){
-
-      <h3>Proveedores que tienen: {{ priceByProductList().name}}</h3>
-
       @if(priceList()?.length === 0){
-        <p>No hay Proveedores registrados que tengan el Producto solicitado</p>
+        <p>No hay proveedores registrados que tengan el producto solicitado</p>
 
       } @else {
 
@@ -41,10 +38,10 @@
             <tbody>
 
               @for (productPrice of priceList(); track $index) {
-                <app-price-by-product-row-component
+                <tr app-price-by-product-row-component
                 [productPrice]="productPrice"
                 [productSupplierId]="productPrice.idProductSupplier"
-                (rowDeleted)="handleRowDeletion($event)"/>
+                (rowDeleted)="handleRowDeletion($event)">
               }
             </tbody>
           </table>

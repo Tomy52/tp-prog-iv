@@ -6,7 +6,7 @@ import {AllowViewUser} from '../../../../directives/allow-view-user';
 import {CurrencyPipe} from '@angular/common';
 
 @Component({
-  selector: '<app-price-by-product-row-component>',
+  selector: 'tr[app-price-by-product-row-component]',
   imports: [
     RouterLink,
     AllowViewUser,
