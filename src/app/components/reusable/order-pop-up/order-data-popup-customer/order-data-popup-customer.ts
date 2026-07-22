@@ -28,6 +28,10 @@ export class OrderDataPopupCustomer {
     this.dialogRef?.close(status)
   }
 
+  goBack() {
+    this.closeModal('back');
+  }
+
   changeStatus()
   {
     let ok_option = "Si"
@@ -62,7 +66,7 @@ export class OrderDataPopupCustomer {
       }
     })
   }
-  
+
   checkIfControlsShouldBeEnabled()
   {
     return !(this.data()?.status == "CANCELLED" || this.data()?.status == "COMPLETED")
