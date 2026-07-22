@@ -5,8 +5,7 @@ section {
     align-items: center;
     padding: 140px 20px 60px 20px;
     width: 100%;
-    box-sizing: border-box;
-    background: radial-gradient(circle at center, transparent 20%, rgba(45, 90, 76, 0.05) 100%);
+    box-sizing: border-box;/
 }
 
 h2 {
