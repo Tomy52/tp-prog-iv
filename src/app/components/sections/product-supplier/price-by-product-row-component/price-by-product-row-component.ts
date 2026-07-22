@@ -3,12 +3,14 @@ import {RouterLink} from '@angular/router';
 import {ResponsePriceProduct} from '../../../../interfaces/product-supplier/response-price-product';
 import {ProductSupplierService} from '../../../../services/product-supplier-service';
 import {AllowViewUser} from '../../../../directives/allow-view-user';
+import {CurrencyPipe} from '@angular/common';
 
 @Component({
   selector: '<app-price-by-product-row-component>',
   imports: [
     RouterLink,
-    AllowViewUser
+    AllowViewUser,
+    CurrencyPipe
   ],
   templateUrl: './price-by-product-row-component.html',
   styleUrl: './price-by-product-row-component.css',

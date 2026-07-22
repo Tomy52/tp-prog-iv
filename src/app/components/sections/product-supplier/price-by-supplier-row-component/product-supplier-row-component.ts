@@ -3,12 +3,14 @@ import {ResponsePriceSupplier} from '../../../../interfaces/product-supplier/res
 import {RouterLink} from "@angular/router";
 import {ProductSupplierService} from "../../../../services/product-supplier-service";
 import {AllowViewUser} from '../../../../directives/allow-view-user';
+import {CurrencyPipe} from '@angular/common';
 
 @Component({
-  selector: 'app-price-by-supplier-row-component',
+  selector: 'tr[app-price-by-supplier-row-component]',
   imports: [
     RouterLink,
-    AllowViewUser
+    AllowViewUser,
+    CurrencyPipe
   ],
   templateUrl: './product-supplier-row-component.html',
   styleUrl: './product-supplier-row-component.css',
@@ -55,4 +57,6 @@ export class ProductSupplierRowComponent {
   protected toggleDetails() {
     this.isExpanded.update(value => !value);
   }
+
+  protected readonly Math = Math;
 }

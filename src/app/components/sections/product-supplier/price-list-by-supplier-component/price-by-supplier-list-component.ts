@@ -21,7 +21,8 @@ import {RouterLink} from '@angular/router';
     AllowViewUser
   ],
   templateUrl: './price-by-supplier-list-component.html',
-  styleUrl: './price-by-supplier-list-component.css',
+  styleUrls: ['./price-by-supplier-list-component.css',
+    '../../../reusable/styles/search-bar-styles.css',],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PriceBySupplierListComponent {
