@@ -118,7 +118,8 @@ input[type="submit"]:hover {
   align-items: center;
   justify-content: center;
   width: fit-content;
-  background-color: var(--table-bg-color);
+  background: var(--card-bg);
+  padding: 3px;
   border-radius: 5px;
   border: 1px #d3d3d3 solid;
 }
