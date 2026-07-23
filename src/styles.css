@@ -235,24 +235,32 @@ td {
   color: var(--text-color);
 }
 
-/*button{*/
-/*  font-family: "Cinzel", serif;*/
-/*  background: linear-gradient(rgb(255 255 255 / 0.2), rgb(92 92 92 / 0.4)),*/
-/*  url('/images/marmol_botones.png') center/cover no-repeat;*/
-/*  color: var(--secondary-text-color);*/
-/*  border-radius: 10px;*/
-/*  border-color: var(--text-color);*/
-/*  border-width: 2px;*/
-/*  width: 60px;*/
-/*  height: 2rem;*/
-/*  padding: 0 6px;*/
-/*  font-size: medium;*/
-/*  font-weight: 600;*/
-/*}*/
+.white-btn {
+  font-family: "Cinzel", serif;
+  background: linear-gradient(rgb(255 255 255 / 0.2), rgb(92 92 92 / 0.4)),
+  url('/images/marmol_botones.png') center/cover no-repeat;
+  color: var(--secondary-text-color);
+  border-radius: 10px;
+  border-color: var(--text-color);
+  border-width: 2px;
+  width: 60px;
+  height: 2rem;
+  padding: 0 6px;
+  font-size: medium;
+  font-weight: 600;
+}
 
-/*button:hover{*/
-/*  filter: brightness(105%);*/
-/*}*/
+button:hover{
+  filter: brightness(105%);
+}
+
+.destructive {
+  background: linear-gradient(rgba(80, 10, 10, 0.7), rgba(50, 5, 5, 0.85)),
+  url('/images/header3.png') center/cover no-repeat;
+  color: #fcfcf9;
+  filter: sepia(1) hue-rotate(-50deg) saturate(1.5);
+  box-shadow: 0 8px 15px rgba(80, 10, 10, 0.2);
+}
 
 
 /*clases del tooltip*/
