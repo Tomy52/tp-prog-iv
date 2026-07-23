@@ -1,13 +1,13 @@
 <header>
-  <span id="audit-page-header">Auditorías</span>
-  <span id="audit-page-subtitle">Historial de operaciones</span>
+  <span class="page-title">Auditorías</span>
+  <span class="page-subtitle">Historial de operaciones</span>
 </header>
 
 <section>
   @if (page_data() != null) {
     <div class="search-and-tip">
       <app-audit-search-bar [disabled]="searching" (form_sig)="searchByTerms($event)"></app-audit-search-bar>
-      <button class="tip-btn hide-on-mobile" (click)="openTipModal()" title="Ver consejo">💡</button>
+      <button class="white-btn tip-btn hide-on-mobile" (click)="openTipModal()" title="Ver consejo">💡</button>
     </div>
 
     @if (page_data()!.content.length === 0) {

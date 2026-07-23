@@ -1,10 +1,14 @@
+<header>
+  <span class="page-title">Proveedores</span>
+  <span class="page-subtitle">Eliminar proveedor</span>
+</header>
+
 <section>
   <form action="" [formGroup]="form" (ngSubmit)="submit()">
 
-    
-  <h2> Eliminar proveedor </h2>
-  <app-supplier-dropdown-select [suppliers]="suppliers()" formControlName="id"/>
-  <input type="submit" value="Eliminar" [disabled]="!isValid()">
+    <label for="suppliers">Proveedor</label>
+    <app-supplier-dropdown-select id="suppliers" [suppliers]="suppliers()" formControlName="id"/>
+    <input type="submit" value="Eliminar" [disabled]="!isValid()">
 
   </form>
 </section>

@@ -1,5 +1,5 @@
 <article>
-    <h1>ID orden: {{data()?.orderId}}</h1>
+    <h1>ID pedido: {{data()?.orderId}}</h1>
 
     <div class="items">
         <h2>Items</h2>
@@ -18,7 +18,8 @@
 
     @if (checkIfControlsShouldBeEnabled()) {
         <div class="buttons">
-            <button (click)="changeStatus()">Cancelar</button>
+            <button class="cancel-order" (click)="changeStatus()">Eliminar</button>
+            <button (click)="goBack()">Volver</button>
         </div>
     }
 

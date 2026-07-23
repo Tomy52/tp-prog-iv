@@ -1,4 +1,8 @@
+<header>
+  <span class="page-title">Proveedores</span>
+  <span class="page-subtitle" [textContent]="id() ? 'Editar Proveedor' : 'Agregar Proveedor'"></span>
+</header>
+
 <section>
-    <h1 [textContent]="id() ? 'Editar Proveedor' : 'Agregar Proveedor'">  </h1>
     <app-supplier-form-component class="form" (data_sig)="finishForm($event)" [modified_supplier]="supplier_obj"/>
 </section>

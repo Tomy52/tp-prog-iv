@@ -1,10 +1,10 @@
+<header>
+  <span class="page-title">Productos y proveedores</span>
+  <span class="page-subtitle">{{isEditing() ? 'Editar Relación' : 'Relacionar'}}</span>
+</header>
+
 <section>
-
-  <h2>{{isEditing() ? 'Editar Relación' : 'Crear Relación'}}</h2>
-
   <app-product-supplier-form-component [productSupplierToModify]="productSupplierResponse()"
                                        [isEditing]="isEditing()"/>
-
-
 </section>
 

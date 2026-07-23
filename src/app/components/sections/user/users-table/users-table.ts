@@ -8,7 +8,7 @@ import { UsersTableRow } from "../users-table-row/users-table-row";
     UsersTableRow
 ],
   templateUrl: './users-table.html',
-  styleUrl: './users-table.css',
+  styleUrls: ['./users-table.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UsersTable {

@@ -12,8 +12,8 @@ import {FormsModule} from '@angular/forms';
 })
 
 export class PageButtons implements OnInit {
-  next_button_text = input<string>('Siguiente');
-  back_button_text = input<string>('Atrás');
+  next_button_text = input<string>('Siguiente >>');
+  back_button_text = input<string>('<< Atrás');
 
   back_active = input.required<boolean>();
   forward_active = input.required<boolean>();

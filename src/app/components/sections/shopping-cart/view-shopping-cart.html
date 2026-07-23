@@ -1,15 +1,18 @@
+<header>
+  <span class="page-title">Mi carrito</span>
+</header>
+
 <section>
-  <h2>Mi Carrito</h2>
   <div class="items-container">
 
     <div class="item-list">
       @for (item of cartItems(); track $index) {
         <app-customer-product-list-card [productInfo]="item.product"></app-customer-product-list-card>
       } @empty {
-        <h2>No tiene productos en carrito</h2>
+        <h2>El carrito está vacío</h2>
       }
     </div>
-    
+
   </div>
   <div class="buttons-container">
     <div class="final-price">Total: ${{finalPrice()}}</div>

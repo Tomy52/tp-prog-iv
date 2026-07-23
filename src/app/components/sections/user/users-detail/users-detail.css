@@ -1,19 +1,20 @@
 .center-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: calc(100vh - 80px);
   padding: 20px;
   box-sizing: border-box;
 }
 
 .detail-container {
+  display: flex;
+  flex-direction: column;
   max-width: 900px;
   margin: 10px auto;
   padding: 15px;
-  border-radius: 5px;
 
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.5) 0%, rgba(240, 245, 243, 0.3) 100%);
+  background: var(--card-bg);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   border: 1px solid rgba(255, 255, 255, 0.4);
@@ -26,22 +27,24 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  margin-block: 0;
+}
 
+.profile-header h1 {
+  margin-block: 0;
 }
 
 .profile-name {
   /*margin: 0 0 8px 0;*/
-  color: var(--text-color);
+  color: var(--main-color);
   font-weight: bold;
   font-family: 'Cinzel', serif;
-  color: #2d5a4c;
   text-align: center;
 }
 
 .profile-role {
   font-family: 'Cinzel', serif;
-  color: #2d5a4c;
+  color: var(--main-color);
   text-align: center;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.5) 0%, rgba(240, 245, 243, 0.3) 100%);
   backdrop-filter: blur(15px);
@@ -53,10 +56,23 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.01em;
+  align-self: center;
+  width: max-content;
 }
 
 .profile-role:hover {
   transform: scale(101%);
+}
+
+
+.info-header {
+  color: var(--secondary-text-color);
+  display: inline-flex;
+  align-self: center;
+  justify-self: flex-end;
+  font-weight: 700;
+  margin: 10px 0 0 0;
+  letter-spacing: 0.1em;
 }
 
 .profile-controls {
@@ -72,19 +88,7 @@
   display: flex;
   flex-direction: row;
   gap: 15px;
-  padding: 10px;
   border-radius: 5px;
-  margin-top: 10px;
-}
-
-.info-header {
-  color: var(--secondary-text-color);
-  grid-column: 1 / -1;
-  text-align: center;
-  display: block;
-  font-weight: 700;
-  margin: 1px;
-  letter-spacing: 0.1em;
 }
 
 button {
@@ -97,11 +101,10 @@ button {
   text-transform: uppercase;
   letter-spacing: 2px;
   cursor: pointer;
-  border: 1px solid rgba(255, 255, 255, 0.2);
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-button:not(.destructive) {
+button:not(.destructive, .white-btn) {
   background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)),
     url('/images/header3.png') center/cover no-repeat;
   color: #fcfcf9;
@@ -128,14 +131,10 @@ button:hover {
   font-size: 0.9rem;
 }
 
-.badge-active {
-  background-color: var(--active-bg-color);
-  color: var(--active-text-color);
-}
-
-.badge-inactive {
-  background-color: var(--inactive-bg-color);
-  color: var(--inactive-text-color);
+.return-btn {
+  margin-top: 20px;
+  height: 50px !important;
+  width: fit-content !important;
 }
 
 @media screen and (max-width: 720px) {

@@ -1,4 +1,8 @@
+<header>
+  <span class="page-title">Productos</span>
+  <span class="page-subtitle" [textContent]="id() ? 'Editar Producto' : 'Agregar Producto'"></span>
+</header>
+
 <section>
-  <h1 [textContent]="id() ? 'Editar Producto' : 'Agregar Producto'"></h1>
   <app-product-form-component [modifiedProduct]="productObject"/>
 </section>

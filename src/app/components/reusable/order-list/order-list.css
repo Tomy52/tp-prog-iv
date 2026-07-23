@@ -1,4 +1,5 @@
 section {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(500px,1fr));
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  text-align: center;
 }

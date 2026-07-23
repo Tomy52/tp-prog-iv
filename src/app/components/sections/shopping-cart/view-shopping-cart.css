@@ -3,7 +3,7 @@ section {
   padding: 10px;
   border-radius: 10px;
   /* background-color: var(--main-color); */
-  
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -42,7 +42,7 @@ button>a{
   align-items: center;
   width: 100%;
   font-size: 25px;
-  font-family: 'Verdana', sans-serif;
+  font-family: 'Merriweather', serif;
 }
 
 .items-container>p{
@@ -76,7 +76,7 @@ p:hover {
 
 button,a{
   display: inline-block;
-  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), 
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)),
               url('/images/header3.png') center/cover no-repeat !important;
   color: #fcfcf9;
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -128,7 +128,7 @@ button:hover {
 }
 
 .final-price {
-  font-family: 'Verdana', sans-serif;
+  font-family: 'Merriweather', serif;
   color: #16372d;
   margin: 4px 0;
   font-weight: 500;

@@ -10,15 +10,12 @@ import {ModalService} from '../../../../services/modal-service';
   selector: 'app-audit-detail',
   imports: [
     KeyValuePipe,
-    RouterLink,
-    NgOptimizedImage
+    RouterLink
   ],
   templateUrl: './audit-detail.html',
   styleUrls: ['./audit-detail.css',
-    '../audit-page/audit-page.css',
-    '../audit-table/audit-table.css',
-    '../audit-table-row/audit-table-row.css',
-    '../../user/users-table-row/users-table-row.css'],
+    '../audit-page/audit-page.css'
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AuditDetail {

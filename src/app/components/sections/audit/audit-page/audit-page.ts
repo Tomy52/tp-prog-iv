@@ -26,7 +26,7 @@ export class AuditPage {
 
   page = signal<number>(0);
   page_size: number;
-  page_size_ops: number[] = [2, 5, 10, 25, 50];
+  page_size_ops: number[] = [2, 5, 10];
 
   page_data: WritableSignal<PageResponse<AuditLog> | null>;
   searching: boolean = false;

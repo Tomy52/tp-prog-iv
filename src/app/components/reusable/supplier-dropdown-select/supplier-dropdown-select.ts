@@ -12,7 +12,8 @@ const select_value_accessor = {
   selector: 'app-supplier-dropdown-select',
   imports: [ReactiveFormsModule, FormsModule],
   templateUrl: './supplier-dropdown-select.html',
-  styleUrl: './supplier-dropdown-select.css',
+  styleUrls: ['./supplier-dropdown-select.css',
+    '../../reusable/styles/select-style.css'],
   providers: [select_value_accessor]
 })
 export class SupplierDropdownSelect implements ControlValueAccessor {

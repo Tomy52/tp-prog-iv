@@ -3,7 +3,7 @@ section {
   display: flex;
   flex-direction: column;
   height: 80dvh;
-  padding: var(--header_padding);
+  padding: var(--header-padding);
   align-items: center;
   justify-content: center;
 
@@ -16,7 +16,7 @@ section {
 .menu_container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  padding: var(--header_padding);
+  padding: var(--header-padding);
   grid-gap: 2rem;
   width: 60%;
   align-items: center;

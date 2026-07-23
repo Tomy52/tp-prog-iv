@@ -1,6 +1,9 @@
-<section>
-  <h1>Nuevo usuario</h1>
+<header>
+  <span class="page-title">Usuarios</span>
+  <span class="page-subtitle">Creación de usuario</span>
+</header>
 
+<section>
   <form [formGroup]="form" (ngSubmit)="register()">
     <label for="first">Nombre</label>
     <input type="text" id="first" formControlName="firstname" [appFieldErrorBorder]="form.get('firstname')" placeholder="Juan">
@@ -33,7 +36,7 @@
         <option value="EMPLOYEE">Empleado</option>
       </select>
     }
-    
+
     <div class="registration-form-buttons">
       <button [disabled]="!form.valid" type="submit">Agregar</button>
       <button class="return-btn" routerLink="/users" type="button">Volver</button>

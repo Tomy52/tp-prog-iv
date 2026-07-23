@@ -4,11 +4,11 @@ import {UserInfo} from '../../../../interfaces/user/user-info';
 import {UserDetailCard} from '../../../reusable/user-detail-card/user-detail-card';
 import { ModalService } from '../../../../services/modal-service';
 import { ModalNotification } from '../../../reusable/modal-notification/modal-notification';
-import { Router } from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-users-detail',
-  imports: [UserDetailCard],
+  imports: [UserDetailCard, RouterLink],
   templateUrl: './users-detail.html',
   styleUrl: './users-detail.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -37,7 +37,7 @@ export class UsersDetail {
     const status = {
       status: state
     }
-    
+
     this.userService.changeUserState(status, this.id()).subscribe({
       next: () => {
         this.user.update((user) => ({ ...user, status: this.getCurrentOpositeState() }));
@@ -52,7 +52,7 @@ export class UsersDetail {
     let ok_value = "Si"
 
     const modal_promise = this.modal_service.showModal(ModalNotification,{
-      title: "Esta seguro?",
+      title: "¿Está seguro?",
       description: "Esta acción no se puede revertir.",
       options: [ok_value, "No"]
     })

@@ -1,5 +1,9 @@
+<header>
+  <span class="page-title">Pedidos</span>
+  <span class="page-subtitle">Listado y búsqueda</span>
+</header>
+
 <section>
-  <h1>Lista de Pedidos</h1>
   @if (pageData() != null && !errMsg) {
 
     <app-employee-order-search-bar [disabled]="searching" (query_sig)="searchByTerms($event)" />

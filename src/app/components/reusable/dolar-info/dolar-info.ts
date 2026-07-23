@@ -51,12 +51,11 @@ export class DolarInfo {
 
   onChange(event:any)
   {
-    this.searchDolarData(event.target.value)    
+    this.searchDolarData(event.target.value)
   }
 
   getDate()
   {
-    console.log(this.dolar_info()?.ultima_actualizacion)
     return this.dolar_info()?.ultima_actualizacion;
   }
 

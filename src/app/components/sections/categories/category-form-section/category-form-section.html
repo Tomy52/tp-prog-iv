@@ -1,7 +1,12 @@
+<header>
+  <span class="page-title">Categorías</span>
+  <span class="page-subtitle" [textContent]="'Agregar categoría'"></span>
+</header>
+
 <section>
     <article>
         <form action="" [formGroup]="form" (ngSubmit)="completeForm()">
-            <h2 [textContent]="'Agregar categoría'"></h2>
+            <h2 ></h2>
             <div>
                 <label for="name">Nombre</label>
                 <input type="text" placeholder="Ej.: SinTACC" name="name" id="name" formControlName="name" [appFieldErrorBorder]="form.get('name')">

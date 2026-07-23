@@ -7,7 +7,7 @@ import {RouterLink} from "@angular/router";
   selector: 'tr[app-audit-table-row]',
   imports: [DatePipe, RouterLink],
   templateUrl: './audit-table-row.html',
-  styleUrls: ['./audit-table-row.css', '../../user/users-table-row/users-table-row.css'],
+  styleUrls: ['./audit-table-row.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AuditTableRow {

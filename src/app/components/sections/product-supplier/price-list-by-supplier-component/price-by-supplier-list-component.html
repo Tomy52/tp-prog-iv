@@ -1,7 +1,12 @@
+<header>
+  <span class="page-title">Proveedores</span>
+  <span class="page-subtitle">Productos de un proveedor</span>
+</header>
+
 <section>
   <article>
-  <h1> Precios según proveedores </h1>
     <form [formGroup]="supplierForm" (ngSubmit)="search()">
+      <label>Proveedor</label>
       <app-supplier-dropdown-select [suppliers]="supplierList()" formControlName="supplier"></app-supplier-dropdown-select>
       <button [disabled]="supplierList().length === 0 || !this.supplierForm.valid || searching" type="submit">Buscar</button>
     </form>
@@ -9,34 +14,28 @@
 
   <div class="list-container">
 @if (priceList() !== undefined){
-
-  <h3>Lista de Precios de {{ supplierProductList().companyName}}</h3>
-
   @if (priceList()?.length === 0){
 
-    <p>El Proveedor no tiene productos asociados</p>
+    <p>El proveedor no tiene productos asociados</p>
 
   } @else {
-    <div id="table-wrapper">
+    <div class="table-wrapper">
       <table>
         <thead>
         <tr>
           <th> Nombre </th>
-          <th *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']"> Costo </th>
-          <th *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']" class="hide-on-mobile"> Precio (USD)</th>
+          <th *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']">Costo (ARS)</th>
+          <th *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']" class="hide-on-mobile">Precio (USD)</th>
           <th *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']" colspan="2" class="hide-on-mobile">Opciones</th>
           <th *appAllowViewUser="['ROLE_ADMIN','ROLE_MANAGER']" class="hide-on-desktop">Opciones</th>
-
         </tr>
         </thead>
         <tbody>
           @for (productPrice of priceList(); track $index) {
-            <app-price-by-supplier-row-component
+            <tr app-price-by-supplier-row-component
                 [productPrice]="productPrice"
                 [productSupplierId]="productPrice.idProductSupplier"
-                (rowDeleted)="handleRowDeletion($event)"/>
-
-
+                (rowDeleted)="handleRowDeletion($event)">
           }
         </tbody>
       </table>
