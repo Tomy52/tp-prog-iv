@@ -7,7 +7,7 @@ section {
 }
 
 form {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(240, 245, 243, 0.95) 100%);
+  background: var(--card-bg);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   border: 1px solid rgba(45, 90, 76, 0.3);

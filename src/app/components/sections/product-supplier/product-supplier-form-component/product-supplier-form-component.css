@@ -1,10 +1,4 @@
 article {
-    background: linear-gradient(135deg, rgba(45, 90, 76, 0.05) 0%, rgba(255, 255, 255, 0.7) 100%);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border: 1.5px solid rgba(255, 255, 255, 0.8);
-    border-radius: 20px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
     padding: 25px;
     width: 100%;
     box-sizing: border-box;
@@ -44,11 +38,7 @@ app-supplier-dropdown-select ::ng-deep select {
     border-radius: 12px;
     border: 1.5px solid rgba(45, 90, 76, 0.15);
     background-color: rgba(255, 255, 255, 0.9);
-
-    font-family: 'Merriweather', serif;
-    font-weight: normal !important;
     font-size: 0.95rem;
-    color: #16372d;
     text-align: center;
     cursor: pointer;
 
@@ -68,10 +58,10 @@ input[type="number"] {
     background: rgba(255, 255, 255, 0.9);
     border: 1.5px solid rgba(45, 90, 76, 0.15);
     border-radius: 12px;
-    font-family: 'Merriweather', serif;
-    font-weight: normal;
+    font-family: 'Cinzel', serif;
+    font-weight: 800;
     font-size: 0.95rem;
-    color: #16372d;
+    color: var(--main-color);
     text-align: center;
     transition: all 0.3s ease;
     -moz-appearance: textfield;
