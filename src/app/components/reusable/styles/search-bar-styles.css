@@ -9,15 +9,12 @@ article {
 form {
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(45, 90, 76, 0.2);
   border-radius: 25px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   display: flex;
   align-items: center;
   padding: 5px 5px 5px 20px;
-  width: 100%;
-  /* max-width: 550px; */
   overflow: hidden;
 }
 
@@ -54,7 +51,6 @@ label {
   background: rgba(45, 90, 76, 0.1);
   padding: 2px 15px;
   height: 100%;
-  /* margin-left: -20px;  */
   margin-right: 10px;
   border-right: 1px solid rgba(45, 90, 76, 0.2);
   text-transform: uppercase;

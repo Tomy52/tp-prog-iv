@@ -36,10 +36,6 @@ h2 {
   text-align: center;
 }
 
-app-product-dropdown-select {
-  width: 100%;
-}
-
 input[type="submit"] {
   background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)),
               url('/images/header3.png') center/cover no-repeat !important;
@@ -86,8 +82,6 @@ input[type="submit"]:disabled {
   }
 
   input[type="submit"] {
-      width: 100%;
-      padding: 15px;
       letter-spacing: 3px;
   }
 }

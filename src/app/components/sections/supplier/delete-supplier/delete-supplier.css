@@ -36,25 +36,18 @@ h2 {
     text-align: center;
 }
 
-app-supplier-dropdown-select {
-    width: 100%;
-}
-
 input[type="submit"] {
     background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)),
                 url('/images/header3.png') center/cover no-repeat !important;
     color: #fcfcf9;
     border: 1px solid rgba(255, 255, 255, 0.2);
-
     padding: 18px 60px;
     border-radius: 18px;
-
     font-family: 'Cinzel', serif;
     font-weight: 700;
     font-size: 1.1rem;
     letter-spacing: 5px;
     text-transform: uppercase;
-
     cursor: pointer;
     box-shadow: 0 15px 35px rgba(22, 55, 45, 0.3);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -86,8 +79,6 @@ input[type="submit"]:disabled {
     }
 
     input[type="submit"] {
-        width: 100%;
-        padding: 15px;
         letter-spacing: 3px;
     }
 }
