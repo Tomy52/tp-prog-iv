@@ -27,8 +27,7 @@ import {ModalNotification} from '../reusable/modal-notification/modal-notificati
     SidebarComponent,
     ShoppingCart,
     AdminSidebar,
-    AllowViewUser,
-    Tooltip
+    AllowViewUser
   ],
   templateUrl: './header-component.html',
   styleUrl: './header-component.css',

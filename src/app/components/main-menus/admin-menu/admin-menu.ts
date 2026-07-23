@@ -4,7 +4,7 @@ import { MainMenuButton } from "../../main-menu/main-menu-button/main-menu-butto
 
 @Component({
   selector: 'app-admin-menu',
-  imports: [MainMenuButton, DolarInfo],
+  imports: [MainMenuButton],
   templateUrl: './admin-menu.html',
   styleUrls: ['../main-menu-shared-styles/menu-styles.css','./admin-menu.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,

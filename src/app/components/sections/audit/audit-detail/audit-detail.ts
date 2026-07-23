@@ -10,8 +10,7 @@ import {ModalService} from '../../../../services/modal-service';
   selector: 'app-audit-detail',
   imports: [
     KeyValuePipe,
-    RouterLink,
-    NgOptimizedImage
+    RouterLink
   ],
   templateUrl: './audit-detail.html',
   styleUrls: ['./audit-detail.css',
