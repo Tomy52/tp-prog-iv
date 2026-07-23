@@ -1,5 +1,5 @@
 article {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.5) 0%, rgba(240, 245, 243, 0.3) 100%);
+  background: var(--card-bg);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   border: 1px solid rgba(255, 255, 255, 0.4);
@@ -43,7 +43,7 @@ h2 {
 }
 
 .info {
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--card-bg-secondary);
   padding: 15px;
   border-radius: 12px;
   border-left: 3px solid #2d5a4c;

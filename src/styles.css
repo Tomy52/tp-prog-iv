@@ -12,6 +12,7 @@
   --bg: linear-gradient(rgb(230 230 230 / 0.35), rgb(66 66 66 / 0.55)),
   url('/images/marmolblanco.png');
   --card-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(240, 245, 243, 0.95) 100%);
+  --card-bg-secondary: rgb(198 198 198 / 0.2);
 
 
   --text-color: #ffffff;
