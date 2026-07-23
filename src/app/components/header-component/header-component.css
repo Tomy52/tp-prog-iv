@@ -166,10 +166,15 @@ nav h1 {
   border: none;
   background: none;
   color: var(--close-color);
+  font-family: Merriweather, Serif;
   font-weight: bold;
   font-size: 0.9em;
   cursor: pointer;
   text-align: center;
+}
+
+.logout-btn:hover {
+  background-color: var(--inactive-bg-color);
 }
 
 .logout-icon {
