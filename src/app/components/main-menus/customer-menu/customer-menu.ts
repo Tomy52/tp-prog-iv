@@ -12,7 +12,7 @@ import { MainMenuButton } from "../../main-menu/main-menu-button/main-menu-butto
 export class CustomerMenu implements OnInit, OnDestroy {
 
   currentSlide: number = 0;
-  totalSlides: number = 4; 
+  totalSlides: number = 1; 
   private intervalId: any;
 
   

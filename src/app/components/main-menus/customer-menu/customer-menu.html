@@ -14,57 +14,7 @@
               <p>¡Retiro sin costo ni demora!</p>
             </div>
           </div>
-
-          <div class="carousel-slide" [class.active]="currentSlide === 1">
-            <img src="images/promoWeb.png" alt="promo web" class="carousel-img">
-            <div class="slide-overlay"></div>
-            <div class="slide-content">
-            </div>
-          </div>
-
-          <div class="carousel-slide" [class.active]="currentSlide === 2">
-            <img src="images/jubilados2.png" alt="jubilados" class="carousel-img">
-            <div class="slide-overlay"></div>
-            <div class="slide-content">
-              <h2>Lunes de jubilados</h2>
-              <p>10% de descuento</p>
-            </div>
-          </div>
-
-          <div class="carousel-slide slide-sorpresa" [class.active]="currentSlide === 3">
-            <div class="slide-overlay"></div>
-            <div class="mystery-box-container">
-              @if (!premioAbierto) {
-                <div class="gift-box" (click)="revelarPremio()">
-                  <span class="box-icon">🎁</span>
-                  <h3>¡Tenés un regalo exclusivo!</h3>
-                  <p>Hacé clic para descubrir tu beneficio VIP</p>
-                </div>
-              } @else {
-                <div class="prize-revealed animate-prize">
-                  <span class="prize-icon">✨ 💎 ✨</span>
-                  <h2>¡Felicidades!</h2>
-                  <p class="prize-desc">Obtuviste un <strong>15% OFF</strong></p>
-                  <div class="price-button">
-                    <span class="coupon-code">CÓDIGO: PRECIOSO15</span>
-                    <button class="btn-reset-box" (click)="cerrarBox($event)">Volver a jugar</button>
-                  </div>
-                </div>
-              }
-            </div>
-          </div>
-
         </div>
-
-        <div class="carousel-dots">
-          <span class="dot" [class.active]="currentSlide === 0" (click)="irAlSlide(0)"></span>
-          <span class="dot" [class.active]="currentSlide === 1" (click)="irAlSlide(1)"></span>
-          <span class="dot" [class.active]="currentSlide === 2" (click)="irAlSlide(2)"></span>
-          <span class="dot" [class.active]="currentSlide === 3" (click)="irAlSlide(3)"></span>
-        </div>
-
-        <button class="carousel-control prev" (click)="slideAnterior()">&#10094;</button>
-        <button class="carousel-control next" (click)="slideSiguiente()">&#10095;</button>
       </section>
     </div>
 
