@@ -1,6 +1,6 @@
 <header>
   <span class="page-title">Usuarios</span>
-  <span class="page-subtitle">Creación de usuario</span>
+  <span class="page-subtitle">{{id() ? "Edición de usuario" : "Creación de usuario"}}</span>
 </header>
 
 <section>
@@ -39,7 +39,7 @@
 
     <div class="registration-form-buttons">
       <button [disabled]="!form.valid" type="submit">Agregar</button>
-      <button class="return-btn" routerLink="/users" type="button">Volver</button>
+      <button class="return-btn" (click)="returnToPrevious()" type="button">Volver</button>
     </div>
 
   </form>
