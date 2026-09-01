@@ -6,7 +6,7 @@
 
               <label for="name">Nombre de empresa</label>
               <input type="text" name="name" id="name" formControlName="companyName"
-                     [appFieldErrorBorder]="form.get('companyName')" placeholder="Green Test">
+                     [appFieldErrorBorder]="form.get('companyName')" placeholder="Green">
               <small class="error-msg" [appFieldError]="form.get('companyName')"></small>
        </div>
 
@@ -53,7 +53,7 @@
 
        <div> <label for="city">Ciudad</label>
               <input type="text" name="city" id="city" formControlName="city" [appFieldErrorBorder]="form.get('city')"
-                     placeholder="Ciudad test">
+                     placeholder="Ciudad Inexistente">
               <small class="error-msg" [appFieldError]="form.get('city')"></small>
        </div>
 

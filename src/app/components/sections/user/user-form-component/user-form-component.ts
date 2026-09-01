@@ -11,7 +11,7 @@ import { ReturnService } from '../../../../services/return-service';
 
 @Component({
   selector: 'app-user-form-component',
-  imports: [ReactiveFormsModule, FieldError, FieldErrorBorder, RouterLink],
+  imports: [ReactiveFormsModule, FieldError, FieldErrorBorder],
   templateUrl: './user-form-component.html',
   styleUrls: ['./user-form-component.css','../../../register/register.css','../../../reusable/styles/select-style.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
