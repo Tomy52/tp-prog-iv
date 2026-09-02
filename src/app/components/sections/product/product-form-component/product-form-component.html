@@ -35,10 +35,9 @@
 
       <div>
         <label for="image">Imagen</label>
-        <input type="file" name="image" id="image" (change)="onFileSelected($event)" accept="image/*">
+        <input type="file" name="image" id="image" (change)="onFileSelected($event)" accept="image/png, image/jpeg">
       </div>
 
-      
       <input type="submit" value="Cargar" [disabled]="!productForm.valid">
 
       @if (modifiedProduct()) {
