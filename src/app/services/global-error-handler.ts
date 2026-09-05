@@ -15,8 +15,6 @@ export class GlobalErrorHandler implements ErrorHandler {
   handleError(error: any): void {
     const err = error.rejection || error;
 
-    console.log(err)
-
     if (err instanceof HttpErrorResponse) {
 
       switch (err.status) {
