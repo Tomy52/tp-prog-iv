@@ -1,4 +1,4 @@
-import {ErrorHandler, inject, Injectable, NgZone, signal} from '@angular/core';
+import {ErrorHandler, inject, Injectable, NgZone} from '@angular/core';
 import {ErrorResponse} from '../interfaces/error/error-response';
 import {HttpErrorResponse} from '@angular/common/http';
 import { ModalService } from './modal-service';
@@ -7,40 +7,38 @@ import { ModalNotification } from '../components/reusable/modal-notification/mod
 @Injectable({
   providedIn: 'root',
 })
-export class GlobalErrorHandler implements ErrorHandler{
+export class GlobalErrorHandler implements ErrorHandler {
 
   private zone = inject(NgZone)
   private modal_service = inject(ModalService)
 
-  // este signal es para comunicarle a los componenetes que el error cambio, por ahora no tiene un uso, pero quizas
-  // lo usemos cuando apliquemos los cambios con los modales para noticicaciones.
-  errorData = signal<ErrorResponse | null>(null);
-
-  handleError(error:any): void {
+  handleError(error: any): void {
     const err = error.rejection || error;
 
     if (err instanceof HttpErrorResponse) {
-      const apiError : ErrorResponse = err.error;
 
-      this.zone.run( ()=> {
-        // esta linea aca adentro es para emitir la signal
-        this.errorData.set(apiError);
+      switch (err.status) {
+        case 0:
+          this.zone.run(() => {
+            this.modal_service.showModal(ModalNotification, {
+              title: 'Error de Red',
+              description: 'No se puede procesar la solicitud. Intentelo mas tarde'
+            }, false)
+          });
+          break;
+        default:
+          const apiError: ErrorResponse = err.error;
 
-        this.modal_service.showModal(ModalNotification, {
-          title: `${apiError.title}`,
-          description: apiError.detail
-        }, false)
-
-      });
-
+          this.zone.run(() => {
+            this.modal_service.showModal(ModalNotification, {
+              title: `${apiError.title}`,
+              description: apiError.detail
+            }, false)
+          });
+          break;
+      }
     } else {
       console.error(err.name, err.message);
     }
-
-
-
   }
-
-
-
 }
