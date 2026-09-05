@@ -22,7 +22,7 @@ export class OrderDataPopupEmployee {
   dialog_data = inject(DIALOG_DATA)
   enum_mapper = inject(EnumMappingService)
   enum_list = signal<EnumMap[]>([]);
-  
+
   order_service = inject(OrderService);
   form_builder = inject(FormBuilder)
 
@@ -40,12 +40,12 @@ export class OrderDataPopupEmployee {
 
   checkIfControlsShouldBeEnabled()
   {
-    return !(this.data()?.status == "CANCELLED" || this.data()?.status == "COMPLETED")
+    return !(this.data()?.status == "CANCELLED" || this.data()?.status == "COMPLETE")
   }
 
 
   private dialogRef = inject(DialogRef, {optional: true})
-  protected closeModal(change_status:string) {
+  protected closeModal(change_status?:string) {
     this.dialogRef?.close(change_status)
   }
 
@@ -57,10 +57,15 @@ export class OrderDataPopupEmployee {
 
     this.order_service.changeStatus(this.data()?.orderId!,change_status).subscribe({
       next: () => {
-        this.closeModal(change_status.status!)
+        this.closeModal(change_status.status!);
       },error: (err) => {
         throw err
       }
     })
+  }
+
+  close()
+  {
+    this.closeModal();
   }
 }
