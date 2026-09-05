@@ -29,7 +29,7 @@
       </div>
 
       <div>
-        <label for="category">Categoría</label>      
+        <label for="category">Categoría</label>
         <app-category-dropdown-select [categories]="categories()" formControlName="category" name="category" id="category"/>
       </div>
 
@@ -41,9 +41,9 @@
       <input type="submit" value="Cargar" [disabled]="!productForm.valid">
 
       @if (modifiedProduct()) {
-        <button type="button" onclick="return_service.goBack()">Cancelar</button>
+        <button type="button" (click)="return_service.goBack()">Cancelar</button>
       }
-    
+
     </form>
 </article>
 
