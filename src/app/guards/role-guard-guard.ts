@@ -16,13 +16,12 @@ export const roleGuardGuard: CanActivateFn = (route, state) => {
   const role_string = auth_service.getRole();
 
 
-  if(applyHierarchy && typeof(roles) == "string")
-  {
-    console.log("checking with function")
+  if(applyHierarchy && typeof(roles) == "string"){
+
     const user_hierarchy = hierarchy_service.getHierarchyRoles()
     return user_hierarchy.includes(roles) ? true : new RedirectCommand(router.parseUrl('main-menu'))
+
   }
 
-  console.log("checking without function")
   return roles.includes(role_string) ? true : new RedirectCommand(router.parseUrl('main-menu'));
 };

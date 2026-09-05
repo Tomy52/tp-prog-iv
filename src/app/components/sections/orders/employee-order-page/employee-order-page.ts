@@ -32,7 +32,7 @@ export class EmployeeOrderPage {
 
   };
   searching:boolean = false;
-  
+
 
   constructor() {
     this.pageSize = Number(localStorage.getItem('pageSize')) || this.pageSizeOptions[0];
@@ -42,11 +42,10 @@ export class EmployeeOrderPage {
 
   getOrders(terms:EmployeeOrderSearchData) {
     this.searching = true;
-    
+
     this.orderService.getAllOrders(this.page(),this.pageSize, terms).subscribe({
       next: (x) => {
         this.pageData.set(x)
-        console.log(x)
       },
       error: (e) => {
         throw e;

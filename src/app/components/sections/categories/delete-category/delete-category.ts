@@ -19,7 +19,7 @@ export class DeleteCategory {
   category_service = inject(CategoryService)
 
   categories: WritableSignal<Category[]> = signal<Category[]>([]);
-  
+
   form = this.form_builder.group({
     category: [null, [Validators.required]]
   })
@@ -45,14 +45,13 @@ export class DeleteCategory {
   {
     const ok_option = "Si"
     const category_id = this.form.value.category!
-    console.log(category_id)
 
     const modal_promise = this.modal_service.showModal(ModalNotification, {
       title: "¿Realmente quiere eliminar esta categoria?",
       description: "Esta acción no se podrá deshacer.",
       options: [ok_option, "No"]
     })
-    
+
     modal_promise?.subscribe((result) => {
 
       if(result == ok_option)

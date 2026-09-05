@@ -31,7 +31,6 @@ export class ProductService {
 
   getProductsPage(page?:number, size?:number, query?:ProductSearchBarData): Observable<PageResponse<Product>>
   {
-    console.log(query)
     var query_string = '?'
 
     if(page)
@@ -72,8 +71,6 @@ export class ProductService {
     {
       query_string += `&rem_stock=${query.stock}`
     }
-
-    console.log(query_string)
 
     return this.http.get<PageResponse<Product>>(`${this.baseUrl}/page${query_string}`)
   }

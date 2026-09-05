@@ -40,7 +40,6 @@ export class SupplierDropdownSelect implements ControlValueAccessor {
 
   changeValue(event:any)
   {
-    console.log(Number(event.target.value));
     this.value.set(Number(event.target.value));
     this.onChange(Number(event.target.value));
   }
