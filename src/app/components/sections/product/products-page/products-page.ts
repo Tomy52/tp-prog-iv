@@ -33,7 +33,7 @@ export class ProductsPage {
 
   };
   searching:boolean = false;
-  
+
 
   constructor() {
     this.pageSize = Number(localStorage.getItem('pageSize')) || this.pageSizeOptions[0];
@@ -43,11 +43,10 @@ export class ProductsPage {
 
   getProducts(terms:ProductSearchBarData) {
     this.searching = true;
-    
+
     this.productService.getProductsPage(this.page(),this.pageSize,terms).subscribe({
       next: (x) => {
         this.pageData.set(x)
-        console.log(x)
       },
       error: (e) => {
         throw e;

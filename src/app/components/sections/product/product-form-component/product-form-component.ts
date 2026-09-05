@@ -63,7 +63,6 @@ export class ProductFormComponent {
   getCategories() {
     this.category_service.getAllCategoriesAsAList().subscribe({
       next: (resp) => {
-        console.log(resp)
         this.categories.set(resp);
       },
       error: (err) => {
@@ -87,7 +86,7 @@ export class ProductFormComponent {
     })
 
     modal_promise?.subscribe((value) => {
-      
+
       if (ok_option == value) {
         if (this.modifiedProduct() == undefined) {
           this.addProduct();
@@ -128,9 +127,8 @@ export class ProductFormComponent {
 
   updateProduct() {
     const formInfo = this.productForm.value
-    
+
     const product = this.modifiedProduct();
-    console.log(formInfo)
     const updatedProduct = {
       idProduct: product?.idProduct,
       name: formInfo.name,
@@ -147,10 +145,10 @@ export class ProductFormComponent {
           title: "¡Modificación exitosa!"
         })?.subscribe({
           next: () => {
-            this.return_service.goBack()   
+            this.return_service.goBack()
           }
         })
-        
+
 
       },
       error: (err) => {
@@ -166,8 +164,6 @@ export class ProductFormComponent {
     this.productForm.reset();
     this.selectedFile = undefined;
   }
-
-
 
   protected readonly productStatusEnum = ProductStatus;
 }
