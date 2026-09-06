@@ -56,8 +56,10 @@ export class ClientProductSearchBar {
     const data:ClientProductSearchBarData = {
       name: values.tern!,
       categories: values.category_id!,
-      include_oos: values.category_id!
+      include_oos: values.include_oos!
     }
+
+    console.log(data)
 
     this.query_sig.emit(data);
   }

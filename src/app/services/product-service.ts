@@ -104,7 +104,7 @@ export class ProductService {
 
     if(query?.include_oos != null)
     {
-      query_string += `&include_oos${query?.include_oos}`
+      query_string += `&include_oos=${query?.include_oos}`
     }
 
     return this.http.get<PageResponse<CustomerProductInfo>>(`api/sales/on-sale${query_string}`)
