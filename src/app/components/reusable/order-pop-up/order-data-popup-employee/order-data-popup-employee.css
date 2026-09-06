@@ -32,17 +32,25 @@ h2, h1 {
 
 .controls > form {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 10px;
 }
+
+.controls {
+    width: 100%;
+}
+
+.items .list {
+    max-height: 200px;
+    overflow: scroll;
+} 
 
 form {
   margin-bottom: 10px;
 }
 
 button {
-    all:unset;
-   font-family: 'Cinzel', serif;
+    font-family: 'Cinzel', serif;
     font-weight: 700;
     font-size: 1.2rem;
     letter-spacing: 5px;

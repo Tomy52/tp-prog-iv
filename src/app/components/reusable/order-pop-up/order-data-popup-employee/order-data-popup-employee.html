@@ -14,11 +14,13 @@
     <div class="items">
         <h2>Items</h2>
 
-        @for (item of data()?.orderItems; track $index) {
-            <ul>
-                <li> {{item.quantity}} {{item.productInfo.name}} - ${{item.priceAtOrder}} = ${{item.priceAtOrder * item.quantity}} </li>
-            </ul>
-        }
+        <div class="list">
+            @for (item of data()?.orderItems; track $index) {
+                <ul>
+                    <li> {{item.quantity}} {{item.productInfo.name}} - ${{item.priceAtOrder}} = ${{item.priceAtOrder * item.quantity}} </li>
+                </ul>
+            }
+        </div>
     </div>
 
     <div class="prices">
