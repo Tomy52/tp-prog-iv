@@ -14,7 +14,7 @@ article {
   gap: 15px;
   box-sizing: border-box;
   transition: all 0.3s ease;
-
+  min-width: 380px;
   height: 100%;
 }
 
