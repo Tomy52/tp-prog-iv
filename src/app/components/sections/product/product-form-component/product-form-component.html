@@ -20,7 +20,7 @@
 
       <div>
         <label for="stock">Stock</label>
-        <input type="number" name="stock" id="stock" formControlName="stock">
+        <input type="number" name="stock" id="stock" formControlName="stock" min="0">
       </div>
 
       <div>
@@ -29,21 +29,21 @@
       </div>
 
       <div>
-        <label for="category">Categoría</label>      
+        <label for="category">Categoría</label>
         <app-category-dropdown-select [categories]="categories()" formControlName="category" name="category" id="category"/>
       </div>
 
       <div>
         <label for="image">Imagen</label>
-        <input type="file" name="image" id="image" (change)="onFileSelected($event)" accept="image/*">
+        <input type="file" name="image" id="image" (change)="onFileSelected($event)" accept="image/png, image/jpeg">
       </div>
 
-      <button type="submit" [disabled]="!productForm.valid">Cargar</button>
-      
+      <input type="submit" value="Cargar" [disabled]="!productForm.valid">
+
       @if (modifiedProduct()) {
-        <button type="button" onclick="return_service.goBack()">Cancelar</button>
+        <button type="button" (click)="return_service.goBack()">Cancelar</button>
       }
-    
+
     </form>
 </article>
 

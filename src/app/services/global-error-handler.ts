@@ -26,10 +26,17 @@ export class GlobalErrorHandler implements ErrorHandler{
         // esta linea aca adentro es para emitir la signal
         this.errorData.set(apiError);
 
-        this.modal_service.showModal(ModalNotification, {
-          title: `${apiError.title}`,
-          description: apiError.detail
-        }, false)
+        if (!apiError.title) {
+          this.modal_service.showModal(ModalNotification, {
+            title: `Hubo un error`,
+            description: `Intente más tarde`
+          }, false)
+        } else {
+          this.modal_service.showModal(ModalNotification, {
+            title: `${apiError.title}`,
+            description: apiError.detail
+          }, false)
+        }
 
       });
 

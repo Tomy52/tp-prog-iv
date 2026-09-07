@@ -6,7 +6,8 @@ import { UserService } from '../../../../services/user-service';
 import { UserData } from '../../../../interfaces/user/user-data';
 import { UserInfo } from '../../../../interfaces/user/user-info';
 import { CreateUser } from '../../../../interfaces/user/create-user';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { ReturnService } from '../../../../services/return-service';
 
 @Component({
   selector: 'app-user-form-component',
@@ -18,6 +19,9 @@ import { Router } from '@angular/router';
 export class UserFormComponent implements OnInit {
   form_builder = inject(FormBuilder)
   user_service = inject(UserService)
+
+  return_service = inject(ReturnService)
+
   router = inject(Router)
 
   id = input<string>();
@@ -111,6 +115,12 @@ export class UserFormComponent implements OnInit {
   canShowRoleSelect()
   {
     return this.userObject?.credential?.role == "CUSTOMER"
+  }
+
+
+  returnToPrevious()
+  {
+    this.return_service.goBack()
   }
 
 

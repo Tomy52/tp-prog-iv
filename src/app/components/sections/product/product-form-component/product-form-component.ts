@@ -132,7 +132,6 @@ export class ProductFormComponent {
     const product = this.modifiedProduct();
     console.log(formInfo)
     const updatedProduct = {
-      idProduct: product?.idProduct,
       name: formInfo.name,
       stock: formInfo.stock,
       profitMargin: formInfo.profit,
@@ -140,7 +139,7 @@ export class ProductFormComponent {
       idCategory: formInfo.category
     };
 
-    this.productService.modifyProduct(updatedProduct).subscribe({
+    this.productService.modifyProduct(updatedProduct, this.modifiedProduct()?.idProduct!,this.selectedFile).subscribe({
       next: () => {
         this.cleanUp()
         this.modal_service.showModal(ModalNotification, {

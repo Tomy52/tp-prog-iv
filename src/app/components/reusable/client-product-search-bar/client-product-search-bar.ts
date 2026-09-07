@@ -9,7 +9,7 @@ import { ClientProductSearchBarData } from '../../../interfaces/component-logic/
   selector: 'app-client-product-search-bar',
   imports: [CategoryDropdownSelect,ReactiveFormsModule],
   templateUrl: './client-product-search-bar.html',
-  styleUrls: ['./client-product-search-bar.css','../styles/search-bar-styles.css'],
+  styleUrls: ['./client-product-search-bar.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ClientProductSearchBar {
@@ -56,8 +56,10 @@ export class ClientProductSearchBar {
     const data:ClientProductSearchBarData = {
       name: values.tern!,
       categories: values.category_id!,
-      include_oos: values.category_id!
+      include_oos: values.include_oos!
     }
+
+    console.log(data)
 
     this.query_sig.emit(data);
   }
