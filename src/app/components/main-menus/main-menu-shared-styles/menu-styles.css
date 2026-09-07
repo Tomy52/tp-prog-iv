@@ -9,6 +9,7 @@ h1{
     justify-content: center;
     align-items: stretch;
     gap: max(15px, 2vh);
+    flex-wrap: wrap;
 }
 
 .menu-container.horizontal {
@@ -22,7 +23,6 @@ h1{
 .access-container{
   display: flex;
   flex-direction: row;
-
 }
 
 h3{

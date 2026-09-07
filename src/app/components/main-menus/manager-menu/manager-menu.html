@@ -1,4 +1,15 @@
 <div class="menu-container vertical">
-    <app-dolar-info></app-dolar-info>
-    <app-main-menu-button class="btn-pedidos" router_link="all-orders" texto="Todos los pedidos"/>
+  <h1>Bienvenido</h1>
+  <app-dolar-info></app-dolar-info>
+  <h3>Acceso Directo</h3>
+  <div class="access-container">
+    <app-main-menu-button router_link="csv-prices" texto="Cargar Lista"/>
+    <app-main-menu-button router_link="product-supplier" texto="Cargar Relacion"/>
+  </div>
+
+  <div class="access-container">
+    <app-main-menu-button router_link="form-products" texto="Cargar Producto"/>
+    <app-main-menu-button router_link="form-suppliers" texto="Cargar Proveedor"/>
+  </div>
+
 </div>

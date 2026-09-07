@@ -22,14 +22,14 @@ article {
   box-shadow: 0 15px 35px rgba(22, 55, 45, 0.5);
   transition: 0.4s;
 }
+  article:hover {
+    background-color: rgba(255, 255, 255, 0.85);
+    cursor: pointer;
+    transition: 0.4s;
+    scale: 1.1;
+  }
 
-article:hover {
-  background-color: rgba(255, 255, 255, 0.85);
-  cursor: pointer;
-  transition: 0.4s;
-  scale: 1.1;
-}
+  p {
+    border-bottom: 3px solid #d4af37;
+  }
 
-p{
-  border-bottom: 3px solid #d4af37;
-}
