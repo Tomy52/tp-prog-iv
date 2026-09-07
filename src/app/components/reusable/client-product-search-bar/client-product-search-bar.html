@@ -1,10 +1,10 @@
 <article>
     <form action="" [formGroup]="form" (ngSubmit)="submit()" class="large-search-bar">
         <section>
-
+            <h4>Criterios de busqueda</h4>
             <div class="flex-container">
                 <label for="product">Nombre</label>
-                <input type="text" name="product" id="product" formControlName="tern" placeholder="Término de búsqueda...">
+                <input class="form-control" type="text" name="product" id="product" formControlName="tern" placeholder="Término de búsqueda...">
             </div>
 
             <div class="flex-container">
@@ -12,14 +12,14 @@
                 <app-category-dropdown-select id="categories" formControlName="category_id" [categories]="categories()"/>
             </div>
 
-            <div class="flex-container">
+            <div class="flex-container dont-change-flow">
               <label for="checkbox">Incluir productos sin stock?</label>
-              <input type="checkbox" name="checkbox" id="checkbox">
+              <input type="checkbox" name="checkbox" id="checkbox" formControlName="include_oos">
             </div>
 
             <div class="button-container">
-                <button type="submit">Buscar</button>
-                <button type="button" (click)="reset()">Reiniciar</button>
+                <button type="submit" class="submit-button">Buscar</button>
+                <button type="button" class="reset-button" (click)="reset()">Reiniciar</button>
             </div>
         </section>
     </form>

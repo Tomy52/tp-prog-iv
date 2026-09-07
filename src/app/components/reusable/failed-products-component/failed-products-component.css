@@ -136,3 +136,9 @@ ul::-webkit-scrollbar-thumb {
         width: 100%;
     }
 }
+
+
+.fail-list {
+    max-height: 300px;
+    overflow-y: scroll;
+}

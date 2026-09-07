@@ -1,9 +1,9 @@
 div {
-    flex-direction: column;
+  flex-direction: column;
 }
 
 section {
-    flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 input[type=number] {
