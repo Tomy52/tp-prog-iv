@@ -9,7 +9,6 @@ import {ProductSupplierRowComponent} from '../price-by-supplier-row-component/pr
 import {PageButtons} from '../../../reusable/page-buttons/page-buttons';
 import {AllowViewUser} from '../../../../directives/allow-view-user';
 import { ModalService } from '../../../../services/modal-service';
-import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-price-list-by-supplier-component',
@@ -77,7 +76,6 @@ export class PriceBySupplierListComponent {
     this.productSupplierService.getAllProductBySupplier(id,this.page(),this.pageSize).subscribe({
       next: (data) => {
         this.supplierProductList.set(data);
-        console.log(this.supplierProductList());
       },
       error: (err) => {
         throw err;
