@@ -10,7 +10,7 @@
             <button (click)="changeShowing()" [textContent]="showing() ? 'Esconder productos' : 'Mostrar productos'"></button>
         </div>
         @if (showing()) {
-            <div>
+            <div class="fail-list">
                 <ul>
                     @for (item of failed_product_resp()?.nonAffectedProducts; track $index) {
                         <li>{{item.nombre}}</li>
