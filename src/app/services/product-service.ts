@@ -104,7 +104,7 @@ export class ProductService {
 
     if(query?.include_oos != null)
     {
-      query_string += `&include_oos${query?.include_oos}`
+      query_string += `&include_oos=${query?.include_oos}`
     }
 
     return this.http.get<PageResponse<CustomerProductInfo>>(`api/sales/on-sale${query_string}`)
@@ -124,8 +124,19 @@ export class ProductService {
     return this.http.post<Product>(`${this.baseUrl}`,formData);
   }
 
-  modifyProduct(modifiedProduct: Partial<Product>): Observable<Product> {
-    return this.http.put<Product>(`${this.baseUrl}/${modifiedProduct.idProduct}`,modifiedProduct);
+  modifyProduct(modifiedProduct: Partial<Product>, product_id:number, file:File|undefined): Observable<Product> {
+
+    const formData: FormData = new FormData();
+
+    if(file)
+    {
+      formData.append('file', file)
+    }
+
+    const productBlob = new Blob([JSON.stringify(modifiedProduct)], { type: 'application/json; charset=utf-8' });
+    formData.append('productData', productBlob);
+
+    return this.http.put<Product>(`${this.baseUrl}/${product_id}`,formData);
   }
 
   deleteProduct(idProduct: number): Observable<Object> {

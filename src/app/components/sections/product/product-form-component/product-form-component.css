@@ -61,7 +61,6 @@ input:focus {
 }
 
 input[type="submit"], button {
-  grid-column: 1 / -1;
   justify-self: center;
 
   margin-top: 35px;

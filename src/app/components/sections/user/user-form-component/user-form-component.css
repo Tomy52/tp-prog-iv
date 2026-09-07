@@ -35,3 +35,7 @@ select {
   display: flex;
   justify-content: center;
 }
+
+.registration-form-buttons button:disabled{
+  cursor: not-allowed;
+}

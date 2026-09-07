@@ -24,12 +24,12 @@ export class OrderDataPopupCustomer {
   }
 
   private dialogRef = inject(DialogRef, {optional: true})
-  protected closeModal(status:string) {
+  protected closeModal(status?:string) {
     this.dialogRef?.close(status)
   }
 
   goBack() {
-    this.closeModal('back');
+    this.closeModal();
   }
 
   changeStatus()
