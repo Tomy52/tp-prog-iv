@@ -2,11 +2,11 @@ section {
   /* reglas de display */
   display: flex;
   flex-direction: column;
-  height: 80dvh;
+  /*esto de abajo esta comentado por que rompia la vista en movil, lo dejo asi por las dudas que rompa algo que no estoy viendo*/
+  /*height: 80dvh;*/
   padding: var(--header-padding);
   align-items: center;
   justify-content: center;
-
 
   /* colores y otras cosas */
   color: white;
