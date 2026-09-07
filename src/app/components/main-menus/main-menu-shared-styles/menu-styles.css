@@ -1,3 +1,9 @@
+h1{
+  text-align: center;
+  color: #2d5a4c;
+  font-family: "Cinzel", serif;
+}
+
 .menu-container {
     display: flex;
     justify-content: center;
@@ -11,4 +17,24 @@
 
 .menu-container.vertical {
     flex-direction: column;
+}
+
+.access-container{
+  display: flex;
+  flex-direction: row;
+
+}
+
+h3{
+  text-align: center;
+  font-family: "Cinzel", serif;
+  color: #2d5a4c;
+}
+
+@media screen and (max-width: 510px) {
+  .access-container{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }
