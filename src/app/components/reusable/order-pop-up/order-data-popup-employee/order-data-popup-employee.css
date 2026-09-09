@@ -2,6 +2,8 @@ article {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    max-height: min-content;
 }
 
 div:last-child {
@@ -40,9 +42,9 @@ h2, h1 {
     width: 100%;
 }
 
-.items .list {
-    max-height: 200px;
-    overflow: scroll;
+.list {
+    max-height: 150px;
+    overflow-y: scroll;
 } 
 
 form {
