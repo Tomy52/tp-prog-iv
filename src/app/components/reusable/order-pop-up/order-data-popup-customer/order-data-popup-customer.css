@@ -35,3 +35,8 @@ h2, h1 {
 .buttons > button {
     width: 100%;
 }
+
+.list {
+    max-height: 150px;
+    overflow-y: scroll;
+}
