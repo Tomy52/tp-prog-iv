@@ -1,46 +1,57 @@
 <article>
-    <h1>ID pedido: {{data()?.orderId}}</h1>
 
-    <div class="user-details">
-        <h2>Datos del usuario</h2>
-        <ul>
-            <li>{{data()?.userInfo?.firstName + " " + data()?.userInfo?.lastName}}</li>
-            <li>{{data()?.userInfo?.dni}}</li>
-        </ul>
-
-    </div>
-
-
-    <div class="items">
-        <h2>Items</h2>
-
-        <div class="list">
-            @for (item of data()?.orderItems; track $index) {
-                <ul>
-                    <li> {{item.quantity}} {{item.productInfo.name}} - ${{item.priceAtOrder}} = ${{item.priceAtOrder * item.quantity}} </li>
-                </ul>
-            }
+    <div class="title">
+        <h1>ID pedido: {{data()?.orderId}}</h1>
+        <div class="user-details">
+            <h2>Datos del usuario</h2>
+            <ul>
+                <li>Nombre: {{data()?.userInfo?.firstName + " " + data()?.userInfo?.lastName}}</li>
+                <li>DNI: {{data()?.userInfo?.dni}}</li>
+            </ul>
+            
         </div>
     </div>
 
-    <div class="prices">
-        <p>Total: ${{data()?.total}}</p>
-        <p>Total final: ${{data()?.finalTotal}}</p>
+
+    <div class="shopping-info">
+        <div class="items">
+            <h2>Items</h2>
+            
+            <div class="list">
+                @for (item of data()?.orderItems; track $index) {
+                    <ul>
+                        <li> {{item.quantity}} {{item.productInfo.name}} - ${{item.priceAtOrder}} = ${{item.priceAtOrder * item.quantity}} </li>
+                    </ul>
+                }
+            </div>
+        </div>
+        
+        <div class="prices">
+            <p>Total: ${{data()?.total}}</p>
+            <p>Total final: ${{data()?.finalTotal}}</p>
+        </div>
     </div>
 
     @if (checkIfControlsShouldBeEnabled()) {
         <div class="controls">
             <h2>Estado</h2>
-            <form action="" (submit)="updateStatus()" [formGroup]="form">
-                <select name="state" id="state" formControlName="status">
-                    @for (item of enum_list(); track $index) {
-                        <option [value]="item.key">{{item.value}}</option>
-                    }
-                </select>
+            <div>
 
-                <button type="submit">Cambiar</button>
-            </form>
+                <form action="" (submit)="updateStatus()" [formGroup]="form">
+                    <select name="state" id="state" formControlName="status">
+                        @for (item of enum_list(); track $index) {
+                            <option [value]="item.key">{{item.value}}</option>
+                        }
+                    </select>
+                    
+                    <button type="submit">Cambiar</button>
+                </form>
+            </div>
           <button (click)="closeModal()">Volver</button>
+        </div>
+    } @else {
+        <div class="message">
+            <h2>¡Pedido {{current_status()}}!</h2>
         </div>
     }
 
