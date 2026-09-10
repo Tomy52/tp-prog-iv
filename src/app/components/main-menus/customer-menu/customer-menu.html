@@ -1,11 +1,11 @@
 <div class="dashboard-layout">
 
-  <main class="dashboard-columns">
+  <div class="dashboard-columns">
 
     <div class="carousel-wrapper">
       <section class="premium-carousel">
         <div class="carousel-track">
-          
+
           <div class="carousel-slide" [class.active]="currentSlide === 0">
             <img src="images/compraYRetiro.png" alt="compra y retiro" class="carousel-img">
             <div class="slide-overlay"></div>
@@ -19,9 +19,9 @@
     </div>
 
     <div class="right-column">
-      
+
       <aside class="premium-aside-panel">
-        
+
         <div class="aside-left-content">
           <div class="aside-card-header">
             <h3>Mi Espacio</h3>
@@ -42,7 +42,7 @@
               <span class="stat-value">9:00 a 21:00</span>
             </div>
           </div>
-          
+
           <div class="info-stat-block">
             <div class="stat-icon">🚚</div>
             <div class="stat-data">
@@ -54,23 +54,20 @@
         </div>
 
       </aside>
+    </div>
 
-      <div class="menu-form-card">
-        <div class="menu-container">
-          
-          <div class="btn-productos">
-            <app-main-menu-button router_link="on-sale" texto="Productos en venta">
-            </app-main-menu-button>
-          </div>
-          
-          <div class="btn-pedidos">
-            <app-main-menu-button router_link="all-orders" texto="Todos los pedidos"></app-main-menu-button>
+    <div class="access-area">
+      <h3>Acceso Directo</h3>
+      <div class="access-container">
+          <div>
+            <app-main-menu-button router_link="on-sale" texto="Ver productos en venta"></app-main-menu-button>
           </div>
 
-        </div>
+          <div>
+            <app-main-menu-button router_link="my-orders" texto="Ver mis pedidos"></app-main-menu-button>
+          </div>
       </div>
-
-    </div> 
-  </main>
+    </div>
+  </div>
 
 </div>
