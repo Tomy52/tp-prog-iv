@@ -1,7 +1,16 @@
+:host-context(cdk-dialog-container)
+{
+    width: 100%;
+}
+
 article {
-    display: flex;
     justify-content: center;
     align-items: center;
+
+    display: grid;
+    grid-template-areas: "title title" "items buttons";
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 0.5fr;
 }
 
 li, p{
@@ -30,7 +39,8 @@ h2, h1 {
 .buttons {
     display: flex;
     flex-direction: column;
-    padding-top: 10px;
+    grid-area: buttons;
+    height: 100%;
 }
 
 .buttons > button {
@@ -42,6 +52,29 @@ h2, h1 {
     overflow-y: scroll;
 }
 
-div:last-child {
-  border-top: 1px gray solid;
+.shopping-info {
+    grid-area: items;
+    height: 100%;
+}
+
+.prices {
+    text-align: center;
+}
+
+.title {
+    grid-area: title;
+}
+
+.message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+@media only screen and (max-width: 660px){
+    article {
+        display: flex;
+        flex-direction: column;
+    }
 }

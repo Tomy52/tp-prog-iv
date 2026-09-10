@@ -23,6 +23,8 @@ export class OrderDataPopupEmployee {
   enum_mapper = inject(EnumMappingService)
   enum_list = signal<EnumMap[]>([]);
 
+  current_status = signal<String>('');
+
   order_service = inject(OrderService);
   form_builder = inject(FormBuilder)
 
@@ -35,6 +37,7 @@ export class OrderDataPopupEmployee {
     this.data.set(this.dialog_data.data);
     this.enum_list.set(this.enum_mapper.createList(OrderStatus))
     this.form.setValue({status: this.data()?.status!})
+    this.current_status.set(this.enum_mapper.searchEnumValue(OrderStatus, this.data()?.status!))
   }
 
 

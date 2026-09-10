@@ -1,13 +1,19 @@
+:host-context(cdk-dialog-container)
+{
+    width: 100%;
+}
+
+
 article {
-    display: flex;
     justify-content: center;
     align-items: center;
 
     max-height: min-content;
-}
 
-div:last-child {
-  border-top: 1px gray solid;
+    display: grid;
+    grid-template-areas: "title title" "items buttons";
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 0.5fr;
 }
 
 .user-details{
@@ -32,16 +38,6 @@ h2, h1 {
     margin-bottom: 30px;
 }
 
-.controls > form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.controls {
-    width: 100%;
-}
-
 .list {
     max-height: 150px;
     overflow-y: scroll;
@@ -64,4 +60,45 @@ button {
     text-align: center;
     padding: 5px;
     border-radius: 10px;
+}
+
+
+
+.shopping-info {
+    grid-area: items;
+}
+
+.title {
+    grid-area: title;
+}
+
+.prices {
+    text-align: center;
+}
+
+form {
+    grid-area: buttons;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.controls {
+    width: 100%;
+    height: 100%;
+}
+
+.message {
+    grid-area: buttons;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media only screen and (max-width: 660px){
+    article {
+        display: flex;
+        flex-direction: column;
+    }
 }
