@@ -1,28 +1,40 @@
 <article>
-    <h1>ID pedido: {{data()?.orderId}}</h1>
 
-    <div class="items">
-        <h2>Items</h2>
-
-
-        <div class="list">
-            @for (item of data()?.orderItems; track $index) {
-                <ul>
-                    <li> {{item.quantity}} {{item.productInfo.name}} - ${{item.priceAtOrder}} = ${{item.priceAtOrder * item.quantity}} </li>
-                </ul>
-            }
-        </div>
+    <div class="title">
+        <h1>Mi pedido</h1>
+        <h2>ID pedido: {{data()?.orderId}}</h2>
     </div>
 
-    <div class="prices">
-        <p>Total: ${{data()?.total}}</p>
-        <p>Total final: ${{data()?.finalTotal}}</p>
+
+    <div class="shopping-info">
+        <div class="items">
+            <h2>Items</h2>
+            
+            
+            <div class="list">
+                @for (item of data()?.orderItems; track $index) {
+                    <ul>
+                        <li> {{item.quantity}} {{item.productInfo.name}} - ${{item.priceAtOrder}} = ${{item.priceAtOrder * item.quantity}} </li>
+                    </ul>
+                }
+            </div>
+        </div>
+        
+        <div class="prices">
+            <p>Total: ${{data()?.total}}</p>
+            <p>Total final: ${{data()?.finalTotal}}</p>
+        </div>
     </div>
 
     @if (checkIfControlsShouldBeEnabled()) {
         <div class="buttons">
-            <button class="cancel-order" (click)="changeStatus()">Eliminar</button>
+            <h2>Controles</h2>
+            <button class="cancel-order" (click)="changeStatus()">Cancelar</button>
             <button (click)="goBack()">Volver</button>
+        </div>
+    } @else {
+        <div class="message">
+            <h2>¡Pedido {{current_status()}}!</h2>
         </div>
     }
 

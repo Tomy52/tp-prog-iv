@@ -4,6 +4,8 @@ import { DIALOG_DATA, DialogRef } from '@angular/cdk/dialog';
 import { OrderService } from '../../../../services/order-service';
 import { ModalService } from '../../../../services/modal-service';
 import { ModalNotification } from '../../modal-notification/modal-notification';
+import { EnumMappingService } from '../../../../services/enum-mapping-service';
+import { OrderStatus } from '../../../../interfaces/orders/order-status';
 
 @Component({
   selector: 'app-order-data-popup-customer',
@@ -18,9 +20,14 @@ export class OrderDataPopupCustomer {
   order_service = inject(OrderService)
   modal_service = inject(ModalService)
 
+  current_status = signal<String>('');
+
+  enum_mapper = inject(EnumMappingService)
+
   constructor()
   {
     this.data.set(this.dialog_data.data);
+    this.current_status.set(this.enum_mapper.searchEnumValue(OrderStatus,this.data()?.status!))
   }
 
   private dialogRef = inject(DialogRef, {optional: true})
